@@ -1,17 +1,14 @@
-// Import the appropriate implementation based on the platform
-import 'package:portfolio_web/features/logo_video_player/implementations/stub/stub_video_player_impl.dart'
-    if (dart.library.html) 'package:portfolio_web/features/logo_video_player/implementations/web/web_video_player_impl.dart';
+// Always use web implementation for this web-only app
 import 'package:portfolio_web/features/logo_video_player/implementations/video_player_interface.dart';
+import 'package:portfolio_web/features/logo_video_player/implementations/web/web_video_player_impl.dart';
 
-/// Factory for creating the appropriate VideoPlayerInterface implementation
-/// based on the current platform.
+/// Factory for creating the VideoPlayerInterface implementation.
+/// Since this is a web-only app, we always use the web implementation.
 class VideoPlayerFactory {
   /// Creates a new instance of VideoPlayerInterface.
   ///
-  /// Returns a web implementation on web platforms and a stub implementation
-  /// on other platforms.
+  /// Returns a web implementation optimized for all browsers including mobile Safari.
   static VideoPlayerInterface create() {
-    // The conditional import will automatically use the correct implementation
     return createVideoPlayerImpl();
   }
 }

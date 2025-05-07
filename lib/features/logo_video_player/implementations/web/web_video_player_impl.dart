@@ -27,7 +27,9 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
           ..loop = false
           ..muted = true
           ..controls = false
-          ..preload = 'auto';
+          ..preload = 'auto'
+          // Add playsinline attribute for iOS Safari
+          ..setAttribute('playsinline', 'true');
 
     // Set styles with cascade notation
     videoElement.style
