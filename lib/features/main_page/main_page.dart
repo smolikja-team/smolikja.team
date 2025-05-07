@@ -23,7 +23,7 @@ class VideoContainer extends StatelessWidget {
     return const LogoVideoPlayer(
       videoUrl: videoUrl,
       fit: BoxFit.contain,
-      preloadBufferMs: 500,
+      preloadBufferMs: 350,
     );
   }
 }
