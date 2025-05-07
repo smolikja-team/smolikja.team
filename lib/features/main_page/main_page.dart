@@ -45,13 +45,10 @@ class VideoContainer extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       children: [
         // Video player
-        const Padding(
-          padding: EdgeInsets.all(32.0),
-          child: LogoVideoPlayer(
-            videoUrl: videoUrl,
-            fit: BoxFit.contain,
-            preloadBufferMs: 350,
-          ),
+        const LogoVideoPlayer(
+          videoUrl: videoUrl,
+          fit: BoxFit.contain,
+          preloadBufferMs: 350,
         ),
 
         // Email link
