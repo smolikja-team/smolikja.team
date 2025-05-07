@@ -1,7 +1,6 @@
-import 'dart:html' as html;
-import 'dart:ui' as ui;
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio_web/core/utils/web_interop.dart';
 
 /// A video player that uses HTML video element for web platform.
 ///
@@ -48,69 +47,103 @@ class HtmlVideoPlayer extends StatefulWidget {
 }
 
 class _HtmlVideoPlayerState extends State<HtmlVideoPlayer> {
-  late html.VideoElement _videoElement;
+  dynamic _videoElement;
   late String _viewType;
 
   @override
   void initState() {
     super.initState();
+    if (!kIsWeb) return;
+
     // Create a unique ID for the video element
     _viewType = 'html-video-player-${DateTime.now().millisecondsSinceEpoch}';
 
-    // Create the video element
-    _videoElement =
-        html.VideoElement()
-          ..src = widget.videoUrl
-          ..autoplay = widget.autoplay
-          ..loop = widget.loop
-          ..muted = widget.muted
-          ..style.border = 'none'
-          ..style.width = '100%'
-          ..style.height = '100%'
-          ..style.objectFit = 'contain';
-
-    // Register the view factory
-    // ignore: undefined_prefixed_name
-    ui.platformViewRegistry.registerViewFactory(
-      _viewType,
-      (int viewId) => _videoElement,
+    // Create the video element using our safe web interop utility
+    _videoElement = createVideoElement(
+      src: widget.videoUrl,
+      autoplay: widget.autoplay,
+      loop: widget.loop,
+      muted: widget.muted,
+      controls: false,
     );
+
+    // Set styles
+    setElementStyle(
+      _videoElement,
+      border: 'none',
+      width: '100%',
+      height: '100%',
+      objectFit: 'contain',
+    );
+
+    // Register the view factory using our safe web interop utility
+    registerViewFactory(_viewType, (int viewId) => _videoElement);
   }
 
   @override
   void didUpdateWidget(HtmlVideoPlayer oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (!kIsWeb || _videoElement == null) return;
 
-    // Update video properties if they changed
+    // If the URL changed, recreate the video element
     if (oldWidget.videoUrl != widget.videoUrl) {
-      _videoElement.src = widget.videoUrl;
-    }
+      // Create a new video element with updated properties
+      _videoElement = createVideoElement(
+        src: widget.videoUrl,
+        autoplay: widget.autoplay,
+        loop: widget.loop,
+        muted: widget.muted,
+        controls: false,
+      );
 
-    if (oldWidget.autoplay != widget.autoplay) {
-      _videoElement.autoplay = widget.autoplay;
-    }
+      // Update styles
+      setElementStyle(
+        _videoElement,
+        border: 'none',
+        width: '100%',
+        height: '100%',
+        objectFit: 'contain',
+      );
 
-    if (oldWidget.loop != widget.loop) {
-      _videoElement.loop = widget.loop;
-    }
+      // Re-register the view factory
+      registerViewFactory(_viewType, (int viewId) => _videoElement);
 
-    if (oldWidget.muted != widget.muted) {
-      _videoElement.muted = widget.muted;
+      // Force a rebuild
+      setState(() {});
+    } else {
+      // Update other properties if they changed
+      if (oldWidget.autoplay != widget.autoplay ||
+          oldWidget.loop != widget.loop ||
+          oldWidget.muted != widget.muted) {
+        // Create a new video element with updated properties
+        _videoElement = createVideoElement(
+          src: widget.videoUrl,
+          autoplay: widget.autoplay,
+          loop: widget.loop,
+          muted: widget.muted,
+          controls: false,
+        );
+
+        // Force a rebuild
+        setState(() {});
+      }
     }
   }
 
   @override
   void dispose() {
-    // Clean up the video element
-    _videoElement
-      ..pause()
-      ..removeAttribute('src')
-      ..load();
+    _videoElement = null;
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (!kIsWeb) {
+      return const Center(
+        child: Text('HtmlVideoPlayer is only supported on web platform'),
+      );
+    }
+
     return SizedBox(
       width: widget.width,
       height: widget.height,

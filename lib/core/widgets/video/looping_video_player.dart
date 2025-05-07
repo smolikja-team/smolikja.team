@@ -71,14 +71,13 @@ class _LoopingVideoPlayerState extends State<LoopingVideoPlayer> {
   Future<void> _initializeControllers() async {
     try {
       // Use networkUrl instead of deprecated network constructor
-      _controller =
-          VideoPlayerController.networkUrl(
-              Uri.parse(widget.videoUrl),
-              videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
-            )
-            ..addListener(_checkForEndOfVideo)
-            // Set looping directly on the controller as a fallback
-            ..setLooping(true);
+      _controller = VideoPlayerController.networkUrl(
+        Uri.parse(widget.videoUrl),
+        videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+      )..addListener(_checkForEndOfVideo);
+
+      // Set looping directly on the controller as a fallback
+      await _controller.setLooping(true);
 
       // Initialize the controller
       await _controller.initialize();
