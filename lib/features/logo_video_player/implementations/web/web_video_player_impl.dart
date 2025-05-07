@@ -1,4 +1,6 @@
 import 'dart:async';
+// Import for web platform views
+import 'dart:ui_web' as ui_web;
 
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/features/logo_video_player/implementations/video_player_interface.dart';
@@ -329,22 +331,18 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
     final container = _containerElements[containerId];
 
     if (container != null) {
-      // Register the view factory using a direct DOM approach
-      try {
-        // Create a unique ID for the container
-        final uniqueId = 'flutter-view-$viewType';
-        container.id = uniqueId;
+      // Create a unique ID for the container
+      final uniqueId = 'flutter-view-$viewType';
+      container.id = uniqueId;
 
-        // Add the container to the document body
-        document.body?.appendChild(container);
+      // Register a view factory that will properly integrate with Flutter's widget tree
+      // This ensures the video respects the z-index of Flutter widgets
+      ui_web.platformViewRegistry.registerViewFactory(viewType, (int viewId) {
+        return container;
+      });
 
-        // Log success
-        debugPrint('Successfully registered view with ID: $uniqueId');
-      } catch (e) {
-        debugPrint('Error registering view factory: $e');
-        // Fallback to direct DOM manipulation if registration fails
-        document.body?.appendChild(container);
-      }
+      // Log success
+      debugPrint('Successfully registered view factory: $viewType');
     }
 
     return viewType;
