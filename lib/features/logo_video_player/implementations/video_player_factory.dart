@@ -1,7 +1,7 @@
 // Import the appropriate implementation based on the platform
-import 'package:portfolio_web/core/widgets/video/stub/stub_video_player_impl.dart'
-    if (dart.library.html) 'package:portfolio_web/core/widgets/video/web/fixed_web_video_player_impl.dart';
-import 'package:portfolio_web/core/widgets/video/video_player_interface.dart';
+import 'package:portfolio_web/features/logo_video_player/implementations/stub/stub_video_player_impl.dart'
+    if (dart.library.html) 'package:portfolio_web/features/logo_video_player/implementations/web/web_video_player_impl.dart';
+import 'package:portfolio_web/features/logo_video_player/implementations/video_player_interface.dart';
 
 /// Factory for creating the appropriate VideoPlayerInterface implementation
 /// based on the current platform.

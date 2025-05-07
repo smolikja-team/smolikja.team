@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:portfolio_web/core/widgets/video/video_player_factory.dart';
-import 'package:portfolio_web/core/widgets/video/video_player_interface.dart';
+import 'package:portfolio_web/features/logo_video_player/implementations/video_player_factory.dart';
+import 'package:portfolio_web/features/logo_video_player/implementations/video_player_interface.dart';
 
 /// A video player with seamless looping capabilities.
 ///

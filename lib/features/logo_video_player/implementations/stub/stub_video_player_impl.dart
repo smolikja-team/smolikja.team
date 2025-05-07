@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_web/core/widgets/video/video_player_interface.dart';
+import 'package:portfolio_web/features/logo_video_player/implementations/video_player_interface.dart';
 
 /// Stub implementation of the VideoPlayerInterface for non-web platforms.
 /// This implementation does nothing and is used as a fallback.
@@ -50,8 +50,7 @@ class StubVideoPlayerImpl implements VideoPlayerInterface {
   }
 
   @override
-  void setVideoStyle(
-    String elementId, {
+  void setVideoStyle(String elementId, {
     BoxFit? fit,
     double? width,
     double? height,
@@ -72,10 +71,7 @@ class StubVideoPlayerImpl implements VideoPlayerInterface {
   }
 
   @override
-  void onVideoError(
-    String elementId,
-    void Function(String errorMessage) callback,
-  ) {
+  void onVideoError(String elementId, void Function(String errorMessage) callback) {
     // Do nothing
   }
 

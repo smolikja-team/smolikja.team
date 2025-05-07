@@ -1,10 +1,7 @@
-// This file contains web-specific implementation using modern web package
-// It should only be imported conditionally
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:portfolio_web/core/widgets/video/video_player_interface.dart';
+import 'package:portfolio_web/features/logo_video_player/implementations/video_player_interface.dart';
 import 'package:web/web.dart';
 
 /// Web implementation of the VideoPlayerInterface using modern web package.
@@ -17,19 +14,17 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
 
   @override
   String createVideoElement(String url) {
-    final id =
-        'video-${DateTime.now().millisecondsSinceEpoch}-${_videoElements.length}';
-
+    final id = 'video-${DateTime.now().millisecondsSinceEpoch}-${_videoElements.length}';
+    
     // Create video element with cascade notation
-    final videoElement =
-        document.createElement('video') as HTMLVideoElement
-          ..src = url
-          ..autoplay = false
-          ..loop = false
-          ..muted = true
-          ..controls = false
-          ..preload = 'auto';
-
+    final videoElement = document.createElement('video') as HTMLVideoElement
+      ..src = url
+      ..autoplay = false
+      ..loop = false
+      ..muted = true
+      ..controls = false
+      ..preload = 'auto';
+    
     // Set styles with cascade notation
     videoElement.style
       ..border = 'none'
@@ -38,13 +33,10 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
       ..position = 'absolute'
       ..top = '0'
       ..left = '0';
-
+    
     _videoElements[id] = videoElement;
-
+    
     // Set up manual event handling
-    // We'll use a different approach to avoid type errors
-
-    // Create a function to handle canplay events
     void handleCanPlay() {
       if (_canPlayCallbacks.containsKey(id)) {
         for (final callback in _canPlayCallbacks[id]!) {
@@ -52,8 +44,7 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
         }
       }
     }
-
-    // Create a function to handle metadata events
+    
     void handleMetadata() {
       if (_metadataCallbacks.containsKey(id)) {
         for (final callback in _metadataCallbacks[id]!) {
@@ -61,8 +52,7 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
         }
       }
     }
-
-    // Create a function to handle error events
+    
     void handleError() {
       if (_errorCallbacks.containsKey(id)) {
         var errorMessage = 'Unknown error';
@@ -89,34 +79,32 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
         }
       }
     }
-
+    
     // Manually set up event monitoring
-    // Instead of using event handlers directly, we'll use a timer to check video state
     Future.delayed(Duration.zero, () {
       // Check if the video is ready
-      if (videoElement.readyState >= 3) {
-        // HAVE_FUTURE_DATA or better
+      if (videoElement.readyState >= 3) { // HAVE_FUTURE_DATA or better
         handleCanPlay();
         handleMetadata();
       }
-
+      
       // Set up a periodic timer to check video state
       Timer.periodic(const Duration(milliseconds: 100), (timer) {
         if (!_videoElements.containsKey(id)) {
           timer.cancel();
           return;
         }
-
+        
         // Check for canplay
         if (videoElement.readyState >= 3) {
           handleCanPlay();
         }
-
+        
         // Check for metadata
         if (videoElement.readyState >= 1) {
           handleMetadata();
         }
-
+        
         // Check for errors
         if (videoElement.error != null) {
           handleError();
@@ -124,7 +112,7 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
         }
       });
     });
-
+    
     return id;
   }
 
@@ -140,7 +128,6 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
   void playVideo(String elementId) {
     final element = _videoElements[elementId];
     if (element != null) {
-      // Use a Promise to handle play() which returns a Promise
       element.play();
     }
   }
@@ -196,11 +183,11 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
         ..pause()
         ..removeAttribute('src')
         ..load();
-
+        
       if (element.parentNode != null) {
         element.parentNode!.removeChild(element);
       }
-
+      
       _videoElements.remove(elementId);
       _canPlayCallbacks.remove(elementId);
       _metadataCallbacks.remove(elementId);
@@ -209,8 +196,7 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
   }
 
   @override
-  void setVideoStyle(
-    String elementId, {
+  void setVideoStyle(String elementId, {
     BoxFit? fit,
     double? width,
     double? height,
@@ -220,7 +206,7 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
     final element = _videoElements[elementId];
     if (element != null) {
       final style = element.style;
-
+      
       if (fit != null) {
         switch (fit) {
           case BoxFit.contain:
@@ -244,19 +230,19 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
             break;
         }
       }
-
+      
       if (width != null) {
         style.width = '${width}px';
       }
-
+      
       if (height != null) {
         style.height = '${height}px';
       }
-
+      
       if (transition != null) {
         style.transition = transition;
       }
-
+      
       if (opacity != null) {
         style.opacity = opacity.toString();
       }
@@ -280,10 +266,7 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
   }
 
   @override
-  void onVideoError(
-    String elementId,
-    void Function(String errorMessage) callback,
-  ) {
+  void onVideoError(String elementId, void Function(String errorMessage) callback) {
     if (!_errorCallbacks.containsKey(elementId)) {
       _errorCallbacks[elementId] = [];
     }
@@ -292,19 +275,18 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
 
   @override
   String createContainerElement() {
-    final id =
-        'container-${DateTime.now().millisecondsSinceEpoch}-${_containerElements.length}';
-
+    final id = 'container-${DateTime.now().millisecondsSinceEpoch}-${_containerElements.length}';
+    
     final containerElement = document.createElement('div') as HTMLDivElement;
-
+    
     containerElement.style
       ..position = 'relative'
       ..width = '100%'
       ..height = '100%'
       ..overflow = 'hidden';
-
+    
     _containerElements[id] = containerElement;
-
+    
     return id;
   }
 
@@ -312,7 +294,7 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
   void addVideoToContainer(String containerId, String videoId) {
     final container = _containerElements[containerId];
     final video = _videoElements[videoId];
-
+    
     if (container != null && video != null) {
       container.appendChild(video);
     }
@@ -332,7 +314,7 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
   String registerViewFactory(String containerId) {
     final viewType = 'video-view-${DateTime.now().millisecondsSinceEpoch}';
     final container = _containerElements[containerId];
-
+    
     if (container != null) {
       // Register the view factory using a direct DOM approach
       try {
@@ -342,7 +324,7 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
 
         // Add the container to the document body
         document.body?.appendChild(container);
-
+        
         // Log success
         debugPrint('Successfully registered view with ID: $uniqueId');
       } catch (e) {
@@ -351,7 +333,7 @@ class WebVideoPlayerImpl implements VideoPlayerInterface {
         document.body?.appendChild(container);
       }
     }
-
+    
     return viewType;
   }
 
