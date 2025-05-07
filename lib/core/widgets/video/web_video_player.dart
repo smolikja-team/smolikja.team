@@ -2,30 +2,31 @@ import 'dart:async';
 // ignore: avoid_web_libraries_in_flutter, deprecated_member_use
 import 'dart:html' as html;
 // ignore: avoid_web_libraries_in_flutter
+import 'dart:js_interop';
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:web/web.dart' as web;
 
-/// A seamless video player that uses HTML video elements without any abstractions.
+/// A web-only video player with seamless looping capabilities.
 ///
 /// This player implements advanced buffering techniques to ensure smooth looping
 /// by preloading the next video instance before the current one ends.
-class SeamlessVideoPlayer extends StatefulWidget {
-  /// Creates a SeamlessVideoPlayer widget.
+class WebVideoPlayer extends StatefulWidget {
+  /// Creates a WebVideoPlayer widget.
   ///
   /// [videoUrl] is the URL of the video to play.
   /// [width] and [height] are optional constraints for the video player.
-  /// [fit] determines how the video should be inscribed into the space (defaults to BoxFit.contain).
+  /// [fit] determines how the video should be inscribed into the space.
   /// [preloadBufferMs] is the time in milliseconds before the end of the video when the next instance should be prepared.
-  const SeamlessVideoPlayer({
+  const WebVideoPlayer({
     super.key,
     required this.videoUrl,
     this.width,
     this.height,
     this.fit = BoxFit.contain,
-    this.preloadBufferMs = 300,
+    this.preloadBufferMs = 500,
   });
 
   /// The URL of the video to play.
@@ -37,22 +38,20 @@ class SeamlessVideoPlayer extends StatefulWidget {
   /// Optional height constraint for the video player.
   final double? height;
 
-  /// Optional BoxFit for how the video should be inscribed into the space.
+  /// How the video should be inscribed into the space.
   final BoxFit fit;
 
   /// Time in milliseconds before the end of the video when the next instance should be prepared.
   final int preloadBufferMs;
 
   /// Time in milliseconds before the end of the video when the next instance should start playing.
-  /// This creates an overlap between videos for smoother transitions.
-  /// Lower value = less overlap (new video starts closer to the end of the current video)
   static const int overlapPlayMs = 80;
 
   @override
-  State<SeamlessVideoPlayer> createState() => _SeamlessVideoPlayerState();
+  State<WebVideoPlayer> createState() => _WebVideoPlayerState();
 }
 
-class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
+class _WebVideoPlayerState extends State<WebVideoPlayer> {
   late String _viewType;
   late html.DivElement _containerElement;
   late html.VideoElement _primaryVideoElement;
@@ -62,23 +61,18 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
   String _errorMessage = '';
   Timer? _checkPositionTimer;
   bool _isSwitchingVideos = false;
-
-  // Store the duration once we know it
   double _videoDuration = 0;
 
   @override
   void initState() {
     super.initState();
-    if (kIsWeb) {
-      _initializeVideoElements();
-    }
+    _initializeVideoElements();
   }
 
   void _initializeVideoElements() {
     try {
       // Create a unique ID for the container element
-      _viewType =
-          'seamless-video-player-${DateTime.now().millisecondsSinceEpoch}';
+      _viewType = 'web-video-player-${DateTime.now().millisecondsSinceEpoch}';
 
       // Create a container div to hold both videos
       _containerElement =
@@ -99,12 +93,10 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
             _isInitialized = true;
           });
         }
-
-        // Start the timer to check position
         _startPositionTimer();
       });
 
-      // Use loadedmetadata event to get the duration, which is more reliable
+      // Use loadedmetadata event to get the duration
       _primaryVideoElement.onLoadedMetadata.listen((event) {
         if (_primaryVideoElement.duration.isFinite &&
             _primaryVideoElement.duration > 0) {
@@ -124,14 +116,12 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
       // Start playing the primary video
       _primaryVideoElement.play();
 
-      // Mark as initialized after a timeout as fallback
+      // Fallback initialization
       Future.delayed(const Duration(seconds: 2), () {
         if (mounted && !_isInitialized && !_hasError) {
           setState(() {
             _isInitialized = true;
           });
-
-          // Start the timer to check position even if we don't get the canplay event
           _startPositionTimer();
         }
       });
@@ -149,21 +139,17 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
     final videoElement =
         html.VideoElement()
           ..src = url
-          ..autoplay =
-              visible // Only autoplay the visible video
-          ..loop =
-              false // We'll handle looping manually
+          ..autoplay = visible
+          ..loop = false
           ..muted = true
           ..controls = false
-          ..preload =
-              'auto' // Ensure video is fully preloaded
+          ..preload = 'auto'
           ..style.border = 'none'
           ..style.width = '100%'
           ..style.height = '100%'
           ..style.position = 'absolute'
           ..style.top = '0'
           ..style.left = '0'
-          // Add smooth transition for opacity (faster transition)
           ..style.transition = 'opacity 100ms ease-in-out';
 
     // Set visibility
@@ -226,15 +212,11 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
   }
 
   void _startPositionTimer() {
-    // Cancel any existing timer
     _checkPositionTimer?.cancel();
-
-    // Create a new timer that checks the video position every 50ms
-    _checkPositionTimer = Timer.periodic(const Duration(milliseconds: 50), (
-      timer,
-    ) {
-      _checkVideoPosition();
-    });
+    _checkPositionTimer = Timer.periodic(
+      const Duration(milliseconds: 50),
+      (_) => _checkVideoPosition(),
+    );
   }
 
   void _checkVideoPosition() {
@@ -251,10 +233,8 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
     final timeLeft = _videoDuration - currentTime;
 
     // Calculate when we need to prepare the next video
-    // We need to prepare it earlier than the preloadBufferMs to account for the overlap
     final prepareTime =
-        widget.preloadBufferMs / 1000 +
-        (SeamlessVideoPlayer.overlapPlayMs / 1000);
+        widget.preloadBufferMs / 1000 + (WebVideoPlayer.overlapPlayMs / 1000);
 
     // If we're within the buffer time of the end, prepare the next video
     if (timeLeft <= prepareTime && _nextVideoElement == null) {
@@ -270,32 +250,21 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
       _nextVideoElement = _createVideoElement(widget.videoUrl, false);
       _containerElement.append(_nextVideoElement!);
 
-      // Set additional preload attributes to ensure video is ready
+      // Force preloading
       _nextVideoElement!.preload = 'auto';
-
-      // Force preloading by setting currentTime to a small value
       _nextVideoElement!.currentTime = 0.1;
-
-      // Preload the video
       _nextVideoElement!.load();
 
-      // Add event listener for when it's ready
-      _nextVideoElement!.onCanPlay.listen((event) {
-        // When the next video is ready, schedule the switch
-        _scheduleVideoSwitch();
-      });
-
-      // Also listen for loadeddata event which might fire earlier
-      _nextVideoElement!.onLoadedData.listen((event) {
+      // Add event listeners
+      _nextVideoElement!.onCanPlay.listen((_) => _scheduleVideoSwitch());
+      _nextVideoElement!.onLoadedData.listen((_) {
         if (_nextVideoElement != null && !_isSwitchingVideos) {
           _scheduleVideoSwitch();
         }
       });
-
-      // Add error listener
       _nextVideoElement!.onError.listen(_handleVideoError);
 
-      // Fallback in case no events fire
+      // Fallback
       Future.delayed(const Duration(milliseconds: 50), () {
         if (_nextVideoElement != null && !_isSwitchingVideos) {
           _scheduleVideoSwitch();
@@ -313,9 +282,7 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
     // Calculate when to switch videos
     final currentTime = _primaryVideoElement.currentTime;
     final timeLeft = _videoDuration - currentTime;
-
-    // Calculate overlap time (when to start the next video)
-    final overlapTime = timeLeft - (SeamlessVideoPlayer.overlapPlayMs / 1000);
+    final overlapTime = timeLeft - (WebVideoPlayer.overlapPlayMs / 1000);
 
     // If we're very close to the end or should already be overlapping, switch immediately
     if (overlapTime <= 0) {
@@ -339,27 +306,20 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
       // Start playing the next video
       _nextVideoElement!.currentTime = 0;
       _nextVideoElement!.play();
-
-      // Make the next video visible with a fade-in effect
       _nextVideoElement!.style.opacity = '1';
 
       // Store reference to old video
       final oldVideo = _primaryVideoElement;
-
-      // Start fading out the old video
       oldVideo.style.opacity = '0.9';
 
       // Switch references
       _primaryVideoElement = _nextVideoElement!;
       _nextVideoElement = null;
 
-      // Complete the fade-out and remove the old video after the transition
+      // Complete the fade-out and remove the old video
       Future.delayed(const Duration(milliseconds: 100), () {
         try {
-          // Completely hide the old video
           oldVideo.style.opacity = '0';
-
-          // Remove it after the fade completes
           Future.delayed(const Duration(milliseconds: 100), () {
             try {
               oldVideo
@@ -368,7 +328,6 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
             } catch (e) {
               debugPrint('Error removing old video: $e');
             }
-
             _isSwitchingVideos = false;
           });
         } catch (e) {
@@ -383,12 +342,8 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
   }
 
   @override
-  void didUpdateWidget(SeamlessVideoPlayer oldWidget) {
+  void didUpdateWidget(WebVideoPlayer oldWidget) {
     super.didUpdateWidget(oldWidget);
-
-    if (!kIsWeb) return;
-
-    // If the URL changed, reinitialize everything
     if (oldWidget.videoUrl != widget.videoUrl) {
       _disposeVideoElements();
       _initializeVideoElements();
@@ -422,20 +377,12 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
 
   @override
   void dispose() {
-    if (kIsWeb) {
-      _disposeVideoElements();
-    }
+    _disposeVideoElements();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!kIsWeb) {
-      return const Center(
-        child: Text('SeamlessVideoPlayer is only supported on web platform'),
-      );
-    }
-
     if (_hasError) {
       return Center(
         child: Column(
@@ -450,11 +397,7 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
               ).textTheme.titleMedium?.copyWith(color: Colors.red),
             ),
             const SizedBox(height: 8),
-            Text(
-              _errorMessage,
-              style: Theme.of(context).textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
+            Text(_errorMessage, style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
@@ -473,19 +416,7 @@ class _SeamlessVideoPlayerState extends State<SeamlessVideoPlayer> {
     }
 
     if (!_isInitialized) {
-      return Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const CircularProgressIndicator(),
-            const SizedBox(height: 16),
-            Text(
-              'Loading video...',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-          ],
-        ),
-      );
+      return const Center(child: CircularProgressIndicator());
     }
 
     return SizedBox(
