@@ -37,15 +37,30 @@ class VideoContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String getVideoQuality() {
+      final width = View.of(context).physicalSize.width;
+
+      if (width >= 1440) {
+        return '2160p';
+      } else if (width >= 1024) {
+        return '1080p';
+      } else if (width >= 600) {
+        return '720p';
+      } else {
+        return '480p';
+      }
+    }
+
     // Video URL
-    const videoUrl = 'https://smolikja.team/assets/portfolio-web/team-logo.mp4';
+    final videoUrl =
+        'https://smolikja.team/assets/portfolio-web/team-logo-${getVideoQuality()}.mp4';
 
     return Stack(
       fit: StackFit.loose,
       alignment: Alignment.bottomCenter,
       children: [
         // Video player
-        const LogoVideoPlayer(
+        LogoVideoPlayer(
           videoUrl: videoUrl,
           fit: BoxFit.contain,
           preloadBufferMs: 350,
