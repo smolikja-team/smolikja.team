@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/features/logo_video_player/logo_video_player.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -26,6 +27,18 @@ class VideoContainer extends StatefulWidget {
 
 class _VideoContainerState extends State<VideoContainer> {
   bool _showCopiedMessage = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Hide the status bar
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.black,
+        systemNavigationBarColor: Colors.black,
+      ),
+    );
+  }
 
   /// Opens a URL in the browser
   Future<void> _launchUrl(String url) async {
@@ -101,9 +114,13 @@ class _VideoContainerState extends State<VideoContainer> {
                   color: Colors.black.withAlpha(179), // 0.7 opacity (179/255)
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: const Text(
+                child: Text(
                   'Email address copied to clipboard',
-                  style: TextStyle(color: Colors.white, fontSize: 14),
+
+                  style: GoogleFonts.redHatMono(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
                 ),
               ),
 
@@ -112,12 +129,12 @@ class _VideoContainerState extends State<VideoContainer> {
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
                 onTap: () => _launchUrl('https://github.com/smolikja-team/'),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
                     'follow on github',
-                    style: TextStyle(
-                      color: Color(0xff38fe27),
+                    style: GoogleFonts.redHatMono(
+                      color: const Color(0xff38fe27),
                       fontSize: 14,
                       decoration: TextDecoration.underline,
                     ),
@@ -131,12 +148,12 @@ class _VideoContainerState extends State<VideoContainer> {
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
                 onTap: () => _copyEmailToClipboard('smolikja@protonmail.com'),
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'smolikja@protonmail.com',
-                    style: TextStyle(
-                      color: Color(0xff38fe27),
+                    style: GoogleFonts.redHatMono(
+                      color: const Color(0xff38fe27),
                       fontSize: 14,
                       decoration: TextDecoration.underline,
                     ),
