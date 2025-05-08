@@ -46,6 +46,8 @@ rsync -avz --delete "$LOCAL_BUILD_PATH/" "$SSH_HOST:$SERVER_TARGET_PATH/" # <-- 
 # Check if the rsync command was successful
 if [ $? -ne 0 ]; then
     echo "Error: rsync synchronization failed. Deployment may be incomplete or failed."
+    echo "Run on server: sudo chown -R USERNAME:USERNAME $SERVER_TARGET_PATH/"
+    echo "Then try again."
     exit 1
 fi
 
@@ -60,3 +62,4 @@ echo "Rsync synchronization successful."
 
 echo "--- Deployment Finished ---"
 echo "Your new build should now be live at $SERVER_TARGET_PATH on $SSH_HOST (via SSH alias)."
+echo "Run on server: sudo chown -R www-data:www-data $SERVER_TARGET_PATH/"
