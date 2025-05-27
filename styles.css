@@ -1,9 +1,0 @@
-/* 
- * DEPRECATED: This file has been moved to src/css/styles.css
- * Please update your references to use the new modular CSS structure
- */
-
-/* Temporary redirect styles to prevent breaking changes */
-@import url('src/css/styles.css');
-@import url('src/css/pages.css');
-@import url('src/css/projects.css');

@@ -1,0 +1,27 @@
+// Base styles and reset
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, 
+body {
+  height: 100%;
+  height: 100vh; // fallback for older browsers
+  height: 100dvh; // dynamic viewport height - adapts to browser UI 
+  width: 100%;
+  overflow: hidden;
+  font-family: $font-family-primary;
+  background-color: $bg-primary;
+  color: $text-primary;
+  scroll-behavior: smooth;
+}
+
+@include reduced-motion {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+}

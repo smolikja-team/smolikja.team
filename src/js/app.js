@@ -5,6 +5,7 @@ import { ScrollController } from './scrollController.js';
 import { PageManager } from './pageManager.js';
 import { ProjectsComponent } from './components/projectsComponent.js';
 import { NavigationComponent } from './components/navigationComponent.js';
+import { VideoLoader } from './components/videoLoader.js';
 
 class App {
     constructor() {
@@ -12,6 +13,7 @@ class App {
         this.pageManager = null;
         this.projectsComponent = null;
         this.navigationComponent = null;
+        this.videoLoader = null;
         
         this.init();
     }
@@ -35,6 +37,10 @@ class App {
             this.scrollController = new ScrollController();
             this.projectsComponent = new ProjectsComponent();
             this.navigationComponent = new NavigationComponent(this.scrollController);
+            this.videoLoader = new VideoLoader();
+
+            // Optimize video loading
+            this.optimizeVideoElements();
 
             // Handle initial page load based on URL hash
             this.handleInitialNavigation();
@@ -45,6 +51,26 @@ class App {
             console.log('smolikja team portfolio initialized successfully');
         } catch (error) {
             console.error('Failed to initialize application:', error);
+        }
+    }
+    
+    /**
+     * Enhance video elements with optimized sources
+     */
+    optimizeVideoElements() {
+        // Find background video in HomePage
+        const backgroundVideo = document.querySelector('.background-video');
+        if (backgroundVideo) {
+            // Clear existing sources
+            backgroundVideo.innerHTML = '';
+            
+            // Enhance with VideoLoader
+            this.videoLoader.enhanceVideo(backgroundVideo, {
+                baseDir: 'src/assets/videos/logo/',
+                fileName: 'team-logo',
+                resolutions: ['480p', '720p', '1080p'],
+                formats: ['webm', 'mp4']
+            });
         }
     }
 
@@ -88,10 +114,16 @@ class App {
     getNavigationComponent() {
         return this.navigationComponent;
     }
+    
+    getVideoLoader() {
+        return this.videoLoader;
+    }
 }
 
 // Initialize the application
 const app = new App();
 
-// Expose app instance for debugging (remove in production)
-window.smolikjaApp = app;
+// Only expose app instance in development mode
+if (process.env.NODE_ENV !== 'production') {
+    window.smolikjaApp = app;
+}

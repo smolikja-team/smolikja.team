@@ -1,0 +1,66 @@
+// Page Header Styles
+
+.page-header {
+  text-align: center;
+  padding: $spacing-xxxl $spacing-xl $spacing-xl;
+  max-width: $max-width-container;
+  margin: 0 auto;
+
+  .page-title {
+    font-size: $font-size-xxxl;
+    font-weight: $font-weight-light;
+    margin-bottom: $spacing-md;
+    background: linear-gradient(135deg, $white 0%, $light-gray 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeIn 1s ease-out;
+  }
+
+  .page-description {
+    font-size: $font-size-lg;
+    color: $text-secondary;
+    font-weight: $font-weight-light;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    animation: fadeIn 1s ease-out 0.2s both;
+  }
+}
+
+@include tablet {
+  .page-header {
+    padding: $spacing-xxl $spacing-md $spacing-lg;
+    
+    .page-title {
+      font-size: $font-size-xxl;
+    }
+    
+    .page-description {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@include mobile {
+  .page-header {
+    padding: $spacing-xl $spacing-md $spacing-md;
+    
+    .page-title {
+      font-size: $font-size-xl;
+    }
+    
+    .page-description {
+      font-size: $font-size-base;
+    }
+  }
+}
+
+@include reduced-motion {
+  .page-header {
+    .page-title,
+    .page-description {
+      animation: none;
+    }
+  }
+}

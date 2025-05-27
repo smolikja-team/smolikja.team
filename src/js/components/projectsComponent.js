@@ -1,5 +1,5 @@
 /**
- * Projects Component - Manages the projects page functionality
+ * Projects Component - Manages the projects page functionality with lazy loading
  */
 export class ProjectsComponent {
     constructor() {
@@ -9,7 +9,7 @@ export class ProjectsComponent {
                 title: "Portfolio Website",
                 description: "Modern responsive portfolio with smooth scroll navigation and dynamic content loading.",
                 technologies: ["JavaScript ES6+", "CSS Grid", "Scroll API"],
-                image: "assets/projects/portfolio.svg",
+                image: "src/assets/images/projects/portfolio.svg",
                 link: "#portfolio",
                 status: "completed"
             },
@@ -61,21 +61,75 @@ export class ProjectsComponent {
         const projectsContainer = document.querySelector('.projects-grid');
         if (!projectsContainer) return;
 
-        projectsContainer.innerHTML = this.projects
-            .map(project => this.createProjectCard(project))
-            .join('');
-
+        // Clear container
+        projectsContainer.innerHTML = '';
+        
+        // Create loading placeholder
+        const loadingPlaceholder = document.createElement('div');
+        loadingPlaceholder.className = 'projects-loading';
+        loadingPlaceholder.innerHTML = '<span class="loading-spinner"></span> Loading projects...';
+        projectsContainer.appendChild(loadingPlaceholder);
+        
+        // Use requestIdleCallback or setTimeout to defer project loading
+        const deferLoading = window.requestIdleCallback || setTimeout;
+        
+        deferLoading(() => {
+            this.lazyLoadProjects(projectsContainer);
+        }, 100);
+    }
+    
+    lazyLoadProjects(container) {
+        // Remove loading placeholder
+        const loadingPlaceholder = container.querySelector('.projects-loading');
+        if (loadingPlaceholder) {
+            loadingPlaceholder.remove();
+        }
+        
+        // Use IntersectionObserver to load projects as they come into view
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const projectElement = entry.target;
+                    const projectId = parseInt(projectElement.dataset.projectId);
+                    
+                    // Add animation class to show the project
+                    setTimeout(() => {
+                        projectElement.classList.add('animate-in');
+                    }, projectId * 100); // Stagger the animations
+                    
+                    // Stop observing this element
+                    observer.unobserve(projectElement);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        });
+        
+        // Create and add each project card
+        this.projects.forEach((project, index) => {
+            const projectCard = document.createElement('div');
+            projectCard.className = 'project-item';
+            projectCard.dataset.projectId = project.id;
+            projectCard.innerHTML = this.createProjectCardContent(project);
+            
+            container.appendChild(projectCard);
+            
+            // Start observing the project card
+            observer.observe(projectCard);
+        });
+        
         this.bindProjectEvents();
     }
 
-    createProjectCard(project) {
+    createProjectCardContent(project) {
         const statusClass = `status-${project.status}`;
         const techTags = project.technologies
-            .map(tech => `<span class="tech-tag">${tech}</span>`)
+            .map(tech => `<span class="technology-tag">${tech}</span>`)
             .join('');
 
         return `
-            <div class="project-item" data-project-id="${project.id}">
                 <div class="project-image">
                     <div class="image-placeholder" style="background: linear-gradient(135deg, #${this.generateColorFromId(project.id)}, #${this.generateSecondaryColor(project.id)});">
                         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">

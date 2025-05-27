@@ -1,6 +1,104 @@
 # smolikja team Portfolio
 
-A modern, responsive portfolio website with smooth scroll snapping between pages.
+A modern, responsive portfolio ├── dist/                    # Production build (generated)
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 16.x or higher
+- npm 8.x or higher
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/smolikja/portfolio-web.git
+   cd portfolio-web
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Start the development server
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:8000`
+
+## 📝 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run test` - Run tests
+- `npm run lint:js` - Lint JavaScript files
+- `npm run lint:css` - Lint SCSS files
+- `npm run format` - Format code with Prettier
+- `npm run deploy` - Deploy to production server
+
+## 📋 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- iOS Safari (latest)
+- Android Chrome (latest)
+
+## 🔧 Development
+
+The project uses a modular architecture with separated concerns. Each module and component has a single responsibility:
+
+- `app.js` - Main application orchestration
+- `scrollController.js` - Handles scroll navigation between pages
+- `pageManager.js` - Manages page lifecycle and transitions
+- `components/` - Reusable UI components
+
+## 📊 Performance
+
+The portfolio website is optimized for performance:
+
+- Lazy loading for projects and images
+- Video optimization based on device capabilities
+- CSS and JS minification in production builds
+- Proper caching strategies
+
+## 🌐 Deployment
+
+Deployment uses a build process that:
+
+1. Compiles and minifies SCSS
+2. Bundles and optimizes JavaScript
+3. Processes and optimizes assets
+4. Generates a production-ready build in `/dist`
+
+To deploy:
+```bash
+npm run deploy
+```
+
+For GitHub Pages:
+```bash
+npm run deploy:github
+```
+
+For Netlify:
+```bash
+npm run deploy:netlify
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🧑‍💻 Author
+
+smolikja teamebsite with smooth scroll snapping between pages.
 
 ## 🚀 Features
 
@@ -9,16 +107,54 @@ A modern, responsive portfolio website with smooth scroll snapping between pages
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
 - **Modular Architecture**: Clean, maintainable code structure with separated concerns
 - **Test-Driven Development**: Comprehensive test suite for reliability
-- **Modern CSS**: Uses CSS Grid, Flexbox, and modern animations
+- **Modern SCSS**: Organized SCSS with variables and modular structure
+- **Performance Optimized**: Lazy loading and optimized assets for fast loading
 - **Accessibility**: Keyboard navigation and reduced motion support
+- **Modern Build System**: Vite for fast development and optimized production builds
+
+## 🛠️ Technology Stack
+
+- **JavaScript (ES6+)**: Modern JavaScript with modular architecture
+- **SCSS**: Structured styling with variables and mixins
+- **Vite**: Fast development and optimized production builds
+- **ESLint & Prettier**: Code quality and formatting
+- **Vitest**: Modern testing framework
 
 ## 📁 Project Structure
 
 ```text
 portfolio-web/
-├── index.html              # Main HTML file
-├── test-runner.html         # Test suite runner
-├── styles.css              # Legacy CSS (redirects to new structure)
+├── index.html                # Main HTML file
+├── vite.config.js            # Vite configuration
+├── package.json              # Project dependencies and scripts
+├── src/
+│   ├── assets/               # Optimized media files
+│   │   ├── images/
+│   │   └── videos/
+│   ├── js/                   # JavaScript modules
+│   │   ├── app.js            # Main application entry point
+│   │   ├── scrollController.js  # Handles scroll navigation
+│   │   ├── pageManager.js    # Page lifecycle management
+│   │   ├── config.js         # Configuration settings
+│   │   └── components/       # UI Components
+│   │       ├── navigationComponent.js
+│   │       ├── projectsComponent.js
+│   │       └── videoLoader.js # Video optimization
+│   └── scss/                 # SCSS stylesheets
+│       ├── main.scss         # Main stylesheet entry
+│       ├── _variables.scss   # Global variables
+│       ├── base/             # Base styles
+│       ├── components/       # Component styles
+│       ├── layout/           # Layout styles
+│       ├── pages/            # Page-specific styles
+│       └── utils/            # Utilities and mixins
+├── docs/                    # Documentation
+│   └── implementation/      # Implementation reports
+├── tests/                   # Tests
+│   ├── test-runner.html     # Test suite runner
+│   ├── manual/              # Manual test files
+│   └── utils/               # Testing utilities
+└── dist/                    # Production build (generated)
 ├── assets/                 # Media files
 │   └── team-logo-*.mp4/webm
 ├── src/
