@@ -66,7 +66,7 @@ class App {
             
             // Enhance with VideoLoader
             this.videoLoader.enhanceVideo(backgroundVideo, {
-                baseDir: 'src/assets/videos/logo/',
+                baseDir: 'https://smolikja.team/assets/portfolio-web/loop2x/',
                 fileName: 'team-logo',
                 resolutions: ['480p', '720p', '1080p'],
                 formats: ['webm', 'mp4']

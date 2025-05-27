@@ -62,7 +62,8 @@ export class VideoLoader {
         }
 
         const defaultOptions = {
-            baseDir: 'src/assets/videos/',
+            baseDir: 'https://smolikja.team/assets/portfolio-web/loop2x/',
+            fileName: 'team-logo',
             resolutions: ['480p', '720p', '1080p'],
             formats: ['webm', 'mp4'],
             lazy: true
