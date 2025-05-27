@@ -38,11 +38,7 @@ export class ScrollController {
             const deltaY = touchStartY - touchEndY;
             
             if (Math.abs(deltaY) > 50) { // Minimum swipe distance
-                if (deltaY > 0) {
-                    this.nextPage();
-                } else {
-                    this.previousPage();
-                }
+                this.handleTouch(deltaY);
             }
         });
 
@@ -59,13 +55,74 @@ export class ScrollController {
     }
 
     handleWheel(event) {
-        event.preventDefault();
-        
         if (this.isScrolling) return;
+        
+        const currentPage = this.pages[this.currentPageIndex];
+        const scrollableElement = currentPage.querySelector('.ProjectsPage');
+        
+        // If we're on a page with scrollable content
+        if (scrollableElement) {
+            const { scrollTop, scrollHeight, clientHeight } = scrollableElement;
+            const isAtTop = scrollTop === 0;
+            const isAtBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 1;
+            
+            const delta = event.deltaY;
+            
+            // Only handle inter-page navigation if:
+            // - Scrolling up and already at the top
+            // - Scrolling down and already at the bottom
+            if ((delta < 0 && isAtTop) || (delta > 0 && isAtBottom)) {
+                event.preventDefault();
+                if (delta > 0) {
+                    this.nextPage();
+                } else {
+                    this.previousPage();
+                }
+            }
+            // Otherwise, allow normal scrolling within the page
+            return;
+        }
+        
+        // For non-scrollable pages (like HomePage), handle navigation normally
+        event.preventDefault();
         
         const delta = event.deltaY;
         
         if (delta > 0) {
+            this.nextPage();
+        } else {
+            this.previousPage();
+        }
+    }
+
+    handleTouch(deltaY) {
+        if (this.isScrolling) return;
+        
+        const currentPage = this.pages[this.currentPageIndex];
+        const scrollableElement = currentPage.querySelector('.ProjectsPage');
+        
+        // If we're on a page with scrollable content
+        if (scrollableElement) {
+            const { scrollTop, scrollHeight, clientHeight } = scrollableElement;
+            const isAtTop = scrollTop === 0;
+            const isAtBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 1;
+            
+            // Only handle inter-page navigation if:
+            // - Swiping up and already at the top
+            // - Swiping down and already at the bottom
+            if ((deltaY < 0 && isAtTop) || (deltaY > 0 && isAtBottom)) {
+                if (deltaY > 0) {
+                    this.nextPage();
+                } else {
+                    this.previousPage();
+                }
+            }
+            // Otherwise, allow normal scrolling within the page
+            return;
+        }
+        
+        // For non-scrollable pages (like HomePage), handle navigation normally
+        if (deltaY > 0) {
             this.nextPage();
         } else {
             this.previousPage();
