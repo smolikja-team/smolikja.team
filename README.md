@@ -63,6 +63,63 @@ portfolio-web/
    - Open `test-runner.html` in your browser
    - Click "Run All Tests" to execute the test suite
 
+## 🎬 Asset Generation
+
+### Creating Video Assets from Original Source
+
+To generate the optimized video assets from the original `team-logo-orig.mp4` file, use the following FFmpeg commands. These commands are optimized for Apple Silicon Macs and create both WebM (VP9) and MP4 (H.264) versions at different resolutions with 2x looping.
+
+#### Prerequisites
+
+- Install FFmpeg with VP9 and H.264 hardware acceleration support
+- Original video file should be placed in the `assets/` directory as `team-logo-orig.mp4`
+
+#### WebM (VP9) versions
+
+```bash
+# 2160p (4K) WebM
+ffmpeg -stream_loop 1 -i team-logo-orig.mp4 -c:v libvpx-vp9 -b:v 12M -c:a libopus -b:a 128k loop2x/team-logo-2160p.webm
+
+# 1080p WebM
+ffmpeg -stream_loop 1 -i team-logo-orig.mp4 -vf scale=1920:-2 -c:v libvpx-vp9 -b:v 5M -c:a libopus -b:a 128k loop2x/team-logo-1080p.webm
+
+# 720p WebM
+ffmpeg -stream_loop 1 -i team-logo-orig.mp4 -vf scale=1280:-2 -c:v libvpx-vp9 -b:v 3M -c:a libopus -b:a 128k loop2x/team-logo-720p.webm
+
+# 480p WebM
+ffmpeg -stream_loop 1 -i team-logo-orig.mp4 -vf scale=854:-2 -c:v libvpx-vp9 -b:v 1.5M -c:a libopus -b:a 128k loop2x/team-logo-480p.webm
+```
+
+#### MP4 (H.264) versions
+
+```bash
+# 2160p (4K) MP4
+ffmpeg -stream_loop 1 -i team-logo-orig.mp4 -c:v h264_videotoolbox -b:v 10M -c:a aac -b:a 128k -movflags +faststart loop2x/team-logo-2160p.mp4
+
+# 1080p MP4
+ffmpeg -stream_loop 1 -i team-logo-orig.mp4 -vf scale=1920:-2 -c:v h264_videotoolbox -b:v 5M -c:a aac -b:a 128k -movflags +faststart loop2x/team-logo-1080p.mp4
+
+# 720p MP4
+ffmpeg -stream_loop 1 -i team-logo-orig.mp4 -vf scale=1280:-2 -c:v h264_videotoolbox -b:v 3M -c:a aac -b:a 128k -movflags +faststart loop2x/team-logo-720p.mp4
+
+# 480p MP4
+ffmpeg -stream_loop 1 -i team-logo-orig.mp4 -vf scale=854:-2 -c:v h264_videotoolbox -b:v 1.5M -c:a aac -b:a 128k -movflags +faststart loop2x/team-logo-480p.mp4
+```
+
+#### Command Explanation
+
+- `-stream_loop 1`: Loops the input video twice for seamless playback
+- `-vf scale=WIDTH:-2`: Scales video to specified width, maintaining aspect ratio
+- `-c:v libvpx-vp9 / h264_videotoolbox`: Video codec (VP9 for WebM, H.264 hardware acceleration for MP4)
+- `-b:v XM`: Video bitrate for quality control
+- `-c:a libopus / aac`: Audio codec (Opus for WebM, AAC for MP4)
+- `-b:a 128k`: Audio bitrate
+- `-movflags +faststart`: Optimizes MP4 for web streaming
+
+#### Output Structure
+
+All generated files will be placed in the `assets/loop2x/` directory, creating multiple resolution versions for responsive video delivery.
+
 ## 🎯 Usage
 
 ### Navigation
