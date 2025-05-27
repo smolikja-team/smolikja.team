@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Timer Test - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .status.waiting { background: #ff9500; }
+        .status.pass { background: #4caf50; }
+        .status.fail { background: #f44336; }
+        .timer-display {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4caf50;
+        }
+        .test-button {
+            padding: 10px 20px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Portfolio Timer Test</h1>
+    
+    <div class="test-section">
+        <h2>UX Requirements Verification</h2>
+        <ul>
+            <li><span class="status waiting">⏳</span> HomePage starts with hidden scrollbar</li>
+            <li><span class="status waiting">⏳</span> HomePage starts with hidden navigation dots</li>
+            <li><span class="status waiting">⏳</span> HomePage starts with hidden scroll arrow</li>
+            <li><span class="status waiting">⏳</span> Scroll arrow appears after 10 seconds on HomePage</li>
+            <li><span class="status waiting">⏳</span> Navigation dots appear when leaving HomePage</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Timer Test</h2>
+        <p>Timer countdown for scroll arrow visibility:</p>
+        <div class="timer-display" id="timerDisplay">10</div>
+        <p>
+            <button class="test-button" onclick="openPortfolio()">Open Portfolio Site</button>
+            <button class="test-button" onclick="startTimer()">Start Timer Test</button>
+            <button class="test-button" onclick="resetTimer()">Reset Timer</button>
+        </p>
+    </div>
+
+    <div class="test-section">
+        <h2>Manual Test Steps</h2>
+        <ol>
+            <li>Click "Open Portfolio Site" to open the main site in a new tab</li>
+            <li>Verify the site starts on HomePage with:
+                <ul>
+                    <li>No visible scrollbar</li>
+                    <li>No navigation dots visible</li>
+                    <li>No scroll arrow visible</li>
+                </ul>
+            </li>
+            <li>Wait 10 seconds (or use timer above)</li>
+            <li>Verify scroll arrow appears with animation</li>
+            <li>Scroll or navigate to Projects page</li>
+            <li>Verify navigation dots become visible</li>
+            <li>Navigate back to HomePage</li>
+            <li>Verify timer resets and scroll arrow appears again after 10 seconds</li>
+        </ol>
+    </div>
+
+    <script>
+        let timerInterval;
+        let currentTime = 10;
+
+        function openPortfolio() {
+            window.open('http://localhost:8000', '_blank');
+        }
+
+        function startTimer() {
+            resetTimer();
+            timerInterval = setInterval(() => {
+                currentTime--;
+                document.getElementById('timerDisplay').textContent = currentTime;
+                
+                if (currentTime === 0) {
+                    document.getElementById('timerDisplay').textContent = '✅ SCROLL ARROW SHOULD APPEAR NOW!';
+                    document.getElementById('timerDisplay').style.color = '#4caf50';
+                    clearInterval(timerInterval);
+                }
+            }, 1000);
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            currentTime = 10;
+            document.getElementById('timerDisplay').textContent = currentTime;
+            document.getElementById('timerDisplay').style.color = '#4caf50';
+        }
+
+        // Auto-start timer when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                alert('Ready to test! Click "Open Portfolio Site" and follow the manual test steps.');
+            }, 500);
+        });
+    </script>
+</body>
+</html>

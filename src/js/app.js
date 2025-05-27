@@ -27,6 +27,9 @@ class App {
 
     initializeApp() {
         try {
+            // Set initial body class for HomePage
+            document.body.classList.add('on-homepage');
+            
             // Initialize core components
             this.pageManager = new PageManager();
             this.scrollController = new ScrollController();

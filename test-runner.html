@@ -119,6 +119,10 @@
                 await loadScript('src/tests/projectsComponent.test.js');
                 console.log('');
 
+                // Load and run Timer tests
+                await loadScript('src/tests/timerTests.js');
+                console.log('');
+
                 console.log('✅ All tests completed!');
             } catch (error) {
                 console.error('Failed to load tests:', error);

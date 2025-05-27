@@ -4,12 +4,14 @@
 export class PageManager {
     constructor() {
         this.pages = new Map();
+        this.homePageTimer = null;
         this.init();
     }
 
     init() {
         this.registerPages();
         this.setupPageObserver();
+        this.setupScrollArrowClick();
     }
 
     registerPages() {
@@ -34,7 +36,20 @@ export class PageManager {
         });
     }
 
+    setupScrollArrowClick() {
+        const scrollArrow = document.querySelector('.scroll-arrow');
+        if (scrollArrow) {
+            scrollArrow.addEventListener('click', () => {
+                // Trigger navigation to next page
+                document.dispatchEvent(new CustomEvent('scrollArrowClicked'));
+            });
+        }
+    }
+
     activatePage(pageName) {
+        // Update body class for HomePage detection
+        document.body.classList.toggle('on-homepage', pageName === 'home');
+        
         // Deactivate all pages
         this.pages.forEach((page, name) => {
             page.isActive = (name === pageName);
@@ -44,6 +59,13 @@ export class PageManager {
                 this.loadPage(name);
             }
         });
+
+        // Handle HomePage specific logic
+        if (pageName === 'home') {
+            this.handleHomePageActivation();
+        } else {
+            this.clearHomePageTimer();
+        }
     }
 
     loadPage(pageName) {
@@ -57,6 +79,10 @@ export class PageManager {
         switch(pageName) {
             case 'home':
                 this.loadHomePage(page);
+                // Start the timer for HomePage if it's the active page
+                if (page.isActive) {
+                    this.handleHomePageActivation();
+                }
                 break;
             case 'projects':
                 this.loadProjectsPage(page);
@@ -86,6 +112,37 @@ export class PageManager {
                 item.classList.add('animate-in');
             }, index * 100);
         });
+    }
+
+    handleHomePageActivation() {
+        // Clear any existing timer
+        this.clearHomePageTimer();
+        
+        // Hide scroll indicator initially
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        if (scrollIndicator) {
+            scrollIndicator.classList.remove('show-after-delay');
+        }
+        
+        // Show scroll indicator after 10 seconds
+        this.homePageTimer = setTimeout(() => {
+            if (scrollIndicator) {
+                scrollIndicator.classList.add('show-after-delay');
+            }
+        }, 10000); // 10 seconds
+    }
+
+    clearHomePageTimer() {
+        if (this.homePageTimer) {
+            clearTimeout(this.homePageTimer);
+            this.homePageTimer = null;
+        }
+        
+        // Hide scroll indicator when leaving HomePage
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        if (scrollIndicator) {
+            scrollIndicator.classList.remove('show-after-delay');
+        }
     }
 
     getPage(pageName) {

@@ -51,6 +51,11 @@ export class ScrollController {
         
         // Handle browser back/forward buttons
         window.addEventListener('popstate', this.handlePopState.bind(this));
+        
+        // Handle scroll arrow clicks
+        document.addEventListener('scrollArrowClicked', () => {
+            this.nextPage();
+        });
     }
 
     handleWheel(event) {
