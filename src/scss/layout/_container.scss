@@ -1,26 +1,20 @@
 @use '../variables' as *;
+@use '../utils/cross-browser' as *;
 
-// Container layout styles
+// Container layout styles with unified cross-browser support
 
 .page-container {
-  height: 100vh; // fallback for older browsers
-  height: 100dvh; // dynamic viewport height - adapts to browser UI
+  height: var(--viewport-height); // Uses CSS custom property with fallback
   width: 100%;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  scrollbar-width: none; // Firefox
-  -ms-overflow-style: none; // Internet Explorer 10+
-
-  &::-webkit-scrollbar {
-    display: none; // WebKit
-  }
+  @extend .hide-scrollbar; // Use unified scrollbar hiding
 }
 
 .page {
   width: 100%;
-  height: 100vh; // fallback for older browsers
-  height: 100dvh; // dynamic viewport height - adapts to browser UI
+  height: var(--viewport-height); // Consistent with container
   scroll-snap-align: start;
   scroll-snap-stop: always;
   position: relative;
@@ -59,19 +53,11 @@
   }
 }
 
-@include reduced-motion {
-  .page-container {
-    scroll-behavior: auto;
-  }
+// Apply reduced motion preferences automatically
+.page-container {
+  @extend .respect-motion-preference;
+}
 
-  .page {
-    &.transitioning-in,
-    &.transitioning-out {
-      animation: none;
-    }
-
-    &.loading::after {
-      animation: none;
-    }
-  }
+.page {
+  @extend .respect-motion-preference;
 }

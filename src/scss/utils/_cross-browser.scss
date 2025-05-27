@@ -1,0 +1,78 @@
+/* Modern Cross-Browser Utilities
+ * Minimizes browser-specific implementations using feature detection
+ */
+
+/* Use CSS feature queries instead of browser detection */
+:root {
+  /* Dynamic viewport units with fallbacks */
+  --viewport-height: 100vh;
+  --scroll-padding: 2rem;
+}
+
+/* Modern viewport units support */
+@supports (height: 100dvh) {
+  :root {
+    --viewport-height: 100dvh;
+  }
+}
+
+/* Mobile Safari specific adjustments only when needed */
+.mobile-safari {
+  --scroll-padding: max(2rem, calc(2rem + env(safe-area-inset-bottom)));
+}
+
+/* Unified scrollbar hiding using modern approach */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* WebKit browsers */
+}
+
+/* Feature-based classes applied by JavaScript */
+.supports-dvh .page {
+  height: 100dvh;
+}
+
+.no-dvh .page {
+  height: 100vh;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .respect-motion-preference {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Touch device optimizations */
+.touch .interactive-element {
+  /* Larger touch targets for mobile */
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.no-touch .interactive-element:hover {
+  /* Hover effects only for non-touch devices */
+  opacity: 0.8;
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .high-dpi-optimized {
+    /* High DPI specific styles */
+  }
+}
+
+/* Connection-aware loading */
+.slow-connection .heavy-content {
+  display: none;
+}
+
+.slow-connection .light-content {
+  display: block;
+}

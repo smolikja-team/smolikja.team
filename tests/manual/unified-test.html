@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Unified Cross-Browser Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Use the new unified approach */
+        :root {
+            --viewport-height: 100vh;
+            --scroll-padding: 2rem;
+        }
+
+        @supports (height: 100dvh) {
+            :root {
+                --viewport-height: 100dvh;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            height: var(--viewport-height);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .test-container {
+            text-align: center;
+            max-width: 400px;
+            padding: 2rem;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+            font-size: 14px;
+        }
+
+        .safari-debug {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            max-width: 280px;
+            display: none;
+        }
+
+        .mobile-safari .safari-debug {
+            display: block;
+        }
+
+        .test-scroll-indicator {
+            position: absolute;
+            bottom: max(2rem, calc(2rem + env(safe-area-inset-bottom)));
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            font-size: 1.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-safari .test-scroll-indicator {
+            bottom: var(--safari-bottom-offset, max(2rem, calc(2rem + env(safe-area-inset-bottom))));
+        }
+
+        .status-item {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .status-item.pass {
+            background: rgba(0,255,0,0.2);
+            border: 1px solid rgba(0,255,0,0.3);
+        }
+
+        .status-item.fail {
+            background: rgba(255,0,0,0.2);
+            border: 1px solid rgba(255,0,0,0.3);
+        }
+
+        .video-test {
+            margin: 2rem 0;
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* Test scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: var(--scroll-padding);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        /* Hide scrollbars using unified approach */
+        .hide-scrollbar {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE 10+ */
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none; /* WebKit browsers */
+        }
+
+        /* Feature-based styling will be applied by JavaScript */
+        .supports-dvh .dvh-indicator::after {
+            content: " ✅ (DVH)";
+        }
+
+        .no-dvh .dvh-indicator::after {
+            content: " ⚠️ (VH fallback)";
+        }
+
+        .mobile-safari .safari-indicator::after {
+            content: " ✅ (Safari optimized)";
+        }
+
+        .touch .touch-indicator::after {
+            content: " ✅ (Touch enabled)";
+        }
+
+        .no-touch .touch-indicator::after {
+            content: " ✅ (Mouse enabled)";
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Cross-Browser Compatibility Test</h1>
+        <p>Testing unified browser detection and feature support</p>
+        
+        <div class="status-grid">
+            <div class="status-item" id="viewport-status">
+                <strong class="dvh-indicator">Viewport Height</strong>
+                <div id="viewport-value"></div>
+            </div>
+            
+            <div class="status-item" id="input-status">
+                <strong class="touch-indicator">Input Method</strong>
+                <div id="input-value"></div>
+            </div>
+            
+            <div class="status-item" id="browser-status">
+                <strong class="safari-indicator">Browser</strong>
+                <div id="browser-value"></div>
+            </div>
+            
+            <div class="status-item" id="connection-status">
+                <strong>Connection</strong>
+                <div id="connection-value"></div>
+            </div>
+        </div>
+
+        <div class="video-test">
+            <h3>Video Playback Test</h3>
+            <video id="testVideo" muted loop>
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                Your browser doesn't support video.
+            </video>
+            <div id="video-status"></div>
+        </div>
+    </div>
+
+    <div class="scroll-indicator">
+        Cross-Browser Test Active
+    </div>
+
+    <div class="safari-debug" id="safariDebug">
+        <div><strong>Safari Debug Info:</strong></div>
+        <div>User Agent: <span id="userAgent"></span></div>
+        <div>Safari Detected: <span id="safariDetected"></span></div>
+        <div>iOS Detected: <span id="iosDetected"></span></div>
+        <div>Window Height: <span id="windowHeight"></span></div>
+        <div>Visual Viewport: <span id="visualViewport"></span></div>
+        <div>Safe Area Bottom: <span id="safeAreaBottom"></span></div>
+    </div>
+
+    <div class="test-scroll-indicator">
+        ↓ SAFARI TEST ↓
+    </div>
+
+    <script type="module">
+        // Import our unified browser detection
+        import { browserDetection } from '../src/js/utils/browserDetection.js';
+        
+        // Apply CSS classes
+        browserDetection.applyCSSClasses();
+        
+        // Update test results
+        function updateTestResults() {
+            // Viewport test
+            const viewportEl = document.getElementById('viewport-value');
+            const supportsAdvh = browserDetection.features.dvh;
+            viewportEl.textContent = window.innerHeight + 'px';
+            document.getElementById('viewport-status').className = 
+                `status-item ${supportsAdvh ? 'pass' : 'fail'}`;
+            
+            // Input method test
+            const inputEl = document.getElementById('input-value');
+            const touchSupport = browserDetection.features.touch;
+            inputEl.textContent = touchSupport ? 'Touch' : 'Mouse';
+            document.getElementById('input-status').className = 'status-item pass';
+            
+            // Browser test
+            const browserEl = document.getElementById('browser-value');
+            const browsers = Object.entries(browserDetection.browser)
+                .filter(([_, detected]) => detected)
+                .map(([browser, _]) => browser);
+            browserEl.textContent = browsers.length ? browsers.join(', ') : 'Standard';
+            document.getElementById('browser-status').className = 'status-item pass';
+            
+            // Connection test
+            const connectionEl = document.getElementById('connection-value');
+            const slowConnection = browserDetection.device.slowConnection;
+            connectionEl.textContent = slowConnection ? 'Slow' : 'Fast';
+            document.getElementById('connection-status').className = 
+                `status-item ${slowConnection ? 'fail' : 'pass'}`;
+            
+            // Video test
+            const video = document.getElementById('testVideo');
+            const videoStatus = document.getElementById('video-status');
+            
+            // Apply mobile Safari workarounds if needed
+            if (browserDetection.needsMobileSafariWorkarounds()) {
+                video.setAttribute('playsinline', 'true');
+                video.setAttribute('webkit-playsinline', 'true');
+            }
+            
+            video.addEventListener('canplay', () => {
+                videoStatus.textContent = '✅ Video loaded successfully';
+                videoStatus.style.color = '#4ade80';
+            });
+            
+            video.addEventListener('error', () => {
+                videoStatus.textContent = '❌ Video failed to load';
+                videoStatus.style.color = '#ef4444';
+            });
+            
+            // Try to play the video
+            video.play().catch(e => {
+                console.log('Autoplay prevented:', e);
+                videoStatus.textContent = '⚠️ Autoplay prevented (click to play)';
+                videoStatus.style.color = '#f59e0b';
+                video.addEventListener('click', () => video.play());
+            });
+        }
+        
+        // Run tests
+        updateTestResults();
+        
+        // Safari-specific debugging and indicator adjustment
+        if (browserDetection.needsMobileSafariWorkarounds()) {
+            function updateSafariDebug() {
+                document.getElementById('userAgent').textContent = navigator.userAgent.substring(0, 50) + '...';
+                document.getElementById('safariDetected').textContent = browserDetection.browser.safari;
+                document.getElementById('iosDetected').textContent = browserDetection.browser.mobileSafari;
+                document.getElementById('windowHeight').textContent = window.innerHeight + 'px';
+                document.getElementById('visualViewport').textContent = window.visualViewport ? window.visualViewport.height + 'px' : 'Not supported';
+                
+                // Try to get safe area bottom
+                const testEl = document.createElement('div');
+                testEl.style.position = 'fixed';
+                testEl.style.bottom = 'env(safe-area-inset-bottom)';
+                testEl.style.visibility = 'hidden';
+                document.body.appendChild(testEl);
+                const computedBottom = getComputedStyle(testEl).bottom;
+                document.getElementById('safeAreaBottom').textContent = computedBottom;
+                document.body.removeChild(testEl);
+                
+                // Adjust scroll indicator for Safari UI
+                const scrollIndicator = document.querySelector('.test-scroll-indicator');
+                if (scrollIndicator) {
+                    const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+                    const windowHeight = window.innerHeight;
+                    const safariUIHeight = Math.max(0, windowHeight - viewportHeight);
+                    const extraPadding = Math.max(44, safariUIHeight);
+                    const totalBottomOffset = 2 + (extraPadding / 16);
+                    
+                    scrollIndicator.style.setProperty('--safari-bottom-offset', `${totalBottomOffset}rem`);
+                }
+            }
+            
+            updateSafariDebug();
+            window.addEventListener('resize', updateSafariDebug);
+            
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', updateSafariDebug);
+            }
+        }
+        
+        // Update on resize
+        window.addEventListener('resize', updateTestResults);
+        
+        console.log('🧪 Cross-browser test initialized');
+        console.log('Browser detection:', browserDetection);
+    </script>
+</body>
+</html>

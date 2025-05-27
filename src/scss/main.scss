@@ -3,6 +3,9 @@
 // Import variables first so they're available everywhere
 @use 'variables';
 
+// Cross-browser utilities (import early for use in other files)
+@use 'utils/cross-browser';
+
 // Base styles
 @use 'base/reset';
 

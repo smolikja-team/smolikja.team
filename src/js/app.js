@@ -6,6 +6,7 @@ import { PageManager } from './pageManager.js';
 import { ProjectsComponent } from './components/projectsComponent.js';
 import { NavigationComponent } from './components/navigationComponent.js';
 import { VideoLoader } from './components/videoLoader.js';
+import { browserDetection } from './utils/browserDetection.js';
 
 class App {
     constructor() {
@@ -14,16 +15,36 @@ class App {
         this.projectsComponent = null;
         this.navigationComponent = null;
         this.videoLoader = null;
+        this.browserDetection = browserDetection;
         
         this.init();
     }
 
     init() {
+        // Apply browser detection CSS classes immediately
+        this.browserDetection.applyCSSClasses();
+        
+        // Update CSS custom properties based on detection
+        this.updateCSSProperties();
+        
         // Wait for DOM to be ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', this.initializeApp.bind(this));
         } else {
             this.initializeApp();
+        }
+    }
+
+    updateCSSProperties() {
+        const root = document.documentElement;
+        
+        // Set viewport height unit
+        const vhUnit = this.browserDetection.getViewportHeightUnit();
+        root.style.setProperty('--viewport-height', `100${vhUnit}`);
+        
+        // Set scroll padding for mobile Safari
+        if (this.browserDetection.needsMobileSafariWorkarounds()) {
+            root.style.setProperty('--scroll-padding', 'max(2rem, calc(2rem + env(safe-area-inset-bottom)))');
         }
     }
 

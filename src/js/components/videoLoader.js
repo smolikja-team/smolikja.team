@@ -1,47 +1,20 @@
+import { browserDetection } from '../utils/browserDetection.js';
+
 /**
  * VideoLoader Component - Optimizes video loading based on device capabilities
+ * Now uses centralized browser detection for better maintainability
  */
 export class VideoLoader {
     constructor() {
-        this.supportsWebP = false;
-        this.deviceInfo = {
-            width: window.innerWidth,
-            height: window.innerHeight,
-            pixelRatio: window.devicePixelRatio || 1,
-            connection: null
-        };
+        this.detection = browserDetection;
         
-        this.init();
-    }
-
-    init() {
-        // Check WebP support
-        this.checkWebPSupport();
-        
-        // Get connection info if available
-        this.checkConnectionInfo();
-        
-        // Listen for screen size changes
+        // Listen for screen size changes to update device detection
         window.addEventListener('resize', this.handleResize.bind(this));
     }
 
-    async checkWebPSupport() {
-        const webP = new Image();
-        webP.onload = () => { this.supportsWebP = true; };
-        webP.onerror = () => { this.supportsWebP = false; };
-        webP.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';
-    }
-
-    checkConnectionInfo() {
-        // Use NetworkInformation API if available
-        if ('connection' in navigator) {
-            this.deviceInfo.connection = navigator.connection;
-        }
-    }
-
     handleResize() {
-        this.deviceInfo.width = window.innerWidth;
-        this.deviceInfo.height = window.innerHeight;
+        // Update device detection on resize
+        this.detection.device = this.detection.detectDevice();
     }
 
     /**
@@ -64,79 +37,47 @@ export class VideoLoader {
         const defaultOptions = {
             baseDir: 'https://smolikja.team/assets/portfolio-web/loop2x/',
             fileName: 'team-logo',
-            resolutions: ['480p', '720p', '1080p'],
+            resolutions: ['480p', '720p', '1080p', '2160p'],
             formats: ['webm', 'mp4'],
             lazy: true
         };
 
         const config = { ...defaultOptions, ...options };
         
-        // Determine optimal resolution based on screen size
-        const optimalResolution = this.getOptimalResolution(config.resolutions);
+        // Use centralized detection for optimal settings
+        const optimalResolution = this.detection.getOptimalVideoResolution(config.resolutions);
+        const preferredFormat = this.detection.getPreferredVideoFormat();
         
-        // Determine optimal format based on browser support
-        const optimalFormat = this.supportsWebP ? 'webm' : 'mp4';
+        // Create sources in order of preference
+        const formats = preferredFormat === 'webm' ? ['webm', 'mp4'] : ['mp4'];
         
-        // Create source elements
-        config.formats.forEach(format => {
-            const source = document.createElement('source');
-            source.type = format === 'webm' ? 'video/webm' : 'video/mp4';
-            
-            // Use optimal resolution for current format
-            const useResolution = format === optimalFormat ? optimalResolution : config.resolutions[0];
-            
-            // Set source URL
-            source.src = `${config.baseDir}${config.fileName}-${useResolution}.${format}`;
-            
-            // Add to video element
-            videoElement.appendChild(source);
+        formats.forEach(format => {
+            if (config.formats.includes(format)) {
+                const source = document.createElement('source');
+                source.type = format === 'webm' ? 'video/webm' : 'video/mp4';
+                source.src = `${config.baseDir}${config.fileName}-${optimalResolution}.${format}`;
+                videoElement.appendChild(source);
+            }
         });
         
-        // Add loading attribute for lazy loading if browser supports it
+        // Apply mobile Safari specific attributes if needed
+        if (this.detection.needsMobileSafariWorkarounds()) {
+            videoElement.setAttribute('playsinline', 'true');
+            videoElement.setAttribute('webkit-playsinline', 'true');
+        }
+        
+        // Add loading attribute for lazy loading if supported
         if (config.lazy && 'loading' in HTMLImageElement.prototype) {
             videoElement.setAttribute('loading', 'lazy');
         }
         
-        // Preload metadata only
-        videoElement.preload = 'metadata';
+        // Optimize preload based on connection
+        if (this.detection.device.slowConnection) {
+            videoElement.preload = 'none';
+        } else {
+            videoElement.preload = 'metadata';
+        }
         
         return true;
-    }
-    
-    /**
-     * Determines the optimal video resolution based on device capabilities
-     * @param {Array<string>} availableResolutions 
-     * @returns {string} - The optimal resolution
-     */
-    getOptimalResolution(availableResolutions) {
-        // Get screen width
-        const screenWidth = this.deviceInfo.width * this.deviceInfo.pixelRatio;
-        
-        // Sort resolutions by numeric value
-        const sortedResolutions = [...availableResolutions].sort((a, b) => {
-            const aValue = parseInt(a.replace('p', ''));
-            const bValue = parseInt(b.replace('p', ''));
-            return aValue - bValue;
-        });
-        
-        // Check connection type if available
-        let connectionSpeed = 'fast';
-        if (this.deviceInfo.connection) {
-            const { effectiveType, saveData } = this.deviceInfo.connection;
-            if (saveData || effectiveType === 'slow-2g' || effectiveType === '2g') {
-                connectionSpeed = 'slow';
-            } else if (effectiveType === '3g') {
-                connectionSpeed = 'medium';
-            }
-        }
-        
-        // Choose resolution based on screen width and connection
-        if (connectionSpeed === 'slow') {
-            return sortedResolutions[0]; // Lowest resolution
-        } else if (connectionSpeed === 'medium' || screenWidth < 1280) {
-            return sortedResolutions[Math.min(1, sortedResolutions.length - 1)]; // Medium resolution
-        } else {
-            return sortedResolutions[sortedResolutions.length - 1]; // Highest resolution
-        }
     }
 }
