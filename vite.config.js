@@ -36,8 +36,8 @@ export default defineConfig({
     // Process CSS with custom preprocessor options
     preprocessorOptions: {
       scss: {
-        // Add global imports for SCSS
-        additionalData: `@import "./src/scss/_variables.scss";`,
+        // Silence deprecation warnings
+        silenceDeprecations: ['legacy-js-api'],
       },
     },
   },
