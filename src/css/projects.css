@@ -2,7 +2,8 @@
 
 .ProjectsPage {
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* fallback for older browsers */
+    height: 100dvh; /* dynamic viewport height - adapts to browser UI */
     background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
     overflow-y: auto;
     padding-bottom: 2rem;

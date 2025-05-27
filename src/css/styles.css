@@ -8,6 +8,8 @@
 
 html, body {
     height: 100%;
+    height: 100vh; /* fallback for older browsers */
+    height: 100dvh; /* dynamic viewport height - adapts to browser UI */
     width: 100%;
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,7 +19,8 @@ html, body {
 }
 
 .page-container {
-    height: 100vh;
+    height: 100vh; /* fallback for older browsers */
+    height: 100dvh; /* dynamic viewport height - adapts to browser UI */
     width: 100%;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
@@ -32,7 +35,8 @@ html, body {
 
 .page {
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* fallback for older browsers */
+    height: 100dvh; /* dynamic viewport height - adapts to browser UI */
     scroll-snap-align: start;
     scroll-snap-stop: always;
     position: relative;
@@ -43,7 +47,7 @@ html, body {
 .page-navigation {
     position: fixed;
     top: 50%;
-    right: 2rem;
+    right: max(2rem, calc(2rem + env(safe-area-inset-right)));
     transform: translateY(-50%);
     z-index: 1000;
     opacity: 0;
@@ -105,7 +109,8 @@ body:not(.on-homepage) .page-navigation {
 .HomePage {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* fallback for older browsers */
+    height: 100dvh; /* dynamic viewport height - adapts to browser UI */
     overflow: hidden;
     background-color: #000;
 }
@@ -145,7 +150,7 @@ body:not(.on-homepage) .page-navigation {
 
 .scroll-indicator {
     position: absolute;
-    bottom: 2rem;
+    bottom: max(2rem, calc(2rem + env(safe-area-inset-bottom)));
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -215,11 +220,11 @@ body:not(.on-homepage) .page-navigation {
 /* Responsive Design */
 @media (max-width: 768px) {
     .page-navigation {
-        right: 1rem;
+        right: max(1rem, calc(1rem + env(safe-area-inset-right)));
     }
     
     .scroll-indicator {
-        bottom: 1.5rem;
+        bottom: max(1.5rem, calc(1.5rem + env(safe-area-inset-bottom)));
     }
     
     .scroll-arrow {
@@ -230,7 +235,7 @@ body:not(.on-homepage) .page-navigation {
 
 @media (max-width: 480px) {
     .scroll-indicator {
-        bottom: 1rem;
+        bottom: max(1rem, calc(1rem + env(safe-area-inset-bottom)));
     }
     
     .scroll-arrow {
