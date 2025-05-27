@@ -1,0 +1,140 @@
+/* Page-specific styles and transitions */
+
+.page {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.page:not(.active) {
+    pointer-events: none;
+}
+
+/* Page Header Styles */
+.page-header {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 1s ease-out;
+}
+
+.page-description {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Page Transition Effects */
+.page.transitioning-in {
+    animation: slideInFromBottom 0.8s ease-out;
+}
+
+.page.transitioning-out {
+    animation: slideOutToTop 0.8s ease-out;
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutToTop {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+/* Page Loading States */
+.page.loading {
+    opacity: 0.5;
+}
+
+.page.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Responsive Page Styles */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 3rem 1rem 1.5rem;
+    }
+    
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .page-description {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: 2rem 1rem 1rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .page-description {
+        font-size: 1rem;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .page-title,
+    .page-description {
+        animation: none;
+    }
+    
+    .page.transitioning-in,
+    .page.transitioning-out {
+        animation: none;
+    }
+    
+    .page.loading::after {
+        animation: none;
+    }
+}

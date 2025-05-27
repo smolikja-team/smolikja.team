@@ -1,0 +1,52 @@
+{
+  "name": "smolikja-team-portfolio",
+  "version": "1.0.0",
+  "description": "Modern portfolio website with smooth scroll navigation and snap scrolling",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "test": "echo 'Open test-runner.html in browser to run tests'",
+    "build": "echo 'Build process: Copy files to dist/ directory'",
+    "deploy": "./deploy.sh",
+    "deploy:github": "./deploy.sh github",
+    "deploy:netlify": "./deploy.sh netlify",
+    "lint:css": "echo 'CSS linting - Add stylelint for production'",
+    "lint:js": "echo 'JS linting - Add ESLint for production'",
+    "format": "echo 'Code formatting - Add Prettier for production'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smolikja/portfolio-web.git"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "scroll-snap",
+    "responsive",
+    "modern",
+    "javascript",
+    "css3",
+    "html5"
+  ],
+  "author": "smolikja team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smolikja/portfolio-web/issues"
+  },
+  "homepage": "https://smolikja.team",
+  "devDependencies": {},
+  "dependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "config": {
+    "port": 8000,
+    "host": "localhost"
+  }
+}

@@ -3,21 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>molikja team</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>smolikja team</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/pages.css">
+    <link rel="stylesheet" href="src/css/projects.css">
 </head>
 <body>
-    <div class="HomePage">
-        <div class="video-container">
-            <video class="background-video" autoplay muted loop playsinline>
-                <source src="https://smolikja.team/assets/portfolio-web/team-logo-1080p.webm" type="video/webm">
-                <source src="assets/team-logo-1080p.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
-        </div>
-        <div class="content">
-            <h1 class="title">molikja team</h1>
-        </div>
+    <div class="page-container">
+        <!-- Navigation Indicator -->
+        <nav class="page-navigation">
+            <div class="nav-dots">
+                <span class="nav-dot active" data-page="0" title="Home"></span>
+                <span class="nav-dot" data-page="1" title="Projects"></span>
+            </div>
+        </nav>
+
+        <!-- Home Page -->
+        <section class="page active" data-page-name="home">
+            <div class="HomePage">
+                <div class="video-container">
+                    <video class="background-video" autoplay muted loop playsinline>
+                        <source src="https://smolikja.team/assets/portfolio-web/team-logo-1080p.webm" type="video/webm">
+                        <source src="assets/team-logo-1080p.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+                <div class="content">
+                    <h1 class="title">smolikja team</h1>
+                    <p class="subtitle">Scroll down to explore our projects</p>
+                    <div class="scroll-indicator">
+                        <span class="scroll-arrow">↓</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Page -->
+        <section class="page" data-page-name="projects">
+            <div class="ProjectsPage">
+                <div class="page-header">
+                    <h1 class="page-title">Our Projects</h1>
+                    <p class="page-description">Explore our latest work and innovations</p>
+                </div>
+                <div class="projects-grid">
+                    <!-- Projects will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
     </div>
+
+    <!-- Scripts -->
+    <script src="src/js/debug.js"></script>
+    <script type="module" src="src/js/app.js"></script>
 </body>
 </html>
