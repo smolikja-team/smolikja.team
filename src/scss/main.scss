@@ -1,21 +1,21 @@
-// Main SCSS file that imports all partials
+// Main SCSS file that includes all partials
 
-// Import variables first so they're available everywhere
-@import 'variables';
+// Forward variables first so they're available everywhere
+@forward 'variables';
 
 // Base styles
-@import 'base/reset';
+@use 'base/reset';
 
 // Layout components
-@import 'layout/container';
+@use 'layout/container';
 
 // Component styles
-@import 'components/navigation';
-@import 'components/page-header';
+@use 'components/navigation';
+@use 'components/page-header';
 
 // Page-specific styles
-@import 'pages/home';
-@import 'pages/projects';
+@use 'pages/home';
+@use 'pages/projects';
 
 // Utils (animations, helpers, etc)
-@import 'utils/animations';
+@use 'utils/animations';
