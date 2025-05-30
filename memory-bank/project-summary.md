@@ -17,7 +17,7 @@ A single-page web application with 3 sections featuring scroll snap functionalit
 - ✅ Responsive design for all screen sizes
 - ✅ Beautiful gradient backgrounds for each section
 - ✅ Hover effects and smooth transitions
-- ✅ Content-adaptive section heights (min-height: 100vh)
+- ✅ Content-adaptive section heights (min-height: 100vh/100dvh)
 - ✅ Hidden scrollbars for clean appearance
 - ✅ Glass-morphism design elements
 - ✅ Mobile-optimized layouts
@@ -27,7 +27,7 @@ A single-page web application with 3 sections featuring scroll snap functionalit
 - **Framework**: Next.js 15.3.2 with TypeScript
 - **Styling**: Custom CSS with Tailwind CSS integration
 - **Scroll Snap**: CSS scroll-snap-type: y mandatory
-- **Responsive**: Mobile-first design with clamp() functions
+- **Responsive**: Mobile-first design with clamp() functions and dvh units
 - **Performance**: Optimized with Next.js built-in optimizations
 
 ### Files Modified/Created
@@ -45,11 +45,12 @@ A single-page web application with 3 sections featuring scroll snap functionalit
 - Mobile-responsive typography using clamp()
 - Content-adaptive section heights to prevent overflow
 
-### Problem Solved
+### Problems Solved
 
 - Fixed content overflow issue by changing from fixed `height: 100vh` to `min-height: 100vh`
 - Added responsive padding adjustments for better mobile experience
 - Ensured scroll snap works correctly while allowing content to expand as needed
+- **NEW**: Implemented dynamic viewport height (dvh) units with fallback for better mobile browser compatibility
 
 ### Development Server
 

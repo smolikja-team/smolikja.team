@@ -33,6 +33,13 @@ body {
   overflow-x: hidden;
 }
 
+/* Use dynamic viewport height when supported */
+@supports (height: 100dvh) {
+  .scroll-snap-container {
+    height: 100dvh;
+  }
+}
+
 /* Hide scrollbars for clean look */
 .scroll-snap-container {
   -ms-overflow-style: none;
@@ -53,6 +60,13 @@ body {
   align-items: center;
   justify-content: center;
   padding: 2rem 0;
+}
+
+/* Use dynamic viewport height when supported */
+@supports (height: 100dvh) {
+  .section {
+    min-height: 100dvh;
+  }
 }
 
 .section-intro {
