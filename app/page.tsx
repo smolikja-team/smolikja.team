@@ -1,103 +1,118 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="scroll-snap-container">
+      {/* Intro Section */}
+      <section className="section section-intro">
+        <div className="content-wrapper">
+          <h1 className="section-title">Welcome</h1>
+          <p className="section-subtitle">Creative Developer & Designer</p>
+          <div className="section-content">
+            <p>
+              I'm passionate about creating beautiful, functional, and user-centered digital experiences. 
+              With expertise in modern web technologies, I bring ideas to life through clean code and thoughtful design.
+            </p>
+            <p style={{ marginTop: '1.5rem', opacity: 0.8, fontSize: '1.2rem' }}>
+              Scroll down to explore my work
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Projects Section */}
+      <section className="section section-projects">
+        <div className="content-wrapper">
+          <h2 className="section-title">Projects</h2>
+          <p className="section-subtitle">Featured Work & Portfolio</p>
+          <div className="section-content">
+            <div className="projects-grid">
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>E-Commerce Platform</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Modern e-commerce solution built with Next.js, featuring real-time inventory management and seamless payment integration.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">Next.js</span>
+                  <span className="tag">TypeScript</span>
+                  <span className="tag">Stripe</span>
+                </div>
+              </div>
+              
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">React</span>
+                  <span className="tag">Node.js</span>
+                  <span className="tag">Socket.io</span>
+                </div>
+              </div>
+              
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Portfolio Website</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Responsive portfolio website with smooth animations, optimized performance, and modern design principles.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">Next.js</span>
+                  <span className="tag">Framer Motion</span>
+                  <span className="tag">CSS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="section section-about">
+        <div className="content-wrapper">
+          <h2 className="section-title">About Us</h2>
+          <p className="section-subtitle">Passionate About Technology & Innovation</p>
+          <div className="section-content">
+            <div className="about-grid">
+              <div>
+                <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem', fontWeight: '600' }}>Our Story</h3>
+                <p style={{ marginBottom: '1.5rem', lineHeight: '1.8' }}>
+                  We are a team of passionate developers and designers who believe in the power of technology to solve real-world problems. 
+                  Our journey began with a simple idea: to create digital experiences that not only look beautiful but also provide genuine value to users.
+                </p>
+                <p style={{ lineHeight: '1.8' }}>
+                  With years of experience in web development, mobile applications, and user experience design, 
+                  we bring a unique blend of technical expertise and creative vision to every project.
+                </p>
+              </div>
+              
+              <div>
+                <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem', fontWeight: '600' }}>Our Approach</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  <div className="approach-card">
+                    <h4 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', fontWeight: '600' }}>User-Centered Design</h4>
+                    <p style={{ opacity: 0.9 }}>We put users at the heart of everything we do, ensuring intuitive and accessible experiences.</p>
+                  </div>
+                  
+                  <div className="approach-card">
+                    <h4 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', fontWeight: '600' }}>Modern Technologies</h4>
+                    <p style={{ opacity: 0.9 }}>We leverage the latest technologies and best practices to build scalable, maintainable solutions.</p>
+                  </div>
+                  
+                  <div className="approach-card">
+                    <h4 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', fontWeight: '600' }}>Collaborative Process</h4>
+                    <p style={{ opacity: 0.9 }}>We work closely with our clients throughout the entire development process, ensuring transparency and alignment.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+              <p style={{ fontSize: '1.25rem', opacity: 0.9 }}>
+                Ready to bring your ideas to life? Let's create something amazing together.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

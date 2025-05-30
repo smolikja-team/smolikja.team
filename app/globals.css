@@ -3,9 +3,6 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -23,4 +20,254 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Scroll Snap Styles */
+.scroll-snap-container {
+  scroll-snap-type: y mandatory;
+  -ms-scroll-snap-type: mandatory;
+  -ms-scroll-snap-points-y: snapInterval(0%, 100%);
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbars for clean look */
+.scroll-snap-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scroll-snap-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Section styles */
+.section {
+  scroll-snap-align: start;
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.section-intro {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.section-projects {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.section-about {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.section-content {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+  .section {
+    padding: 1rem 0;
+  }
+  
+  .content-wrapper {
+    padding: 1rem;
+  }
+  
+  .section-title {
+    font-size: clamp(2rem, 10vw, 4rem);
+  }
+  
+  .section-subtitle {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+  
+  .section-content {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 0.5rem 0;
+  }
+  
+  .content-wrapper {
+    padding: 0.75rem;
+  }
+  
+  .section-title {
+    font-size: clamp(1.75rem, 12vw, 3rem);
+    margin-bottom: 0.75rem;
+  }
+  
+  .section-subtitle {
+    font-size: clamp(0.9rem, 5vw, 1.25rem);
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced section transitions */
+.section {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Project cards responsive grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* About section responsive grid */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Card styles */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+/* Tag styles */
+.tag {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  display: inline-block;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+  transition: background 0.3s ease;
+}
+
+.tag:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Approach cards */
+.approach-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.approach-card:hover {
+  transform: translateX(10px);
+}
+
+@media (max-width: 768px) {
+  .approach-card {
+    padding: 1rem;
+  }
+  
+  .approach-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 1000;
+}
+
+.scroll-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: background 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.scroll-dot.active {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .scroll-indicator {
+    display: none;
+  }
 }
