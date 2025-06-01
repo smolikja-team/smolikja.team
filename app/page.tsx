@@ -60,6 +60,126 @@ export default function Home() {
                   <span className="tag">CSS</span>
                 </div>
               </div>
+
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">React</span>
+                  <span className="tag">Node.js</span>
+                  <span className="tag">Socket.io</span>
+                </div>
+              </div>
+
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">React</span>
+                  <span className="tag">Node.js</span>
+                  <span className="tag">Socket.io</span>
+                </div>
+              </div>
+
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">React</span>
+                  <span className="tag">Node.js</span>
+                  <span className="tag">Socket.io</span>
+                </div>
+              </div>
+
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">React</span>
+                  <span className="tag">Node.js</span>
+                  <span className="tag">Socket.io</span>
+                </div>
+              </div>
+
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">React</span>
+                  <span className="tag">Node.js</span>
+                  <span className="tag">Socket.io</span>
+                </div>
+              </div>
+
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">React</span>
+                  <span className="tag">Node.js</span>
+                  <span className="tag">Socket.io</span>
+                </div>
+              </div>
+
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">React</span>
+                  <span className="tag">Node.js</span>
+                  <span className="tag">Socket.io</span>
+                </div>
+              </div>
+
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">React</span>
+                  <span className="tag">Node.js</span>
+                  <span className="tag">Socket.io</span>
+                </div>
+              </div>
+
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">React</span>
+                  <span className="tag">Node.js</span>
+                  <span className="tag">Socket.io</span>
+                </div>
+              </div>
+
+              <div className="card">
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
+                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
+                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="tag">React</span>
+                  <span className="tag">Node.js</span>
+                  <span className="tag">Socket.io</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
