@@ -24,13 +24,19 @@ body {
 
 /* Scroll Snap Styles */
 .scroll-snap-container {
-  scroll-snap-type: y mandatory;
-  -ms-scroll-snap-type: mandatory;
-  -ms-scroll-snap-points-y: snapInterval(0%, 100%);
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+/* Enable scroll snap only on desktop/tablet devices (768px and above) */
+@media (min-width: 768px) {
+  .scroll-snap-container {
+    scroll-snap-type: y mandatory;
+    -ms-scroll-snap-type: mandatory;
+    -ms-scroll-snap-points-y: snapInterval(0%, 100%);
+  }
 }
 
 /* Use dynamic viewport height when supported */
@@ -52,7 +58,6 @@ body {
 
 /* Section styles */
 .section {
-  scroll-snap-align: start;
   width: 100vw;
   min-height: 100vh;
   position: relative;
@@ -60,6 +65,13 @@ body {
   align-items: center;
   justify-content: center;
   padding: 2rem 0;
+}
+
+/* Enable scroll snap align only on desktop/tablet devices (768px and above) */
+@media (min-width: 768px) {
+  .section {
+    scroll-snap-align: start;
+  }
 }
 
 /* Use dynamic viewport height when supported */
