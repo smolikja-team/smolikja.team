@@ -1,0 +1,21 @@
+[Unit]
+Description=Portfolio Web Application
+Documentation=https://nextjs.org/
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/Users/jakubsmolik/Developer/gitrepos/portfolio-web
+Environment=NODE_ENV=production
+Environment=PORT=3000
+ExecStart=/usr/bin/npm start
+Restart=on-failure
+RestartSec=10
+KillMode=mixed
+KillSignal=SIGINT
+TimeoutStopSec=5
+SyslogIdentifier=portfolio-web
+
+[Install]
+WantedBy=multi-user.target

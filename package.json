@@ -10,7 +10,7 @@
     "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
     "build:analyze": "ANALYZE=true next build",
-    "export": "next build && next export"
+    "export": "next build"
   },
   "dependencies": {
     "next": "15.3.2",
