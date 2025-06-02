@@ -476,7 +476,7 @@ export default function Home() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          border-radius: 25px;
+          border-radius: clamp(1rem, 3vw, 1.5625rem);
         `;
         
         // Replace placeholder with actual image
