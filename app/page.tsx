@@ -1,6 +1,16 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from 'react';
+import Image from 'next/image';
+
+// Type definitions
+interface WrapperElementWithCleanup extends HTMLElement {
+  cleanup?: () => void;
+}
+
+interface WindowWithObserver extends Window {
+  lazyImageObserver?: IntersectionObserver;
+}
 
 // Function to determine video resolution based on viewport and connection
 function getVideoResolution(connectionSpeed: string = 'fast') {
@@ -46,7 +56,7 @@ function getBrowserCapabilities() {
   // Detect connection speed
   let connectionSpeed = 'fast';
   if ('connection' in navigator) {
-    const connection = (navigator as any).connection;
+    const connection = (navigator as unknown as { connection: { effectiveType: string } }).connection;
     if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
       connectionSpeed = 'slow';
     } else if (connection.effectiveType === '3g') {
@@ -251,7 +261,7 @@ export default function Home() {
         window.addEventListener('resize', handleResize);
         
         // Store cleanup function
-        (wrapper as any).cleanup = () => {
+        (wrapper as WrapperElementWithCleanup).cleanup = () => {
           prevArrow.removeEventListener('click', handlePrevClick);
           nextArrow.removeEventListener('click', handleNextClick);
           scrollbar.removeEventListener('click', handleScrollbarClick);
@@ -280,9 +290,10 @@ export default function Home() {
       window.removeEventListener('load', resetGalleryScrolls);
       // Cleanup gallery scrollbar event listeners
       const galleryWrappers = document.querySelectorAll('.gallery-wrapper');
-      galleryWrappers.forEach((wrapper: any) => {
-        if (wrapper.cleanup) {
-          wrapper.cleanup();
+      galleryWrappers.forEach((wrapper: Element) => {
+        const wrapperWithCleanup = wrapper as WrapperElementWithCleanup;
+        if (wrapperWithCleanup.cleanup) {
+          wrapperWithCleanup.cleanup();
         }
       });
     };
@@ -295,7 +306,7 @@ export default function Home() {
     
     // Use static fallback for very slow connections or if user prefers reduced data
     if (caps.connectionSpeed === 'slow' && 'connection' in navigator) {
-      const connection = (navigator as any).connection;
+      const connection = (navigator as unknown as { connection: { saveData?: boolean; effectiveType: string } }).connection;
       if (connection.saveData || connection.effectiveType === 'slow-2g') {
         setUseStaticFallback(true);
         console.log('Using static fallback due to slow connection or data saver mode');
@@ -309,6 +320,8 @@ export default function Home() {
   // Intersection Observer for lazy loading
   useEffect(() => {
     if (useStaticFallback) return; // Skip video loading if using static fallback
+    
+    const currentRef = introSectionRef.current;
     
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
@@ -324,13 +337,13 @@ export default function Home() {
       threshold: 0.1
     });
 
-    if (introSectionRef.current) {
-      observer.observe(introSectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (introSectionRef.current) {
-        observer.unobserve(introSectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [shouldLoadVideo, useStaticFallback]);
@@ -447,7 +460,7 @@ export default function Home() {
       console.log(`Loading image: ${imageSrc}`);
 
       // Create new image element
-      const img = new Image();
+      const img = document.createElement('img');
       
       // Set up load handlers
       img.onload = () => {
@@ -540,7 +553,7 @@ export default function Home() {
       });
 
       // Store observer for cleanup
-      (window as any).lazyImageObserver = imageObserver;
+      (window as WindowWithObserver).lazyImageObserver = imageObserver;
     };
     
     // Initialize lazy loading
@@ -558,9 +571,10 @@ export default function Home() {
       window.removeEventListener('load', setupLazyLoading);
       
       // Cleanup lazy loading observer
-      if ((window as any).lazyImageObserver) {
-        (window as any).lazyImageObserver.disconnect();
-        delete (window as any).lazyImageObserver;
+      const windowWithObserver = window as WindowWithObserver;
+      if (windowWithObserver.lazyImageObserver) {
+        windowWithObserver.lazyImageObserver.disconnect();
+        delete windowWithObserver.lazyImageObserver;
       }
     };
   }, []);
@@ -575,10 +589,13 @@ export default function Home() {
           <div className="logo-fallback">
             <div className="logo-content">
               <div className="logo-container">
-                <img 
+                <Image 
                   src="https://smolikja.team/assets/portfolio-web/logo-white.svg" 
                   alt="Portfolio Logo" 
                   className="portfolio-logo"
+                  width={200}
+                  height={100}
+                  priority
                 />
               </div>
 
