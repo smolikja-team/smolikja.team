@@ -323,165 +323,69 @@ export default function Home() {
       {/* Projects Section */}
       <section className="section section-projects">
         <div className="content-wrapper">
-          <h2 className="section-title">Projects</h2>
-          <p className="section-subtitle">Featured Work & Portfolio</p>
           <div className="section-content">
-            <div className="projects-grid">
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>E-Commerce Platform</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Modern e-commerce solution built with Next.js, featuring real-time inventory management and seamless payment integration.
+            <div className="projects-container">
+              
+              {/* Project 1: Domov pod palcem */}
+              <div className="project-item">
+                <h3 className="project-title">Domov pod palcem</h3>
+                <p className="project-description">
+                  Mobilní aplikace pro iOS a Android určená k ovládání chytré domácnosti.
+                  Aplikace je navržena s důrazem na ergonomii – veškeré ovládací prvky jsou dostupné palcem ruky, která drží telefon, což umožňuje pohodlné ovládání i v situacích, kdy má uživatel k dispozici pouze jednu ruku.
                 </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">Next.js</span>
-                  <span className="tag">TypeScript</span>
-                  <span className="tag">Stripe</span>
+                
+                <div className="project-gallery">
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/domov/dashboard.png" alt="Domov pod palcem - Dashboard" className="gallery-image" />
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/domov/blinder.png" alt="Domov pod palcem - Blinder control" className="gallery-image" />
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/domov/heating.png" alt="Domov pod palcem - Heating control" className="gallery-image" />
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/domov/time-regime.png" alt="Domov pod palcem - Time regime" className="gallery-image" />
                 </div>
+                
+                <p className="project-description-2">
+                  Aplikace se automaticky konfiguruje dle přihlášeného uživatele a komunikuje s chytrou domácností pomocí zabezpečeného WebSocket protokolu. Uživatel má možnost ovládat osvětlení, žaluzie, vstupní brány, vytápění, podlahové topení, rekuperaci i klimatizaci – včetně nastavení časových plánů.
+                </p>
+              </div>
+
+              {/* Project 2: Inteligentní stáj */}
+              <div className="project-item">
+                <h3 className="project-title">Inteligentní stáj</h3>
+                <p className="project-description">
+                  Mobilní aplikace pro iOS a Android navržená pro správce inteligentní stáje určené pro chov skotu.
+                  Aplikace umožňuje vzdálené ovládání vybavení stáje a poskytuje notifikace v případě technických problémů nebo neobvyklých stavů.
+                </p>
+                
+                <div className="project-gallery">
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/splashscreen.png" alt="Inteligentní stáj - Splash screen" className="gallery-image" />
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/stable-picker.png" alt="Inteligentní stáj - Stable picker" className="gallery-image" />
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/ventilators.png" alt="Inteligentní stáj - Ventilators" className="gallery-image" />
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/sail-control.png" alt="Inteligentní stáj - Sail control" className="gallery-image" />
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/sensors.png" alt="Inteligentní stáj - Sensors" className="gallery-image" />
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/light-control.png" alt="Inteligentní stáj - Light control" className="gallery-image" />
+                </div>
+                
+                <p className="project-description-2">
+                  Přizpůsobuje se přihlášenému uživateli a komunikuje prostřednictvím zabezpečeného WebSocket protokolu. Uživatel může ovládat ventilátory, plachty a osvětlení stáje. K dispozici je také přehled aktuálních hodnot z čidel a interaktivní grafy vývoje za posledních 24 hodin. V případě potřeby aplikace automaticky upozorní správce prostřednictvím push notifikace.
+                </p>
+              </div>
+
+              {/* Project 3: Firebase Auth Flow pro Flutter */}
+              <div className="project-item">
+                <h3 className="project-title">Firebase Auth Flow pro Flutter</h3>
+                <p className="project-description">
+                  Open-source Flutter package s uživatelským rozhraním pro přihlášení a registraci k Firebase pomocí e-mailové adresy.
+                </p>
+                
+                <div className="project-gallery">
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/login.png" alt="Firebase Auth Flow - Login" className="gallery-image" />
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/registration.png" alt="Firebase Auth Flow - Registration" className="gallery-image" />
+                  <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/confirmation.png" alt="Firebase Auth Flow - Confirmation" className="gallery-image" />
+                </div>
+                
+                <p className="project-description-2">
+                  Balíček nabízí kompletní přihlašovací tok připravený k integraci do mobilní aplikace. Dostupný veřejně zde: <a href="https://github.com/smolikja-team/firebase-auth-flow" target="_blank" rel="noopener noreferrer" className="project-link">https://github.com/smolikja-team/firebase-auth-flow</a>
+                </p>
               </div>
               
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Socket.io</span>
-                </div>
-              </div>
-              
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Portfolio Website</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Responsive portfolio website with smooth animations, optimized performance, and modern design principles.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">Next.js</span>
-                  <span className="tag">Framer Motion</span>
-                  <span className="tag">CSS</span>
-                </div>
-              </div>
-
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Socket.io</span>
-                </div>
-              </div>
-
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Socket.io</span>
-                </div>
-              </div>
-
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Socket.io</span>
-                </div>
-              </div>
-
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Socket.io</span>
-                </div>
-              </div>
-
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Socket.io</span>
-                </div>
-              </div>
-
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Socket.io</span>
-                </div>
-              </div>
-
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Socket.io</span>
-                </div>
-              </div>
-
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Socket.io</span>
-                </div>
-              </div>
-
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Socket.io</span>
-                </div>
-              </div>
-
-              <div className="card">
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Task Management App</h3>
-                <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
-                  Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Socket.io</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
