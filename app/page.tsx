@@ -67,6 +67,26 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const introSectionRef = useRef<HTMLDivElement>(null);
 
+  // Reset gallery scroll positions to show left spacers
+  useEffect(() => {
+    const resetGalleryScrolls = () => {
+      const galleries = document.querySelectorAll('.project-gallery');
+      galleries.forEach((gallery) => {
+        if (gallery instanceof HTMLElement) {
+          gallery.scrollLeft = 0;
+        }
+      });
+    };
+
+    // Reset scroll positions after component mounts and on window load
+    resetGalleryScrolls();
+    window.addEventListener('load', resetGalleryScrolls);
+
+    return () => {
+      window.removeEventListener('load', resetGalleryScrolls);
+    };
+  }, []);
+
   // Check if we should use static fallback for very slow connections
   useEffect(() => {
     const caps = getBrowserCapabilities();

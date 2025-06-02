@@ -716,6 +716,20 @@ html {
   /* Hide scrollbar but allow scrolling */
   scrollbar-width: none;
   -ms-overflow-style: none;
+  
+  /* Ensure gallery starts at the beginning */
+  scroll-snap-type: x mandatory;
+}
+
+/* Add visible black spacers on left and right that scroll with content */
+.project-gallery::before,
+.project-gallery::after {
+  content: '';
+  flex-shrink: 0;
+  width: 2rem;
+  height: 100%;
+  background: #000000;
+  scroll-snap-align: start;
 }
 
 .project-gallery::-webkit-scrollbar {
@@ -780,6 +794,11 @@ html {
     padding: 0.5rem 0;
   }
   
+  .project-gallery::before,
+  .project-gallery::after {
+    width: 1.5rem;
+  }
+  
   .gallery-image {
     height: 40.625rem;
   }
@@ -790,17 +809,38 @@ html {
 }
 
 @media (max-width: 480px) {
-  .gallery-image {
-    height: 32.5rem;
-  }
-  
-  .project-gallery {
-    gap: 0.5rem;
+  .projects-container {
+    padding: 0;
   }
   
   .project-item {
     margin-bottom: 2.5rem;
     padding-bottom: 1.5rem;
+  }
+  
+  .project-title,
+  .project-description,
+  .project-description-2 {
+    padding: 0 1rem;
+  }
+  
+  .project-gallery {
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    padding: 0.5rem 0;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .project-gallery::before,
+  .project-gallery::after {
+    width: 1rem;
+  }
+  
+  .gallery-image {
+    height: 32.5rem;
   }
 }
 
