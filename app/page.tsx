@@ -570,57 +570,18 @@ export default function Home() {
     <div className="scroll-snap-container">
       {/* Intro Section - Performance Optimized */}
       <section ref={introSectionRef} className="section section-intro">
-        {/* Static fallback for very slow connections */}
-        {useStaticFallback && (
-          <div className="static-fallback">
-            <div className="static-content">
-              <div className="logo-placeholder">
-                {/* Simple animated logo placeholder */}
-                <div className="animated-logo">
-                  <div className="logo-circle"></div>
-                  <div className="logo-text">JS</div>
-                </div>
+        {/* Logo and scroll indicator - always visible when not using video */}
+        {(useStaticFallback || (!shouldLoadVideo || videoError)) && (
+          <div className="logo-fallback">
+            <div className="logo-content">
+              <div className="logo-container">
+                <img 
+                  src="https://smolikja.team/assets/portfolio-web/logo-white.svg" 
+                  alt="Portfolio Logo" 
+                  className="portfolio-logo"
+                />
               </div>
-              <h1 style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', marginBottom: '1rem', marginTop: '2rem' }}>
-                Welcome
-              </h1>
-              <p style={{ fontSize: 'clamp(1.2rem, 3vw, 2rem)', opacity: 0.9 }}>
-                Creative Developer & Designer
-              </p>
-              <button 
-                onClick={() => {
-                  setUseStaticFallback(false);
-                  setShouldLoadVideo(true);
-                }}
-                style={{
-                  marginTop: '2rem',
-                  padding: '0.75rem 1.5rem',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  borderRadius: '0.5rem',
-                  color: 'white',
-                  cursor: 'pointer',
-                  fontSize: '1rem'
-                }}
-              >
-                Load Full Experience
-              </button>
-            </div>
-          </div>
-        )}
 
-        {/* Loading placeholder (only show if not using static fallback) */}
-        {!useStaticFallback && !shouldLoadVideo && (
-          <div className="video-placeholder">
-            <div className="placeholder-content">
-              <div className="loading-indicator">
-                <div className="loading-dots">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <p>Loading experience...</p>
-              </div>
             </div>
           </div>
         )}
@@ -674,54 +635,7 @@ export default function Home() {
             Your browser does not support the video tag.
           </video>
         )}
-        
-        {/* Enhanced fallback content when video fails */}
-        {!useStaticFallback && shouldLoadVideo && videoError && (
-          <div className="video-fallback">
-            <div className="fallback-content">
-              <h1 style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', marginBottom: '1rem' }}>
-                Welcome
-              </h1>
-              <p style={{ fontSize: 'clamp(1.2rem, 3vw, 2rem)', opacity: 0.9 }}>
-                Creative Developer & Designer
-              </p>
-              <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <button 
-                  onClick={() => {
-                    setVideoError(false);
-                    setShouldLoadVideo(true);
-                    setVideoLoaded(false);
-                  }}
-                  style={{
-                    padding: '0.75rem 1.5rem',
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    borderRadius: '0.5rem',
-                    color: 'white',
-                    cursor: 'pointer',
-                    fontSize: '1rem'
-                  }}
-                >
-                  Try Again
-                </button>
-                <button 
-                  onClick={() => setUseStaticFallback(true)}
-                  style={{
-                    padding: '0.75rem 1.5rem',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: '0.5rem',
-                    color: 'rgba(255, 255, 255, 0.7)',
-                    cursor: 'pointer',
-                    fontSize: '1rem'
-                  }}
-                >
-                  Use Simple Mode
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+
       </section>
 
       {/* Projects Section */}
