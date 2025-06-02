@@ -582,6 +582,7 @@ export default function Home() {
                 />
               </div>
 
+              <div className="simple-arrow-down"></div>
             </div>
           </div>
         )}

@@ -357,6 +357,7 @@ body {
   align-items: center;
   height: 100%;
   justify-content: center;
+  gap: 2rem;
 }
 
 .logo-container {
@@ -364,7 +365,6 @@ body {
   justify-content: center;
   align-items: center;
   padding: 40px;
-  margin-bottom: auto;
 }
 
 .portfolio-logo {
