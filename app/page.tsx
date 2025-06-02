@@ -1,11 +1,53 @@
 "use client";
 
+import { useEffect, useState } from 'react';
+
+// Function to determine video resolution based on viewport
+function getVideoResolution() {
+  if (typeof window === 'undefined') return '1080p'; // Default for SSR
+  
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const maxDimension = Math.max(width, height);
+  
+  if (maxDimension <= 480) return '480p';
+  if (maxDimension <= 720) return '720p';
+  if (maxDimension <= 1080) return '1080p';
+  return '2160p';
+}
+
+// Function to generate video URLs
+function getVideoUrls(resolution: string) {
+  const baseUrl = 'https://smolikja.team/assets/portfolio-web/loop2x/team-logo-';
+  return {
+    webm: `${baseUrl}${resolution}.webm`,
+    mp4: `${baseUrl}${resolution}.mp4`
+  };
+}
+
 export default function Home() {
+  const [videoResolution, setVideoResolution] = useState('1080p');
+
+  useEffect(() => {
+    // Set initial resolution
+    setVideoResolution(getVideoResolution());
+
+    // Update resolution on window resize
+    const handleResize = () => {
+      setVideoResolution(getVideoResolution());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const videoUrls = getVideoUrls(videoResolution);
   return (
     <div className="scroll-snap-container">
       {/* Intro Section - Foreground Video Only */}
       <section className="section section-intro">
         <video 
+          key={videoResolution} // Force re-render when resolution changes
           autoPlay
           muted
           loop
@@ -13,15 +55,17 @@ export default function Home() {
           preload="auto"
           className="foreground-video"
           onLoadedData={() => {
-            // Ensure video is ready to loop smoothly
-            console.log('Video loaded and ready for smooth looping');
+            console.log(`Video loaded: ${videoResolution} resolution`);
           }}
           onError={(e) => {
             console.log('Video failed to load, using fallback background');
             e.currentTarget.style.display = 'none';
           }}
         >
-          <source src="https://smolikja.team/assets/portfolio-web/team-logo-1080p.mp4" type="video/mp4" />
+          {/* WebM sources (preferred for better compression) */}
+          <source src={videoUrls.webm} type="video/webm" />
+          {/* MP4 fallback */}
+          <source src={videoUrls.mp4} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </section>
