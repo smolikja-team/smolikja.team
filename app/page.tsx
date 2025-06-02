@@ -1,14 +1,21 @@
 "use client";
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
-// Function to determine video resolution based on viewport
-function getVideoResolution() {
+// Function to determine video resolution based on viewport and connection
+function getVideoResolution(connectionSpeed: string = 'fast') {
   if (typeof window === 'undefined') return '1080p'; // Default for SSR
   
   const width = window.innerWidth;
   const height = window.innerHeight;
   const maxDimension = Math.max(width, height);
+  
+  // Adjust resolution based on connection speed
+  if (connectionSpeed === 'slow') {
+    if (maxDimension <= 720) return '480p';
+    if (maxDimension <= 1080) return '720p';
+    return '1080p'; // Cap at 1080p for slow connections
+  }
   
   if (maxDimension <= 480) return '480p';
   if (maxDimension <= 720) return '720p';
@@ -25,9 +32,9 @@ function getVideoUrls(resolution: string) {
   };
 }
 
-// Function to detect browser capabilities
+// Function to detect browser capabilities and connection speed
 function getBrowserCapabilities() {
-  if (typeof window === 'undefined') return { supportsWebM: false, isIOS: false };
+  if (typeof window === 'undefined') return { supportsWebM: false, isIOS: false, connectionSpeed: 'fast' };
   
   const video = document.createElement('video');
   const supportsWebM = video.canPlayType('video/webm') !== '';
@@ -36,77 +43,207 @@ function getBrowserCapabilities() {
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   
-  return { supportsWebM, isIOS };
+  // Detect connection speed
+  let connectionSpeed = 'fast';
+  if ('connection' in navigator) {
+    const connection = (navigator as any).connection;
+    if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+      connectionSpeed = 'slow';
+    } else if (connection.effectiveType === '3g') {
+      connectionSpeed = 'medium';
+    }
+  }
+  
+  return { supportsWebM, isIOS, connectionSpeed };
 }
 
 export default function Home() {
   const [videoResolution, setVideoResolution] = useState('1080p');
-  const [browserCaps, setBrowserCaps] = useState({ supportsWebM: false, isIOS: false });
+  const [browserCaps, setBrowserCaps] = useState({ supportsWebM: false, isIOS: false, connectionSpeed: 'fast' });
   const [videoError, setVideoError] = useState(false);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [useStaticFallback, setUseStaticFallback] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const introSectionRef = useRef<HTMLDivElement>(null);
+
+  // Check if we should use static fallback for very slow connections
+  useEffect(() => {
+    const caps = getBrowserCapabilities();
+    setBrowserCaps(caps);
+    
+    // Use static fallback for very slow connections or if user prefers reduced data
+    if (caps.connectionSpeed === 'slow' && 'connection' in navigator) {
+      const connection = (navigator as any).connection;
+      if (connection.saveData || connection.effectiveType === 'slow-2g') {
+        setUseStaticFallback(true);
+        console.log('Using static fallback due to slow connection or data saver mode');
+        return;
+      }
+    }
+    
+    setVideoResolution(getVideoResolution(caps.connectionSpeed));
+  }, []);
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    if (useStaticFallback) return; // Skip video loading if using static fallback
+    
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !shouldLoadVideo) {
+          console.log('Intro section in view, starting video load...');
+          setShouldLoadVideo(true);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: '50px', // Start loading 50px before the section is visible
+      threshold: 0.1
+    });
+
+    if (introSectionRef.current) {
+      observer.observe(introSectionRef.current);
+    }
+
+    return () => {
+      if (introSectionRef.current) {
+        observer.unobserve(introSectionRef.current);
+      }
+    };
+  }, [shouldLoadVideo, useStaticFallback]);
 
   useEffect(() => {
-    // Set initial resolution and browser capabilities
-    setVideoResolution(getVideoResolution());
-    setBrowserCaps(getBrowserCapabilities());
-
     // Update resolution on window resize
     const handleResize = () => {
-      setVideoResolution(getVideoResolution());
+      if (!useStaticFallback) {
+        setVideoResolution(getVideoResolution(browserCaps.connectionSpeed));
+      }
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [browserCaps.connectionSpeed, useStaticFallback]);
+
+  // Handle video loading and playback
+  const handleVideoLoad = useCallback(async () => {
+    const video = videoRef.current;
+    if (!video || !shouldLoadVideo) return;
+
+    try {
+      // For iOS, we need to handle autoplay more carefully
+      if (browserCaps.isIOS) {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          await playPromise;
+        }
+      } else {
+        await video.play();
+      }
+      setVideoLoaded(true);
+      console.log(`Video playing: ${videoResolution} resolution`);
+    } catch (error) {
+      console.log('Autoplay failed, video will play on user interaction:', error);
+      setVideoLoaded(true); // Still mark as loaded even if autoplay fails
+    }
+  }, [shouldLoadVideo, browserCaps.isIOS, videoResolution]);
 
   useEffect(() => {
-    // Ensure video plays on iOS after load
-    const video = videoRef.current;
-    if (video && browserCaps.isIOS) {
-      const playVideo = async () => {
-        try {
-          await video.play();
-        } catch (error) {
-          console.log('Autoplay failed on iOS, which is expected:', error);
-        }
-      };
-
+    if (shouldLoadVideo && videoRef.current && !videoLoaded) {
+      const video = videoRef.current;
+      
       if (video.readyState >= 2) {
-        playVideo();
+        handleVideoLoad();
       } else {
-        video.addEventListener('loadeddata', playVideo, { once: true });
+        video.addEventListener('loadeddata', handleVideoLoad, { once: true });
       }
     }
-  }, [videoResolution, browserCaps.isIOS]);
+  }, [shouldLoadVideo, videoLoaded, handleVideoLoad]);
 
   const videoUrls = getVideoUrls(videoResolution);
   return (
     <div className="scroll-snap-container">
-      {/* Intro Section - Foreground Video Only */}
-      <section className="section section-intro">
-        {!videoError && (
+      {/* Intro Section - Performance Optimized */}
+      <section ref={introSectionRef} className="section section-intro">
+        {/* Static fallback for very slow connections */}
+        {useStaticFallback && (
+          <div className="static-fallback">
+            <div className="static-content">
+              <div className="logo-placeholder">
+                {/* Simple animated logo placeholder */}
+                <div className="animated-logo">
+                  <div className="logo-circle"></div>
+                  <div className="logo-text">JS</div>
+                </div>
+              </div>
+              <h1 style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', marginBottom: '1rem', marginTop: '2rem' }}>
+                Welcome
+              </h1>
+              <p style={{ fontSize: 'clamp(1.2rem, 3vw, 2rem)', opacity: 0.9 }}>
+                Creative Developer & Designer
+              </p>
+              <button 
+                onClick={() => {
+                  setUseStaticFallback(false);
+                  setShouldLoadVideo(true);
+                }}
+                style={{
+                  marginTop: '2rem',
+                  padding: '0.75rem 1.5rem',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  borderRadius: '0.5rem',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '1rem'
+                }}
+              >
+                Load Full Experience
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Loading placeholder (only show if not using static fallback) */}
+        {!useStaticFallback && !shouldLoadVideo && (
+          <div className="video-placeholder">
+            <div className="placeholder-content">
+              <div className="loading-indicator">
+                <div className="loading-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <p>Loading experience...</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Load video only when needed and not using static fallback */}
+        {!useStaticFallback && shouldLoadVideo && !videoError && (
           <video 
             ref={videoRef}
-            key={videoResolution} // Force re-render when resolution changes
+            key={`${videoResolution}-${shouldLoadVideo}`} // Force re-render when needed
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata" // Changed from "auto" for better iOS compatibility
-            className="foreground-video"
+            preload="none" // Don't preload anything until we decide to load
+            className={`foreground-video ${videoLoaded ? 'video-loaded' : 'video-loading'}`}
             controls={false}
             disablePictureInPicture
+            onLoadStart={() => {
+              console.log(`Starting to load video: ${videoResolution} resolution`);
+            }}
             onLoadedData={() => {
-              console.log(`Video loaded: ${videoResolution} resolution`);
+              console.log(`Video data loaded: ${videoResolution} resolution`);
               setVideoError(false);
             }}
             onCanPlay={() => {
-              // Additional attempt to play on iOS
-              if (browserCaps.isIOS && videoRef.current) {
-                videoRef.current.play().catch(() => {
-                  console.log('iOS autoplay prevented, video will play on user interaction');
-                });
-              }
+              console.log('Video can play');
+              handleVideoLoad();
             }}
             onError={(e) => {
               console.log('Video failed to load:', e);
@@ -134,8 +271,8 @@ export default function Home() {
           </video>
         )}
         
-        {/* Fallback content when video fails */}
-        {videoError && (
+        {/* Enhanced fallback content when video fails */}
+        {!useStaticFallback && shouldLoadVideo && videoError && (
           <div className="video-fallback">
             <div className="fallback-content">
               <h1 style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', marginBottom: '1rem' }}>
@@ -144,6 +281,40 @@ export default function Home() {
               <p style={{ fontSize: 'clamp(1.2rem, 3vw, 2rem)', opacity: 0.9 }}>
                 Creative Developer & Designer
               </p>
+              <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <button 
+                  onClick={() => {
+                    setVideoError(false);
+                    setShouldLoadVideo(true);
+                    setVideoLoaded(false);
+                  }}
+                  style={{
+                    padding: '0.75rem 1.5rem',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    borderRadius: '0.5rem',
+                    color: 'white',
+                    cursor: 'pointer',
+                    fontSize: '1rem'
+                  }}
+                >
+                  Try Again
+                </button>
+                <button 
+                  onClick={() => setUseStaticFallback(true)}
+                  style={{
+                    padding: '0.75rem 1.5rem',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '0.5rem',
+                    color: 'rgba(255, 255, 255, 0.7)',
+                    cursor: 'pointer',
+                    fontSize: '1rem'
+                  }}
+                >
+                  Use Simple Mode
+                </button>
+              </div>
             </div>
           </div>
         )}
