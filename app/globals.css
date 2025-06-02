@@ -1205,3 +1205,15 @@ html {
     scroll-snap-align: start;
   }
 }
+
+/* GitHub logo hover animation */
+.github-logo-link:hover {
+  transform: scale(1.1) !important;
+  opacity: 1 !important;
+}
+
+/* Discord logo hover animation */
+.discord-logo-link:hover {
+  transform: scale(1.1) !important;
+  opacity: 1 !important;
+}
