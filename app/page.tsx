@@ -1,21 +1,29 @@
+"use client";
+
 export default function Home() {
   return (
     <div className="scroll-snap-container">
-      {/* Intro Section */}
+      {/* Intro Section - Foreground Video Only */}
       <section className="section section-intro">
-        <div className="content-wrapper">
-          <h1 className="section-title">Welcome</h1>
-          <p className="section-subtitle">Creative Developer & Designer</p>
-          <div className="section-content">
-            <p>
-              I'm passionate about creating beautiful, functional, and user-centered digital experiences. 
-              With expertise in modern web technologies, I bring ideas to life through clean code and thoughtful design.
-            </p>
-            <p style={{ marginTop: '1.5rem', opacity: 0.8, fontSize: '1.2rem' }}>
-              Scroll down to explore my work
-            </p>
-          </div>
-        </div>
+        <video 
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="foreground-video"
+          onLoadedData={() => {
+            // Ensure video is ready to loop smoothly
+            console.log('Video loaded and ready for smooth looping');
+          }}
+          onError={(e) => {
+            console.log('Video failed to load, using fallback background');
+            e.currentTarget.style.display = 'none';
+          }}
+        >
+          <source src="https://smolikja.team/assets/portfolio-web/team-logo-1080p.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </section>
 
       {/* Projects Section */}
