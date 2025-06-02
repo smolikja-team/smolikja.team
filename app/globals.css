@@ -711,7 +711,8 @@ html {
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 1rem 0;
-  margin: 2rem 0;
+  margin: 0;
+  position: relative;
   
   /* Hide scrollbar but allow scrolling */
   scrollbar-width: none;
@@ -719,6 +720,149 @@ html {
   
   /* Ensure gallery starts at the beginning */
   scroll-snap-type: x mandatory;
+}
+
+/* Gallery wrapper for controls */
+.gallery-wrapper {
+  position: relative;
+  margin: 2rem 0;
+}
+
+/* Gallery scroll bar container */
+.gallery-scrollbar-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Gallery arrow buttons */
+.gallery-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.gallery-arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.gallery-arrow:active {
+  transform: scale(0.95);
+}
+
+.gallery-arrow svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+.gallery-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.gallery-arrow:disabled:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: none;
+}
+
+/* Show scrollbar on hover for desktop */
+@media (min-width: 769px) {
+  .gallery-wrapper:hover .gallery-scrollbar-container {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Always show on mobile and tablet */
+@media (max-width: 768px) {
+  .gallery-scrollbar-container {
+    opacity: 1;
+    visibility: visible;
+    padding: 0 1rem;
+    margin-top: 0.75rem;
+  }
+}
+
+/* Custom scroll bar track */
+.gallery-scrollbar {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery-scrollbar:hover {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Scroll bar thumb */
+.gallery-scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  cursor: grab;
+  transition: background 0.3s ease;
+  min-width: 20px;
+}
+
+.gallery-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.gallery-scrollbar-thumb:active {
+  cursor: grabbing;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .gallery-scrollbar-container {
+    gap: 0.75rem;
+    padding: 0 1rem;
+    margin-top: 0.75rem;
+  }
+  
+  .gallery-arrow {
+    display: none;
+  }
+  
+  .gallery-scrollbar {
+    height: 8px;
+  }
+  
+  .gallery-scrollbar:hover {
+    height: 10px;
+  }
+  
+  .gallery-scrollbar-thumb {
+    min-width: 30px;
+  }
 }
 
 /* Add visible black spacers on left and right that scroll with content */
@@ -745,6 +889,7 @@ html {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  scroll-snap-align: center;
 }
 
 .gallery-image:hover {

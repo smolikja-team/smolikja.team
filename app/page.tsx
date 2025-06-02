@@ -67,7 +67,7 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const introSectionRef = useRef<HTMLDivElement>(null);
 
-  // Reset gallery scroll positions to show left spacers
+  // Reset gallery scroll positions to show left spacers and add controls functionality
   useEffect(() => {
     const resetGalleryScrolls = () => {
       const galleries = document.querySelectorAll('.project-gallery');
@@ -78,12 +78,213 @@ export default function Home() {
       });
     };
 
+    // Gallery scroll bar functionality
+    const setupGalleryScrollbars = () => {
+      const galleryWrappers = document.querySelectorAll('.gallery-wrapper');
+      
+      galleryWrappers.forEach((wrapper) => {
+        const gallery = wrapper.querySelector('.project-gallery') as HTMLElement;
+        const scrollbar = wrapper.querySelector('.gallery-scrollbar') as HTMLElement;
+        const thumb = wrapper.querySelector('.gallery-scrollbar-thumb') as HTMLElement;
+        const prevArrow = wrapper.querySelector('.gallery-arrow-prev') as HTMLButtonElement;
+        const nextArrow = wrapper.querySelector('.gallery-arrow-next') as HTMLButtonElement;
+        
+        if (!gallery || !scrollbar || !thumb || !prevArrow || !nextArrow) return;
+        
+        let isDragging = false;
+        let startX = 0;
+        let startScrollLeft = 0;
+        
+        // Calculate scroll step (approximately one image width)
+        const getScrollStep = () => {
+          const firstImage = gallery.querySelector('.gallery-image') as HTMLElement;
+          if (firstImage) {
+            return firstImage.offsetWidth + 32; // Image width + gap
+          }
+          return gallery.clientWidth * 0.8; // Fallback
+        };
+        
+        // Update arrow states based on scroll position
+        const updateArrowStates = () => {
+          const scrollLeft = gallery.scrollLeft;
+          const maxScrollLeft = gallery.scrollWidth - gallery.clientWidth;
+          
+          prevArrow.disabled = scrollLeft <= 0;
+          nextArrow.disabled = scrollLeft >= maxScrollLeft;
+        };
+        
+        // Update thumb position and size based on gallery scroll
+        const updateThumb = () => {
+          const galleryScrollWidth = gallery.scrollWidth;
+          const galleryClientWidth = gallery.clientWidth;
+          const scrollLeft = gallery.scrollLeft;
+          
+          // Calculate thumb width as percentage of scrollbar width
+          const thumbWidthPercent = Math.min((galleryClientWidth / galleryScrollWidth) * 100, 100);
+          
+          // Calculate thumb position as percentage
+          const maxScrollLeft = galleryScrollWidth - galleryClientWidth;
+          const thumbLeftPercent = maxScrollLeft > 0 ? (scrollLeft / maxScrollLeft) * (100 - thumbWidthPercent) : 0;
+          
+          thumb.style.width = `${thumbWidthPercent}%`;
+          thumb.style.left = `${thumbLeftPercent}%`;
+          
+          // Update arrow states
+          updateArrowStates();
+        };
+        
+        // Handle arrow clicks
+        const handlePrevClick = () => {
+          const scrollStep = getScrollStep();
+          gallery.scrollTo({
+            left: Math.max(0, gallery.scrollLeft - scrollStep),
+            behavior: 'smooth'
+          });
+        };
+        
+        const handleNextClick = () => {
+          const scrollStep = getScrollStep();
+          const maxScrollLeft = gallery.scrollWidth - gallery.clientWidth;
+          gallery.scrollTo({
+            left: Math.min(maxScrollLeft, gallery.scrollLeft + scrollStep),
+            behavior: 'smooth'
+          });
+        };
+        
+        // Handle scrollbar click (not on thumb)
+        const handleScrollbarClick = (e: MouseEvent) => {
+          if (e.target === thumb) return;
+          
+          const scrollbarRect = scrollbar.getBoundingClientRect();
+          const clickX = e.clientX - scrollbarRect.left;
+          const scrollbarWidth = scrollbarRect.width;
+          const clickPercent = clickX / scrollbarWidth;
+          
+          const maxScrollLeft = gallery.scrollWidth - gallery.clientWidth;
+          const targetScrollLeft = clickPercent * maxScrollLeft;
+          
+          gallery.scrollTo({
+            left: targetScrollLeft,
+            behavior: 'smooth'
+          });
+        };
+        
+        // Handle thumb dragging
+        const handleThumbMouseDown = (e: MouseEvent) => {
+          isDragging = true;
+          startX = e.clientX;
+          startScrollLeft = gallery.scrollLeft;
+          e.preventDefault();
+          
+          document.addEventListener('mousemove', handleThumbMouseMove);
+          document.addEventListener('mouseup', handleThumbMouseUp);
+        };
+        
+        const handleThumbMouseMove = (e: MouseEvent) => {
+          if (!isDragging) return;
+          
+          const deltaX = e.clientX - startX;
+          const scrollbarRect = scrollbar.getBoundingClientRect();
+          const scrollbarWidth = scrollbarRect.width;
+          const maxScrollLeft = gallery.scrollWidth - gallery.clientWidth;
+          
+          // Calculate scroll ratio based on mouse movement
+          const scrollRatio = deltaX / scrollbarWidth;
+          const targetScrollLeft = startScrollLeft + (scrollRatio * maxScrollLeft);
+          
+          gallery.scrollLeft = Math.max(0, Math.min(targetScrollLeft, maxScrollLeft));
+        };
+        
+        const handleThumbMouseUp = () => {
+          isDragging = false;
+          document.removeEventListener('mousemove', handleThumbMouseMove);
+          document.removeEventListener('mouseup', handleThumbMouseUp);
+        };
+        
+        // Handle touch events for mobile
+        const handleThumbTouchStart = (e: TouchEvent) => {
+          isDragging = true;
+          startX = e.touches[0].clientX;
+          startScrollLeft = gallery.scrollLeft;
+          e.preventDefault();
+        };
+        
+        const handleThumbTouchMove = (e: TouchEvent) => {
+          if (!isDragging) return;
+          
+          const deltaX = e.touches[0].clientX - startX;
+          const scrollbarRect = scrollbar.getBoundingClientRect();
+          const scrollbarWidth = scrollbarRect.width;
+          const maxScrollLeft = gallery.scrollWidth - gallery.clientWidth;
+          
+          const scrollRatio = deltaX / scrollbarWidth;
+          const targetScrollLeft = startScrollLeft + (scrollRatio * maxScrollLeft);
+          
+          gallery.scrollLeft = Math.max(0, Math.min(targetScrollLeft, maxScrollLeft));
+          e.preventDefault();
+        };
+        
+        const handleThumbTouchEnd = () => {
+          isDragging = false;
+        };
+        
+        // Event listeners
+        prevArrow.addEventListener('click', handlePrevClick);
+        nextArrow.addEventListener('click', handleNextClick);
+        scrollbar.addEventListener('click', handleScrollbarClick);
+        thumb.addEventListener('mousedown', handleThumbMouseDown);
+        thumb.addEventListener('touchstart', handleThumbTouchStart, { passive: false });
+        thumb.addEventListener('touchmove', handleThumbTouchMove, { passive: false });
+        thumb.addEventListener('touchend', handleThumbTouchEnd);
+        
+        // Update thumb on gallery scroll
+        gallery.addEventListener('scroll', updateThumb);
+        
+        // Initial thumb update
+        updateThumb();
+        
+        // Update on window resize
+        const handleResize = () => {
+          updateThumb();
+        };
+        
+        window.addEventListener('resize', handleResize);
+        
+        // Store cleanup function
+        (wrapper as any).cleanup = () => {
+          prevArrow.removeEventListener('click', handlePrevClick);
+          nextArrow.removeEventListener('click', handleNextClick);
+          scrollbar.removeEventListener('click', handleScrollbarClick);
+          thumb.removeEventListener('mousedown', handleThumbMouseDown);
+          thumb.removeEventListener('touchstart', handleThumbTouchStart);
+          thumb.removeEventListener('touchmove', handleThumbTouchMove);
+          thumb.removeEventListener('touchend', handleThumbTouchEnd);
+          gallery.removeEventListener('scroll', updateThumb);
+          window.removeEventListener('resize', handleResize);
+          document.removeEventListener('mousemove', handleThumbMouseMove);
+          document.removeEventListener('mouseup', handleThumbMouseUp);
+        };
+      });
+    };
+
     // Reset scroll positions after component mounts and on window load
     resetGalleryScrolls();
-    window.addEventListener('load', resetGalleryScrolls);
+    setupGalleryScrollbars();
+    
+    window.addEventListener('load', () => {
+      resetGalleryScrolls();
+      setupGalleryScrollbars();
+    });
 
     return () => {
       window.removeEventListener('load', resetGalleryScrolls);
+      // Cleanup gallery scrollbar event listeners
+      const galleryWrappers = document.querySelectorAll('.gallery-wrapper');
+      galleryWrappers.forEach((wrapper: any) => {
+        if (wrapper.cleanup) {
+          wrapper.cleanup();
+        }
+      });
     };
   }, []);
 
@@ -354,11 +555,31 @@ export default function Home() {
                   Aplikace je navržena s důrazem na ergonomii – veškeré ovládací prvky jsou dostupné palcem ruky, která drží telefon, což umožňuje pohodlné ovládání i v situacích, kdy má uživatel k dispozici pouze jednu ruku.
                 </p>
                 
-                <div className="project-gallery">
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/domov/dashboard.png" alt="Domov pod palcem - Dashboard" className="gallery-image" />
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/domov/blinder.png" alt="Domov pod palcem - Blinder control" className="gallery-image" />
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/domov/heating.png" alt="Domov pod palcem - Heating control" className="gallery-image" />
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/domov/time-regime.png" alt="Domov pod palcem - Time regime" className="gallery-image" />
+                <div className="gallery-wrapper">
+                  <div className="project-gallery" data-gallery="domov">
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/domov/dashboard.png" alt="Domov pod palcem - Dashboard" className="gallery-image" />
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/domov/blinder.png" alt="Domov pod palcem - Blinder control" className="gallery-image" />
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/domov/heating.png" alt="Domov pod palcem - Heating control" className="gallery-image" />
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/domov/time-regime.png" alt="Domov pod palcem - Time regime" className="gallery-image" />
+                  </div>
+                  
+                  <div className="gallery-scrollbar-container">
+                    <button className="gallery-arrow gallery-arrow-prev" data-gallery="domov">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                      </svg>
+                    </button>
+                    
+                    <div className="gallery-scrollbar" data-gallery="domov">
+                      <div className="gallery-scrollbar-thumb"></div>
+                    </div>
+                    
+                    <button className="gallery-arrow gallery-arrow-next" data-gallery="domov">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
                 
                 <p className="project-description-2">
@@ -374,13 +595,33 @@ export default function Home() {
                   Aplikace umožňuje vzdálené ovládání vybavení stáje a poskytuje notifikace v případě technických problémů nebo neobvyklých stavů.
                 </p>
                 
-                <div className="project-gallery">
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/splashscreen.png" alt="Inteligentní stáj - Splash screen" className="gallery-image" />
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/stable-picker.png" alt="Inteligentní stáj - Stable picker" className="gallery-image" />
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/ventilators.png" alt="Inteligentní stáj - Ventilators" className="gallery-image" />
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/sail-control.png" alt="Inteligentní stáj - Sail control" className="gallery-image" />
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/sensors.png" alt="Inteligentní stáj - Sensors" className="gallery-image" />
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/stable/light-control.png" alt="Inteligentní stáj - Light control" className="gallery-image" />
+                <div className="gallery-wrapper">
+                  <div className="project-gallery" data-gallery="stable">
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/splashscreen.png" alt="Inteligentní stáj - Splash screen" className="gallery-image" />
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/stable-picker.png" alt="Inteligentní stáj - Stable picker" className="gallery-image" />
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/ventilators.png" alt="Inteligentní stáj - Ventilators" className="gallery-image" />
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/sail-control.png" alt="Inteligentní stáj - Sail control" className="gallery-image" />
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/sensors.png" alt="Inteligentní stáj - Sensors" className="gallery-image" />
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/light-control.png" alt="Inteligentní stáj - Light control" className="gallery-image" />
+                  </div>
+                  
+                  <div className="gallery-scrollbar-container">
+                    <button className="gallery-arrow gallery-arrow-prev" data-gallery="stable">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                      </svg>
+                    </button>
+                    
+                    <div className="gallery-scrollbar" data-gallery="stable">
+                      <div className="gallery-scrollbar-thumb"></div>
+                    </div>
+                    
+                    <button className="gallery-arrow gallery-arrow-next" data-gallery="stable">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
                 
                 <p className="project-description-2">
@@ -395,10 +636,30 @@ export default function Home() {
                   Open-source Flutter package s uživatelským rozhraním pro přihlášení a registraci k Firebase pomocí e-mailové adresy.
                 </p>
                 
-                <div className="project-gallery">
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/login.png" alt="Firebase Auth Flow - Login" className="gallery-image" />
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/registration.png" alt="Firebase Auth Flow - Registration" className="gallery-image" />
-                  <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/confirmation.png" alt="Firebase Auth Flow - Confirmation" className="gallery-image" />
+                <div className="gallery-wrapper">
+                  <div className="project-gallery" data-gallery="auth-flow">
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/login.png" alt="Firebase Auth Flow - Login" className="gallery-image" />
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/registration.png" alt="Firebase Auth Flow - Registration" className="gallery-image" />
+                    <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/confirmation.png" alt="Firebase Auth Flow - Confirmation" className="gallery-image" />
+                  </div>
+                  
+                  <div className="gallery-scrollbar-container">
+                    <button className="gallery-arrow gallery-arrow-prev" data-gallery="auth-flow">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                      </svg>
+                    </button>
+                    
+                    <div className="gallery-scrollbar" data-gallery="auth-flow">
+                      <div className="gallery-scrollbar-thumb"></div>
+                    </div>
+                    
+                    <button className="gallery-arrow gallery-arrow-next" data-gallery="auth-flow">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
                 
                 <p className="project-description-2">
