@@ -1,17 +1,37 @@
 {
-  "name": "smolikja team",
+  "name": "smolikja team - Mobile App Development Portfolio",
   "short_name": "smolikja",
-  "description": "Portfolio and work showcase by smolikja team",
+  "description": "Professional mobile app development team specializing in B2B, B2G, B2C solutions with iOS native and Flutter cross-platform expertise",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
   "orientation": "portrait-primary",
+  "lang": "en",
+  "categories": ["productivity", "business", "developer", "portfolio"],
   "icons": [
     {
       "src": "/favicon.ico",
       "sizes": "any",
       "type": "image/x-icon"
+    }
+  ],
+  "developer": {
+    "name": "smolikja team",
+    "url": "https://smolikja.team"
+  },
+  "screenshots": [
+    {
+      "src": "/assets/portfolio-web/screenshot-desktop.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide"
+    },
+    {
+      "src": "/assets/portfolio-web/screenshot-mobile.jpg", 
+      "sizes": "750x1334",
+      "type": "image/jpeg",
+      "platform": "narrow"
     }
   ]
 }

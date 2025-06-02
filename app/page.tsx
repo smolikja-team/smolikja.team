@@ -723,7 +723,7 @@ export default function Home() {
                 <h3 className="project-title">Inteligentní stáj</h3>
                 <p className="project-description">
                   Mobilní aplikace pro iOS a Android navržená pro správce inteligentní stáje určené pro chov skotu.
-                  Aplikace umožňuje vzdálené ovládání vybavení stáje a poskytuje notifikace v případě technických problémů nebo neobvyklých stavů.
+                  Aplikace umožňuje vzdálené ovládání vybavení stáje a poskytuje notifikace v případě technických problémů nebo nežádoucích stavů.
                 </p>
                 
                 <div className="gallery-wrapper">
@@ -830,7 +830,7 @@ export default function Home() {
                 </div>
                 
                 <p className="project-description-2">
-                  Balíček nabízí kompletní přihlašovací tok připravený k integraci do mobilní aplikace. Dostupný veřejně zde: <a href="https://github.com/smolikja-team/firebase-auth-flow" target="_blank" rel="noopener noreferrer" className="project-link">https://github.com/smolikja-team/firebase-auth-flow</a>
+                  Balíček nabízí kompletní přihlašovací flow připravenou k integraci do mobilní aplikace. Dostupný veřejně zde: <a href="https://github.com/smolikja-team/firebase-auth-flow" target="_blank" rel="noopener noreferrer" className="project-link">https://github.com/smolikja-team/firebase-auth-flow</a>
                 </p>
               </div>
               
