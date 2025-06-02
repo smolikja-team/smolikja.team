@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 // Function to determine video resolution based on viewport
 function getVideoResolution() {
@@ -25,12 +25,30 @@ function getVideoUrls(resolution: string) {
   };
 }
 
+// Function to detect browser capabilities
+function getBrowserCapabilities() {
+  if (typeof window === 'undefined') return { supportsWebM: false, isIOS: false };
+  
+  const video = document.createElement('video');
+  const supportsWebM = video.canPlayType('video/webm') !== '';
+  
+  // Detect iOS (including iPad Pro with desktop user agent)
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  
+  return { supportsWebM, isIOS };
+}
+
 export default function Home() {
   const [videoResolution, setVideoResolution] = useState('1080p');
+  const [browserCaps, setBrowserCaps] = useState({ supportsWebM: false, isIOS: false });
+  const [videoError, setVideoError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Set initial resolution
+    // Set initial resolution and browser capabilities
     setVideoResolution(getVideoResolution());
+    setBrowserCaps(getBrowserCapabilities());
 
     // Update resolution on window resize
     const handleResize = () => {
@@ -41,33 +59,94 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    // Ensure video plays on iOS after load
+    const video = videoRef.current;
+    if (video && browserCaps.isIOS) {
+      const playVideo = async () => {
+        try {
+          await video.play();
+        } catch (error) {
+          console.log('Autoplay failed on iOS, which is expected:', error);
+        }
+      };
+
+      if (video.readyState >= 2) {
+        playVideo();
+      } else {
+        video.addEventListener('loadeddata', playVideo, { once: true });
+      }
+    }
+  }, [videoResolution, browserCaps.isIOS]);
+
   const videoUrls = getVideoUrls(videoResolution);
   return (
     <div className="scroll-snap-container">
       {/* Intro Section - Foreground Video Only */}
       <section className="section section-intro">
-        <video 
-          key={videoResolution} // Force re-render when resolution changes
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="foreground-video"
-          onLoadedData={() => {
-            console.log(`Video loaded: ${videoResolution} resolution`);
-          }}
-          onError={(e) => {
-            console.log('Video failed to load, using fallback background');
-            e.currentTarget.style.display = 'none';
-          }}
-        >
-          {/* WebM sources (preferred for better compression) */}
-          <source src={videoUrls.webm} type="video/webm" />
-          {/* MP4 fallback */}
-          <source src={videoUrls.mp4} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {!videoError && (
+          <video 
+            ref={videoRef}
+            key={videoResolution} // Force re-render when resolution changes
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata" // Changed from "auto" for better iOS compatibility
+            className="foreground-video"
+            controls={false}
+            disablePictureInPicture
+            onLoadedData={() => {
+              console.log(`Video loaded: ${videoResolution} resolution`);
+              setVideoError(false);
+            }}
+            onCanPlay={() => {
+              // Additional attempt to play on iOS
+              if (browserCaps.isIOS && videoRef.current) {
+                videoRef.current.play().catch(() => {
+                  console.log('iOS autoplay prevented, video will play on user interaction');
+                });
+              }
+            }}
+            onError={(e) => {
+              console.log('Video failed to load:', e);
+              setVideoError(true);
+            }}
+            onStalled={() => {
+              console.log('Video stalled, attempting recovery...');
+              if (videoRef.current) {
+                videoRef.current.load();
+              }
+            }}
+          >
+            {/* Prioritize MP4 for iOS Safari since WebM is not supported */}
+            {browserCaps.isIOS ? (
+              <>
+                <source src={videoUrls.mp4} type="video/mp4" />
+              </>
+            ) : (
+              <>
+                {browserCaps.supportsWebM && <source src={videoUrls.webm} type="video/webm" />}
+                <source src={videoUrls.mp4} type="video/mp4" />
+              </>
+            )}
+            Your browser does not support the video tag.
+          </video>
+        )}
+        
+        {/* Fallback content when video fails */}
+        {videoError && (
+          <div className="video-fallback">
+            <div className="fallback-content">
+              <h1 style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', marginBottom: '1rem' }}>
+                Welcome
+              </h1>
+              <p style={{ fontSize: 'clamp(1.2rem, 3vw, 2rem)', opacity: 0.9 }}>
+                Creative Developer & Designer
+              </p>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Projects Section */}

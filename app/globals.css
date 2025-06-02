@@ -128,6 +128,43 @@ body {
   display: none !important;
 }
 
+/* Hide all video controls for cleaner appearance */
+.foreground-video::-webkit-media-controls {
+  display: none !important;
+}
+
+.foreground-video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+.foreground-video::-webkit-media-controls-play-button {
+  display: none !important;
+}
+
+.foreground-video::-webkit-media-controls-volume-slider {
+  display: none !important;
+}
+
+/* Video fallback styles */
+.video-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+}
+
+.fallback-content {
+  text-align: center;
+  color: white;
+  animation: fadeInUp 0.8s ease-out;
+}
+
 /* Mobile-specific video optimizations */
 @media (max-width: 768px) {
   .foreground-video {
