@@ -382,6 +382,189 @@ export default function Home() {
     }
   }, [shouldLoadVideo, videoLoaded, handleVideoLoad]);
 
+  // Function to update gallery controls after images load
+  const updateGalleryControls = () => {
+    const galleryWrappers = document.querySelectorAll('.gallery-wrapper');
+    
+    galleryWrappers.forEach((wrapper) => {
+      const gallery = wrapper.querySelector('.project-gallery') as HTMLElement;
+      const scrollbar = wrapper.querySelector('.gallery-scrollbar') as HTMLElement;
+      const thumb = wrapper.querySelector('.gallery-scrollbar-thumb') as HTMLElement;
+      const prevArrow = wrapper.querySelector('.gallery-arrow-prev') as HTMLButtonElement;
+      const nextArrow = wrapper.querySelector('.gallery-arrow-next') as HTMLButtonElement;
+      
+      if (!gallery || !scrollbar || !thumb || !prevArrow || !nextArrow) return;
+      
+      // Update arrow states based on current scroll position
+      const updateArrowStates = () => {
+        const scrollLeft = gallery.scrollLeft;
+        const maxScrollLeft = gallery.scrollWidth - gallery.clientWidth;
+        
+        const prevDisabled = scrollLeft <= 0;
+        const nextDisabled = scrollLeft >= maxScrollLeft;
+        
+        prevArrow.disabled = prevDisabled;
+        nextArrow.disabled = nextDisabled;
+        
+        console.log(`Gallery controls updated - Prev: ${prevDisabled ? 'disabled' : 'enabled'}, Next: ${nextDisabled ? 'disabled' : 'enabled'}, ScrollLeft: ${scrollLeft}, MaxScroll: ${maxScrollLeft}`);
+      };
+      
+      // Update thumb position and size based on gallery scroll
+      const updateThumb = () => {
+        const galleryScrollWidth = gallery.scrollWidth;
+        const galleryClientWidth = gallery.clientWidth;
+        const scrollLeft = gallery.scrollLeft;
+        
+        // Calculate thumb width as percentage of scrollbar width
+        const thumbWidthPercent = Math.min((galleryClientWidth / galleryScrollWidth) * 100, 100);
+        
+        // Calculate thumb position as percentage
+        const maxScrollLeft = galleryScrollWidth - galleryClientWidth;
+        const thumbLeftPercent = maxScrollLeft > 0 ? (scrollLeft / maxScrollLeft) * (100 - thumbWidthPercent) : 0;
+        
+        thumb.style.width = `${thumbWidthPercent}%`;
+        thumb.style.left = `${thumbLeftPercent}%`;
+        
+        // Update arrow states
+        updateArrowStates();
+      };
+      
+      // Update both thumb and arrows
+      updateThumb();
+    });
+  };
+
+  // Lazy loading functionality for gallery images
+  useEffect(() => {
+    // Function to load individual image
+    const loadImage = (imageContainer: Element) => {
+      const container = imageContainer as HTMLElement;
+      const imageSrc = container.getAttribute('data-src');
+      const imageAlt = container.getAttribute('data-alt') || '';
+
+      if (!imageSrc) return;
+
+      console.log(`Loading image: ${imageSrc}`);
+
+      // Create new image element
+      const img = new Image();
+      
+      // Set up load handlers
+      img.onload = () => {
+        // Image loaded successfully
+        console.log(`Image loaded successfully: ${imageSrc}`);
+        
+        // Create a new img element with proper styling
+        const newImg = document.createElement('img');
+        newImg.src = imageSrc;
+        newImg.alt = imageAlt;
+        newImg.className = 'gallery-image-content';
+        newImg.style.cssText = `
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 25px;
+        `;
+        
+        // Replace placeholder with actual image
+        container.innerHTML = '';
+        container.appendChild(newImg);
+        container.classList.remove('loading');
+        container.classList.add('loaded');
+        
+        // Remove data attributes as they're no longer needed
+        container.removeAttribute('data-src');
+        container.removeAttribute('data-alt');
+        
+        // Update gallery controls after image loads
+        updateGalleryControls();
+      };
+
+      img.onerror = () => {
+        // Image failed to load
+        console.error(`Failed to load image: ${imageSrc}`);
+        container.classList.remove('loading');
+        container.classList.add('error');
+        
+        // Show error placeholder
+        container.innerHTML = `
+          <div class="image-error-placeholder">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚠️</div>
+            <div>Failed to load image</div>
+          </div>
+        `;
+        
+        // Update gallery controls after error state
+        updateGalleryControls();
+      };
+
+      // Start loading the image
+      img.src = imageSrc;
+    };
+
+    // Lazy loading functionality with Intersection Observer
+    const setupLazyLoading = () => {
+      // Check if Intersection Observer is supported
+      if (!('IntersectionObserver' in window)) {
+        console.log('IntersectionObserver not supported, loading all images immediately');
+        // Fallback for older browsers - load all images immediately
+        const lazyImages = document.querySelectorAll('.gallery-image[data-src]');
+        lazyImages.forEach(loadImage);
+        return;
+      }
+
+      // Configuration for the intersection observer
+      const observerOptions = {
+        root: null, // Use viewport as root
+        rootMargin: '200px', // Start loading 200px before image comes into view for better UX
+        threshold: 0.1 // Trigger when 10% of the image is visible
+      };
+
+      // Create intersection observer
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const imageContainer = entry.target as HTMLElement;
+            loadImage(imageContainer);
+            observer.unobserve(imageContainer); // Stop observing once loaded
+          }
+        });
+      }, observerOptions);
+
+      // Start observing all lazy images
+      const lazyImages = document.querySelectorAll('.gallery-image[data-src]');
+      console.log(`Found ${lazyImages.length} images to lazy load`);
+      
+      lazyImages.forEach(img => {
+        imageObserver.observe(img);
+      });
+
+      // Store observer for cleanup
+      (window as any).lazyImageObserver = imageObserver;
+    };
+    
+    // Initialize lazy loading
+    setupLazyLoading();
+    
+    // Also run on window load to catch any missed images
+    window.addEventListener('load', setupLazyLoading);
+    
+    // Update gallery controls after a short delay to ensure DOM is ready
+    setTimeout(() => {
+      updateGalleryControls();
+    }, 100);
+    
+    return () => {
+      window.removeEventListener('load', setupLazyLoading);
+      
+      // Cleanup lazy loading observer
+      if ((window as any).lazyImageObserver) {
+        (window as any).lazyImageObserver.disconnect();
+        delete (window as any).lazyImageObserver;
+      }
+    };
+  }, []);
+
   const videoUrls = getVideoUrls(videoResolution);
   return (
     <div className="scroll-snap-container">
@@ -557,10 +740,26 @@ export default function Home() {
                 
                 <div className="gallery-wrapper">
                   <div className="project-gallery" data-gallery="domov">
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/domov/dashboard.png" alt="Domov pod palcem - Dashboard" className="gallery-image" />
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/domov/blinder.png" alt="Domov pod palcem - Blinder control" className="gallery-image" />
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/domov/heating.png" alt="Domov pod palcem - Heating control" className="gallery-image" />
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/domov/time-regime.png" alt="Domov pod palcem - Time regime" className="gallery-image" />
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/domov/dashboard.png" data-alt="Domov pod palcem - Dashboard">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/domov/blinder.png" data-alt="Domov pod palcem - Blinder control">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/domov/heating.png" data-alt="Domov pod palcem - Heating control">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/domov/time-regime.png" data-alt="Domov pod palcem - Time regime">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
                   </div>
                   
                   <div className="gallery-scrollbar-container">
@@ -597,12 +796,36 @@ export default function Home() {
                 
                 <div className="gallery-wrapper">
                   <div className="project-gallery" data-gallery="stable">
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/splashscreen.png" alt="Inteligentní stáj - Splash screen" className="gallery-image" />
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/stable-picker.png" alt="Inteligentní stáj - Stable picker" className="gallery-image" />
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/ventilators.png" alt="Inteligentní stáj - Ventilators" className="gallery-image" />
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/sail-control.png" alt="Inteligentní stáj - Sail control" className="gallery-image" />
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/sensors.png" alt="Inteligentní stáj - Sensors" className="gallery-image" />
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/stable/light-control.png" alt="Inteligentní stáj - Light control" className="gallery-image" />
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/splashscreen.png" data-alt="Inteligentní stáj - Splash screen">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/stable-picker.png" data-alt="Inteligentní stáj - Stable picker">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/ventilators.png" data-alt="Inteligentní stáj - Ventilators">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/sail-control.png" data-alt="Inteligentní stáj - Sail control">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/sensors.png" data-alt="Inteligentní stáj - Sensors">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/light-control.png" data-alt="Inteligentní stáj - Light control">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
                   </div>
                   
                   <div className="gallery-scrollbar-container">
@@ -638,9 +861,21 @@ export default function Home() {
                 
                 <div className="gallery-wrapper">
                   <div className="project-gallery" data-gallery="auth-flow">
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/login.png" alt="Firebase Auth Flow - Login" className="gallery-image" />
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/registration.png" alt="Firebase Auth Flow - Registration" className="gallery-image" />
-                    <img src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/confirmation.png" alt="Firebase Auth Flow - Confirmation" className="gallery-image" />
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/login.png" data-alt="Firebase Auth Flow - Login">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/registration.png" data-alt="Firebase Auth Flow - Registration">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/confirmation.png" data-alt="Firebase Auth Flow - Confirmation">
+                      <div className="image-loading-placeholder">
+                        <div className="image-loading-spinner"></div>
+                      </div>
+                    </div>
                   </div>
                   
                   <div className="gallery-scrollbar-container">
