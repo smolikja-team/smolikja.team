@@ -48,6 +48,14 @@ body {
   }
 }
 
+/* Disable scroll snap in Safari using CSS-only detection */
+@supports (-webkit-hyphens:none) {
+  .scroll-snap-container {
+    scroll-snap-type: none !important;
+    -ms-scroll-snap-type: none !important;
+  }
+}
+
 /* Use dynamic viewport height when supported */
 @supports (height: 100dvh) {
   .scroll-snap-container {
@@ -80,6 +88,13 @@ body {
 @media (min-width: 768px) {
   .section {
     scroll-snap-align: start;
+  }
+}
+
+/* Disable scroll snap align in Safari */
+@supports (-webkit-hyphens:none) {
+  .section {
+    scroll-snap-align: none !important;
   }
 }
 
@@ -821,6 +836,13 @@ html {
   scroll-snap-type: x mandatory;
 }
 
+/* Disable horizontal scroll snap in Safari */
+@supports (-webkit-hyphens:none) {
+  .project-gallery {
+    scroll-snap-type: none !important;
+  }
+}
+
 /* Gallery wrapper for controls */
 .gallery-wrapper {
   position: relative;
@@ -975,6 +997,14 @@ html {
   scroll-snap-align: start;
 }
 
+/* Disable scroll snap align for gallery spacers in Safari */
+@supports (-webkit-hyphens:none) {
+  .project-gallery::before,
+  .project-gallery::after {
+    scroll-snap-align: none !important;
+  }
+}
+
 .project-gallery::-webkit-scrollbar {
   display: none;
 }
@@ -999,6 +1029,13 @@ html {
   /* Safari-specific optimizations */
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+}
+
+/* Disable scroll snap align for gallery images in Safari */
+@supports (-webkit-hyphens:none) {
+  .gallery-image {
+    scroll-snap-align: none !important;
+  }
 }
 
 /* Fallback for browsers that don't support aspect-ratio */
@@ -1246,6 +1283,19 @@ html {
   
   .gallery-image {
     scroll-snap-align: start;
+  }
+}
+
+/* Disable scroll snap for mobile galleries in Safari */
+@media (max-width: 768px) {
+  @supports (-webkit-hyphens:none) {
+    .project-gallery {
+      scroll-snap-type: none !important;
+    }
+    
+    .gallery-image {
+      scroll-snap-align: none !important;
+    }
   }
 }
 
