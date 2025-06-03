@@ -475,8 +475,11 @@ export default function Home() {
         newImg.style.cssText = `
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
+          object-position: center;
           border-radius: clamp(1rem, 3vw, 1.5625rem);
+          max-width: 100%;
+          max-height: 100%;
         `;
         
         // Replace placeholder with actual image
