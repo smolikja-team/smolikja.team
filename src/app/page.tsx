@@ -2,69 +2,32 @@
 
 import { useEffect, useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
-
-// Type definitions
-interface WrapperElementWithCleanup extends HTMLElement {
-  cleanup?: () => void;
-}
-
-interface WindowWithObserver extends Window {
-  lazyImageObserver?: IntersectionObserver;
-}
-
-// Function to determine video resolution based on viewport and connection
-function getVideoResolution(connectionSpeed: string = 'fast') {
-  if (typeof window === 'undefined') return '1080p'; // Default for SSR
-  
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const maxDimension = Math.max(width, height);
-  
-  // Adjust resolution based on connection speed
-  if (connectionSpeed === 'slow') {
-    if (maxDimension <= 720) return '480p';
-    if (maxDimension <= 1080) return '720p';
-    return '1080p'; // Cap at 1080p for slow connections
-  }
-  
-  if (maxDimension <= 480) return '480p';
-  if (maxDimension <= 720) return '720p';
-  if (maxDimension <= 1080) return '1080p';
-  return '2160p';
-}
+import { 
+  isIOS, 
+  supportsWebM, 
+  getConnectionSpeed, 
+  getOptimalVideoResolution 
+} from '@/lib/utils';
+import { VIDEO_CONFIG } from '@/lib/constants';
+import type { BrowserCapabilities, WrapperElementWithCleanup, WindowWithObserver } from '@/types';
 
 // Function to generate video URLs
 function getVideoUrls(resolution: string) {
-  const baseUrl = 'https://smolikja.team/assets/portfolio-web/loop2x/team-logo-';
   return {
-    webm: `${baseUrl}${resolution}.webm`,
-    mp4: `${baseUrl}${resolution}.mp4`
+    webm: `${VIDEO_CONFIG.baseUrl}${resolution}.webm`,
+    mp4: `${VIDEO_CONFIG.baseUrl}${resolution}.mp4`
   };
 }
 
 // Function to detect browser capabilities and connection speed
-function getBrowserCapabilities() {
+function getBrowserCapabilities(): BrowserCapabilities {
   if (typeof window === 'undefined') return { supportsWebM: false, isIOS: false, connectionSpeed: 'fast' };
   
-  const video = document.createElement('video');
-  const supportsWebM = video.canPlayType('video/webm') !== '';
-  
-  // Detect iOS (including iPad Pro with desktop user agent)
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  
-  // Detect connection speed
-  let connectionSpeed = 'fast';
-  if ('connection' in navigator) {
-    const connection = (navigator as unknown as { connection: { effectiveType: string } }).connection;
-    if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
-      connectionSpeed = 'slow';
-    } else if (connection.effectiveType === '3g') {
-      connectionSpeed = 'medium';
-    }
-  }
-  
-  return { supportsWebM, isIOS, connectionSpeed };
+  return {
+    supportsWebM: supportsWebM(),
+    isIOS: isIOS(),
+    connectionSpeed: getConnectionSpeed()
+  };
 }
 
 export default function Home() {
@@ -314,7 +277,7 @@ export default function Home() {
       }
     }
     
-    setVideoResolution(getVideoResolution(caps.connectionSpeed));
+    setVideoResolution(getOptimalVideoResolution(caps.connectionSpeed));
   }, []);
 
   // Intersection Observer for lazy loading
@@ -352,7 +315,7 @@ export default function Home() {
     // Update resolution on window resize
     const handleResize = () => {
       if (!useStaticFallback) {
-        setVideoResolution(getVideoResolution(browserCaps.connectionSpeed));
+        setVideoResolution(getOptimalVideoResolution(browserCaps.connectionSpeed));
       }
     };
 
