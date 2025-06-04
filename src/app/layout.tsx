@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     alternateLocale: "en_US",
     images: [
       {
-        url: "https://smolikja.team/assets/portfolio-web/og-image.jpg",
+        url: "https://smolikja.team/assets/portfolio-web/logo-card.gif",
         width: 1200,
         height: 630,
         alt: "smolikja team - Vývoj mobilních aplikací"
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     creator: "@smolikja",
     title: "smolikja team - Vývoj mobilních aplikací | iOS, Android & Flutter",
     description: "5+ let zkušeností s vývojem mobilních aplikací. Vytváříme iOS a Android aplikace, používáme také Flutter. B2B a B2C projekty.",
-    images: ["https://smolikja.team/assets/portfolio-web/twitter-card.jpg"]
+    images: ["https://smolikja.team/assets/portfolio-web/logo-card.gif"]
   },
   
   // Additional metadata for AI agents and crawlers
