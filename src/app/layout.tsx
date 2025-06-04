@@ -14,27 +14,31 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   // Basic metadata
-  title: "smolikja team",
-  description: "Professional mobile app development team specializing in B2B, B2G, and B2C solutions. 4+ years expertise in iOS native and Flutter cross-platform development. Available for greenfield projects, mentoring, and management roles. | Profesionální tým pro vývoj mobilních aplikací specializující se na B2B, B2G a B2C řešení. 4+ let zkušeností s nativním iOS a Flutter cross-platform vývojem.",
+  title: "smolikja team - Vývoj mobilních aplikací | iOS, Android & Flutter",
+  description: "Tým pro vývoj mobilních aplikací se specializací na B2B a B2C řešení. Více než 5 let zkušeností s vývojem iOS a Android aplikací, používáme také Flutter pro multiplatformní řešení. K dispozici pro nové projekty, mentoring i vedoucí role. | iOS and Android development team specializing in B2B and B2C solutions. 5+ years experience building mobile apps, we also use Flutter for cross-platform projects.",
   
   // Comprehensive keywords for SEO and AI discovery
   keywords: [
-    // English keywords
-    "mobile app developer", "iOS developer", "Flutter developer", "cross-platform development",
-    "B2B mobile apps", "B2G applications", "B2C solutions", "greenfield applications",
-    "iOS native development", "Android development", "web applications",
-    "software architecture", "project management", "team mentoring",
-    "client communication", "project planning", "resource efficiency",
-    "technical leadership", "management role", "Czech Republic developer",
-    "smolikja", "smolikja team", "mobile development team",
-    
-    // Czech keywords
-    "vývojář mobilních aplikací", "iOS vývojář", "Flutter vývojář", "multiplatformní vývoj",
-    "B2B mobilní aplikace", "B2G aplikace", "B2C řešení", "greenfield projekty",
-    "nativní iOS vývoj", "Android vývoj", "webové aplikace",
+    // Czech keywords (primary market)
+    "vývojář mobilních aplikací", "iOS vývojář", "Android vývojář", "Flutter vývojář",
+    "multiplatformní vývoj", "vývoj mobilních aplikací Česko",
+    "B2B mobilní aplikace", "B2C řešení", "greenfield projekty",
+    "nativní iOS vývoj", "nativní Android vývoj", "webové aplikace",
     "softwarová architektura", "projektové řízení", "mentoring týmu",
     "komunikace s klienty", "plánování projektů", "efektivnost zdrojů",
-    "technické vedení", "manažerská role", "český vývojář"
+    "technické vedení", "manažerská role", "český vývojář",
+    "smolikja", "smolikja team", "mobilní aplikace na míru",
+    "outsourcing vývoje aplikací", "freelance vývojář",
+    "iOS aplikace na míru", "Android aplikace na míru",
+    
+    // English keywords (secondary)
+    "mobile app developer", "iOS developer", "Android developer", "Flutter developer",
+    "cross-platform development", "B2B mobile apps", "B2C solutions", "greenfield applications",
+    "iOS native development", "Android native development", "web applications",
+    "software architecture", "project management", "team mentoring",
+    "client communication", "project planning", "resource efficiency",
+    "technical leadership", "management role", "Czech developer",
+    "mobile development team", "app development outsourcing"
   ],
   
   // Author and creator information
@@ -50,26 +54,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://smolikja.team",
     languages: {
+      'cs': "https://smolikja.team",
       'en': "https://smolikja.team",
-      'cs': "https://smolikja.team"
+      'x-default': "https://smolikja.team"
     }
   },
   
   // Open Graph metadata for social sharing
   openGraph: {
     type: "website",
-    title: "smolikja team - Mobile App Development | B2B, B2G, B2C Solutions",
-    description: "Professional mobile app development team with 4+ years in iOS native and Flutter cross-platform development. Specializing in B2B, B2G, B2C solutions, greenfield projects, and technical leadership.",
+    title: "smolikja team - Vývoj mobilních aplikací | iOS, Android & Flutter",
+    description: "Tým pro vývoj iOS a Android aplikací s více než 5 lety zkušeností. Vytváříme mobilní aplikace pro firmy i koncové uživatele, používáme také Flutter pro multiplatformní projekty.",
     url: "https://smolikja.team",
     siteName: "smolikja team",
-    locale: "en_US",
-    alternateLocale: "cs_CZ",
+    locale: "cs_CZ",
+    alternateLocale: "en_US",
     images: [
       {
         url: "https://smolikja.team/assets/portfolio-web/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "smolikja team - Mobile App Development Portfolio"
+        alt: "smolikja team - Vývoj mobilních aplikací"
       }
     ]
   },
@@ -79,34 +84,38 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@smolikja",
     creator: "@smolikja",
-    title: "smolikja team - Mobile App Development | iOS & Flutter Expert",
-    description: "4+ years of mobile app development experience. B2B, B2G, B2C solutions. iOS native & Flutter cross-platform expertise. Available for projects & management roles.",
+    title: "smolikja team - Vývoj mobilních aplikací | iOS, Android & Flutter",
+    description: "5+ let zkušeností s vývojem mobilních aplikací. Vytváříme iOS a Android aplikace, používáme také Flutter. B2B a B2C projekty.",
     images: ["https://smolikja.team/assets/portfolio-web/twitter-card.jpg"]
   },
   
   // Additional metadata for AI agents and crawlers
   other: {
-    // Professional information for AI agents
-    "ai:professional-title": "Mobile App Development Team",
-    "ai:experience-years": "4",
-    "ai:specializations": "iOS Native Development, Flutter Cross-Platform, B2B/B2G/B2C Solutions",
-    "ai:technical-skills": "iOS, Swift, Flutter, Dart, Android, JavaScript, TypeScript, Software Architecture, Project Management",
+    // Professional information for AI agents (Czech primary)
+    "ai:professional-title": "Tým pro Vývoj Mobilních Aplikací",
+    "ai:professional-title-en": "Mobile App Development Team",
+    "ai:experience-years": "5",
+    "ai:location": "Česká republika",
+    "ai:location-en": "Czech Republic",
+    "ai:specializations": "iOS a Android Nativní Vývoj, Flutter Cross-Platform, B2B/B2C Aplikace",
+    "ai:specializations-en": "iOS and Android Native Development, Flutter Cross-Platform, B2B/B2C Applications",
+    "ai:technical-skills": "iOS, Swift, Android, Kotlin, Java, Flutter, Dart, JavaScript, TypeScript, Software Architecture, Project Management",
     "ai:soft-skills": "Team Mentoring, Client Communication, Technical Leadership, Project Planning, Resource Management",
-    "ai:availability": "Available for freelance, contract, and full-time opportunities",
-    "ai:location": "Czech Republic",
-    "ai:languages": "English, Czech",
-    "ai:career-focus": "Offering both technical expertise and management capabilities",
-    
-    // Czech professional information
-    "ai:professional-title-cs": "Tým pro Vývoj Mobilních Aplikací",
-    "ai:specializations-cs": "Nativní iOS Vývoj, Flutter Cross-Platform, B2B/B2G/B2C Řešení",
-    "ai:career-focus-cs": "Nabízíme technickou expertízu i manažerské schopnosti",
+    "ai:availability": "K dispozici pro freelance, kontraktní a full-time příležitosti",
+    "ai:availability-en": "Available for freelance, contract, and full-time opportunities",
+    "ai:languages": "Čeština, Angličtina",
+    "ai:languages-en": "Czech, English",
+    "ai:career-focus": "Nabízíme technickou expertízu i manažerské schopnosti pro český i mezinárodní trh",
+    "ai:market-focus": "Český trh s možností mezinárodních projektů",
     
     // Contact and portfolio information
     "contact:email": "contact@smolikja.team",
     "contact:website": "https://smolikja.team",
-    "portfolio:type": "Mobile App Development Portfolio",
-    "portfolio:projects": "B2B, B2G, B2C Mobile Applications",
+    "contact:location": "Česká republika",
+    "portfolio:type": "Portfolio Vývoje Mobilních Aplikací",
+    "portfolio:type-en": "Mobile App Development Portfolio",
+    "portfolio:projects": "B2B, B2C Mobilní Aplikace",
+    "portfolio:market": "Český a mezinárodní trh",
     
     // SEO enhancement
     "google-site-verification": "your-google-verification-code",
@@ -116,8 +125,11 @@ export const metadata: Metadata = {
     "schema:type": "Organization",
     "schema:name": "smolikja team",
     "schema:legalName": "smolikja team",
-    "schema:description": "Mobile App Development Team",
-    "schema:url": "https://smolikja.team"
+    "schema:description": "Tým pro Vývoj Mobilních Aplikací",
+    "schema:description-en": "Mobile App Development Team",
+    "schema:url": "https://smolikja.team",
+    "schema:addressLocality": "Praha",
+    "schema:addressCountry": "CZ"
   },
   
   // Robots directive
@@ -149,15 +161,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="cs" className="dark">
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         
         {/* Additional language and region support */}
+        <link rel="alternate" hrefLang="cs" href="https://smolikja.team" />
         <link rel="alternate" hrefLang="en" href="https://smolikja.team" />
-        <link rel="alternate" hrefLang="cs" href="https://smolikja.team/cs" />
         <link rel="alternate" hrefLang="x-default" href="https://smolikja.team" />
         
         {/* Structured Data for Search Engines and AI */}
@@ -169,59 +181,70 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "smolikja team",
               "alternateName": "smolikja",
-              "description": "Professional mobile app development team specializing in B2B, B2G, and B2C solutions with 4+ years of expertise in iOS native and Flutter cross-platform development.",
+              "description": "Vytváříme mobilní aplikace pro firmy i koncové uživatele. Máme více než 5 let zkušeností s iOS a Android aplikacemi, používáme také Flutter pro multiplatformní řešení.",
               "url": "https://smolikja.team",
               "sameAs": [
                 "https://smolikja.team",
-                "https://github.com/smolikja",
+                "https://github.com/smolikja-team",
                 "https://linkedin.com/in/smolikja"
               ],
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "CZ"
+              },
               "foundingLocation": {
-                "@type": "Country",
-                "name": "Czech Republic"
+                "@type": "Place",
+                "name": "Česká republika"
               },
               "knowsAbout": [
-                "iOS Development",
-                "Flutter Development", 
-                "Mobile App Architecture",
-                "Cross-platform Development",
-                "B2B Solutions",
-                "B2G Applications",
-                "B2C Mobile Apps",
-                "Project Management",
-                "Team Leadership"
+                "Vývoj iOS aplikací",
+                "Vývoj Android aplikací",
+                "Flutter development",
+                "Architektura mobilních aplikací",
+                "Multiplatformní vývoj",
+                "B2B řešení",
+                "B2C mobilní aplikace",
+                "Projektové řízení",
+                "Technické vedení"
               ],
               "makesOffer": {
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "Mobile App Development Services",
-                  "description": "Professional mobile app development including iOS native, Flutter cross-platform, B2B/B2G/B2C solutions, project management, and technical leadership"
+                  "name": "Služby Vývoje Mobilních Aplikací",
+                  "description": "Vývoj mobilních aplikací - iOS a Android nativní aplikace, Flutter cross-platform řešení, projekty pro firmy i koncové uživatele, technické vedení týmů"
                 }
               },
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
-                "name": "Mobile Development Services",
+                "name": "Služby Mobilního Vývoje",
                 "itemListElement": [
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "iOS Native Development"
+                      "name": "Nativní iOS Vývoj"
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Flutter Cross-Platform Development"
+                      "name": "Nativní Android Vývoj"
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "B2B/B2G/B2C Mobile Solutions"
+                      "name": "Flutter Cross-Platform Vývoj"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "B2B/B2C Mobilní Aplikace"
                     }
                   }
                 ]
@@ -237,19 +260,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "smolikja team - Mobile App Development Portfolio",
+              "name": "smolikja team - Portfolio Vývoje Mobilních Aplikací",
               "alternateName": "smolikja team",
               "url": "https://smolikja.team",
-              "description": "Professional portfolio showcasing mobile app development expertise in B2B, B2G, and B2C solutions. Featuring iOS native and Flutter cross-platform projects.",
-              "inLanguage": ["en", "cs"],
+              "description": "Naše portfolio mobilních aplikací - ukázky iOS a Android projektů, Flutter cross-platform řešení pro firmy i koncové uživatele.",
+              "inLanguage": ["cs", "en"],
               "publisher": {
                 "@type": "Organization",
                 "name": "smolikja team"
-              },
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://smolikja.team/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
               }
             })
           }}
