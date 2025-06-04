@@ -6,17 +6,17 @@
  * Logger utility for development
  */
 export const logger = {
-  info: (message: string, data?: any) => {
+  info: (message: string, data?: unknown) => {
     if (process.env.NODE_ENV === 'development') {
       console.info(`[INFO] ${message}`, data || '');
     }
   },
-  warn: (message: string, data?: any) => {
+  warn: (message: string, data?: unknown) => {
     if (process.env.NODE_ENV === 'development') {
       console.warn(`[WARN] ${message}`, data || '');
     }
   },
-  error: (message: string, error?: any) => {
+  error: (message: string, error?: unknown) => {
     console.error(`[ERROR] ${message}`, error || '');
   }
 };
