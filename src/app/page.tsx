@@ -822,7 +822,7 @@ export default function Home() {
               lineHeight: '1.6',
               margin: '0 auto'
             }}>
-              Tým tvůrců mobilních aplikací vedený <a 
+              Tým tvůrců mobilních aplikací směrován <a 
                 href="https://www.linkedin.com/in/smolikja/" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -874,7 +874,7 @@ export default function Home() {
               </a>
 
               <a 
-                href="https://discord.gg/fgA2PMck" 
+                href="https://discord.gg/jrnAaFeEzu" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="discord-logo-link"
