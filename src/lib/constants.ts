@@ -10,7 +10,7 @@ export const APP_CONFIG = {
 } as const;
 
 export const VIDEO_CONFIG = {
-  baseUrl: 'https://smolikja.team/assets/portfolio-web/loop2x/team-logo-',
+  baseUrl: 'https://smolikja.team/assets/loop2x/team-logo-',
   formats: ['webm', 'mp4'] as const,
   resolutions: ['480p', '720p', '1080p', '2160p'] as const,
 } as const;

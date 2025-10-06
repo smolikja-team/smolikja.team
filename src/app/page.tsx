@@ -556,7 +556,7 @@ export default function Home() {
             <div className="logo-content">
               <div className="logo-container">
                 <Image 
-                  src="https://smolikja.team/assets/portfolio-web/logo-white.svg" 
+                  src="https://smolikja.team/assets/logo-white.svg" 
                   alt="Portfolio Logo" 
                   className="portfolio-logo"
                   width={200}
@@ -638,22 +638,22 @@ export default function Home() {
                 
                 <div className="gallery-wrapper">
                   <div className="project-gallery" data-gallery="domov">
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/domov/dashboard.png" data-alt="Domov pod palcem - Dashboard">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/domov/dashboard.png" data-alt="Domov pod palcem - Dashboard">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
                     </div>
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/domov/blinder.png" data-alt="Domov pod palcem - Blinder control">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/domov/blinder.png" data-alt="Domov pod palcem - Blinder control">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
                     </div>
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/domov/heating.png" data-alt="Domov pod palcem - Heating control">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/domov/heating.png" data-alt="Domov pod palcem - Heating control">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
                     </div>
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/domov/time-regime.png" data-alt="Domov pod palcem - Time regime">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/domov/time-regime.png" data-alt="Domov pod palcem - Time regime">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
@@ -694,32 +694,32 @@ export default function Home() {
                 
                 <div className="gallery-wrapper">
                   <div className="project-gallery" data-gallery="stable">
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/splashscreen.png" data-alt="Inteligentní stáj - Splash screen">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/stable/splashscreen.png" data-alt="Inteligentní stáj - Splash screen">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
                     </div>
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/stable-picker.png" data-alt="Inteligentní stáj - Stable picker">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/stable/stable-picker.png" data-alt="Inteligentní stáj - Stable picker">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
                     </div>
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/ventilators.png" data-alt="Inteligentní stáj - Ventilators">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/stable/ventilators.png" data-alt="Inteligentní stáj - Ventilators">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
                     </div>
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/sail-control.png" data-alt="Inteligentní stáj - Sail control">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/stable/sail-control.png" data-alt="Inteligentní stáj - Sail control">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
                     </div>
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/sensors.png" data-alt="Inteligentní stáj - Sensors">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/stable/sensors.png" data-alt="Inteligentní stáj - Sensors">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
                     </div>
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/stable/light-control.png" data-alt="Inteligentní stáj - Light control">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/stable/light-control.png" data-alt="Inteligentní stáj - Light control">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
@@ -759,17 +759,17 @@ export default function Home() {
                 
                 <div className="gallery-wrapper">
                   <div className="project-gallery" data-gallery="auth-flow">
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/login.png" data-alt="Firebase Auth Flow - Login">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/auth-flow/login.png" data-alt="Firebase Auth Flow - Login">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
                     </div>
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/registration.png" data-alt="Firebase Auth Flow - Registration">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/auth-flow/registration.png" data-alt="Firebase Auth Flow - Registration">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>
                     </div>
-                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/portfolio-web/projects/auth-flow/confirmation.png" data-alt="Firebase Auth Flow - Confirmation">
+                    <div className="gallery-image loading" data-src="https://smolikja.team/assets/projects/auth-flow/confirmation.png" data-alt="Firebase Auth Flow - Confirmation">
                       <div className="image-loading-placeholder">
                         <div className="image-loading-spinner"></div>
                       </div>

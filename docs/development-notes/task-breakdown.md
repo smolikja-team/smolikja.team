@@ -60,7 +60,7 @@
 - [x] Add hardware acceleration and performance optimizations
 - [x] Implement error handling with graceful fallback to gradient background
 - [x] Convert to client component for React event handlers
-- [x] Video URL: `https://smolikja.team/assets/portfolio-web/team-logo-1080p.mp4`
+- [x] Video URL: `https://smolikja.team/assets/team-logo-1080p.mp4`
 
 ## Task 10: Convert to Foreground Video Only ✅
 

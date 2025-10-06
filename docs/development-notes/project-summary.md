@@ -27,7 +27,7 @@ A single-page web application with 3 sections featuring responsive scroll snap f
 ### Video Implementation - Final Version
 
 - **Foreground Video**: Clean autoplay looped video as the main content in intro section
-- **Video URL**: `https://smolikja.team/assets/portfolio-web/team-logo-1080p.mp4`
+- **Video URL**: `https://smolikja.team/assets/team-logo-1080p.mp4`
 - **Object-fit**: contain (as requested) for proper aspect ratio preservation
 - **Mobile Compatibility**: playsinline attribute for iOS Safari support
 - **Performance**: Hardware acceleration and optimized rendering
