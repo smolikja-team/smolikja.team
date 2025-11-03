@@ -8,9 +8,9 @@ export const projects: Project[] = [
     id: 'studanky',
     title: 'Studánky',
     description:
-      'Mobilní aplikace pro Android a iOS ve vývoji, která pomáhá komunitě sledovat stav přírodních studánek a plánovat výlety s dostatkem pitné vody.',
+      'Mobilní aplikace pro iOS a Android ve vývoji, která pomáhá lidem sledovat stav přírodních studánek a plánovat výlety s dostatkem vody.',
     secondaryDescription:
-      'Sbírání dat probíhá přes skenování QR kódů umístěných u studánek a krátký dotazník, díky němuž mají uživatelé vždy čerstvé informace o kvalitě i dostupnosti vody. Projekt vítá partnery i spolupracovníky – v případě zájmu mě prosím kontaktujte. Uživatelé mohou také nahlásit závady přímo vlastníkovi studánky.',
+      'Sbírání dat probíhá přes skenování QR kódů umístěných u studánek a krátký dotazník, díky němuž mají uživatelé vždy čerstvé subjektivní informace o kvalitě i dostupnosti vody. Uživatelé mohou hlásit závady a poškození přímo vlastníkovi studánky. Projekt vítá partnery i spolupracovníky – v případě zájmu nás prosím kontaktujte.',
     secondaryLink: {
       href: 'mailto:smolikja@protonmail.com',
       label: 'smolikja@protonmail.com',
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     id: 'domov',
     title: 'Domov pod palcem',
     description:
-      'Mobilní aplikace pro iOS a Android určená k ovládání chytré domácnosti. Aplikace je navržena s důrazem na ergonomii – veškeré ovládací prvky jsou dostupné palcem ruky, která drží telefon, což umožňuje pohodlné ovládání i v situacích, kdy má uživatel k dispozici pouze jednu ruku.',
+      'Mobilní aplikace pro iOS a Android určená k ovládání chytré domácnosti. Aplikace je navržena s důrazem na ergonomii, uživatelský zážitek – veškeré ovládací prvky jsou dostupné palcem ruky, která drží telefon, což umožňuje pohodlné ovládání i v situacích, kdy má uživatel k dispozici pouze jednu ruku.',
     secondaryDescription:
       'Aplikace se automaticky konfiguruje dle přihlášeného uživatele a komunikuje s chytrou domácností pomocí zabezpečeného WebSocket protokolu. Uživatel má možnost ovládat osvětlení, žaluzie, vstupní brány, vytápění, podlahové topení, rekuperaci i klimatizaci – včetně nastavení časových plánů.',
     images: [
@@ -130,9 +130,9 @@ export const projects: Project[] = [
   },
   {
     id: 'auth-flow',
-    title: 'Firebase Auth Flow pro Flutter',
+    title: 'Flutter Auth Flow',
     description:
-      'Open-source Flutter package s uživatelským rozhraním pro přihlášení a registraci k Firebase pomocí e-mailové adresy.',
+      'Open source Flutter package s uživatelským rozhraním pro přihlášení a registraci.',
     secondaryDescription:
       'Balíček nabízí kompletní přihlašovací flow připravenou k integraci do mobilní aplikace. Dostupný veřejně zde:',
     secondaryLink: {
