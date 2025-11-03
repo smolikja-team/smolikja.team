@@ -845,7 +845,7 @@ html {
   -ms-overflow-style: none;
   
   /* Ensure gallery starts at the beginning */
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: none;
 }
 
 /* Disable horizontal scroll snap in Safari */
@@ -1032,6 +1032,7 @@ html {
 }
 
 /* Add visible black spacers on left and right that scroll with content */
+
 .project-gallery::before,
 .project-gallery::after {
   content: '';
@@ -1039,7 +1040,7 @@ html {
   width: 2rem;
   height: 100%;
   background: #000000;
-  scroll-snap-align: start;
+  scroll-snap-align: none;
 }
 
 /* Disable scroll snap align for gallery spacers in Safari */
@@ -1065,7 +1066,7 @@ html {
   transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  scroll-snap-align: center;
+  scroll-snap-align: none;
   position: relative;
   background: rgba(255, 255, 255, 0.05);
   overflow: hidden;
@@ -1468,11 +1469,11 @@ html {
 @media (max-width: 768px) {
   .project-gallery {
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
+    scroll-snap-type: none;
   }
   
   .gallery-image {
-    scroll-snap-align: start;
+    scroll-snap-align: none;
   }
 }
 

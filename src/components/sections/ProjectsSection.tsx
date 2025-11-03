@@ -42,10 +42,6 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
     startScrollLeft: 0,
     trackWidth: 1,
   });
-  const snapTimeoutRef = useRef<number | null>(null);
-  const programmaticScrollRef = useRef(false);
-  const programmaticResetTimeoutRef = useRef<number | null>(null);
-  const hasNativeSnapRef = useRef(true);
 
   const [imageStates, setImageStates] = useState<ImageStatus[]>(() =>
     project.images.map(() => 'loading'),
@@ -67,13 +63,6 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
   const thumbLeftPercent = maxScroll
     ? (metrics.scrollLeft / maxScroll) * (100 - thumbWidthPercent)
     : 0;
-
-  const clearSnapTimeout = useCallback(() => {
-    if (snapTimeoutRef.current !== null) {
-      window.clearTimeout(snapTimeoutRef.current);
-      snapTimeoutRef.current = null;
-    }
-  }, []);
 
   const updateMetrics = useCallback(() => {
     const gallery = galleryRef.current;
@@ -120,13 +109,6 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
     gallery.scrollLeft = 0;
     updateMetrics();
 
-    if (typeof window !== 'undefined') {
-      const computed = window.getComputedStyle(gallery);
-      const snapType =
-        computed.getPropertyValue('scroll-snap-type') || computed.scrollSnapType || '';
-      hasNativeSnapRef.current = snapType.includes('mandatory');
-    }
-
     const resizeObserver =
       typeof ResizeObserver !== 'undefined'
         ? new ResizeObserver(() => updateMetrics())
@@ -139,85 +121,9 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
     };
   }, [updateMetrics]);
 
-  const snapToClosestSlide = useCallback(() => {
-    const gallery = galleryRef.current;
-    if (!gallery || hasNativeSnapRef.current || dragStateRef.current.isDragging) {
-      return;
-    }
-
-    const slides = Array.from(
-      gallery.querySelectorAll<HTMLElement>('.gallery-image'),
-    );
-    if (!slides.length) {
-      return;
-    }
-
-    const { scrollLeft, clientWidth, scrollWidth } = gallery;
-    const galleryMax = scrollWidth - clientWidth;
-
-    let target = scrollLeft;
-    let nearestDistance = Number.POSITIVE_INFINITY;
-
-    slides.forEach((slide) => {
-      const offset = slide.offsetLeft;
-      const distance = Math.abs(offset - scrollLeft);
-
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        target = offset;
-      }
-    });
-
-    target = clamp(target, 0, galleryMax);
-    if (Math.abs(target - scrollLeft) < 1) {
-      return;
-    }
-
-    programmaticScrollRef.current = true;
-    gallery.scrollTo({
-      left: target,
-      behavior: 'smooth',
-    });
-  }, []);
-
-  const scheduleSnap = useCallback(() => {
-    const gallery = galleryRef.current;
-    if (
-      !gallery ||
-      hasNativeSnapRef.current ||
-      dragStateRef.current.isDragging ||
-      maxScroll <= 0
-    ) {
-      return;
-    }
-
-    clearSnapTimeout();
-    snapTimeoutRef.current = window.setTimeout(() => {
-      snapTimeoutRef.current = null;
-      snapToClosestSlide();
-    }, 160);
-  }, [clearSnapTimeout, maxScroll, snapToClosestSlide]);
-
   const handleScroll = useCallback(() => {
     updateMetrics();
-
-    if (programmaticScrollRef.current) {
-      if (programmaticResetTimeoutRef.current !== null) {
-        window.clearTimeout(programmaticResetTimeoutRef.current);
-      }
-
-      programmaticResetTimeoutRef.current = window.setTimeout(() => {
-        programmaticResetTimeoutRef.current = null;
-        programmaticScrollRef.current = false;
-        if (!hasNativeSnapRef.current) {
-          scheduleSnap();
-        }
-      }, 160);
-      return;
-    }
-
-    scheduleSnap();
-  }, [scheduleSnap, updateMetrics]);
+  }, [updateMetrics]);
 
   const scrollByStep = useCallback(
     (direction: 'prev' | 'next') => {
@@ -229,7 +135,6 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
       const delta = direction === 'next' ? metrics.step : -metrics.step;
       const target = clamp(gallery.scrollLeft + delta, 0, maxScroll);
 
-      programmaticScrollRef.current = true;
       gallery.scrollTo({ left: target, behavior: 'smooth' });
     },
     [maxScroll, metrics.step],
@@ -252,7 +157,6 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
       const clickRatio = (event.clientX - rect.left) / rect.width;
       const target = clamp(clickRatio * maxScroll, 0, maxScroll);
 
-      programmaticScrollRef.current = true;
       gallery.scrollTo({ left: target, behavior: 'smooth' });
     },
     [maxScroll],
@@ -267,7 +171,6 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
       }
 
       event.preventDefault();
-      clearSnapTimeout();
       const rect = track.getBoundingClientRect();
       dragStateRef.current = {
         isDragging: true,
@@ -278,7 +181,7 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
 
       event.currentTarget.setPointerCapture(event.pointerId);
     },
-    [clearSnapTimeout],
+    [],
   );
 
   const handleThumbPointerMove = useCallback(
@@ -289,7 +192,6 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
       }
 
       event.preventDefault();
-      clearSnapTimeout();
       const { startX, startScrollLeft, trackWidth } = dragStateRef.current;
       const delta = event.clientX - startX;
       const ratio = trackWidth ? delta / trackWidth : 0;
@@ -297,16 +199,15 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
 
       gallery.scrollLeft = target;
     },
-    [clearSnapTimeout, maxScroll],
+    [maxScroll],
   );
 
   const stopDragging = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
     if (dragStateRef.current.isDragging) {
       dragStateRef.current.isDragging = false;
       event.currentTarget.releasePointerCapture(event.pointerId);
-      scheduleSnap();
     }
-  }, [scheduleSnap]);
+  }, []);
 
   const handleThumbKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -318,16 +219,10 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
         scrollByStep('prev');
       } else if (event.key === 'Home') {
         event.preventDefault();
-        if (galleryRef.current) {
-          programmaticScrollRef.current = true;
-          galleryRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        }
+        galleryRef.current?.scrollTo({ left: 0, behavior: 'smooth' });
       } else if (event.key === 'End') {
         event.preventDefault();
-        if (galleryRef.current) {
-          programmaticScrollRef.current = true;
-          galleryRef.current.scrollTo({ left: maxScroll, behavior: 'smooth' });
-        }
+        galleryRef.current?.scrollTo({ left: maxScroll, behavior: 'smooth' });
       }
     },
     [maxScroll, scrollByStep],
@@ -345,9 +240,8 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
         return next;
       });
       updateMetrics();
-      scheduleSnap();
     },
-    [scheduleSnap, updateMetrics],
+    [updateMetrics],
   );
 
   const handleImageError = useCallback(
@@ -361,9 +255,8 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
         return next;
       });
       updateMetrics();
-      scheduleSnap();
     },
-    [scheduleSnap, updateMetrics],
+    [updateMetrics],
   );
 
   const canScrollPrev = metrics.scrollLeft > 1;
@@ -373,16 +266,6 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
     width: `${thumbWidthPercent}%`,
     left: `${thumbLeftPercent}%`,
   };
-
-  useEffect(() => {
-    return () => {
-      clearSnapTimeout();
-      if (programmaticResetTimeoutRef.current !== null) {
-        window.clearTimeout(programmaticResetTimeoutRef.current);
-        programmaticResetTimeoutRef.current = null;
-      }
-    };
-  }, [clearSnapTimeout]);
 
   const wrapperClassName = [
     'gallery-wrapper',
