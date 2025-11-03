@@ -1347,17 +1347,33 @@ html {
     gap: 0.75rem;
     margin: 1.5rem 0;
     padding: 0.5rem 0;
+    scroll-padding-left: calc(var(--projects-gutter) + 0.5rem);
+    scroll-padding-right: calc(var(--projects-gutter) + 0.5rem);
   }
   
   .project-gallery::before,
   .project-gallery::after {
-    width: 1.5rem;
+    width: calc(var(--projects-gutter) + 0.75rem);
   }
 
   .gallery-wrapper {
-    --gallery-fade-width: 1.5rem;
-    margin: 1.85rem calc(-1 * var(--projects-gutter));
-    padding: 0 var(--projects-gutter);
+    --gallery-fade-width: calc(var(--projects-gutter) + 0.75rem);
+    margin: 1.75rem 0 2rem;
+    padding: 0;
+  }
+  
+  .gallery-wrapper::before {
+    left: 0;
+    width: calc(var(--projects-gutter) + 0.75rem);
+  }
+  
+  .gallery-wrapper::after {
+    right: 0;
+    width: calc(var(--projects-gutter) + 0.75rem);
+  }
+  
+  .gallery-scrollbar-container {
+    padding: 0;
   }
   
   .gallery-image {
@@ -1381,7 +1397,7 @@ html {
 
 @media (max-width: 480px) {
   .projects-container {
-    --projects-gutter: 0;
+    --projects-gutter: 0.75rem;
     padding: 0 var(--projects-gutter);
   }
   
@@ -1393,27 +1409,39 @@ html {
   .project-title,
   .project-description,
   .project-description-2 {
-    padding: 0 1rem;
+    padding: 0 var(--projects-gutter);
   }
   
   .project-gallery {
     gap: 0.5rem;
     margin: 1.5rem 0;
     padding: 0.5rem 0;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    display: flex;
-    justify-content: flex-start;
+    scroll-padding-left: calc(var(--projects-gutter) + 0.5rem);
+    scroll-padding-right: calc(var(--projects-gutter) + 0.5rem);
   }
   
   .project-gallery::before,
   .project-gallery::after {
-    width: 1rem;
+    width: calc(var(--projects-gutter) + 0.5rem);
   }
   
   .gallery-wrapper {
-    --gallery-fade-width: 0.9rem;
-    margin: 1.5rem 0;
+    --gallery-fade-width: calc(var(--projects-gutter) + 0.5rem);
+    margin: 1.5rem 0 1.75rem;
+    padding: 0;
+  }
+  
+  .gallery-wrapper::before {
+    left: 0;
+    width: calc(var(--projects-gutter) + 0.5rem);
+  }
+  
+  .gallery-wrapper::after {
+    right: 0;
+    width: calc(var(--projects-gutter) + 0.5rem);
+  }
+  
+  .gallery-scrollbar-container {
     padding: 0;
   }
   
