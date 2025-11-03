@@ -34,8 +34,24 @@ export default function IntroSection() {
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   const [videoError, setVideoError] = useState<boolean>(false);
   const [useStaticFallback, setUseStaticFallback] = useState<boolean>(false);
+  const [hintMounted, setHintMounted] = useState<boolean>(false);
+  const [showScrollHint, setShowScrollHint] = useState<boolean>(false);
 
   const videoUrls = buildVideoUrls(videoResolution);
+  const hintTimeoutRef = useRef<number | null>(null);
+  const hintActivatedRef = useRef<boolean>(false);
+
+  const scheduleScrollHint = useCallback(() => {
+    if (hintActivatedRef.current) {
+      return;
+    }
+
+    hintActivatedRef.current = true;
+    setHintMounted(true);
+    hintTimeoutRef.current = window.setTimeout(() => {
+      setShowScrollHint(true);
+    }, 10_000);
+  }, []);
 
   useEffect(() => {
     const detectedCapabilities: BrowserCapabilities = {
@@ -62,6 +78,7 @@ export default function IntroSection() {
     const section = sectionRef.current;
     if (!section) {
       setShouldLoadVideo(true);
+      scheduleScrollHint();
       return;
     }
 
@@ -70,6 +87,7 @@ export default function IntroSection() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setShouldLoadVideo(true);
+            scheduleScrollHint();
           }
         });
       },
@@ -79,7 +97,7 @@ export default function IntroSection() {
     observer.observe(section);
 
     return () => observer.disconnect();
-  }, [useStaticFallback]);
+  }, [scheduleScrollHint, useStaticFallback]);
 
   useEffect(() => {
     if (useStaticFallback) return;
@@ -137,6 +155,48 @@ export default function IntroSection() {
     };
   }, [handleVideoLoad, shouldLoadVideo, useStaticFallback, videoLoaded]);
 
+  useEffect(() => {
+    return () => {
+      if (hintTimeoutRef.current) {
+        clearTimeout(hintTimeoutRef.current);
+        hintTimeoutRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hintMounted) {
+      return;
+    }
+
+    const handleScroll = () => {
+      if (window.scrollY > 32) {
+        if (hintTimeoutRef.current) {
+          clearTimeout(hintTimeoutRef.current);
+          hintTimeoutRef.current = null;
+        }
+        setShowScrollHint(false);
+        setHintMounted(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [hintMounted]);
+
+  useEffect(() => {
+    if (useStaticFallback || videoError) {
+      if (hintTimeoutRef.current) {
+        clearTimeout(hintTimeoutRef.current);
+        hintTimeoutRef.current = null;
+      }
+      setShowScrollHint(false);
+      setHintMounted(false);
+    }
+  }, [useStaticFallback, videoError]);
+
+  const canDisplayScrollHint = hintMounted && !useStaticFallback && !videoError;
+
   return (
     <section ref={sectionRef} className="section section-intro">
       {(useStaticFallback || !shouldLoadVideo || videoError) && (
@@ -184,7 +244,13 @@ export default function IntroSection() {
           Váš prohlížeč nepodporuje přehrávání videa.
         </video>
       )}
+
+      {canDisplayScrollHint && (
+        <div className={`scroll-hint ${showScrollHint ? 'visible' : ''}`}>
+          <span className="scroll-hint__text">Scrollujte</span>
+          <span className="scroll-hint__arrow" aria-hidden="true" />
+        </div>
+      )}
     </section>
   );
 }
-

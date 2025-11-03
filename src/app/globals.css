@@ -1213,6 +1213,64 @@ html {
   color: white;
 }
 
+.scroll-hint {
+  position: absolute;
+  bottom: clamp(2rem, 6vh, 3.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.scroll-hint.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-hint__text {
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+}
+
+.scroll-hint__arrow {
+  width: 1rem;
+  height: 1rem;
+  border-right: 0.125rem solid rgba(255, 255, 255, 0.85);
+  border-bottom: 0.125rem solid rgba(255, 255, 255, 0.85);
+  transform: rotate(45deg);
+  animation: scrollHintPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollHintPulse {
+  0%,
+  100% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint__arrow {
+    animation: none;
+  }
+}
+
 /* Mobile optimizations for project gallery */
 @media (max-width: 768px) {
   .projects-container {
