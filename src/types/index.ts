@@ -14,27 +14,23 @@ export interface BrowserCapabilities {
   connectionSpeed: 'slow' | 'medium' | 'fast';
 }
 
-export interface VideoState {
-  resolution: string;
-  error: boolean;
-  shouldLoad: boolean;
-  loaded: boolean;
-  useStaticFallback: boolean;
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+export interface ProjectLink {
+  href: string;
+  label: string;
 }
 
 export interface Project {
   id: string;
   title: string;
   description: string;
-  images: string[];
-  technologies: string[];
-  featured?: boolean;
-}
-
-export interface WindowWithObserver extends Window {
-  lazyImageObserver?: IntersectionObserver;
-}
-
-export interface WrapperElementWithCleanup extends HTMLElement {
-  cleanup?: () => void;
+  secondaryDescription?: string;
+  secondaryLink?: ProjectLink;
+  images: ProjectImage[];
 }

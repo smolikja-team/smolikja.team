@@ -1159,6 +1159,60 @@ html {
   color: white;
 }
 
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  gap: 2rem;
+}
+
+.about-intro {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin: 0 auto;
+}
+
+.about-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+  transition: text-decoration-color 0.3s ease;
+}
+
+.about-link:hover,
+.about-link:focus-visible {
+  text-decoration-color: rgba(255, 255, 255, 1);
+  outline: none;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.social-link {
+  display: inline-flex;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.8;
+  color: inherit;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  transform: translateY(-2px);
+  opacity: 1;
+  outline: none;
+}
+
+.social-link svg {
+  pointer-events: none;
+  color: white;
+}
+
 /* Mobile optimizations for project gallery */
 @media (max-width: 768px) {
   .projects-container {

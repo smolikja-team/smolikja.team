@@ -1,16 +1,17 @@
 import type { NextConfig } from "next";
 
+const isStaticExport = process.env.NEXT_OUTPUT_MODE === 'export';
+
 const nextConfig: NextConfig = {
   // Production optimizations
   compress: true,
   poweredByHeader: false,
-  output: 'export',
+  output: isStaticExport ? 'export' : 'standalone',
   trailingSlash: true,
-  distDir: 'out',
   
   // Image optimization
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: isStaticExport,
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

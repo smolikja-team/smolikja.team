@@ -3,3 +3,4 @@
  */
 
 export { default as SafariDetection } from './SafariDetection';
+export * from './sections';
