@@ -132,29 +132,29 @@ export const projects: Project[] = [
     id: 'auth-flow',
     title: 'Flutter Auth Flow',
     description:
-      'Open source Flutter package s uživatelským rozhraním pro přihlášení a registraci.',
+      'Open source Flutter balíček s přizpůsobitelným autentizačním rozhraním napojeným na libovolný backend.',
     secondaryDescription:
-      'Balíček nabízí kompletní přihlašovací flow připravenou k integraci do mobilní aplikace. Dostupný veřejně zde:',
+      'Hlavní body: přihlášení a registrace, ověření e-mailu, reset hesla, lokalizace CS/EN. Kód je veřejný zde:',
     secondaryLink: {
-      href: 'https://github.com/smolikja-team/firebase-auth-flow',
-      label: 'https://github.com/smolikja-team/firebase-auth-flow',
+      href: 'https://github.com/smolikja/flutter-auth-flow',
+      label: 'https://github.com/smolikja/flutter-auth-flow',
     },
     images: [
       {
         src: 'https://smolikja.team/assets/projects/auth-flow/login.png',
-        alt: 'Firebase Auth Flow – přihlašovací obrazovka',
+        alt: 'Flutter Auth Flow – přihlašovací obrazovka',
         width: PORTRAIT_WIDTH,
         height: PORTRAIT_HEIGHT,
       },
       {
         src: 'https://smolikja.team/assets/projects/auth-flow/registration.png',
-        alt: 'Firebase Auth Flow – registrační formulář',
+        alt: 'Flutter Auth Flow – registrační formulář',
         width: PORTRAIT_WIDTH,
         height: PORTRAIT_HEIGHT,
       },
       {
         src: 'https://smolikja.team/assets/projects/auth-flow/confirmation.png',
-        alt: 'Firebase Auth Flow – potvrzení registrace',
+        alt: 'Flutter Auth Flow – potvrzení registrace',
         width: PORTRAIT_WIDTH,
         height: PORTRAIT_HEIGHT,
       },
