@@ -267,8 +267,17 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
     left: `${thumbLeftPercent}%`,
   };
 
+  const wrapperClassName = [
+    'gallery-wrapper',
+    maxScroll > 0 ? 'gallery-wrapper--overflow' : '',
+    canScrollPrev ? 'gallery-wrapper--can-scroll-prev' : '',
+    canScrollNext ? 'gallery-wrapper--can-scroll-next' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <div className="gallery-wrapper">
+    <div className={wrapperClassName}>
       <div
         ref={galleryRef}
         className="project-gallery"
@@ -376,26 +385,30 @@ export default function ProjectsSection() {
           <div className="projects-container">
             {projects.map((project) => (
               <div className="project-item" key={project.id}>
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
+                <div className="project-copy">
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                </div>
                 <ProjectGallery project={project} />
                 {project.secondaryDescription && (
-                  <p className="project-description-2">
-                    {project.secondaryDescription}
-                    {project.secondaryLink ? (
-                      <>
-                        {' '}
-                        <a
-                          href={project.secondaryLink.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-link"
-                        >
-                          {project.secondaryLink.label}
-                        </a>
-                      </>
-                    ) : null}
-                  </p>
+                  <div className="project-copy project-copy--secondary">
+                    <p className="project-description-2">
+                      {project.secondaryDescription}
+                      {project.secondaryLink ? (
+                        <>
+                          {' '}
+                          <a
+                            href={project.secondaryLink.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
+                          >
+                            {project.secondaryLink.label}
+                          </a>
+                        </>
+                      ) : null}
+                    </p>
+                  </div>
                 )}
               </div>
             ))}
