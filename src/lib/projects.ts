@@ -5,6 +5,50 @@ const PORTRAIT_HEIGHT = 2532;
 
 export const projects: Project[] = [
   {
+    id: 'studanky',
+    title: 'Studánky',
+    description:
+      'Mobilní aplikace pro Android a iOS ve vývoji, která pomáhá komunitě sledovat stav přírodních studánek a plánovat výlety s dostatkem pitné vody.',
+    secondaryDescription:
+      'Sbírání dat probíhá přes skenování QR kódů umístěných u studánek a krátký dotazník, díky němuž mají uživatelé vždy čerstvé informace o kvalitě i dostupnosti vody. Projekt vítá partnery i spolupracovníky – v případě zájmu mě prosím kontaktujte. Uživatelé mohou také nahlásit závady přímo vlastníkovi studánky.',
+    secondaryLink: {
+      href: 'mailto:smolikja@protonmail.com',
+      label: 'smolikja@protonmail.com',
+    },
+    images: [
+      {
+        src: 'https://smolikja.team/assets/projects/studanky/map.png',
+        alt: 'Studánky – mapa dostupných pramenů',
+        width: PORTRAIT_WIDTH,
+        height: PORTRAIT_HEIGHT,
+      },
+      {
+        src: 'https://smolikja.team/assets/projects/studanky/spring.png',
+        alt: 'Studánky – přehled studánek v okolí',
+        width: PORTRAIT_WIDTH,
+        height: PORTRAIT_HEIGHT,
+      },
+      {
+        src: 'https://smolikja.team/assets/projects/studanky/detail.png',
+        alt: 'Studánky – detailní informace o prameni',
+        width: PORTRAIT_WIDTH,
+        height: PORTRAIT_HEIGHT,
+      },
+      {
+        src: 'https://smolikja.team/assets/projects/studanky/scanner.png',
+        alt: 'Studánky – skenování QR kódu u studánky',
+        width: PORTRAIT_WIDTH,
+        height: PORTRAIT_HEIGHT,
+      },
+      {
+        src: 'https://smolikja.team/assets/projects/studanky/report.png',
+        alt: 'Studánky – rychlé hlášení stavu pramene',
+        width: PORTRAIT_WIDTH,
+        height: PORTRAIT_HEIGHT,
+      },
+    ],
+  },
+  {
     id: 'domov',
     title: 'Domov pod palcem',
     description:
@@ -117,4 +161,3 @@ export const projects: Project[] = [
     ],
   },
 ];
-
