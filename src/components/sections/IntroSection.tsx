@@ -207,9 +207,11 @@ export default function IntroSection() {
                 src={FALLBACK_LOGO_SRC}
                 alt="Portfolio Logo"
                 className="portfolio-logo"
-                width={200}
-                height={100}
+                width={0}
+                height={0}
+                sizes="(max-width: 479px) 50vw, (max-width: 767px) 60vw, (max-width: 991px) 70vw, 40vw"
                 priority
+                style={{ width: '100%', height: 'auto' }}
               />
             </div>
             <div className="simple-arrow-down" />

@@ -380,13 +380,14 @@ body {
   justify-content: center;
   align-items: center;
   padding: clamp(1.5rem, 5vw, 2.5rem);
+  width: clamp(15rem, 40vw, 28.125rem);
+  max-width: 100%;
 }
 
 .portfolio-logo {
-  max-width: clamp(15rem, 40vw, 28.125rem);
-  max-height: clamp(15rem, 40vw, 28.125rem);
-  width: auto;
+  width: 100%;
   height: auto;
+  display: block;
   object-fit: contain;
 }
 
@@ -408,11 +409,11 @@ body {
   .logo-container {
     padding: clamp(1.25rem, 4vw, 1.875rem);
     margin-bottom: clamp(2rem, 6vw, 3.125rem);
+    width: clamp(12rem, 35vw, 21.875rem);
   }
 
   .portfolio-logo {
-    max-width: clamp(12rem, 35vw, 21.875rem);
-    max-height: clamp(12rem, 35vw, 21.875rem);
+    width: 100%;
   }
 }
 
@@ -420,11 +421,11 @@ body {
   .logo-container {
     padding: clamp(1.25rem, 4vw, 1.875rem);
     margin-bottom: clamp(1.5rem, 5vw, 2.5rem);
+    width: clamp(10rem, 30vw, 17.5rem);
   }
 
   .portfolio-logo {
-    max-width: clamp(10rem, 30vw, 17.5rem);
-    max-height: clamp(10rem, 30vw, 17.5rem);
+    width: 100%;
   }
   
   .simple-arrow-down {
@@ -439,11 +440,11 @@ body {
   .logo-container {
     padding: clamp(1rem, 3vw, 1.25rem);
     margin-bottom: clamp(1.25rem, 4vw, 1.875rem);
+    width: clamp(8rem, 25vw, 13.75rem);
   }
 
   .portfolio-logo {
-    max-width: clamp(8rem, 25vw, 13.75rem);
-    max-height: clamp(8rem, 25vw, 13.75rem);
+    width: 100%;
   }
 }
 
