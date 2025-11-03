@@ -376,18 +376,15 @@ body {
 }
 
 .logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   padding: clamp(1.5rem, 5vw, 2.5rem);
   width: clamp(15rem, 40vw, 28.125rem);
   max-width: 100%;
+  position: relative;
+  aspect-ratio: 1 / 1;
 }
 
 .portfolio-logo {
-  width: 100%;
-  height: auto;
-  display: block;
   object-fit: contain;
 }
 
@@ -411,10 +408,6 @@ body {
     margin-bottom: clamp(2rem, 6vw, 3.125rem);
     width: clamp(12rem, 35vw, 21.875rem);
   }
-
-  .portfolio-logo {
-    width: 100%;
-  }
 }
 
 @media screen and (max-width: 767px) {
@@ -422,10 +415,6 @@ body {
     padding: clamp(1.25rem, 4vw, 1.875rem);
     margin-bottom: clamp(1.5rem, 5vw, 2.5rem);
     width: clamp(10rem, 30vw, 17.5rem);
-  }
-
-  .portfolio-logo {
-    width: 100%;
   }
   
   .simple-arrow-down {
@@ -441,10 +430,6 @@ body {
     padding: clamp(1rem, 3vw, 1.25rem);
     margin-bottom: clamp(1.25rem, 4vw, 1.875rem);
     width: clamp(8rem, 25vw, 13.75rem);
-  }
-
-  .portfolio-logo {
-    width: 100%;
   }
 }
 
