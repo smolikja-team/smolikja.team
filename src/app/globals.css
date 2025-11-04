@@ -874,9 +874,10 @@ html {
 .gallery-wrapper {
   --gallery-fade-width: clamp(2rem, 6vw, 3.5rem);
   --gallery-gap: 1rem;
-  --gallery-offset: max(calc(var(--gallery-gap, 0px) * 0.5), calc(var(--gallery-fade-width) - var(--gallery-gap, 0px) * 0.5));
   --gallery-mask-soft-start: calc(var(--gallery-fade-width) * 0.45);
   --gallery-mask-hard-start: calc(var(--gallery-fade-width) * 0.85);
+  --gallery-edge-space: calc(var(--gallery-fade-width) + var(--gallery-gap, 0px));
+  --gallery-offset: var(--gallery-edge-space);
   position: relative;
   margin: 2.5rem calc(-1 * var(--projects-gutter));
   padding: 0 var(--projects-gutter);
@@ -888,7 +889,7 @@ html {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: calc(var(--projects-gutter, 0px) + var(--gallery-fade-width) + var(--gallery-gap, 0px) * 0.5);
+  width: calc(var(--projects-gutter, 0px) + var(--gallery-edge-space, 0px));
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -925,6 +926,17 @@ html {
 
 .gallery-wrapper--can-scroll-next::after {
   opacity: 1;
+}
+
+.gallery-spacer {
+  flex: 0 0 var(--gallery-edge-space, 0px);
+  width: var(--gallery-edge-space, 0px);
+  min-width: var(--gallery-edge-space, 0px);
+  height: 100%;
+  align-self: stretch;
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Gallery scroll bar container */
