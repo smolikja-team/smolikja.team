@@ -309,7 +309,8 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
                 src={image.src}
                 alt={image.alt}
                 fill
-                sizes="(max-width: 768px) 75vw, 25rem"
+                sizes="(max-width: 768px) 90vw, (max-width: 1280px) 32vw, 560px"
+                quality={100}
                 className="gallery-image-content"
                 onLoad={handleImageLoaded(index)}
                 onError={handleImageError(index)}
