@@ -24,35 +24,70 @@ export default function AboutSection() {
     <section className="section section-about">
       <div className="content-wrapper">
         <div className="section-content about-content">
-          <p className="about-intro">
-            Tým tvůrců mobilních aplikací směrován{' '}
+          <div className="about-body">
+            <h2 className="about-heading">Budujeme mobilní appky na zelené louce</h2>
+            <p className="about-description">
+              Jsme smolikja team a všechny mobilní aplikace vytváříme na zelené louce in-house.
+              Řídíme celý cyklus – strategii a product discovery, výzkum a analýzy, UX a vizuální
+              návrh, technickou architekturu, implementaci, marketing i obchodní uvedení. Díky tomu
+              držíme kvalitu, tempo i kontext projektu pod jednou střechou.
+            </p>
+            <p className="about-description">
+              Provozujeme vlastní servery pro vývojová prostředí a zároveň využíváme cloud pro produkci, abychom dokázali bezpečně
+              škálovat, monitorovat a dlouhodobě rozvíjet aplikace, které nasazujeme pro naše klienty
+              i interní produkty.
+            </p>
+          </div>
+
+          <div className="about-cta">
+            <h3 className="about-cta__title">Přidejte se k nám na Discord</h3>
+            <p className="about-cta__description">
+              Nechceme na projektech fungovat v izolaci. Hledáme lidi, kteří řeší podobné věci –
+              staví vlastní produkty, pečují o klientské aplikace nebo se chtějí pustit do něčeho
+              vlastního – a mají chuť sdílet zkušenosti, know-how i zodpovědnost.
+            </p>
             <a
-              href="https://www.linkedin.com/in/smolikja/"
+              href="https://discord.gg/jrnAaFeEzu"
               target="_blank"
               rel="noopener noreferrer"
-              className="about-link"
+              className="about-cta__button"
             >
-              Jakubem Smolíkem
+              Přidat se na Discord
             </a>
-          </p>
-
-          <div className="social-links">
-            {SOCIAL_LINKS.map((link) => (
+            <p className="about-cta__footer">
+              Osobně nás najdete ve{' '}
               <a
-                key={link.href}
-                href={link.href}
+                href="https://sklad.digital/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-link"
-                aria-label={`Otevřít ${link.label} smolikja team`}
+                className="about-link"
               >
-                {link.icon}
+                SKLADu
               </a>
-            ))}
+              , kreativním a technologickém prostoru na Smíchově, kde máme zázemí a jsou volná místa pro společné
+              setkávání.
+            </p>
+          </div>
+
+          <div className="about-social">
+            <p className="about-social__label">Kontaktujte smolikja team</p>
+            <div className="social-links">
+              {SOCIAL_LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link"
+                  aria-label={`Otevřít ${link.label} smolikja team`}
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
