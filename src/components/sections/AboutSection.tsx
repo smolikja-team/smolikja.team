@@ -1,5 +1,14 @@
 const SOCIAL_LINKS = [
   {
+    href: 'mailto:smolikja@protonmail.com',
+    label: 'E-mail',
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20 4H4C2.897 4 2 4.897 2 6v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
+      </svg>
+    ),
+  },
+  {
     href: 'https://github.com/smolikja-team/',
     label: 'GitHub',
     icon: (
