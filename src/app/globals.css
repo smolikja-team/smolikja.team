@@ -819,12 +819,41 @@ html {
 /* Horizontal image gallery */
 .project-gallery {
   display: flex;
-  gap: 1rem;
+  gap: var(--gallery-gap, 1rem);
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 1rem 0;
   margin: 0;
   position: relative;
+  scroll-padding-left: calc(var(--projects-gutter, 0px) + var(--gallery-offset, 0px));
+  scroll-padding-right: calc(var(--projects-gutter, 0px) + var(--gallery-offset, 0px));
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.45) var(--gallery-mask-soft-start),
+    rgba(0, 0, 0, 1) var(--gallery-mask-hard-start),
+    rgba(0, 0, 0, 1) calc(100% - var(--gallery-mask-hard-start)),
+    rgba(0, 0, 0, 0.45) calc(100% - var(--gallery-mask-soft-start)),
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.45) var(--gallery-mask-soft-start),
+    rgba(0, 0, 0, 1) var(--gallery-mask-hard-start),
+    rgba(0, 0, 0, 1) calc(100% - var(--gallery-mask-hard-start)),
+    rgba(0, 0, 0, 0.45) calc(100% - var(--gallery-mask-soft-start)),
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-mode: alpha;
+  -webkit-mask-mode: alpha;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  will-change: mask-image;
   
   /* Hide scrollbar but allow scrolling */
   scrollbar-width: none;
@@ -844,6 +873,10 @@ html {
 /* Gallery wrapper for controls */
 .gallery-wrapper {
   --gallery-fade-width: clamp(2rem, 6vw, 3.5rem);
+  --gallery-gap: 1rem;
+  --gallery-offset: max(calc(var(--gallery-gap, 0px) * 0.5), calc(var(--gallery-fade-width) - var(--gallery-gap, 0px) * 0.5));
+  --gallery-mask-soft-start: calc(var(--gallery-fade-width) * 0.45);
+  --gallery-mask-hard-start: calc(var(--gallery-fade-width) * 0.85);
   position: relative;
   margin: 2.5rem calc(-1 * var(--projects-gutter));
   padding: 0 var(--projects-gutter);
@@ -855,21 +888,35 @@ html {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: var(--gallery-fade-width);
+  width: calc(var(--projects-gutter, 0px) + var(--gallery-fade-width) + var(--gallery-gap, 0px) * 0.5);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 3;
+  will-change: opacity;
+  transform: translateZ(0);
 }
 
 .gallery-wrapper::before {
-  left: var(--projects-gutter);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 85%);
+  left: calc(-1 * var(--projects-gutter, 0px));
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 0.25) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 .gallery-wrapper::after {
-  right: var(--projects-gutter);
-  background: linear-gradient(270deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 85%);
+  right: calc(-1 * var(--projects-gutter, 0px));
+  background: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 0.25) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 .gallery-wrapper--can-scroll-prev::before {
@@ -1014,26 +1061,6 @@ html {
   
   .gallery-scrollbar-thumb {
     min-width: 30px;
-  }
-}
-
-/* Add visible black spacers on left and right that scroll with content */
-
-.project-gallery::before,
-.project-gallery::after {
-  content: '';
-  flex-shrink: 0;
-  width: 2rem;
-  height: 100%;
-  background: #000000;
-  scroll-snap-align: none;
-}
-
-/* Disable scroll snap align for gallery spacers in Safari */
-@supports (-webkit-hyphens:none) {
-  .project-gallery::before,
-  .project-gallery::after {
-    scroll-snap-align: none !important;
   }
 }
 
@@ -1331,32 +1358,17 @@ html {
   }
   
   .project-gallery {
-    gap: 0.75rem;
     margin: 1.5rem 0;
     padding: 0.5rem 0;
-    scroll-padding-left: calc(var(--projects-gutter) + 0.5rem);
-    scroll-padding-right: calc(var(--projects-gutter) + 0.5rem);
-  }
-  
-  .project-gallery::before,
-  .project-gallery::after {
-    width: calc(var(--projects-gutter) + 0.75rem);
+    scroll-padding-left: calc(var(--projects-gutter, 0px) + var(--gallery-offset, 0px));
+    scroll-padding-right: calc(var(--projects-gutter, 0px) + var(--gallery-offset, 0px));
   }
 
   .gallery-wrapper {
+    --gallery-gap: 0.75rem;
     --gallery-fade-width: calc(var(--projects-gutter) + 0.75rem);
     margin: 1.75rem 0 2rem;
     padding: 0;
-  }
-  
-  .gallery-wrapper::before {
-    left: 0;
-    width: calc(var(--projects-gutter) + 0.75rem);
-  }
-  
-  .gallery-wrapper::after {
-    right: 0;
-    width: calc(var(--projects-gutter) + 0.75rem);
   }
   
   .gallery-scrollbar-container {
@@ -1400,32 +1412,17 @@ html {
   }
   
   .project-gallery {
-    gap: 0.5rem;
     margin: 1.5rem 0;
     padding: 0.5rem 0;
-    scroll-padding-left: calc(var(--projects-gutter) + 0.5rem);
-    scroll-padding-right: calc(var(--projects-gutter) + 0.5rem);
+    scroll-padding-left: calc(var(--projects-gutter, 0px) + var(--gallery-offset, 0px));
+    scroll-padding-right: calc(var(--projects-gutter, 0px) + var(--gallery-offset, 0px));
   }
-  
-  .project-gallery::before,
-  .project-gallery::after {
-    width: calc(var(--projects-gutter) + 0.5rem);
-  }
-  
+
   .gallery-wrapper {
+    --gallery-gap: 0.5rem;
     --gallery-fade-width: calc(var(--projects-gutter) + 0.5rem);
     margin: 1.5rem 0 1.75rem;
     padding: 0;
-  }
-  
-  .gallery-wrapper::before {
-    left: 0;
-    width: calc(var(--projects-gutter) + 0.5rem);
-  }
-  
-  .gallery-wrapper::after {
-    right: 0;
-    width: calc(var(--projects-gutter) + 0.5rem);
   }
   
   .gallery-scrollbar-container {
