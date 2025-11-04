@@ -825,7 +825,8 @@ html {
   gap: var(--gallery-gap, 1rem);
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 1rem 0;
+  padding-block: 1rem;
+  padding-inline: var(--gallery-edge-space, 0px);
   margin: 0;
   position: relative;
   scroll-padding-left: calc(var(--projects-gutter, 0px) + var(--gallery-offset, 0px));
@@ -929,17 +930,6 @@ html {
 
 .gallery-wrapper--can-scroll-next::after {
   opacity: 1;
-}
-
-.gallery-spacer {
-  flex: 0 0 var(--gallery-edge-space, 0px);
-  width: var(--gallery-edge-space, 0px);
-  min-width: var(--gallery-edge-space, 0px);
-  height: 100%;
-  align-self: stretch;
-  visibility: hidden;
-  pointer-events: none;
-  user-select: none;
 }
 
 /* Gallery scroll bar container */
@@ -1382,7 +1372,8 @@ html {
   
   .project-gallery {
     margin: 1.5rem 0;
-    padding: 0.5rem 0;
+    padding-block: 0.5rem;
+    padding-inline: var(--gallery-edge-space, 0px);
     scroll-padding-left: calc(var(--projects-gutter, 0px) + var(--gallery-offset, 0px));
     scroll-padding-right: calc(var(--projects-gutter, 0px) + var(--gallery-offset, 0px));
   }
@@ -1432,7 +1423,8 @@ html {
   
   .project-gallery {
     margin: 1.5rem 0;
-    padding: 0.5rem 0;
+    padding-block: 0.5rem;
+    padding-inline: var(--gallery-edge-space, 0px);
     scroll-padding-left: calc(var(--projects-gutter, 0px) + var(--gallery-offset, 0px));
     scroll-padding-right: calc(var(--projects-gutter, 0px) + var(--gallery-offset, 0px));
   }

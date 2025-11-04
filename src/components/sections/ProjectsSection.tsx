@@ -286,7 +286,6 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
         aria-label={`Galerie projektu ${project.title}`}
         onScroll={handleScroll}
       >
-        <div className="gallery-spacer" aria-hidden="true" role="presentation" />
         {project.images.map((image: ProjectImage, index: number) => {
           const status = imageStates[index];
           const containerClassName = `gallery-image ${status}`;
@@ -320,7 +319,6 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
             </div>
           );
         })}
-        <div className="gallery-spacer" aria-hidden="true" role="presentation" />
       </div>
 
       <div className="gallery-scrollbar-container">
