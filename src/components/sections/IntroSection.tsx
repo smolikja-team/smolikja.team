@@ -2,9 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 import { VIDEO_CONFIG } from '@/lib/constants';
 import { getConnectionSpeed, getOptimalVideoResolution, isIOS, supportsWebM } from '@/lib/utils';
-import type { BrowserCapabilities } from '@/types';
+import type { BrowserCapabilities, Language } from '@/types';
 
 type NetworkInformation = {
   saveData?: boolean;
@@ -24,7 +25,24 @@ const INITIAL_CAPABILITIES: BrowserCapabilities = {
   connectionSpeed: 'fast',
 };
 
+type IntroCopy = {
+  scrollHint: string;
+  videoUnsupported: string;
+};
+
+const INTRO_COPY: Record<Language, IntroCopy> = {
+  cs: {
+    scrollHint: 'Scrollujte',
+    videoUnsupported: 'Váš prohlížeč nepodporuje přehrávání videa.',
+  },
+  en: {
+    scrollHint: 'Scroll',
+    videoUnsupported: 'Your browser does not support video playback.',
+  },
+};
+
 export default function IntroSection() {
+  const { language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -196,6 +214,7 @@ export default function IntroSection() {
   }, [useStaticFallback, videoError]);
 
   const canDisplayScrollHint = hintMounted && !useStaticFallback && !videoError;
+  const copy = INTRO_COPY[language];
 
   return (
     <section ref={sectionRef} className="section section-intro">
@@ -242,13 +261,13 @@ export default function IntroSection() {
               <source src={videoUrls.mp4} type="video/mp4" />
             </>
           )}
-          Váš prohlížeč nepodporuje přehrávání videa.
+          {copy.videoUnsupported}
         </video>
       )}
 
       {canDisplayScrollHint && (
         <div className={`scroll-hint ${showScrollHint ? 'visible' : ''}`}>
-          <span className="scroll-hint__text">Scrollujte</span>
+          <span className="scroll-hint__text">{copy.scrollHint}</span>
           <span className="scroll-hint__arrow" aria-hidden="true" />
         </div>
       )}

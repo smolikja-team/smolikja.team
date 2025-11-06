@@ -2,6 +2,10 @@
  * Type definitions for the portfolio application
  */
 
+export type Language = 'cs' | 'en';
+
+export type LocalizedString = Record<Language, string>;
+
 export interface VideoConfig {
   baseUrl: string;
   formats: readonly string[];
@@ -16,21 +20,21 @@ export interface BrowserCapabilities {
 
 export interface ProjectImage {
   src: string;
-  alt: string;
+  alt: LocalizedString;
   width: number;
   height: number;
 }
 
 export interface ProjectLink {
   href: string;
-  label: string;
+  label: LocalizedString;
 }
 
 export interface Project {
   id: string;
-  title: string;
-  description: string;
-  secondaryDescription?: string;
+  title: LocalizedString;
+  description: LocalizedString;
+  secondaryDescription?: LocalizedString;
   secondaryLink?: ProjectLink;
   images: ProjectImage[];
 }

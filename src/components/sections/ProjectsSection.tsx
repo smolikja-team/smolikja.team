@@ -2,8 +2,10 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/components/providers/LanguageProvider';
+import { formatMessage } from '@/lib/i18n';
 import { projects } from '@/lib/projects';
-import type { Project, ProjectImage } from '@/types';
+import type { Language, Project, ProjectImage } from '@/types';
 
 type ImageStatus = 'loading' | 'loaded' | 'error';
 
@@ -23,11 +25,37 @@ const INITIAL_METRICS: GalleryMetrics = {
   step: 0,
 };
 
+type GalleryCopy = {
+  galleryRegion: string;
+  prevButton: string;
+  nextButton: string;
+  sliderLabel: string;
+  imageError: string;
+};
+
+const PROJECT_GALLERY_COPY: Record<Language, GalleryCopy> = {
+  cs: {
+    galleryRegion: 'Galerie projektu {{title}}',
+    prevButton: 'Zobrazit předchozí snímek projektu {{title}}',
+    nextButton: 'Zobrazit další snímek projektu {{title}}',
+    sliderLabel: 'Posuvník galerie projektu {{title}}',
+    imageError: 'Obrázek se nepodařilo načíst.',
+  },
+  en: {
+    galleryRegion: 'Project gallery for {{title}}',
+    prevButton: 'View previous image for {{title}}',
+    nextButton: 'View next image for {{title}}',
+    sliderLabel: 'Gallery slider for {{title}}',
+    imageError: 'Image failed to load.',
+  },
+};
+
 interface ProjectGalleryProps {
   project: Project;
+  language: Language;
 }
 
-function ProjectGallery({ project }: ProjectGalleryProps) {
+function ProjectGallery({ project, language }: ProjectGalleryProps) {
   const galleryRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const thumbRef = useRef<HTMLDivElement>(null);
@@ -47,6 +75,8 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
     project.images.map(() => 'loading'),
   );
   const [metrics, setMetrics] = useState<GalleryMetrics>(INITIAL_METRICS);
+  const copy = PROJECT_GALLERY_COPY[language];
+  const projectTitle = project.title[language];
 
   useEffect(() => {
     setImageStates(project.images.map(() => 'loading'));
@@ -283,7 +313,7 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
         className="project-gallery"
         data-gallery={project.id}
         role="region"
-        aria-label={`Galerie projektu ${project.title}`}
+        aria-label={formatMessage(copy.galleryRegion, { title: projectTitle })}
         onScroll={handleScroll}
       >
         {project.images.map((image: ProjectImage, index: number) => {
@@ -301,13 +331,13 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
 
               {status === 'error' && (
                 <div className="image-error-placeholder">
-                  Obrázek se nepodařilo načíst.
+                  {copy.imageError}
                 </div>
               )}
 
               <Image
                 src={image.src}
-                alt={image.alt}
+                alt={image.alt[language]}
                 fill
                 sizes="(max-width: 768px) 90vw, (max-width: 1280px) 32vw, 560px"
                 quality={100}
@@ -328,7 +358,7 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
           className="gallery-arrow gallery-arrow-prev"
           data-gallery={project.id}
           onClick={() => scrollByStep('prev')}
-          aria-label={`Zobrazit předchozí snímek projektu ${project.title}`}
+          aria-label={formatMessage(copy.prevButton, { title: projectTitle })}
           disabled={!canScrollPrev}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -349,7 +379,7 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
             style={thumbStyle}
             role="slider"
             tabIndex={0}
-            aria-label={`Posuvník galerie projektu ${project.title}`}
+            aria-label={formatMessage(copy.sliderLabel, { title: projectTitle })}
             aria-valuemin={0}
             aria-valuemax={Math.round(maxScroll)}
             aria-valuenow={Math.round(metrics.scrollLeft)}
@@ -366,7 +396,7 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
           className="gallery-arrow gallery-arrow-next"
           data-gallery={project.id}
           onClick={() => scrollByStep('next')}
-          aria-label={`Zobrazit další snímek projektu ${project.title}`}
+          aria-label={formatMessage(copy.nextButton, { title: projectTitle })}
           disabled={!canScrollNext}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -379,40 +409,54 @@ function ProjectGallery({ project }: ProjectGalleryProps) {
 }
 
 export default function ProjectsSection() {
+  const { language } = useLanguage();
+
   return (
-    <section className="section section-projects">
+    <section id="projects" className="section section-projects">
       <div className="content-wrapper">
         <div className="section-content">
           <div className="projects-container">
-            {projects.map((project) => (
-              <div className="project-item" key={project.id}>
-                <div className="project-copy">
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-                </div>
-                <ProjectGallery project={project} />
-                {project.secondaryDescription && (
-                  <div className="project-copy project-copy--secondary">
-                    <p className="project-description-2">
-                      {project.secondaryDescription}
-                      {project.secondaryLink ? (
-                        <>
-                          {' '}
-                          <a
-                            href={project.secondaryLink.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="project-link"
-                          >
-                            {project.secondaryLink.label}
-                          </a>
-                        </>
-                      ) : null}
-                    </p>
+            {projects.map((project) => {
+              const projectTitle = project.title[language];
+              const projectDescription = project.description[language];
+              const secondaryDescription = project.secondaryDescription?.[language];
+              const secondaryLink = project.secondaryLink
+                ? {
+                    href: project.secondaryLink.href,
+                    label: project.secondaryLink.label[language],
+                  }
+                : null;
+
+              return (
+                <div className="project-item" key={project.id}>
+                  <div className="project-copy">
+                    <h3 className="project-title">{projectTitle}</h3>
+                    <p className="project-description">{projectDescription}</p>
                   </div>
-                )}
-              </div>
-            ))}
+                  <ProjectGallery project={project} language={language} />
+                  {secondaryDescription && (
+                    <div className="project-copy project-copy--secondary">
+                      <p className="project-description-2">
+                        {secondaryDescription}
+                        {secondaryLink ? (
+                          <>
+                            {' '}
+                            <a
+                              href={secondaryLink.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="project-link"
+                            >
+                              {secondaryLink.label}
+                            </a>
+                          </>
+                        ) : null}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
