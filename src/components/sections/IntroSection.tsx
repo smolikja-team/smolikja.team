@@ -50,7 +50,7 @@ export default function IntroSection() {
     setHintMounted(true);
     hintTimeoutRef.current = window.setTimeout(() => {
       setShowScrollHint(true);
-    }, 10_000);
+    }, 8_000);
   }, []);
 
   useEffect(() => {
