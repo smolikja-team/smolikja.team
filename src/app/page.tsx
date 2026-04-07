@@ -1,14 +1,17 @@
 import FloatingLanguageSwitcher from '@/components/FloatingLanguageSwitcher';
+import GalaxyBackground from '@/components/GalaxyBackground';
 import LanguageProvider from '@/components/providers/LanguageProvider';
-import { AboutSection, IntroSection, ProjectsSection } from '@/components/sections';
+import { AboutSection, CapabilitiesSection, IntroSection, ProjectsSection } from '@/components/sections';
 
 export default function Home() {
   return (
     <LanguageProvider>
+      <GalaxyBackground />
       <FloatingLanguageSwitcher />
-      <div className="scroll-snap-container">
+      <div className="page-shell">
         <IntroSection />
         <ProjectsSection />
+        <CapabilitiesSection />
         <AboutSection />
       </div>
     </LanguageProvider>

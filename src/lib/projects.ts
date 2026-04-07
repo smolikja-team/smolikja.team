@@ -10,6 +10,10 @@ export const projects: Project[] = [
       cs: 'Studánky',
       en: 'Studánky',
     },
+    eyebrow: {
+      cs: 'Vlastní produkt ve vývoji',
+      en: 'In-house product in development',
+    },
     description: {
       cs: 'Mobilní aplikace pro iOS a Android ve vývoji, která pomáhá lidem sledovat stav přírodních studánek a plánovat výlety s dostatkem vody.',
       en: 'Mobile app for iOS and Android (in development) that helps people monitor natural springs and plan trips with reliable access to fresh water.',
@@ -25,6 +29,52 @@ export const projects: Project[] = [
         en: 'smolikja@protonmail.com',
       },
     },
+    tags: [
+      {
+        cs: 'iOS + Android',
+        en: 'iOS + Android',
+      },
+      {
+        cs: 'Mapy a terénní data',
+        en: 'Mapping & field data',
+      },
+      {
+        cs: 'QR workflow',
+        en: 'QR workflow',
+      },
+    ],
+    facts: [
+      {
+        label: {
+          cs: 'Fáze',
+          en: 'Stage',
+        },
+        value: {
+          cs: 'Ve vývoji',
+          en: 'In development',
+        },
+      },
+      {
+        label: {
+          cs: 'Vstup dat',
+          en: 'Data input',
+        },
+        value: {
+          cs: 'QR reporty v terénu',
+          en: 'QR field reports',
+        },
+      },
+      {
+        label: {
+          cs: 'Zaměření',
+          en: 'Focus',
+        },
+        value: {
+          cs: 'Voda a plánování tras',
+          en: 'Water access and route planning',
+        },
+      },
+    ],
     images: [
       {
         src: 'https://smolikja.team/assets/projects/studanky/map.png',
@@ -79,6 +129,10 @@ export const projects: Project[] = [
       cs: 'Domov pod palcem',
       en: 'Domov pod palcem',
     },
+    eyebrow: {
+      cs: 'Klientský smart home produkt',
+      en: 'Client smart-home product',
+    },
     description: {
       cs: 'Mobilní aplikace pro iOS a Android určená k ovládání chytré domácnosti. Aplikace je navržena s důrazem na ergonomii, uživatelský zážitek – veškeré ovládací prvky jsou dostupné palcem ruky, která drží telefon, což umožňuje pohodlné ovládání i v situacích, kdy má uživatel k dispozici pouze jednu ruku.',
       en: 'Mobile app for iOS and Android that controls an entire smart home. The interface is designed for ergonomics and one-handed use—every primary action is reachable with the thumb that holds the device.',
@@ -87,6 +141,52 @@ export const projects: Project[] = [
       cs: 'Aplikace se automaticky konfiguruje dle přihlášeného uživatele a komunikuje s chytrou domácností pomocí zabezpečeného WebSocket protokolu. Uživatel má možnost ovládat osvětlení, žaluzie, vstupní brány, vytápění, podlahové topení, rekuperaci i klimatizaci – včetně nastavení časových plánů.',
       en: 'The experience adapts to the signed-in user and communicates with the smart home via a secured WebSocket protocol. Users can control lights, blinds, gates, heating, floor heating, recuperation, and climate—including scheduled automations.',
     },
+    tags: [
+      {
+        cs: 'One-handed UX',
+        en: 'One-handed UX',
+      },
+      {
+        cs: 'Bezpečný WebSocket',
+        en: 'Secure WebSocket',
+      },
+      {
+        cs: 'Smart home dashboardy',
+        en: 'Smart-home dashboards',
+      },
+    ],
+    facts: [
+      {
+        label: {
+          cs: 'Platforma',
+          en: 'Platform',
+        },
+        value: {
+          cs: 'iOS + Android',
+          en: 'iOS + Android',
+        },
+      },
+      {
+        label: {
+          cs: 'Kontext',
+          en: 'Context',
+        },
+        value: {
+          cs: 'Ovládání domácnosti',
+          en: 'Home control',
+        },
+      },
+      {
+        label: {
+          cs: 'Princip UX',
+          en: 'UX principle',
+        },
+        value: {
+          cs: 'Vše dostupné palcem',
+          en: 'Thumb-reachable actions',
+        },
+      },
+    ],
     images: [
       {
         src: 'https://smolikja.team/assets/projects/domov/dashboard.png',
@@ -132,6 +232,10 @@ export const projects: Project[] = [
       cs: 'Inteligentní stáj',
       en: 'Smart Stable',
     },
+    eyebrow: {
+      cs: 'IoT a provozní rozhraní',
+      en: 'IoT and operational interface',
+    },
     description: {
       cs: 'Mobilní aplikace pro iOS a Android navržená pro správce inteligentní stáje určené pro chov skotu. Aplikace umožňuje vzdálené ovládání vybavení stáje a poskytuje notifikace v případě technických problémů nebo nežádoucích stavů.',
       en: 'Mobile app for iOS and Android tailored for managers of a smart cattle stable. It enables remote control of the stable equipment and issues alerts when technical issues or undesirable conditions appear.',
@@ -140,6 +244,52 @@ export const projects: Project[] = [
       cs: 'Přizpůsobuje se přihlášenému uživateli a komunikuje prostřednictvím zabezpečeného WebSocket protokolu. Uživatel může ovládat ventilátory, plachty a osvětlení stáje. K dispozici je také přehled aktuálních hodnot z čidel a interaktivní grafy vývoje za posledních 24 hodin. V případě potřeby aplikace automaticky upozorní správce prostřednictvím push notifikace.',
       en: 'The UI adapts to the signed-in user and communicates via a secure WebSocket protocol. Users manage fans, tarpaulins, and lighting, and they get real-time sensor readings with interactive 24-hour charts. Critical situations trigger automatic push notifications for the stable manager.',
     },
+    tags: [
+      {
+        cs: 'Realtime monitoring',
+        en: 'Realtime monitoring',
+      },
+      {
+        cs: 'Push alerty',
+        en: 'Push alerts',
+      },
+      {
+        cs: 'IoT dashboardy',
+        en: 'IoT dashboards',
+      },
+    ],
+    facts: [
+      {
+        label: {
+          cs: 'Platforma',
+          en: 'Platform',
+        },
+        value: {
+          cs: 'iOS + Android',
+          en: 'iOS + Android',
+        },
+      },
+      {
+        label: {
+          cs: 'Provoz',
+          en: 'Environment',
+        },
+        value: {
+          cs: 'Chov skotu',
+          en: 'Cattle operations',
+        },
+      },
+      {
+        label: {
+          cs: 'Data',
+          en: 'Data',
+        },
+        value: {
+          cs: '24h senzory a grafy',
+          en: '24h sensors and charts',
+        },
+      },
+    ],
     images: [
       {
         src: 'https://smolikja.team/assets/projects/stable/splashscreen.png',
@@ -203,6 +353,10 @@ export const projects: Project[] = [
       cs: 'Flutter Auth Flow',
       en: 'Flutter Auth Flow',
     },
+    eyebrow: {
+      cs: 'Open-source toolkit',
+      en: 'Open-source toolkit',
+    },
     description: {
       cs: 'Open source Flutter balíček s přizpůsobitelným autentizačním rozhraním napojeným na libovolný backend.',
       en: 'Open-source Flutter package with a configurable authentication UI that connects to any backend.',
@@ -218,6 +372,52 @@ export const projects: Project[] = [
         en: 'https://github.com/smolikja/flutter-auth-flow',
       },
     },
+    tags: [
+      {
+        cs: 'Flutter',
+        en: 'Flutter',
+      },
+      {
+        cs: 'Auth flow',
+        en: 'Auth flow',
+      },
+      {
+        cs: 'CS/EN lokalizace',
+        en: 'CS/EN localisation',
+      },
+    ],
+    facts: [
+      {
+        label: {
+          cs: 'Typ',
+          en: 'Type',
+        },
+        value: {
+          cs: 'OSS balíček',
+          en: 'OSS package',
+        },
+      },
+      {
+        label: {
+          cs: 'Framework',
+          en: 'Framework',
+        },
+        value: {
+          cs: 'Flutter',
+          en: 'Flutter',
+        },
+      },
+      {
+        label: {
+          cs: 'Moduly',
+          en: 'Modules',
+        },
+        value: {
+          cs: 'Login, registrace, reset',
+          en: 'Login, sign-up, reset',
+        },
+      },
+    ],
     images: [
       {
         src: 'https://smolikja.team/assets/projects/auth-flow/login.png',

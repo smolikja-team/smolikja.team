@@ -30,11 +30,19 @@ export interface ProjectLink {
   label: LocalizedString;
 }
 
+export interface ProjectFact {
+  label: LocalizedString;
+  value: LocalizedString;
+}
+
 export interface Project {
   id: string;
   title: LocalizedString;
+  eyebrow?: LocalizedString;
   description: LocalizedString;
   secondaryDescription?: LocalizedString;
   secondaryLink?: ProjectLink;
+  tags?: LocalizedString[];
+  facts?: ProjectFact[];
   images: ProjectImage[];
 }
