@@ -309,21 +309,21 @@ function Galaxy({
     animateId = window.requestAnimationFrame(update);
     container.appendChild(gl.canvas);
 
-    const handleMouseMove = (event: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width;
-      const y = 1.0 - (event.clientY - rect.top) / rect.height;
+    const handlePointerMove = (event: PointerEvent) => {
+      const x = event.clientX / window.innerWidth;
+      const y = 1.0 - event.clientY / window.innerHeight;
       targetMousePos.current = { x, y };
       targetMouseActive.current = 1.0;
     };
 
-    const handleMouseLeave = () => {
+    const handlePointerLeave = () => {
       targetMouseActive.current = 0.0;
     };
 
     if (mouseInteraction) {
-      container.addEventListener("mousemove", handleMouseMove);
-      container.addEventListener("mouseleave", handleMouseLeave);
+      window.addEventListener("pointermove", handlePointerMove, { passive: true });
+      window.addEventListener("pointerleave", handlePointerLeave);
+      window.addEventListener("blur", handlePointerLeave);
     }
 
     return () => {
@@ -331,8 +331,9 @@ function Galaxy({
       window.removeEventListener("resize", resize);
 
       if (mouseInteraction) {
-        container.removeEventListener("mousemove", handleMouseMove);
-        container.removeEventListener("mouseleave", handleMouseLeave);
+        window.removeEventListener("pointermove", handlePointerMove);
+        window.removeEventListener("pointerleave", handlePointerLeave);
+        window.removeEventListener("blur", handlePointerLeave);
       }
 
       if (container.contains(gl.canvas)) {

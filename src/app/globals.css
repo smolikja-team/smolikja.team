@@ -70,16 +70,12 @@ img {
 .galaxy-background {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: auto;
-  z-index: 2;
+  pointer-events: none;
+  z-index: 1;
   opacity: 0.92;
-  mix-blend-mode: screen;
 }
 
 .galaxy-container {
-  position: relative;
   width: 100%;
   height: 100%;
 }
@@ -310,7 +306,6 @@ img {
   min-height: 100dvh;
   padding: 0;
   overflow: hidden;
-  background: transparent;
 }
 
 .foreground-video,
@@ -322,12 +317,11 @@ img {
 }
 
 .foreground-video {
-  z-index: 1;
-  width: 100%;
-  height: 100%;
+  z-index: 2;
   object-fit: contain;
+  pointer-events: none;
   opacity: 0;
-  filter: brightness(1.02) contrast(1.04);
+  mix-blend-mode: lighten;
   transition: opacity 0.6s ease;
 }
 
