@@ -49,6 +49,7 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --animate-nudge: nudge 1.8s ease-in-out infinite;
+  --animate-hint-in: hint-in 1s ease-out 4s both;
 }
 
 /*
@@ -114,7 +115,17 @@
   }
 }
 
-/* Hero scroll hint — a small downward nudge (always guarded by `motion-safe:`). */
+/* Hero scroll hint: appears after four seconds of the logo loop … */
+@keyframes hint-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* … with a small downward nudge on the arrow (always guarded by `motion-safe:`). */
 @keyframes nudge {
   0%,
   100% {

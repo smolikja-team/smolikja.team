@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "title": "smolikja team – vývoj mobilních aplikací",
+    "description": "Malý pražský tým, který staví mobilní aplikace pro iOS a Android od nuly – pro klienty i jako vlastní produkty. Nativně i ve Flutteru, od nápadu po uvedení."
+  },
+  "og": {
+    "title": "smolikja team",
+    "subtitle": "Vývoj mobilních aplikací",
+    "alt": "smolikja team – vývoj mobilních aplikací pro iOS a Android"
+  },
+  "manifest": {
+    "description": "Portfolio týmu smolikja – vývoj mobilních aplikací pro iOS a Android."
+  },
+  "nav": {
+    "aria": "Hlavní navigace",
+    "home": "smolikja team – na úvod",
+    "projects": "Projekty",
+    "about": "O nás",
+    "contact": "Kontakt"
+  },
+  "languageSwitcher": {
+    "label": "Jazyk",
+    "cs": "Čeština",
+    "en": "English"
+  },
+  "hero": {
+    "logoAlt": "smolikja team",
+    "videoUnsupported": "Váš prohlížeč nepodporuje přehrávání videa.",
+    "scrollHint": "Posuňte dolů"
+  },
+  "statement": {
+    "title": "Stavíme mobilní aplikace na zelené louce.",
+    "text": "Pro klienty i pro sebe. Nativně pro iOS a Android, nebo ve Flutteru – od prvního nápadu přes návrh a vývoj až po uvedení na trh, celé pod jednou střechou v Praze."
+  },
+  "projects": {
+    "title": "Co jsme postavili",
+    "galleryLabel": "Snímky obrazovky – {title}",
+    "previous": "Předchozí snímek",
+    "next": "Další snímek",
+    "items": {
+      "studanky": {
+        "title": "Studánky",
+        "summary": "Mobilní aplikace pro iOS a Android ve vývoji, která pomáhá lidem sledovat stav přírodních studánek a plánovat výlety s dostatkem vody.",
+        "details": "Sbírání dat probíhá přes skenování QR kódů umístěných u studánek a krátký dotazník, díky němuž mají uživatelé vždy čerstvé subjektivní informace o kvalitě i dostupnosti vody. Uživatelé mohou hlásit závady a poškození přímo vlastníkovi studánky. Projekt vítá partnery i spolupracovníky.",
+        "linkLabel": "Ozvěte se nám",
+        "images": {
+          "map": "Studánky – mapa dostupných pramenů",
+          "spring": "Studánky – přehled studánek v okolí",
+          "detail": "Studánky – detailní informace o prameni",
+          "scanner": "Studánky – skenování QR kódu u studánky",
+          "report": "Studánky – rychlé hlášení stavu pramene"
+        }
+      },
+      "domov": {
+        "title": "Domov pod palcem",
+        "summary": "Mobilní aplikace pro iOS a Android určená k ovládání chytré domácnosti. Navržená s důrazem na ergonomii – veškeré ovládací prvky jsou dostupné palcem ruky, která drží telefon, takže domácnost pohodlně ovládáte i jednou rukou.",
+        "details": "Aplikace se automaticky konfiguruje podle přihlášeného uživatele a komunikuje s domácností přes zabezpečený WebSocket protokol. Ovládá osvětlení, žaluzie, vstupní brány, vytápění, podlahové topení, rekuperaci i klimatizaci – včetně časových plánů.",
+        "images": {
+          "dashboard": "Domov pod palcem – úvodní dashboard",
+          "blinder": "Domov pod palcem – ovládání žaluzií",
+          "heating": "Domov pod palcem – nastavení vytápění",
+          "time-regime": "Domov pod palcem – plánování časových režimů"
+        }
+      },
+      "stable": {
+        "title": "Inteligentní stáj",
+        "summary": "Mobilní aplikace pro iOS a Android pro správce inteligentní stáje určené pro chov skotu. Umožňuje vzdálené ovládání vybavení stáje a upozorňuje na technické problémy nebo nežádoucí stavy.",
+        "details": "Přizpůsobuje se přihlášenému uživateli a komunikuje přes zabezpečený WebSocket protokol. Správce ovládá ventilátory, plachty a osvětlení, vidí aktuální hodnoty z čidel a interaktivní grafy za posledních 24 hodin. V případě potřeby aplikace automaticky pošle push notifikaci.",
+        "images": {
+          "splashscreen": "Inteligentní stáj – úvodní obrazovka",
+          "stable-picker": "Inteligentní stáj – výběr stáje",
+          "ventilators": "Inteligentní stáj – ovládání ventilátorů",
+          "sail-control": "Inteligentní stáj – ovládání plachet",
+          "sensors": "Inteligentní stáj – přehled senzorů",
+          "light-control": "Inteligentní stáj – ovládání osvětlení"
+        }
+      },
+      "auth-flow": {
+        "title": "Flutter Auth Flow",
+        "summary": "Open source Flutter balíček s přizpůsobitelným autentizačním rozhraním, které jde napojit na libovolný backend.",
+        "details": "Přihlášení a registrace, ověření e-mailu, reset hesla, lokalizace CS/EN. Kód je veřejný.",
+        "linkLabel": "Zdrojový kód na GitHubu",
+        "images": {
+          "login": "Flutter Auth Flow – přihlašovací obrazovka",
+          "registration": "Flutter Auth Flow – registrační formulář",
+          "confirmation": "Flutter Auth Flow – potvrzení registrace"
+        }
+      }
+    }
+  },
+  "about": {
+    "title": "Jak pracujeme",
+    "paragraphs": [
+      "Jsme smolikja team a všechny mobilní aplikace vytváříme na zelené louce in-house. Řídíme celý cyklus – strategii a product discovery, výzkum a analýzy, UX a vizuální návrh, technickou architekturu, implementaci, marketing i obchodní uvedení. Díky tomu držíme kvalitu, tempo i kontext projektu pod jednou střechou.",
+      "Provozujeme vlastní servery pro vývojová prostředí a zároveň využíváme cloud pro produkci, abychom dokázali bezpečně škálovat, monitorovat a dlouhodobě rozvíjet aplikace, které nasazujeme pro naše klienty i interní produkty."
+    ],
+    "community": {
+      "title": "Přidejte se k nám na Discord",
+      "description": "Nechceme na projektech fungovat v izolaci. Hledáme lidi, kteří řeší podobné věci – staví vlastní produkty, pečují o klientské aplikace nebo se chtějí pustit do něčeho vlastního – a mají chuť sdílet zkušenosti, know-how i zodpovědnost.",
+      "cta": "Přidat se na Discord",
+      "venueBefore": "Osobně nás najdete ve ",
+      "venueLink": "SKLADu",
+      "venueAfter": ", kreativním a technologickém prostoru na Smíchově, kde máme zázemí a je tu místo pro společné setkávání."
+    }
+  },
+  "contact": {
+    "title": "Napište nám",
+    "text": "Máte nápad na aplikaci, potřebujete posílit tým, nebo si chcete jen popovídat o technologiích? Ozvěte se – odpovíme na uvedený e-mail.",
+    "form": {
+      "name": "Jméno",
+      "email": "E-mail",
+      "message": "Zpráva",
+      "messagePlaceholder": "Co potřebujete postavit?",
+      "submit": "Odeslat zprávu",
+      "submitting": "Odesílám",
+      "success": "Díky, zpráva dorazila. Ozveme se vám na uvedený e-mail.",
+      "errorInvalid": "Zkontrolujte prosím jméno, e-mail a text zprávy.",
+      "errorServer": "Zprávu se teď nepodařilo odeslat. Zkuste to prosím znovu, nebo nám napište přímo e-mailem.",
+      "privacyNote": "Údaje použijeme jen k odpovědi na vaši zprávu."
+    },
+    "channels": {
+      "title": "Nebo přímo",
+      "email": "E-mail",
+      "github": "GitHub",
+      "discord": "Discord",
+      "openAria": "Otevřít {label}"
+    }
+  },
+  "footer": {
+    "aria": "Patička",
+    "copyright": "© {year} smolikja team",
+    "location": "Praha, Česká republika"
+  },
+  "notFound": {
+    "title": "Stránka nenalezena",
+    "description": "Na této adrese nic není. Odkaz se mohl změnit, nebo je špatně opsaný.",
+    "backHome": "Zpět na úvod"
+  }
+}

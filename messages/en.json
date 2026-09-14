@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "title": "smolikja team – mobile app development",
+    "description": "A small Prague team building iOS and Android apps from the ground up – for clients and as our own products. Native or Flutter, from idea to launch."
+  },
+  "og": {
+    "title": "smolikja team",
+    "subtitle": "Mobile app development",
+    "alt": "smolikja team – mobile app development for iOS and Android"
+  },
+  "manifest": {
+    "description": "Portfolio of smolikja team – mobile app development for iOS and Android."
+  },
+  "nav": {
+    "aria": "Main navigation",
+    "home": "smolikja team – back to top",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "cs": "Čeština",
+    "en": "English"
+  },
+  "hero": {
+    "logoAlt": "smolikja team",
+    "videoUnsupported": "Your browser does not support video playback.",
+    "scrollHint": "Scroll down"
+  },
+  "statement": {
+    "title": "We build mobile apps from the ground up.",
+    "text": "For clients and for ourselves. Native iOS and Android or Flutter – from the first idea through design and development to launch, all under one roof in Prague."
+  },
+  "projects": {
+    "title": "What we've built",
+    "galleryLabel": "Screenshots – {title}",
+    "previous": "Previous screenshot",
+    "next": "Next screenshot",
+    "items": {
+      "studanky": {
+        "title": "Studánky",
+        "summary": "Mobile app for iOS and Android (in development) that helps people monitor natural springs and plan trips with reliable access to fresh water.",
+        "details": "Data collection runs through scanning QR codes placed at the springs and a short questionnaire, giving users fresh, first-hand insight into water quality and availability. Users can report damage directly to the spring's owner. The project welcomes partners and collaborators.",
+        "linkLabel": "Get in touch",
+        "images": {
+          "map": "Studánky – map of available springs",
+          "spring": "Studánky – overview of springs nearby",
+          "detail": "Studánky – detailed spring information",
+          "scanner": "Studánky – QR code scanning at the spring",
+          "report": "Studánky – quick spring status report"
+        }
+      },
+      "domov": {
+        "title": "Domov pod palcem",
+        "summary": "Mobile app for iOS and Android that controls an entire smart home. Designed for ergonomics and one-handed use – every control is reachable with the thumb of the hand holding the phone.",
+        "details": "The app configures itself for the signed-in user and talks to the home over a secured WebSocket protocol. It controls lights, blinds, gates, heating, floor heating, heat recovery and air conditioning – including schedules.",
+        "images": {
+          "dashboard": "Domov pod palcem – home dashboard",
+          "blinder": "Domov pod palcem – blind controls",
+          "heating": "Domov pod palcem – heating configuration",
+          "time-regime": "Domov pod palcem – scheduling automation"
+        }
+      },
+      "stable": {
+        "title": "Smart Stable",
+        "summary": "Mobile app for iOS and Android for managers of a smart cattle stable. It enables remote control of the stable equipment and raises alerts when technical issues or undesirable conditions appear.",
+        "details": "It adapts to the signed-in user and communicates over a secured WebSocket protocol. Managers control fans, tarpaulins and lighting, see live sensor readings and interactive 24-hour charts. Critical situations trigger automatic push notifications.",
+        "images": {
+          "splashscreen": "Smart Stable – welcome screen",
+          "stable-picker": "Smart Stable – stable selector",
+          "ventilators": "Smart Stable – fan controls",
+          "sail-control": "Smart Stable – tarpaulin controls",
+          "sensors": "Smart Stable – sensor overview",
+          "light-control": "Smart Stable – lighting controls"
+        }
+      },
+      "auth-flow": {
+        "title": "Flutter Auth Flow",
+        "summary": "Open-source Flutter package with a configurable authentication UI that connects to any backend.",
+        "details": "Login and sign-up, e-mail verification, password reset, CS/EN localisation. The code is public.",
+        "linkLabel": "Source code on GitHub",
+        "images": {
+          "login": "Flutter Auth Flow – login screen",
+          "registration": "Flutter Auth Flow – registration form",
+          "confirmation": "Flutter Auth Flow – registration confirmation"
+        }
+      }
+    }
+  },
+  "about": {
+    "title": "How we work",
+    "paragraphs": [
+      "We are smolikja team and we craft every mobile app entirely in-house. We lead the full lifecycle – from strategy and product discovery through research, UX, visual design, technical architecture, implementation, marketing and launch – keeping quality, pace and context under one roof.",
+      "We run our own servers for development environments and combine them with cloud infrastructure in production, letting us scale safely, monitor and evolve the apps we deliver for clients and our own products."
+    ],
+    "community": {
+      "title": "Join us on Discord",
+      "description": "We don't want to work in isolation. We look for people tackling similar challenges – building products, caring for client apps or starting something new – who are ready to share experience, know-how and responsibility.",
+      "cta": "Join Discord",
+      "venueBefore": "You can meet us at ",
+      "venueLink": "SKLAD",
+      "venueAfter": ", a creative and technology space in Smíchov where we have our base and room for community meetups."
+    }
+  },
+  "contact": {
+    "title": "Get in touch",
+    "text": "Have an app idea, need to strengthen your team, or just want to talk technology? Write to us – we reply to the e-mail you provide.",
+    "form": {
+      "name": "Name",
+      "email": "E-mail",
+      "message": "Message",
+      "messagePlaceholder": "What do you need built?",
+      "submit": "Send message",
+      "submitting": "Sending",
+      "success": "Thanks, your message arrived. We'll reply to the e-mail you provided.",
+      "errorInvalid": "Please check the name, e-mail and message.",
+      "errorServer": "The message could not be sent right now. Please try again, or e-mail us directly.",
+      "privacyNote": "We use your details only to reply to your message."
+    },
+    "channels": {
+      "title": "Or directly",
+      "email": "E-mail",
+      "github": "GitHub",
+      "discord": "Discord",
+      "openAria": "Open {label}"
+    }
+  },
+  "footer": {
+    "aria": "Footer",
+    "copyright": "© {year} smolikja team",
+    "location": "Prague, Czech Republic"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "There is nothing at this address. The link may have changed or been mistyped.",
+    "backHome": "Back to home"
+  }
+}
