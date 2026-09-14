@@ -26,7 +26,9 @@ export type ContactMailConfig = {
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const FETCH_TIMEOUT_MS = 5000;
 
-export function contactMailConfigFromEnv(env = process.env): ContactMailConfig | null {
+export function contactMailConfigFromEnv(
+  env: Record<string, string | undefined> = process.env,
+): ContactMailConfig | null {
   const apiKey = env.RESEND_API_KEY;
   const from = env.CONTACT_FROM_EMAIL;
   const to = env.CONTACT_TO_EMAIL ?? siteConfig.email;
