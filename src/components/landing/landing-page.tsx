@@ -25,7 +25,7 @@ export function LandingPage({ dict, locale }: { dict: Dictionary; locale: Locale
         <StatementSection copy={dict.statement} />
         <ProjectsSection copy={dict.projects} />
         <AboutSection copy={dict.about} />
-        <ContactSection copy={dict.contact} />
+        <ContactSection copy={dict.contact} locale={locale} />
       </main>
       <SiteFooter
         locale={locale}
