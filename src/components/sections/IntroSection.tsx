@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { VIDEO_CONFIG } from '@/lib/constants';
-import { getConnectionSpeed, getOptimalVideoResolution, isIOS, supportsWebM } from '@/lib/utils';
+import { getConnectionSpeed, getOptimalVideoResolution, isIOS, supportsWebM } from '@/lib/browser';
 import type { BrowserCapabilities, Language } from '@/types';
 
 type NetworkInformation = {

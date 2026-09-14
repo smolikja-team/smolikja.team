@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { isSafari } from '@/lib/utils';
+import { isSafari } from '@/lib/browser';
 
 export default function SafariDetection() {
   useEffect(() => {
