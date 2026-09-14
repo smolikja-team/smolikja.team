@@ -1,105 +1,93 @@
-# smolikja team portfolio
+# smolikja.team
 
-A modern, performant portfolio website built with Next.js 15, featuring scroll-snap functionality and adaptive video backgrounds.
+Portfolio website of smolikja team — mobile app development. A single
+localized landing page (`/cs`, `/en`) with the logo loop, project showcase,
+community invite and a contact form.
 
-## 🚀 Quick Start
+The application uses the Next.js App Router, React, TypeScript, Tailwind CSS
+and pnpm. `package.json` is the source of truth for framework and dependency
+versions; [`docs/stack-blueprint.md`](docs/stack-blueprint.md) explains the
+intent behind them.
 
-```bash
-# Development
-npm run dev
+## Documentation
 
-# Production build
-npm run build && npm start
+- [Architecture](docs/architecture.md) — routes, component boundaries, data
+  flows and source-code ownership.
+- [Localization](docs/localization.md) — typed dictionaries, adding copy or a
+  locale, and locale-aware routing.
+- [Contact form](docs/contact-form.md) — Server Action, abuse protection and
+  the Resend delivery contract.
+- [Deployment](docs/deployment.md) — standalone build, Coolify/Nixpacks
+  configuration and release checks.
+- [Web assets](docs/assets.md) — videos, screenshots, logo and generated icons.
+- [Stack blueprint](docs/stack-blueprint.md) — the toolchain and conventions
+  this project follows.
+- [Stack migration](docs/stack-migration.md) — what changed in the 2026-09
+  migration and why.
 
-# Static export for deployment
-npm run export
-```
+Keep durable contracts, operational procedures and non-obvious architectural
+decisions in these documents. Active work belongs in the issue tracker, and
+implementation details that are clear from the code should stay in the code.
 
-## 📁 Project Structure
+## Requirements
 
-```text
-portfolio-web/
-├── src/                    # Source code
-│   ├── app/               # Next.js App Router
-│   ├── components/        # Reusable components
-│   ├── lib/              # Utilities and configurations
-│   └── types/            # TypeScript type definitions
-├── public/               # Static assets
-├── docs/                # Project documentation
-├── deploy/              # Deployment configurations
-└── config files         # Configuration files
-```
+- Node.js `>=24.0.0` (see `.nvmrc`)
+- pnpm 12, pinned by the `packageManager` field in `package.json`
+- Corepack, recommended for activating the pinned pnpm version
 
-## 🎯 Features
-
-- **Performance Optimized**: Lazy loading, connection-aware video loading
-- **Responsive Design**: Mobile-first approach with fluid scaling
-- **Scroll Snap**: Smooth section navigation on desktop
-- **Video Background**: Adaptive resolution based on connection speed
-- **SEO Optimized**: Comprehensive metadata and structured data
-- **Production Ready**: Deployment scripts and configurations included
-
-## 🛠 Tech Stack
-
-- **Framework**: Next.js 15.3.2
-- **Styling**: Tailwind CSS + Custom CSS
-- **TypeScript**: Full type safety
-- **Deployment**: Static export + Nginx configurations
-
-## 📚 Documentation
-
-See the `docs/` directory for:
-
-- Deployment guides
-- Performance optimizations
-- SEO implementation
-- Responsive design details
-
-## 🚀 Deployment
-
-Choose from two deployment options:
-
-1. **Static Deployment** (Recommended)
-
-   ```bash
-   npm run export
-   ./deploy/deploy-static.sh
-   ```
-
-2. **Server-Side Rendering**
-
-   ```bash
-   ./deploy/deploy-proxy.sh
-   ```
-
-Detailed deployment instructions are available in `docs/deployment-guide.md`.
-
-## 🔧 Development
+## Local development
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Type checking
-npm run type-check
-
-# Linting
-npm run lint:fix
-
-# Bundle analysis
-npm run build:analyze
+corepack enable
+pnpm install
+cp .env.example .env.local
+pnpm dev
 ```
 
-## 📊 Performance
+Open [http://localhost:3000](http://localhost:3000). The bare `/` redirects to
+the preferred localized route, `/cs` or `/en`.
 
-- **First Load JS**: ~113kB (optimized)
-- **Lighthouse Score**: 95+ across all metrics
-- **Load Time**: < 1 second
-- **Mobile Optimized**: Responsive video loading
+## Environment
 
----
+Local values belong in `.env.local`, which is git-ignored. Production values
+are configured in Coolify.
 
-Built by **smolikja team** - Professional mobile app development
+| Variable | Production requirement | Purpose |
+| --- | --- | --- |
+| `RESEND_API_KEY` | Required for the contact form | Resend API key used server-side to deliver messages. |
+| `CONTACT_FROM_EMAIL` | Required for the contact form | Sender address on a domain verified in Resend. |
+| `CONTACT_TO_EMAIL` | Optional | Recipient; defaults to `siteConfig.email`. |
+
+See [`.env.example`](.env.example) and [Contact form](docs/contact-form.md).
+
+## Commands
+
+| Command | Purpose |
+| --- | --- |
+| `pnpm dev` | Start the development server. |
+| `pnpm build` | Create a production build. |
+| `pnpm start` | Run a regular production build locally. |
+| `pnpm lint` | Run ESLint. |
+| `pnpm typecheck` | Run TypeScript without emitting files. |
+| `pnpm test` | Run the Vitest suite once. |
+| `pnpm docs:check` | Validate relative links in project Markdown files. |
+| `pnpm check` | Run lint, type checking, tests and documentation validation. |
+
+The deployed standalone server uses a different start command; see
+[Deployment](docs/deployment.md).
+
+## Architecture at a glance
+
+- `src/app/` owns routes, layouts, metadata files and the contact Server
+  Action.
+- Server Components are the default. Small Client Component islands own the
+  hero video, gallery edge state, header visibility and the contact form.
+- `src/components/` is organized by subsystem (`landing`, `layout`, `icons`,
+  `ui`), not by route file.
+- `src/config/`, `src/i18n/` and `src/lib/` hold structural configuration,
+  localization and shared server/domain logic respectively.
+- `messages/` contains one typed JSON catalog per supported locale.
+- `public/` contains the videos, screenshots, logo and generated icons.
+
+See [Architecture](docs/architecture.md) for the route map, dependency
+boundaries and documentation rules.
