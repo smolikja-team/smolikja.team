@@ -1,5 +1,6 @@
 'use client';
 
+import AnimatedIndex from '@/components/AnimatedIndex';
 import ProjectCarousel from '@/components/ProjectCarousel';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { projects } from '@/lib/projects';
@@ -57,7 +58,7 @@ export default function ProjectsSection() {
             return (
               <article key={project.id} className="project-card">
                 <div className="project-card__copy">
-                  <p className="project-card__index">{String(index + 1).padStart(2, '0')}</p>
+                  <AnimatedIndex value={index + 1} className="project-card__index" duration={0.9} />
                   {projectEyebrow && <p className="project-card__eyebrow">{projectEyebrow}</p>}
                   <h3 className="project-card__title">{projectTitle}</h3>
                   <p className="project-card__description">{project.description[language]}</p>
@@ -101,7 +102,7 @@ export default function ProjectsSection() {
                   )}
                 </div>
 
-                <ProjectCarousel project={project} language={language} priority={index === 0} />
+                <ProjectCarousel project={project} language={language} />
               </article>
             );
           })}

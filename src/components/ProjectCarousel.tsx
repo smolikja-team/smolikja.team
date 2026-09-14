@@ -10,7 +10,6 @@ import type { Language, Project } from '@/types';
 type ProjectCarouselProps = {
   project: Project;
   language: Language;
-  priority?: boolean;
 };
 
 type CarouselCopy = {
@@ -44,7 +43,6 @@ const CAROUSEL_COPY: Record<Language, CarouselCopy> = {
 export default function ProjectCarousel({
   project,
   language,
-  priority = false,
 }: ProjectCarouselProps) {
   const projectTitle = project.title[language];
   const copy = CAROUSEL_COPY[language];
@@ -168,8 +166,7 @@ export default function ProjectCarousel({
                         alt={image.alt[language]}
                         fill
                         sizes="(max-width: 767px) 78vw, (max-width: 1200px) 38vw, 420px"
-                        quality={100}
-                        priority={priority && index === 0}
+                        quality={88}
                         className="project-device__image"
                         onLoad={() => handleImageLoaded(index)}
                       />

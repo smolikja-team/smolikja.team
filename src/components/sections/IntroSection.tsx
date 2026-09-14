@@ -1,30 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { useLanguage } from '@/components/providers/LanguageProvider';
-import { VIDEO_CONFIG } from '@/lib/constants';
-import { getConnectionSpeed, getOptimalVideoResolution, isIOS, supportsWebM } from '@/lib/utils';
-import type { BrowserCapabilities, Language } from '@/types';
-
-type NetworkInformation = {
-  saveData?: boolean;
-  effectiveType?: string;
-};
-
-const FALLBACK_LOGO_SRC = 'https://smolikja.team/assets/logo-white.svg';
-
-const buildVideoUrls = (resolution: string) => ({
-  webm: `${VIDEO_CONFIG.baseUrl}${resolution}.webm`,
-  mp4: `${VIDEO_CONFIG.baseUrl}${resolution}.mp4`,
-});
-
-const INITIAL_CAPABILITIES: BrowserCapabilities = {
-  supportsWebM: false,
-  isIOS: false,
-  connectionSpeed: 'fast',
-};
+import type { Language } from '@/types';
 
 type IntroCopy = {
   eyebrow: string;
@@ -41,8 +19,6 @@ type IntroCopy = {
     label: string;
     value: string;
   }>;
-  scrollHint: string;
-  videoUnsupported: string;
 };
 
 const INTRO_COPY: Record<Language, IntroCopy> = {
@@ -72,8 +48,6 @@ const INTRO_COPY: Record<Language, IntroCopy> = {
         value: 'In-house delivery',
       },
     ],
-    scrollHint: 'Scroll pro projekty',
-    videoUnsupported: 'Váš prohlížeč nepodporuje přehrávání videa.',
   },
   en: {
     eyebrow: 'Prague-based team for mobile product design and delivery',
@@ -101,244 +75,17 @@ const INTRO_COPY: Record<Language, IntroCopy> = {
         value: 'In-house delivery',
       },
     ],
-    scrollHint: 'Scroll for work',
-    videoUnsupported: 'Your browser does not support video playback.',
   },
 };
 
 export default function IntroSection() {
   const { language } = useLanguage();
-  const sectionRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const [capabilities, setCapabilities] = useState<BrowserCapabilities>(INITIAL_CAPABILITIES);
-  const [videoResolution, setVideoResolution] = useState<string>('1080p');
-  const [shouldLoadVideo, setShouldLoadVideo] = useState<boolean>(false);
-  const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
-  const [videoError, setVideoError] = useState<boolean>(false);
-  const [useStaticFallback, setUseStaticFallback] = useState<boolean>(false);
-  const [hintMounted, setHintMounted] = useState<boolean>(false);
-  const [showScrollHint, setShowScrollHint] = useState<boolean>(false);
-
-  const videoUrls = buildVideoUrls(videoResolution);
-  const hintTimeoutRef = useRef<number | null>(null);
-  const hintActivatedRef = useRef<boolean>(false);
-
-  const scheduleScrollHint = useCallback(() => {
-    if (hintActivatedRef.current) {
-      return;
-    }
-
-    hintActivatedRef.current = true;
-    setHintMounted(true);
-    hintTimeoutRef.current = window.setTimeout(() => {
-      setShowScrollHint(true);
-    }, 8_000);
-  }, []);
-
-  useEffect(() => {
-    const detectedCapabilities: BrowserCapabilities = {
-      supportsWebM: supportsWebM(),
-      isIOS: isIOS(),
-      connectionSpeed: getConnectionSpeed(),
-    };
-
-    setCapabilities(detectedCapabilities);
-    setVideoResolution(getOptimalVideoResolution(detectedCapabilities.connectionSpeed));
-
-    if (detectedCapabilities.connectionSpeed === 'slow') {
-      const connection = (navigator as Navigator & { connection?: NetworkInformation }).connection;
-      if (connection?.saveData || connection?.effectiveType === 'slow-2g') {
-        setUseStaticFallback(true);
-        return;
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    if (useStaticFallback) return;
-
-    const section = sectionRef.current;
-    if (!section) {
-      setShouldLoadVideo(true);
-      scheduleScrollHint();
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setShouldLoadVideo(true);
-            scheduleScrollHint();
-          }
-        });
-      },
-      { rootMargin: '50px', threshold: 0.1 },
-    );
-
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, [scheduleScrollHint, useStaticFallback]);
-
-  useEffect(() => {
-    if (useStaticFallback) return;
-
-    const updateResolution = () => {
-      setVideoResolution(getOptimalVideoResolution(capabilities.connectionSpeed));
-    };
-
-    updateResolution();
-    window.addEventListener('resize', updateResolution);
-    return () => window.removeEventListener('resize', updateResolution);
-  }, [capabilities.connectionSpeed, useStaticFallback]);
-
-  const handleVideoLoad = useCallback(async () => {
-    const video = videoRef.current;
-    if (!video || !shouldLoadVideo) {
-      return;
-    }
-
-    try {
-      if (capabilities.isIOS) {
-        const playPromise = video.play();
-        if (playPromise) {
-          await playPromise;
-        }
-      } else {
-        await video.play();
-      }
-    } catch {
-      // Fall back to user interaction for autoplay-restricted environments.
-    } finally {
-      setVideoLoaded(true);
-      setVideoError(false);
-    }
-  }, [capabilities.isIOS, shouldLoadVideo]);
-
-  useEffect(() => {
-    if (!shouldLoadVideo || videoLoaded || useStaticFallback) {
-      return;
-    }
-
-    const video = videoRef.current;
-    if (!video) {
-      return;
-    }
-
-    if (video.readyState >= 2) {
-      void handleVideoLoad();
-      return;
-    }
-
-    video.addEventListener('loadeddata', handleVideoLoad, { once: true });
-    return () => {
-      video.removeEventListener('loadeddata', handleVideoLoad);
-    };
-  }, [handleVideoLoad, shouldLoadVideo, useStaticFallback, videoLoaded]);
-
-  useEffect(() => {
-    return () => {
-      if (hintTimeoutRef.current) {
-        clearTimeout(hintTimeoutRef.current);
-        hintTimeoutRef.current = null;
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!hintMounted) {
-      return;
-    }
-
-    const handleScroll = () => {
-      if (window.scrollY > 32) {
-        if (hintTimeoutRef.current) {
-          clearTimeout(hintTimeoutRef.current);
-          hintTimeoutRef.current = null;
-        }
-        setShowScrollHint(false);
-        setHintMounted(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [hintMounted]);
-
-  useEffect(() => {
-    if (useStaticFallback || videoError) {
-      if (hintTimeoutRef.current) {
-        clearTimeout(hintTimeoutRef.current);
-        hintTimeoutRef.current = null;
-      }
-      setShowScrollHint(false);
-      setHintMounted(false);
-    }
-  }, [useStaticFallback, videoError]);
-
-  const canDisplayScrollHint = hintMounted && !useStaticFallback && !videoError;
   const copy = INTRO_COPY[language];
 
   return (
-    <section ref={sectionRef} className="section section-intro">
-      <div className="intro-vignette" aria-hidden="true" />
-      <div className="intro-grid" aria-hidden="true" />
-
-      {(useStaticFallback || !shouldLoadVideo || videoError) && (
-        <div className="logo-fallback" aria-hidden={!useStaticFallback}>
-          <div className="logo-content">
-            <div className="logo-container">
-              <Image
-                src={FALLBACK_LOGO_SRC}
-                alt="Portfolio Logo"
-                className="portfolio-logo"
-                fill
-                sizes="(max-width: 479px) 50vw, (max-width: 767px) 60vw, (max-width: 991px) 70vw, 40vw"
-                priority
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
-            <div className="simple-arrow-down" />
-          </div>
-        </div>
-      )}
-
-      {!useStaticFallback && shouldLoadVideo && !videoError && (
-        <video
-          ref={videoRef}
-          key={videoResolution}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
-          className={`foreground-video ${videoLoaded ? 'video-loaded' : 'video-loading'}`}
-          controls={false}
-          disablePictureInPicture
-          onCanPlay={handleVideoLoad}
-          onError={() => setVideoError(true)}
-          onStalled={() => videoRef.current?.load()}
-        >
-          {capabilities.isIOS ? (
-            <source src={videoUrls.mp4} type="video/mp4" />
-          ) : (
-            <>
-              {capabilities.supportsWebM && <source src={videoUrls.webm} type="video/webm" />}
-              <source src={videoUrls.mp4} type="video/mp4" />
-            </>
-          )}
-          {copy.videoUnsupported}
-        </video>
-      )}
-
+    <section id="top" className="section section-intro">
       <div className="content-wrapper intro-overlay">
         <div className="intro-topbar">
-          <a href="#projects" className="intro-brand metallic-text">
-            smolikja team
-          </a>
-
           <div className="intro-topbar__actions">
             <nav className="intro-nav" aria-label={copy.navAriaLabel}>
               <a href="#projects">{copy.navWork}</a>
@@ -374,13 +121,6 @@ export default function IntroSection() {
           </ul>
         </div>
       </div>
-
-      {canDisplayScrollHint && (
-        <div className={`scroll-hint ${showScrollHint ? 'visible' : ''}`}>
-          <span className="scroll-hint__text">{copy.scrollHint}</span>
-          <span className="scroll-hint__arrow" aria-hidden="true" />
-        </div>
-      )}
     </section>
   );
 }

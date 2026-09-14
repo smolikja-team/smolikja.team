@@ -15,6 +15,8 @@ export const VIDEO_CONFIG = {
   resolutions: ['480p', '720p', '1080p', '2160p'] as const,
 } as const;
 
+export const FLOATING_UI_REVEAL_RATIO = 0.45;
+
 export const BREAKPOINTS = {
   mobile: 768,
   tablet: 1024,

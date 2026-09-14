@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-
-const SHOW_AFTER_RATIO = 0.45;
+import { FLOATING_UI_REVEAL_RATIO } from '@/lib/constants';
 
 export default function FloatingLanguageSwitcher() {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,7 +13,7 @@ export default function FloatingLanguageSwitcher() {
     }
 
     const handleScroll = () => {
-      setIsVisible(window.scrollY > window.innerHeight * SHOW_AFTER_RATIO);
+      setIsVisible(window.scrollY > window.innerHeight * FLOATING_UI_REVEAL_RATIO);
     };
 
     handleScroll();

@@ -47,6 +47,7 @@ export default function LanguageProvider({ children }: { children: ReactNode }) 
       return;
     }
     window.localStorage.setItem(STORAGE_KEY, language);
+    document.documentElement.lang = language;
   }, [language]);
 
   const handleSetLanguage = useCallback((value: Language) => {

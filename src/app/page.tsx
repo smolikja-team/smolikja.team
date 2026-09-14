@@ -1,19 +1,22 @@
 import FloatingLanguageSwitcher from '@/components/FloatingLanguageSwitcher';
-import GalaxyBackground from '@/components/GalaxyBackground';
+import FloatingLogo from '@/components/FloatingLogo';
 import LanguageProvider from '@/components/providers/LanguageProvider';
 import { AboutSection, CapabilitiesSection, IntroSection, ProjectsSection } from '@/components/sections';
 
 export default function Home() {
   return (
     <LanguageProvider>
-      <GalaxyBackground />
+      <a href="#main-content" className="skip-link">
+        Přejít k obsahu / Skip to content
+      </a>
+      <FloatingLogo />
       <FloatingLanguageSwitcher />
-      <div className="page-shell">
+      <main id="main-content" className="page-shell">
         <IntroSection />
         <ProjectsSection />
         <CapabilitiesSection />
         <AboutSection />
-      </div>
+      </main>
     </LanguageProvider>
   );
 }

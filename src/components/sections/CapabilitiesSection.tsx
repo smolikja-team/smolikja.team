@@ -1,5 +1,6 @@
 'use client';
 
+import AnimatedIndex from '@/components/AnimatedIndex';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import type { Language } from '@/types';
 
@@ -189,7 +190,7 @@ export default function CapabilitiesSection() {
         <div className="capability-list">
           {copy.capabilityItems.map((item, index) => (
             <div key={item.title} className="capability-row">
-              <span className="capability-row__index">{String(index + 1).padStart(2, '0')}</span>
+              <AnimatedIndex value={index + 1} className="capability-row__index" duration={0.9} />
               <div className="capability-row__body">
                 <p className="capability-card__eyebrow">{item.eyebrow}</p>
                 <h3 className="capability-card__title">{item.title}</h3>
@@ -210,7 +211,7 @@ export default function CapabilitiesSection() {
             <div className="process-stream">
               {copy.processItems.map((item) => (
                 <div key={item.step} className="process-step">
-                  <span className="process-card__step">{item.step}</span>
+                  <AnimatedIndex value={Number(item.step)} className="process-card__step" duration={0.85} />
                   <div className="process-step__body">
                     <h4 className="process-card__title">{item.title}</h4>
                     <p className="process-card__description">{item.description}</p>
