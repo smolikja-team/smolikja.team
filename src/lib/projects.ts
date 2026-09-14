@@ -27,7 +27,7 @@ export const projects: Project[] = [
     },
     images: [
       {
-        src: 'https://smolikja.team/assets/projects/studanky/map.png',
+        src: '/assets/projects/studanky/map.png',
         alt: {
           cs: 'Studánky – mapa dostupných pramenů',
           en: 'Studánky – map of available springs',
@@ -36,7 +36,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/studanky/spring.png',
+        src: '/assets/projects/studanky/spring.png',
         alt: {
           cs: 'Studánky – přehled studánek v okolí',
           en: 'Studánky – overview of springs nearby',
@@ -45,7 +45,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/studanky/detail.png',
+        src: '/assets/projects/studanky/detail.png',
         alt: {
           cs: 'Studánky – detailní informace o prameni',
           en: 'Studánky – detailed spring information',
@@ -54,7 +54,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/studanky/scanner.png',
+        src: '/assets/projects/studanky/scanner.png',
         alt: {
           cs: 'Studánky – skenování QR kódu u studánky',
           en: 'Studánky – QR code scanning at the spring',
@@ -63,7 +63,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/studanky/report.png',
+        src: '/assets/projects/studanky/report.png',
         alt: {
           cs: 'Studánky – rychlé hlášení stavu pramene',
           en: 'Studánky – quick spring status report',
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     },
     images: [
       {
-        src: 'https://smolikja.team/assets/projects/domov/dashboard.png',
+        src: '/assets/projects/domov/dashboard.png',
         alt: {
           cs: 'Domov pod palcem – úvodní dashboard',
           en: 'Domov pod palcem – home dashboard',
@@ -98,7 +98,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/domov/blinder.png',
+        src: '/assets/projects/domov/blinder.png',
         alt: {
           cs: 'Domov pod palcem – ovládání žaluzií',
           en: 'Domov pod palcem – blind controls',
@@ -107,7 +107,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/domov/heating.png',
+        src: '/assets/projects/domov/heating.png',
         alt: {
           cs: 'Domov pod palcem – nastavení vytápění',
           en: 'Domov pod palcem – heating configuration',
@@ -116,7 +116,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/domov/time-regime.png',
+        src: '/assets/projects/domov/time-regime.png',
         alt: {
           cs: 'Domov pod palcem – plánování časových režimů',
           en: 'Domov pod palcem – scheduling automation',
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     },
     images: [
       {
-        src: 'https://smolikja.team/assets/projects/stable/splashscreen.png',
+        src: '/assets/projects/stable/splashscreen.png',
         alt: {
           cs: 'Inteligentní stáj – úvodní obrazovka',
           en: 'Smart Stable – welcome screen',
@@ -151,7 +151,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/stable/stable-picker.png',
+        src: '/assets/projects/stable/stable-picker.png',
         alt: {
           cs: 'Inteligentní stáj – výběr stáje',
           en: 'Smart Stable – stable selector',
@@ -160,7 +160,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/stable/ventilators.png',
+        src: '/assets/projects/stable/ventilators.png',
         alt: {
           cs: 'Inteligentní stáj – ovládání ventilátorů',
           en: 'Smart Stable – fan controls',
@@ -169,7 +169,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/stable/sail-control.png',
+        src: '/assets/projects/stable/sail-control.png',
         alt: {
           cs: 'Inteligentní stáj – ovládání plachet',
           en: 'Smart Stable – tarpaulin controls',
@@ -178,7 +178,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/stable/sensors.png',
+        src: '/assets/projects/stable/sensors.png',
         alt: {
           cs: 'Inteligentní stáj – přehled senzorů',
           en: 'Smart Stable – sensor overview',
@@ -187,7 +187,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/stable/light-control.png',
+        src: '/assets/projects/stable/light-control.png',
         alt: {
           cs: 'Inteligentní stáj – ovládání osvětlení',
           en: 'Smart Stable – lighting controls',
@@ -220,7 +220,7 @@ export const projects: Project[] = [
     },
     images: [
       {
-        src: 'https://smolikja.team/assets/projects/auth-flow/login.png',
+        src: '/assets/projects/auth-flow/login.png',
         alt: {
           cs: 'Flutter Auth Flow – přihlašovací obrazovka',
           en: 'Flutter Auth Flow – login screen',
@@ -229,7 +229,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/auth-flow/registration.png',
+        src: '/assets/projects/auth-flow/registration.png',
         alt: {
           cs: 'Flutter Auth Flow – registrační formulář',
           en: 'Flutter Auth Flow – registration form',
@@ -238,7 +238,7 @@ export const projects: Project[] = [
         height: PORTRAIT_HEIGHT,
       },
       {
-        src: 'https://smolikja.team/assets/projects/auth-flow/confirmation.png',
+        src: '/assets/projects/auth-flow/confirmation.png',
         alt: {
           cs: 'Flutter Auth Flow – potvrzení registrace',
           en: 'Flutter Auth Flow – registration confirmation',

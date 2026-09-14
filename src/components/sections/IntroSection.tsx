@@ -12,7 +12,7 @@ type NetworkInformation = {
   effectiveType?: string;
 };
 
-const FALLBACK_LOGO_SRC = 'https://smolikja.team/assets/logo-white.svg';
+const FALLBACK_LOGO_SRC = '/assets/logo-white.svg';
 
 const buildVideoUrls = (resolution: string) => ({
   webm: `${VIDEO_CONFIG.baseUrl}${resolution}.webm`,
