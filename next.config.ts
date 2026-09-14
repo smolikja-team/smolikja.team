@@ -1,75 +1,33 @@
 import type { NextConfig } from "next";
 
-const isStaticExport = process.env.NEXT_OUTPUT_MODE === 'export';
-
 const nextConfig: NextConfig = {
-  // Production optimizations
-  compress: true,
+  output: "standalone",
   poweredByHeader: false,
-  output: isStaticExport ? 'export' : 'standalone',
-  trailingSlash: true,
-  
-  // Image optimization
-  images: {
-    unoptimized: isStaticExport,
-    formats: ['image/webp', 'image/avif'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'smolikja.team',
-        port: '',
-        pathname: '/assets/**',
-      },
-    ],
+  experimental: {
+    // Enables `app/global-not-found.tsx` — the documented way to render a
+    // consistent 404 when the root layout lives under a dynamic segment
+    // (`app/[locale]/layout.tsx`). Lets the 404 be fully server-rendered with
+    // its own localized <html lang> document.
+    globalNotFound: true,
+    serverActions: {
+      // The contact form is the only Server Action and its payload is small.
+      // Keep the parser limit close to the expected shape instead of the 1 MB
+      // default.
+      bodySizeLimit: "32kb",
+    },
   },
-  
-  // Headers for security and performance
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: "/(.*)",
         headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-        ],
-      },
-      {
-        source: '/assets/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         ],
       },
     ];
   },
-  
-  // Experimental features for better performance
-  experimental: {
-    optimizeServerReact: true,
-  },
 };
 
-// Bundle analyzer (only when ANALYZE=true)
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
-export default withBundleAnalyzer(nextConfig);
+export default nextConfig;
