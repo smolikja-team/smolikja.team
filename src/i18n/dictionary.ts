@@ -37,7 +37,6 @@ export type Dictionary = {
     description: string;
   };
   og: {
-    title: string;
     subtitle: string;
     alt: string;
   };

@@ -39,6 +39,12 @@ export async function generateMetadata({
     authors: [{ name: siteConfig.name, url: siteConfig.url }],
     creator: siteConfig.name,
     publisher: siteConfig.name,
+    manifest: "/manifest.webmanifest",
+    appleWebApp: {
+      capable: true,
+      title: siteConfig.name,
+      statusBarStyle: "black",
+    },
     formatDetection: {
       telephone: false,
     },
