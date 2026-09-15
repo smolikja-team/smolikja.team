@@ -1,13 +1,14 @@
 import { projects } from "@/config/projects";
 import type { Dictionary } from "@/i18n/dictionary";
 import { ProjectStory } from "./project-story";
+import { Section } from "./section";
 import { SectionHeading } from "./section-heading";
 
 export function ProjectsSection({ copy }: { copy: Dictionary["projects"] }) {
   return (
-    <section id="projects" className="scroll-mt-16 border-t">
-      <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
-        <SectionHeading title={copy.title} text={copy.fit} className="pt-16 sm:pt-20" />
+    <Section id="projects" className="overflow-x-clip">
+      <div className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-6 sm:py-20">
+        <SectionHeading title={copy.title} text={copy.fit} />
         <div className="mt-4 flex flex-col divide-y">
           {projects.map((project) => (
             <ProjectStory
@@ -19,6 +20,6 @@ export function ProjectsSection({ copy }: { copy: Dictionary["projects"] }) {
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

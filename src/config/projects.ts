@@ -11,7 +11,7 @@ export type Project<P extends ProjectId = ProjectId> = {
   id: P;
   /** Lifecycle stage — independent of who delivers the app. */
   status: ProjectStatus;
-  /** Screens shown in the case story, in reading order (2–3, no carousel). */
+  /** Screens shown in the story carousel, in reading order (readable states first). */
   images: readonly ProjectImage<P>[];
 };
 
@@ -37,8 +37,10 @@ export const projects: readonly { [P in ProjectId]: Project<P> }[ProjectId][] = 
     id: "domov",
     status: "delivered",
     images: [
+      screenshot("domov", "heating", size1290),
       screenshot("domov", "blinder", size1290),
       screenshot("domov", "time-regime", size1290),
+      screenshot("domov", "dashboard", size1290),
     ],
   },
   {
@@ -47,6 +49,9 @@ export const projects: readonly { [P in ProjectId]: Project<P> }[ProjectId][] = 
     images: [
       screenshot("stable", "sensors", size390),
       screenshot("stable", "ventilators", size390),
+      screenshot("stable", "sail-control", size390),
+      screenshot("stable", "light-control", size390),
+      screenshot("stable", "stable-picker", size390),
     ],
   },
   {
@@ -54,7 +59,9 @@ export const projects: readonly { [P in ProjectId]: Project<P> }[ProjectId][] = 
     status: "in-development",
     images: [
       screenshot("studanky", "map", size375),
+      screenshot("studanky", "spring", size375),
       screenshot("studanky", "detail", size375),
+      screenshot("studanky", "scanner", size375),
       screenshot("studanky", "report", size375),
     ],
   },

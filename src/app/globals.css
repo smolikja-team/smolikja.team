@@ -92,26 +92,6 @@
   --sidebar-ring: oklch(0.474 0.195 264);
 }
 
-/*
- * Translucent surface for the sticky header only: a lightly frosted layer
- * above solid, legible page content (the web reading of Apple's material
- * hierarchy). Everything else sits on solid surfaces.
- */
-@utility glass {
-  background: color-mix(in oklab, var(--card) 78%, transparent);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  backdrop-filter: blur(16px) saturate(150%);
-}
-
-/* Transparency can be a hazard — honour the OS setting with an opaque fallback. */
-@media (prefers-reduced-transparency: reduce) {
-  .glass {
-    background: var(--card);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;

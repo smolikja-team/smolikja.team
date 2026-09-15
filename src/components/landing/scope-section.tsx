@@ -1,6 +1,7 @@
 import { LayoutDashboardIcon, ServerIcon, SmartphoneIcon } from "lucide-react";
 
 import type { Dictionary } from "@/i18n/dictionary";
+import { Section } from "./section";
 import { SectionHeading } from "./section-heading";
 
 const items = [
@@ -12,7 +13,7 @@ const items = [
 /** The complete product: the app plus the two parts it usually needs. */
 export function ScopeSection({ copy }: { copy: Dictionary["scope"] }) {
   return (
-    <section className="border-t">
+    <Section>
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-16 sm:px-6 sm:py-20">
         <SectionHeading title={copy.title} text={copy.text} />
         {/* One product in three connected parts — a single panel, not three cards. */}
@@ -28,6 +29,6 @@ export function ScopeSection({ copy }: { copy: Dictionary["scope"] }) {
           ))}
         </ul>
       </div>
-    </section>
+    </Section>
   );
 }

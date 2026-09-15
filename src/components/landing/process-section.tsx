@@ -1,6 +1,7 @@
 import { CheckIcon } from "lucide-react";
 
 import type { Dictionary } from "@/i18n/dictionary";
+import { Section } from "./section";
 import { SectionHeading } from "./section-heading";
 
 /**
@@ -10,7 +11,7 @@ import { SectionHeading } from "./section-heading";
  */
 export function ProcessSection({ copy }: { copy: Dictionary["process"] }) {
   return (
-    <section id="process" className="scroll-mt-16 border-t bg-secondary/60">
+    <Section id="process" tone="tinted">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-16 sm:px-6 sm:py-20">
         <SectionHeading title={copy.title} text={copy.intro} />
 
@@ -42,6 +43,6 @@ export function ProcessSection({ copy }: { copy: Dictionary["process"] }) {
 
         <p className="max-w-prose leading-relaxed text-pretty text-muted-foreground">{copy.handover}</p>
       </div>
-    </section>
+    </Section>
   );
 }

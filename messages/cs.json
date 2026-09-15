@@ -40,6 +40,10 @@
     "title": "Aplikace, které jsme dodali",
     "fit": "Máte službu, kterou chcete dostat do mobilu? Produkt, ke kterému chybí aplikace? Nebo nápad, u kterého potřebujete najít správný první krok? Takhle vypadají zadání, která jsme řešili.",
     "credit": "Vývoj aplikace: smolikja team",
+    "slideLabel": "Snímek {index} z {count}",
+    "galleryLabel": "Snímky obrazovky – {title}",
+    "previous": "Předchozí snímek",
+    "next": "Další snímek",
     "status": {
       "delivered": "Dodáno",
       "in-development": "Ve vývoji"
@@ -55,7 +59,8 @@
         "images": {
           "heating": "Domov pod palcem – nastavení teploty topení v obýváku s volbou režimu",
           "blinder": "Domov pod palcem – ovládání žaluzie posuvníkem v dosahu palce",
-          "time-regime": "Domov pod palcem – týdenní časový plán vytápění s teplotami po hodinách"
+          "time-regime": "Domov pod palcem – týdenní časový plán vytápění s teplotami po hodinách",
+          "dashboard": "Domov pod palcem – přehled místností s rychlými ovládacími dlaždicemi"
         }
       },
       "stable": {
@@ -67,7 +72,10 @@
         "result": "Aplikace podporuje více stájí jednoho provozovatele a přizpůsobuje se oprávněním přihlášeného uživatele.",
         "images": {
           "sensors": "Inteligentní stáj – hodnoty teploty, vlhkosti a CO₂ po částech stáje s upozorněním na překročení",
-          "ventilators": "Inteligentní stáj – ovládání ventilátorů s ručním a automatickým režimem"
+          "ventilators": "Inteligentní stáj – ovládání ventilátorů s ručním a automatickým režimem",
+          "sail-control": "Inteligentní stáj – nastavení otevření boční plachty",
+          "light-control": "Inteligentní stáj – ovládání osvětlení s ručním a automatickým režimem",
+          "stable-picker": "Inteligentní stáj – výběr stáje jednoho provozovatele"
         }
       },
       "studanky": {
@@ -81,7 +89,8 @@
           "map": "Studánky – mapa s vyznačenými prameny a jejich stavem",
           "spring": "Studánky – mapa s otevřeným detailem pramene Pod špičákem",
           "detail": "Studánky – detail pramene s historií hlášení",
-          "report": "Studánky – dotazník pro hlášení stavu pramene"
+          "report": "Studánky – dotazník pro hlášení stavu pramene",
+          "scanner": "Studánky – skenování QR kódu u pramene"
         }
       }
     }

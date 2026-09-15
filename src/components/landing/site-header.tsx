@@ -1,13 +1,14 @@
 import { mainNav, siteConfig } from "@/config/site";
 import type { Dictionary } from "@/i18n/dictionary";
-import { BrandLogo } from "@/components/icons/brand-logo";
+import { SiteLogo } from "./site-logo";
 import { CtaLink } from "./cta-link";
 import { MobileMenu } from "./mobile-menu";
 
 /**
- * Always-visible sticky header: brand, three destinations, the primary action
- * and the language switch. Translucent above content, opaque when the visitor
- * prefers reduced transparency (see the `glass` utility).
+ * Always-visible sticky header: the animated wordmark, three destinations,
+ * the primary action and the language switch. Solid, not translucent: the
+ * wordmark video is blended onto the header surface, and only an opaque
+ * surface lets its black frame disappear completely.
  */
 export function SiteHeader({
   homeHref,
@@ -21,14 +22,14 @@ export function SiteHeader({
   mobileLanguageSwitcher: React.ReactNode;
 }) {
   return (
-    <header className="glass sticky top-0 z-40 border-b">
+    <header className="sticky top-0 z-40 border-b bg-card">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-4 px-5 sm:px-6">
         <a
           href={homeHref}
           aria-label={copy.home}
           className="flex min-h-11 items-center rounded-md outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
         >
-          <BrandLogo className="h-5 w-auto" />
+          <SiteLogo />
         </a>
         <nav aria-label={copy.aria} className="ml-auto hidden lg:block">
           <ul className="flex items-center gap-1">

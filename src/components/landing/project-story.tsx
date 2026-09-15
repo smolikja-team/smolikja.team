@@ -1,12 +1,13 @@
 import type { Project } from "@/config/projects";
 import type { AnyProjectCopy, Dictionary } from "@/i18n/dictionary";
+import { format } from "@/i18n/format";
 import { Badge } from "@/components/ui/badge";
-import { PhoneScreen } from "./phone-screen";
+import { ScreenCarousel } from "./screen-carousel";
 
 /**
  * One application delivery as a story: the situation, what the team
- * delivered, one product decision and the current outcome, next to two or
- * three readable screens. Every story is fully visible — no carousel.
+ * delivered, one product decision and the current outcome, next to a
+ * carousel of its real screens. Every story is fully visible on the page.
  */
 export function ProjectStory({
   project,
@@ -15,12 +16,13 @@ export function ProjectStory({
 }: {
   project: Project;
   copy: AnyProjectCopy;
-  shared: Pick<Dictionary["projects"], "credit" | "status">;
+  shared: Pick<
+    Dictionary["projects"],
+    "credit" | "status" | "slideLabel" | "galleryLabel" | "previous" | "next"
+  >;
 }) {
-  const screens = project.images.length;
-
   return (
-    <article className="grid grid-cols-[minmax(0,1fr)] gap-10 py-14 sm:py-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+    <article className="grid grid-cols-[minmax(0,1fr)] gap-10 py-14 sm:py-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-16">
       <div className="flex flex-col gap-5">
         <div className="flex flex-col gap-2">
           <div className="flex flex-wrap items-center gap-3">
@@ -38,18 +40,16 @@ export function ProjectStory({
         <p className="text-sm font-medium">{shared.credit}</p>
       </div>
 
-      <div
-        className="grid items-start gap-4 rounded-3xl bg-secondary p-5 sm:gap-6 sm:p-8"
-        style={{ gridTemplateColumns: `repeat(${screens}, minmax(0, 1fr))` }}
-      >
-        {project.images.map((image) => (
-          <PhoneScreen
-            key={image.id}
-            image={image}
-            alt={copy.images[image.id]}
-            sizes={screens === 3 ? "(min-width: 1024px) 180px, 28vw" : "(min-width: 1024px) 250px, 40vw"}
-          />
-        ))}
+      {/* On large screens the carousel runs past the content column to the viewport edge. */}
+      <div className="min-w-0 lg:mr-[calc(-1*max(1.5rem,(100vw-72rem)/2+1.5rem))]">
+        <ScreenCarousel
+          images={project.images}
+          alt={copy.images}
+          label={format(shared.galleryLabel, { title: copy.title })}
+          slideLabel={shared.slideLabel}
+          previousLabel={shared.previous}
+          nextLabel={shared.next}
+        />
       </div>
     </article>
   );

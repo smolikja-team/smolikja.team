@@ -4,6 +4,7 @@ import { siteConfig } from "@/config/site";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionary";
 import { ContactForm } from "./contact-form";
+import { Section } from "./section";
 import { SectionHeading } from "./section-heading";
 
 export function ContactSection({
@@ -16,7 +17,7 @@ export function ContactSection({
   privacyHref: string;
 }) {
   return (
-    <section id="contact" className="scroll-mt-16 border-t bg-secondary/60">
+    <Section id="contact" tone="tinted">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-10 px-5 py-16 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         <div className="flex flex-col gap-6">
           <SectionHeading title={copy.title} text={copy.text} />
@@ -36,6 +37,6 @@ export function ContactSection({
           <ContactForm copy={copy.form} locale={locale} privacyHref={privacyHref} />
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

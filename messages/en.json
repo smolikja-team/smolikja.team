@@ -40,6 +40,10 @@
     "title": "Apps we have delivered",
     "fit": "Have a service you want to bring to mobile? A product that is missing an app? Or an idea where you need to find the right first step? These are the kinds of briefs we have worked on.",
     "credit": "Development by smolikja team",
+    "slideLabel": "Screen {index} of {count}",
+    "galleryLabel": "Screenshots – {title}",
+    "previous": "Previous screen",
+    "next": "Next screen",
     "status": {
       "delivered": "Delivered",
       "in-development": "In development"
@@ -55,7 +59,8 @@
         "images": {
           "heating": "Domov pod palcem – living-room heating temperature with mode selection",
           "blinder": "Domov pod palcem – blind control with a slider within thumb reach",
-          "time-regime": "Domov pod palcem – weekly heating schedule with hourly temperatures"
+          "time-regime": "Domov pod palcem – weekly heating schedule with hourly temperatures",
+          "dashboard": "Domov pod palcem – room overview with quick control tiles"
         }
       },
       "stable": {
@@ -67,7 +72,10 @@
         "result": "The app supports several stables of one operator and adapts to the signed-in user's permissions.",
         "images": {
           "sensors": "Smart Stable – temperature, humidity and CO₂ readings per stable section with an alert on exceeded values",
-          "ventilators": "Smart Stable – fan controls with manual and automatic modes"
+          "ventilators": "Smart Stable – fan controls with manual and automatic modes",
+          "sail-control": "Smart Stable – side tarpaulin opening control",
+          "light-control": "Smart Stable – lighting controls with manual and automatic modes",
+          "stable-picker": "Smart Stable – choosing one of the operator's stables"
         }
       },
       "studanky": {
@@ -81,7 +89,8 @@
           "map": "Studánky – map with marked springs and their state",
           "spring": "Studánky – map with the open detail of the Pod špičákem spring",
           "detail": "Studánky – spring detail with report history",
-          "report": "Studánky – questionnaire for reporting a spring's state"
+          "report": "Studánky – questionnaire for reporting a spring's state",
+          "scanner": "Studánky – scanning the QR code at the spring"
         }
       }
     }

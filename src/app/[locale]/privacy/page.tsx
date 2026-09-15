@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { BrandLogo } from "@/components/icons/brand-logo";
+import { SiteLogo } from "@/components/landing/site-logo";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { buttonVariants } from "@/components/ui/button";
 import { dataProtectionAuthorityUrl, privacyEffectiveDate, privacyPath } from "@/config/legal";
@@ -62,7 +62,7 @@ export default async function PrivacyPage({
             aria-label={dict.nav.home}
             className="flex min-h-11 items-center rounded-md outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           >
-            <BrandLogo className="h-5 w-auto" />
+            <SiteLogo />
           </Link>
           <LanguageSwitcher locale={locale} copy={dict.languageSwitcher} />
         </div>

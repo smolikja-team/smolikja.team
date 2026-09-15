@@ -2,9 +2,9 @@ export type ProjectId = "domov" | "stable" | "studanky";
 
 /** Screenshot ids per project — keys of the `alt` text map in the catalogs. */
 export type ProjectImageId = {
-  domov: "heating" | "blinder" | "time-regime";
-  stable: "sensors" | "ventilators";
-  studanky: "map" | "spring" | "detail" | "report";
+  domov: "heating" | "blinder" | "time-regime" | "dashboard";
+  stable: "sensors" | "ventilators" | "sail-control" | "light-control" | "stable-picker";
+  studanky: "map" | "spring" | "detail" | "report" | "scanner";
 };
 
 export type ProjectStatus = "delivered" | "in-development";
@@ -95,6 +95,11 @@ export type Dictionary = {
     /** Short passage identifying the customer's situation, above the stories. */
     fit: string;
     credit: string;
+    /** Accessible name of one carousel slide; `{index}` and `{count}` templates. */
+    slideLabel: string;
+    galleryLabel: string;
+    previous: string;
+    next: string;
     status: Record<ProjectStatus, string>;
     items: { [P in ProjectId]: ProjectCopy<P> };
   };
