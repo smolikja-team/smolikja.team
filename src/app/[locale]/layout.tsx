@@ -14,9 +14,9 @@ export function generateStaticParams(): { locale: Locale }[] {
 /**
  * Locale-level metadata shared by every page under `[locale]` — including the
  * catch-all 404. Page-identity metadata (canonical, hreflang, robots, OpenGraph
- * URL) deliberately lives in `page.tsx`, not here, so the 404 doesn't inherit a
- * homepage canonical or an `index, follow` directive that fights Next's
- * automatic `noindex`.
+ * URL) deliberately lives in each `page.tsx`, not here, so the 404 doesn't
+ * inherit a homepage canonical or an `index, follow` directive that fights
+ * Next's automatic `noindex`.
  */
 export async function generateMetadata({
   params,
@@ -43,7 +43,7 @@ export async function generateMetadata({
     appleWebApp: {
       capable: true,
       title: siteConfig.name,
-      statusBarStyle: "black",
+      statusBarStyle: "default",
     },
     formatDetection: {
       telephone: false,
@@ -55,7 +55,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  colorScheme: "dark",
+  colorScheme: "light",
   themeColor: siteConfig.themeColor,
 };
 
@@ -70,10 +70,7 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
 
   return (
-    <html
-      lang={localeMeta[locale].htmlLang}
-      className={`dark ${fontVariables} h-full antialiased`}
-    >
+    <html lang={localeMeta[locale].htmlLang} className={`${fontVariables} h-full antialiased`}>
       <body className="flex min-h-full flex-col">{children}</body>
     </html>
   );

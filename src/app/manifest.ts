@@ -17,7 +17,7 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
     lang: localeMeta[defaultLocale].hrefLang,
     start_url: "/",
     scope: "/",
-    display: "standalone",
+    display: "browser",
     background_color: siteConfig.themeColor,
     theme_color: siteConfig.themeColor,
     icons: Object.values(brandAssets.icons).map((icon) => ({ ...icon })),

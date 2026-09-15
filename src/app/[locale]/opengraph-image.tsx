@@ -24,7 +24,7 @@ export default async function Image({
   const dict = await getDictionary(isLocale(locale) ? locale : defaultLocale);
 
   return renderOgImage({
-    title: dict.statement.title,
+    title: dict.hero.title,
     subtitle: dict.og.subtitle,
     domain,
   });

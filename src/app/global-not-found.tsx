@@ -27,7 +27,7 @@ async function resolveLocale(): Promise<Locale> {
 }
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
+  colorScheme: "light",
   themeColor: siteConfig.themeColor,
 };
 
@@ -46,9 +46,9 @@ export default async function GlobalNotFound() {
   const copy = (await getDictionary(locale)).notFound;
 
   return (
-    <html lang={localeMeta[locale].htmlLang} className={`dark ${fontVariables} h-full antialiased`}>
+    <html lang={localeMeta[locale].htmlLang} className={`${fontVariables} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <main className="flex flex-1 items-center justify-center px-4 py-16 sm:px-6">
+        <main className="flex flex-1 items-center justify-center px-5 py-16 sm:px-6">
           <div className="flex w-full max-w-md flex-col items-start gap-8">
             <BrandLogo className="h-6 w-auto" />
             <div className="flex flex-col gap-3">
@@ -60,7 +60,10 @@ export default async function GlobalNotFound() {
                 {copy.description}
               </p>
             </div>
-            <Link href={localizedPathname(locale)} className={cn(buttonVariants({ size: "lg" }))}>
+            <Link
+              href={localizedPathname(locale)}
+              className={cn(buttonVariants({ size: "lg" }), "h-12 rounded-xl px-6 text-base")}
+            >
               {copy.backHome}
             </Link>
           </div>

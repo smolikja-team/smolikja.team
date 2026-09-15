@@ -1,21 +1,25 @@
 {
   "meta": {
-    "title": "smolikja team – mobile app development",
-    "description": "A small Prague team building iOS and Android apps from the ground up – for clients and as our own products. Native or Flutter, from idea to launch."
+    "title": "smolikja team – mobile app development for businesses",
+    "description": "We help businesses turn an idea into a mobile app. From clarifying the brief through a first version for iOS and Android to further development. Free introductory consultation."
   },
   "og": {
-    "subtitle": "Mobile app development",
-    "alt": "smolikja team – mobile app development for iOS and Android"
+    "subtitle": "Mobile app development for businesses · Free introductory consultation",
+    "alt": "smolikja team – we turn your idea into a mobile app"
   },
   "manifest": {
-    "description": "Portfolio of smolikja team – mobile app development for iOS and Android."
+    "description": "smolikja team – mobile app development for businesses. From clarifying the brief through a first version to further development."
   },
   "nav": {
     "aria": "Main navigation",
     "home": "smolikja team – back to top",
     "projects": "Projects",
+    "process": "How we work",
     "about": "About",
-    "contact": "Contact"
+    "cta": "Discuss your idea",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "menuTitle": "Menu"
   },
   "languageSwitcher": {
     "label": "Language",
@@ -23,106 +27,182 @@
     "en": "English"
   },
   "hero": {
-    "logoAlt": "smolikja team",
-    "videoUnsupported": "Your browser does not support video playback.",
-    "scrollHint": "Scroll down"
-  },
-  "statement": {
-    "title": "We build mobile apps from the ground up.",
-    "text": "For clients and for ourselves. Native iOS and Android or Flutter – from the first idea through design and development to launch, all under one roof in Prague."
+    "title": "We turn your idea into a mobile app.",
+    "text": "We help you clarify what the app should solve, design a first version for iOS and Android, and take care of its further development.",
+    "secondary": "See our projects",
+    "reassurance": "You don't need a finished brief. Just describe what you want to improve.",
+    "freeConsultation": "Free introductory consultation.",
+    "caption": "Domov pod palcem and Studánky – development by smolikja team",
+    "compositionAria": "Screens from the Domov pod palcem and Studánky apps"
   },
   "projects": {
-    "title": "What we've built",
-    "galleryLabel": "Screenshots – {title}",
-    "previous": "Previous screenshot",
-    "next": "Next screenshot",
+    "title": "Apps we have delivered",
+    "fit": "Have a service you want to bring to mobile? A product that is missing an app? Or an idea where you need to find the right first step? These are the kinds of briefs we have worked on.",
+    "credit": "Development by smolikja team",
+    "status": {
+      "delivered": "Delivered",
+      "in-development": "In development"
+    },
     "items": {
-      "studanky": {
-        "title": "Studánky",
-        "summary": "Mobile app for iOS and Android (in development) that helps people monitor natural springs and plan trips with reliable access to fresh water.",
-        "details": "Data collection runs through scanning QR codes placed at the springs and a short questionnaire, giving users fresh, first-hand insight into water quality and availability. Users can report damage directly to the spring's owner. The project welcomes partners and collaborators.",
-        "linkLabel": "Get in touch",
-        "images": {
-          "map": "Studánky – map of available springs",
-          "spring": "Studánky – overview of springs nearby",
-          "detail": "Studánky – detailed spring information",
-          "scanner": "Studánky – QR code scanning at the spring",
-          "report": "Studánky – quick spring status report"
-        }
-      },
       "domov": {
         "title": "Domov pod palcem",
-        "summary": "Mobile app for iOS and Android that controls an entire smart home. Designed for ergonomics and one-handed use – every control is reachable with the thumb of the hand holding the phone.",
-        "details": "The app configures itself for the signed-in user and talks to the home over a secured WebSocket protocol. It controls lights, blinds, gates, heating, floor heating, heat recovery and air conditioning – including schedules.",
+        "tagline": "Smart-home control for iOS and Android",
+        "problem": "The owner of a smart home wanted to control lighting, blinds, gates, heating, heat recovery and air conditioning from one place – without switching between each manufacturer's app.",
+        "delivered": "We delivered a mobile app that configures itself for the household after sign-in and talks to it over a secured connection. Schedules for heating and other devices are included.",
+        "decision": "Every control sits within reach of the thumb of the hand holding the phone, so the home can be operated comfortably one-handed – with the shopping in the other.",
+        "result": "The delivered app covers complete control of the home, including scheduled modes.",
         "images": {
-          "dashboard": "Domov pod palcem – home dashboard",
-          "blinder": "Domov pod palcem – blind controls",
-          "heating": "Domov pod palcem – heating configuration",
-          "time-regime": "Domov pod palcem – scheduling automation"
+          "heating": "Domov pod palcem – living-room heating temperature with mode selection",
+          "blinder": "Domov pod palcem – blind control with a slider within thumb reach",
+          "time-regime": "Domov pod palcem – weekly heating schedule with hourly temperatures"
         }
       },
       "stable": {
         "title": "Smart Stable",
-        "summary": "Mobile app for iOS and Android for managers of a smart cattle stable. It enables remote control of the stable equipment and raises alerts when technical issues or undesirable conditions appear.",
-        "details": "It adapts to the signed-in user and communicates over a secured WebSocket protocol. Managers control fans, tarpaulins and lighting, see live sensor readings and interactive 24-hour charts. Critical situations trigger automatic push notifications.",
+        "tagline": "Operations app for a stable manager",
+        "problem": "The manager of a cattle stable needed an overview of the conditions inside and a way to control the equipment even when not on site.",
+        "delivered": "We delivered an iOS and Android app in which the manager controls fans, side tarpaulins and lighting, watches live sensor readings – temperature, humidity and CO₂ – and their last 24 hours in charts.",
+        "decision": "The app watches for undesirable conditions on its own. When readings drift or a device reports a fault, the manager gets a push notification instead of having to watch the screen.",
+        "result": "The app supports several stables of one operator and adapts to the signed-in user's permissions.",
         "images": {
-          "splashscreen": "Smart Stable – welcome screen",
-          "stable-picker": "Smart Stable – stable selector",
-          "ventilators": "Smart Stable – fan controls",
-          "sail-control": "Smart Stable – tarpaulin controls",
-          "sensors": "Smart Stable – sensor overview",
-          "light-control": "Smart Stable – lighting controls"
+          "sensors": "Smart Stable – temperature, humidity and CO₂ readings per stable section with an alert on exceeded values",
+          "ventilators": "Smart Stable – fan controls with manual and automatic modes"
         }
       },
-      "auth-flow": {
-        "title": "Flutter Auth Flow",
-        "summary": "Open-source Flutter package with a configurable authentication UI that connects to any backend.",
-        "details": "Login and sign-up, e-mail verification, password reset, CS/EN localisation. The code is public.",
-        "linkLabel": "Source code on GitHub",
+      "studanky": {
+        "title": "Studánky",
+        "tagline": "An app for monitoring natural springs",
+        "problem": "Hikers and locals have no reliable way to know which natural springs are flowing right now and whether the water is fine.",
+        "delivered": "For the Studánky project we are developing a mobile app for monitoring the state of natural springs and planning trips. Users find springs on a map, scan a QR code at the spring and add the current state through a short questionnaire.",
+        "decision": "Data collection relies on the people at the spring: a report takes a few taps, and damage can be reported directly to the spring's caretaker.",
+        "result": "The app is in development. We keep adding springs and features.",
         "images": {
-          "login": "Flutter Auth Flow – login screen",
-          "registration": "Flutter Auth Flow – registration form",
-          "confirmation": "Flutter Auth Flow – registration confirmation"
+          "map": "Studánky – map with marked springs and their state",
+          "spring": "Studánky – map with the open detail of the Pod špičákem spring",
+          "detail": "Studánky – spring detail with report history",
+          "report": "Studánky – questionnaire for reporting a spring's state"
         }
       }
     }
   },
-  "about": {
-    "title": "How we work",
-    "paragraphs": [
-      "We are smolikja team and we craft every mobile app entirely in-house. We lead the full lifecycle – from strategy and product discovery through research, UX, visual design, technical architecture, implementation, marketing and launch – keeping quality, pace and context under one roof.",
-      "We run our own servers for development environments and combine them with cloud infrastructure in production, letting us scale safely, monitor and evolve the apps we deliver for clients and our own products."
-    ],
-    "community": {
-      "title": "Join us on Discord",
-      "description": "We don't want to work in isolation. We look for people tackling similar challenges – building products, caring for client apps or starting something new – who are ready to share experience, know-how and responsibility.",
-      "cta": "Join Discord",
-      "venueBefore": "You can meet us at ",
-      "venueLink": "SKLAD",
-      "venueAfter": ", a creative and technology space in Smíchov where we have our base and room for community meetups."
+  "process": {
+    "title": "We start with what is worth verifying.",
+    "intro": "First we get to know your idea and situation. The introductory consultation is free. If a more detailed analysis or design is needed, we agree its scope and price in advance.",
+    "handover": "After each stage we agree how to continue. You don't have to commit to the whole collaboration up front – sometimes the right step is a smaller experiment, a web solution, or not building yet.",
+    "free": {
+      "title": "Free introductory consultation",
+      "text": "Usually 60–90 minutes. We go through your business, the intended users, existing systems and the main unknowns. You leave with a short recap and a proposed next step."
+    },
+    "outputsLabel": "What you take away",
+    "stages": [
+      {
+        "title": "We clarify the brief and propose a solution",
+        "text": "Within an agreed scope we examine user needs and the competition and propose what the first version should do. A simple, clear brief can go straight to a development proposal.",
+        "outputs": [
+          "A brief for the first version and a prioritised scope",
+          "The key app flow or a prototype, as agreed",
+          "An estimate and a recommended next step"
+        ]
+      },
+      {
+        "title": "We build the first usable version",
+        "text": "We focus on the users' main need. We show the app as it takes shape and prepare it for release. A first version tests a concrete use case – it does not guarantee demand or revenue.",
+        "outputs": [
+          "A working app for iOS and Android",
+          "The necessary supporting systems and testing",
+          "An agreed release to the App Store and Google Play"
+        ]
+      },
+      {
+        "title": "We develop it based on real use",
+        "text": "After launch we handle operations and plan further changes around user feedback and the needs of your business. Maintenance and development are agreed as separate services.",
+        "outputs": [
+          "Agreed maintenance and operations",
+          "Priorities based on user feedback",
+          "Further releases of the app"
+        ]
+      }
+    ]
+  },
+  "scope": {
+    "title": "The app and everything it needs.",
+    "text": "Where needed we also prepare a web administration, integration with your systems and the operation of the app. We design the parts so that they work together.",
+    "items": {
+      "app": {
+        "title": "Mobile app",
+        "text": "For iOS and Android – native or Flutter, whichever makes sense for your project."
+      },
+      "admin": {
+        "title": "Web administration",
+        "text": "Managing content, users and settings without a developer."
+      },
+      "backend": {
+        "title": "Technical background",
+        "text": "Server, integration with your systems and running the app after launch."
+      }
     }
   },
+  "team": {
+    "title": "A team for your product.",
+    "paragraphs": [
+      "We bring design, development and operations into one collaboration. We work through priorities with you, show finished work and agree the next steps.",
+      "We are a small team from Prague. You talk directly to the people who design and build the app – the brief, the decisions and the code stay with the project, not in one supplier's head."
+    ]
+  },
+  "faq": {
+    "title": "Questions we hear most often",
+    "items": [
+      {
+        "question": "Do I need a finished brief?",
+        "answer": "No. The introductory consultation is free and is there for us to get to know your situation and idea. More detailed research, analysis and solution design are priced by the agreed scope. Paid work starts only after your approval."
+      },
+      {
+        "question": "How much does development cost?",
+        "answer": "The price depends on what the first version should do and which systems it connects to. After the introductory consultation we propose the next step. For a clearly defined brief we offer a fixed price; for staged development we agree a budget and priorities."
+      },
+      {
+        "question": "How long does a first version take?",
+        "answer": "It depends on the scope of the first version and the systems it connects to. We give a timeline estimate once it is clear what the first version should do – usually after the introductory consultation or after clarifying the brief."
+      },
+      {
+        "question": "Do you also handle administration and operations?",
+        "answer": "Yes, where they are part of the agreed delivery. A web administration lets you manage content and users without a developer. Operations cover the server, updates and keeping an eye on the app running."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "We agree maintenance and further development based on what real use shows. Changes are planned around priorities and an agreed budget – a clear agreement, not unlimited support."
+      },
+      {
+        "question": "Can we build on an existing app?",
+        "answer": "Yes. We first assess the existing app and agree the best next step. A rewrite from scratch is not the default recommendation."
+      }
+    ]
+  },
   "contact": {
-    "title": "Get in touch",
-    "text": "Have an app idea, need to strengthen your team, or just want to talk technology? Write to us – we reply to the e-mail you provide.",
+    "title": "What should your app change?",
+    "text": "Write a few sentences about your idea or about what isn't working today. We'll get back to you and arrange a free introductory consultation.",
+    "freeConsultation": "Free introductory consultation. You don't need a finished brief.",
     "form": {
       "name": "Name",
       "email": "E-mail",
       "message": "Message",
-      "messagePlaceholder": "What do you need built?",
+      "messageHint": "Who is the app for and what should it make easier? If you already have a timeline or budget in mind, feel free to add it.",
       "submit": "Send message",
       "submitting": "Sending",
-      "success": "Thanks, your message arrived. We'll reply to the e-mail you provided.",
-      "errorInvalid": "Please check the name, e-mail and message.",
-      "errorServer": "The message could not be sent right now. Please try again, or e-mail us directly.",
-      "privacyNote": "We use your details only to reply to your message."
+      "successTitle": "Your message arrived.",
+      "success": "We'll reply to the e-mail you provided and arrange the introductory consultation.",
+      "errorSummary": "The message could not be sent. Please check the highlighted fields.",
+      "errors": {
+        "name": "Please add your name (at least 2 characters).",
+        "email": "Please enter a valid e-mail address.",
+        "message": "Please write at least a few sentences (10 characters minimum).",
+        "server": "The message could not be sent right now. Your text is still here – please try again, or e-mail us directly."
+      },
+      "privacyNote": "We use your details only to reply to your message.",
+      "privacyLink": "How we handle personal data"
     },
-    "channels": {
-      "title": "Or directly",
-      "email": "E-mail",
-      "github": "GitHub",
-      "discord": "Discord",
-      "openAria": "Open {label}"
+    "direct": {
+      "label": "Or write directly to"
     }
   },
   "footer": {
@@ -130,7 +210,44 @@
     "navAria": "Footer navigation",
     "languageAria": "Language (footer)",
     "copyright": "© {year} smolikja team",
-    "location": "Prague, Czech Republic"
+    "location": "Prague, Czech Republic",
+    "privacy": "Privacy"
+  },
+  "privacy": {
+    "metaTitle": "Privacy",
+    "metaDescription": "What data smolikja.team processes, why and for how long.",
+    "title": "Privacy",
+    "intro": "This page describes which personal data we process on smolikja.team, for what purpose and what rights you have.",
+    "effectiveFrom": "Effective from {date}.",
+    "sections": [
+      {
+        "title": "Who processes the data",
+        "paragraphs": [
+          "The data controller is smolikja team, Prague. For anything concerning personal data, contact us at {email}."
+        ]
+      },
+      {
+        "title": "Contact form",
+        "paragraphs": [
+          "When you write to us through the form, we process your name, e-mail address and the text of your message. The purpose is to answer your enquiry and arrange a possible collaboration; the legal basis is pre-contractual negotiation and our legitimate interest in handling the enquiry.",
+          "The message is delivered to our mailbox by Resend (Resend, Inc., USA) acting as a processor. We keep the data for as long as needed to handle the enquiry and any resulting collaboration, then delete it.",
+          "To protect the form from abuse we briefly keep a hash of the sender's IP address; it expires after 24 hours at most."
+        ]
+      },
+      {
+        "title": "Cookies and analytics",
+        "paragraphs": [
+          "The site uses no analytics or marketing cookies and does not track your behaviour. We store a single technical cookie, NEXT_LOCALE, with the language you chose, valid for one year."
+        ]
+      },
+      {
+        "title": "Your rights",
+        "paragraphs": [
+          "You have the right to access your data, to have it corrected or erased, to restrict processing and to object. Just write to the e-mail above. You can also lodge a complaint with the Czech Office for Personal Data Protection."
+        ]
+      }
+    ],
+    "backHome": "Back to home"
   },
   "notFound": {
     "title": "Page not found",

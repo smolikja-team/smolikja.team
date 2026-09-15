@@ -5,13 +5,21 @@ import { ImageResponse } from "next/og";
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = "image/png";
 
+// Page palette (see globals.css) as hex, because Satori has no CSS variables.
+const BACKGROUND = "#F7F9FC";
+const FOREGROUND = "#171C26";
+const MUTED = "#596273";
+const PRIMARY = "#214EC7";
+
 // Static assets are read once at module load (hoisted I/O): the wordmark as a
-// data URL for Satori's <img>, and the display font as raw TTF bytes. The font
-// is bundled with the page because Satori's built-in font has no Czech glyphs.
+// data URL for Satori's <img> (recoloured from white to the page foreground),
+// and the display font as raw TTF bytes. The font is bundled with the page
+// because Satori's built-in font has no Czech glyphs.
 const wordmarkDataUrl = (() => {
   try {
-    const svg = readFileSync(join(process.cwd(), "public/assets/logo-white.svg"));
-    return `data:image/svg+xml;base64,${svg.toString("base64")}`;
+    const svg = readFileSync(join(process.cwd(), "public/assets/logo-white.svg"), "utf8");
+    const recoloured = svg.replace(/#ffffff/gi, FOREGROUND);
+    return `data:image/svg+xml;base64,${Buffer.from(recoloured).toString("base64")}`;
   } catch {
     return "";
   }
@@ -26,8 +34,8 @@ const fontData = (() => {
 })();
 
 /**
- * Renders the site's OpenGraph card: wordmark on true black, the statement
- * headline, a muted subtitle, domain in the corner. Shared by every locale's `opengraph-image`.
+ * Renders the site's OpenGraph card: wordmark on the light page canvas, the
+ * offer headline, a muted subtitle, domain in the corner. Shared by every locale's `opengraph-image`.
  */
 export function renderOgImage({
   title,
@@ -48,14 +56,14 @@ export function renderOgImage({
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: "#000000",
-          color: "#fafafa",
+          background: BACKGROUND,
+          color: FOREGROUND,
           fontFamily: "Instrument Sans",
         }}
       >
         {wordmarkDataUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={wordmarkDataUrl} alt="" width={520} height={116} />
+          <img src={wordmarkDataUrl} alt="" width={420} height={94} />
         ) : null}
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <div
@@ -70,9 +78,9 @@ export function renderOgImage({
           >
             {title}
           </div>
-          <div style={{ fontSize: 36, color: "#a3a3a3" }}>{subtitle}</div>
+          <div style={{ fontSize: 32, color: MUTED }}>{subtitle}</div>
         </div>
-        <div style={{ display: "flex", justifyContent: "flex-end", fontSize: 28, color: "#a3a3a3" }}>
+        <div style={{ display: "flex", justifyContent: "flex-end", fontSize: 28, color: PRIMARY }}>
           {domain}
         </div>
       </div>

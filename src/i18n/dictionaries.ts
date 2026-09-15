@@ -13,9 +13,6 @@ function normalizeDictionary(catalog: DictionaryCatalog): Dictionary {
   for (const project of projects) {
     const copy = catalog.projects.items[project.id];
     if (!copy) throw new Error(`Missing copy for project "${project.id}".`);
-    if (project.link && !copy.linkLabel) {
-      throw new Error(`Project "${project.id}" has a link but no linkLabel.`);
-    }
     for (const image of project.images) {
       if (!(image.id in copy.images)) {
         throw new Error(`Missing alt text for "${project.id}/${image.id}".`);

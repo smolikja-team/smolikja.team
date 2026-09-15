@@ -1,26 +1,44 @@
-export type ProjectId = "studanky" | "domov" | "stable" | "auth-flow";
+export type ProjectId = "domov" | "stable" | "studanky";
 
 /** Screenshot ids per project — keys of the `alt` text map in the catalogs. */
 export type ProjectImageId = {
-  studanky: "map" | "spring" | "detail" | "scanner" | "report";
-  domov: "dashboard" | "blinder" | "heating" | "time-regime";
-  stable:
-    | "splashscreen"
-    | "stable-picker"
-    | "ventilators"
-    | "sail-control"
-    | "sensors"
-    | "light-control";
-  "auth-flow": "login" | "registration" | "confirmation";
+  domov: "heating" | "blinder" | "time-regime";
+  stable: "sensors" | "ventilators";
+  studanky: "map" | "spring" | "detail" | "report";
 };
 
+export type ProjectStatus = "delivered" | "in-development";
+
+/**
+ * One application delivery, told from the customer's side: the situation,
+ * what the team delivered, one meaningful product decision and the current,
+ * verifiable outcome. The credit line and status label are shared strings.
+ */
 export type ProjectCopy<P extends ProjectId = ProjectId> = {
   title: string;
-  summary: string;
-  details: string;
-  /** Label of the optional outbound link defined in `src/config/projects.ts`. */
-  linkLabel?: string;
+  /** One line under the title: who the app is for. */
+  tagline: string;
+  problem: string;
+  delivered: string;
+  decision: string;
+  result: string;
   images: Record<ProjectImageId[P], string>;
+};
+
+export type ProcessStage = {
+  title: string;
+  text: string;
+  outputs: string[];
+};
+
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+export type PrivacySection = {
+  title: string;
+  paragraphs: string[];
 };
 
 /**
@@ -47,8 +65,13 @@ export type Dictionary = {
     aria: string;
     home: string;
     projects: string;
+    process: string;
     about: string;
-    contact: string;
+    /** The one primary action, identical everywhere it appears. */
+    cta: string;
+    menuOpen: string;
+    menuClose: string;
+    menuTitle: string;
   };
   languageSwitcher: {
     label: string;
@@ -56,63 +79,94 @@ export type Dictionary = {
     en: string;
   };
   hero: {
-    logoAlt: string;
-    videoUnsupported: string;
-    scrollHint: string;
-  };
-  statement: {
     title: string;
     text: string;
+    secondary: string;
+    reassurance: string;
+    freeConsultation: string;
+    /** Small factual caption under the product composition. */
+    caption: string;
+    compositionAria: string;
   };
   projects: {
     title: string;
-    galleryLabel: string;
-    previous: string;
-    next: string;
+    /** Short passage identifying the customer's situation, above the stories. */
+    fit: string;
+    credit: string;
+    status: Record<ProjectStatus, string>;
     items: { [P in ProjectId]: ProjectCopy<P> };
   };
-  about: {
+  process: {
+    title: string;
+    intro: string;
+    handover: string;
+    free: {
+      title: string;
+      text: string;
+    };
+    outputsLabel: string;
+    stages: ProcessStage[];
+  };
+  scope: {
+    title: string;
+    text: string;
+    items: {
+      app: { title: string; text: string };
+      admin: { title: string; text: string };
+      backend: { title: string; text: string };
+    };
+  };
+  team: {
     title: string;
     paragraphs: string[];
-    community: {
-      title: string;
-      description: string;
-      cta: string;
-      venueBefore: string;
-      venueLink: string;
-      venueAfter: string;
-    };
+  };
+  faq: {
+    title: string;
+    items: FaqItem[];
   };
   contact: {
     title: string;
     text: string;
+    freeConsultation: string;
     form: {
       name: string;
       email: string;
       message: string;
-      messagePlaceholder: string;
+      messageHint: string;
       submit: string;
       submitting: string;
+      successTitle: string;
       success: string;
-      errorInvalid: string;
-      errorServer: string;
+      errorSummary: string;
+      errors: {
+        name: string;
+        email: string;
+        message: string;
+        server: string;
+      };
       privacyNote: string;
+      privacyLink: string;
     };
-    channels: {
-      title: string;
-      email: string;
-      github: string;
-      discord: string;
-      openAria: string;
+    direct: {
+      label: string;
     };
   };
   footer: {
     aria: string;
-    /** Distinct landmark names — the header already owns "main navigation" and "language". */
     navAria: string;
     languageAria: string;
     copyright: string;
     location: string;
+    privacy: string;
+  };
+  privacy: {
+    metaTitle: string;
+    metaDescription: string;
+    title: string;
+    intro: string;
+    effectiveFrom: string;
+    sections: PrivacySection[];
+    backHome: string;
   };
   notFound: {
     title: string;
@@ -120,5 +174,8 @@ export type Dictionary = {
     backHome: string;
   };
 };
+
+/** `ProjectCopy` for a project whose id is only known as the `ProjectId` union. */
+export type AnyProjectCopy = Omit<ProjectCopy, "images"> & { images: Record<string, string> };
 
 export type DictionaryCatalog = Dictionary;

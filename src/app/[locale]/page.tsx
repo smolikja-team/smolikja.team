@@ -5,21 +5,7 @@ import { LandingPage } from "@/components/landing/landing-page";
 import { siteConfig } from "@/config/site";
 import { isLocale, localeMeta, locales, localizedPathname } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-
-/**
- * hreflang map for `alternates.languages`. Each locale points at its prefixed
- * URL (`/cs`, `/en`); `x-default` points at the bare `/`, which the proxy
- * redirects to the visitor's best locale — the pattern Google recommends for a
- * language-agnostic entry point.
- */
-function languageAlternates(): Record<string, string> {
-  const languages: Record<string, string> = {};
-  for (const locale of locales) {
-    languages[localeMeta[locale].hrefLang] = localizedPathname(locale);
-  }
-  languages["x-default"] = "/";
-  return languages;
-}
+import { jsonLdScript, languageAlternates } from "@/lib/metadata";
 
 export async function generateMetadata({
   params,
@@ -67,11 +53,6 @@ export async function generateMetadata({
   };
 }
 
-/** Serializes JSON-LD safely for a native <script> tag (escapes `<` per docs). */
-function jsonLdScript(data: object): string {
-  return JSON.stringify(data).replace(/</g, "\\u003c");
-}
-
 export default async function Home({
   params,
 }: {
@@ -82,7 +63,8 @@ export default async function Home({
 
   const dict = await getDictionary(locale);
 
-  // Structured data: the organisation behind the site, localized like the page.
+  // Structured data: the studio as an organisation and the FAQ the page shows,
+  // both localized like the page itself.
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -91,9 +73,24 @@ export default async function Home({
     description: dict.meta.description,
     url: `${siteConfig.url}${localizedPathname(locale)}`,
     email: siteConfig.email,
-    sameAs: [siteConfig.links.github, siteConfig.links.discord],
+    sameAs: [siteConfig.links.github],
     address: { "@type": "PostalAddress", addressLocality: "Praha", addressCountry: "CZ" },
+    areaServed: ["CZ", "SK"],
     knowsAbout: ["iOS", "Android", "Flutter", "Swift", "Kotlin", "Dart"],
+    makesOffer: {
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: dict.og.subtitle, serviceType: "Mobile app development" },
+    },
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: dict.faq.items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
   };
 
   return (
@@ -101,6 +98,10 @@ export default async function Home({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdScript(organizationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(faqJsonLd) }}
       />
       <LandingPage dict={dict} locale={locale} />
     </>

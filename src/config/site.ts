@@ -6,13 +6,15 @@
 export const siteConfig = {
   name: "smolikja team",
   url: "https://smolikja.team",
+  /** Team contact address — shown on the page and used as the enquiry inbox. */
   email: "smolikja@protonmail.com",
   links: {
     github: "https://github.com/smolikja-team/",
-    discord: "https://discord.gg/jrnAaFeEzu",
-    venue: "https://sklad.digital/",
   },
-  themeColor: "#000000",
+  /** Matches `--background`; browser chrome blends with the page. */
+  themeColor: "#F7F9FC",
+  /** Anchor every primary action leads to — an enquiry, not a booking. */
+  ctaHref: "#contact",
 } as const;
 
 /**
@@ -21,8 +23,8 @@ export const siteConfig = {
  */
 export const mainNav = [
   { id: "projects", href: "#projects" },
+  { id: "process", href: "#process" },
   { id: "about", href: "#about" },
-  { id: "contact", href: "#contact" },
 ] as const;
 
 export type NavItemId = (typeof mainNav)[number]["id"];
