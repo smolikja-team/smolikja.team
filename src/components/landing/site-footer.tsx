@@ -21,7 +21,7 @@ export function SiteFooter({
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-10 sm:px-6">
         <div className="flex flex-wrap items-center justify-between gap-6">
           <BrandLogo className="h-5 w-auto" />
-          <nav aria-label={navCopy.aria}>
+          <nav aria-label={copy.navAria}>
             <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
               {mainNav.map((item) => (
                 <li key={item.id}>
@@ -40,7 +40,7 @@ export function SiteFooter({
           <p>
             {format(copy.copyright, { year: new Date().getFullYear() })} · {copy.location}
           </p>
-          <LanguageSwitcher locale={locale} copy={languageCopy} />
+          <LanguageSwitcher locale={locale} copy={languageCopy} label={copy.languageAria} />
         </div>
       </div>
     </footer>

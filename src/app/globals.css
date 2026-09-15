@@ -79,7 +79,7 @@
   --destructive: oklch(0.7 0.19 22);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.6 0.2 277);
+  --ring: oklch(0.55 0.2 277);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -93,8 +93,9 @@
   --sidebar-accent: oklch(0.24 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.6 0.2 277);
-  --brand: oklch(0.6 0.2 277);
+  --sidebar-ring: oklch(0.55 0.2 277);
+  /* L 0.55 keeps white button text at ≥ 4.5:1 (AA); L 0.6 would fail at 4.0:1. */
+  --brand: oklch(0.55 0.2 277);
   --brand-foreground: oklch(0.985 0 0);
 }
 

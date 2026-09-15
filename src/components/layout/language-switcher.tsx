@@ -12,14 +12,17 @@ import type { Dictionary } from "@/i18n/dictionary";
 export function LanguageSwitcher({
   locale,
   copy,
+  label = copy.label,
   className,
 }: {
   locale: Locale;
   copy: Dictionary["languageSwitcher"];
+  /** Landmark name; override when a second switcher is on the page. */
+  label?: string;
   className?: string;
 }) {
   return (
-    <nav aria-label={copy.label} className={className}>
+    <nav aria-label={label} className={className}>
       <ul className="flex items-center gap-1 text-sm">
         {locales.map((candidate) => {
           const current = candidate === locale;

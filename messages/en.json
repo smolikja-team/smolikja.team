@@ -127,6 +127,8 @@
   },
   "footer": {
     "aria": "Footer",
+    "navAria": "Footer navigation",
+    "languageAria": "Language (footer)",
     "copyright": "© {year} smolikja team",
     "location": "Prague, Czech Republic"
   },

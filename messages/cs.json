@@ -127,6 +127,8 @@
   },
   "footer": {
     "aria": "Patička",
+    "navAria": "Navigace v patičce",
+    "languageAria": "Jazyk (patička)",
     "copyright": "© {year} smolikja team",
     "location": "Praha, Česká republika"
   },

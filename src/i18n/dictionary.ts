@@ -108,6 +108,9 @@ export type Dictionary = {
   };
   footer: {
     aria: string;
+    /** Distinct landmark names — the header already owns "main navigation" and "language". */
+    navAria: string;
+    languageAria: string;
     copyright: string;
     location: string;
   };
