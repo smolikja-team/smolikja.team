@@ -7,9 +7,12 @@ import { config, proxy } from "./proxy";
 const ORIGIN = "https://smolikja.team";
 
 describe("proxy matcher", () => {
-  it.each(["/", "/cs", "/en", "/unknown", "/cs/unknown"])("matches page route %s", (url) => {
-    expect(unstable_doesMiddlewareMatch({ config, nextConfig: {}, url })).toBe(true);
-  });
+  it.each(["/", "/cs", "/en", "/privacy", "/cs/privacy", "/unknown", "/cs/unknown"])(
+    "matches page route %s",
+    (url) => {
+      expect(unstable_doesMiddlewareMatch({ config, nextConfig: {}, url })).toBe(true);
+    },
+  );
 
   it.each([
     "/robots.txt",
@@ -54,6 +57,14 @@ describe("unprefixed requests", () => {
     );
 
     expect(getRedirectUrl(response)).toBe(`${ORIGIN}/cs/foo?bar=1`);
+  });
+
+  it("localizes the unprefixed privacy path", () => {
+    const response = proxy(
+      new NextRequest(`${ORIGIN}/privacy`, { headers: { "accept-language": "en" } }),
+    );
+
+    expect(getRedirectUrl(response)).toBe(`${ORIGIN}/en/privacy`);
   });
 });
 
