@@ -85,14 +85,15 @@ The deployed standalone server uses a different start command; see
 - `src/app/` owns routes, layouts, metadata files and the contact Server
   Action.
 - Server Components are the default. Small Client Component islands own the
-  mobile menu, the FAQ accordion, the contact form and the hero entrance.
+  mobile menu, the FAQ accordion, the screen carousels, the contact form and
+  the hero entrance.
 - `src/components/` is organized by subsystem (`landing`, `layout`, `icons`,
   `ui`), not by route file.
 - `src/config/`, `src/i18n/` and `src/lib/` hold structural configuration,
   localization and shared server/domain logic respectively.
 - `messages/` contains one typed JSON catalog per supported locale.
-- `public/` contains the screenshots, logo, generated icons and the legacy
-  logo videos (public URLs kept stable).
+- `public/` contains the screenshots, logo, generated icons and the logo
+  videos (the header wordmark; public URLs kept stable).
 
 See [Architecture](docs/architecture.md) for the route map, dependency
 boundaries and documentation rules.

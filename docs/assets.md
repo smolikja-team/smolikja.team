@@ -7,7 +7,7 @@ All binary assets are committed under `public/` and served from the site root.
 | Path | Contents | Registered in |
 | --- | --- | --- |
 | `public/assets/logo-white.svg` | Wordmark (596×133), white on transparent. Also inlined as `src/components/icons/brand-logo.tsx` so it inherits `currentColor`. | `src/config/assets.ts` |
-| `public/assets/loop2x/team-logo-{480p,720p,1080p,2160p}.{webm,mp4}` | The 16 s, 16:9 logo loop in four encodes (≈2–19 MB each). Not used by the landing page since the 2026-09 repositioning; kept because the URLs are public. | — |
+| `public/assets/loop2x/team-logo-{480p,720p,1080p,2160p}.{webm,mp4}` | The 16 s, 16:9 rotating-logo loop in four encodes (≈2–19 MB each). The 480p encode is the header's animated wordmark; the larger ones are kept because the URLs are public. | `src/config/video.ts` |
 | `public/assets/projects/<id>/<screenshot>.png` | Portrait phone screenshots per project. | `src/config/projects.ts` |
 | `public/brand/icon-192.png`, `icon-512.png`, `icon-512-maskable.png` | PWA icons for the manifest. | `src/config/assets.ts` |
 | `src/app/icon.png`, `apple-icon.png`, `favicon.ico` | Favicons via Next.js file conventions. | — |
@@ -27,11 +27,20 @@ sets from a real build before giving them a prominent, high-density place; do
 not upscale them. Alt text lives in the message catalogs under
 `projects.items.<id>.images.<screenshot>`; see [Localization](localization.md).
 
-Choose readable application states over splash screens, and screens that are
-full views rather than sheets over a dimmed background (the Domov `heating`
-and `blinder` sheets read well inside a story, the `time-regime` schedule is
-the hero's large screen). The screenshots carry their own status bars, so no
-device frame is drawn around them.
+Choose readable application states over splash screens (the stable splash
+screen is deliberately not registered), and put screens that are full views
+first — the `time-regime` schedule is the hero's large screen because sheets
+over a dimmed background read poorly at that size. Screens are shown inside
+a slim dark bezel (`landing/phone-frame.tsx`); the screenshots carry their own
+status bars and cutouts, so the frame draws no second notch.
+
+## Header wordmark video
+
+`landing/site-logo.tsx` plays the 480p loop muted with `filter: invert(1)`
+and `mix-blend-mode: multiply`: the black frame becomes transparent on the
+solid header and the white logo becomes dark. The wrapper crops the 16:9
+frame to the band the logo rotates in. Visitors with reduced motion get the
+static SVG wordmark; the footer and share image always use the SVG.
 
 ## Icons
 

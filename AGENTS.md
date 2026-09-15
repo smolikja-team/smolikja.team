@@ -35,7 +35,7 @@ redirects the bare `/`. Metadata routes (`robots.ts`, `sitemap.ts`,
 
 ## Assets
 
-The logo, project screenshots and the legacy logo videos are served from
+The logo, project screenshots and the logo videos are served from
 `public/assets/**` under their historical `/assets/*` paths — keep those paths
-stable even though the videos are no longer used. Screenshot ids, pixel sizes
-and project status are declared in `src/config/projects.ts`.
+stable. Screenshot ids, pixel sizes and project status are declared in
+`src/config/projects.ts`; the header wordmark video in `src/config/video.ts`.

@@ -31,11 +31,14 @@ event handling. Current client islands:
 | Island | Why it is client-side |
 | --- | --- |
 | `landing/mobile-menu.tsx` | Open/close state of the small-screen menu (shadcn `Sheet` on Base UI). |
+| `landing/screen-carousel.tsx` → `ui/carousel.tsx` | Embla carousel of an app's screens (drag, trackpad wheel, arrow keys, buttons, dots). |
 | `landing/contact-form.tsx` | `useActionState` around the contact Server Action; remounts fields with restored values after a failed attempt. |
 | `landing/faq-section.tsx` → `ui/accordion.tsx` | Expand/collapse of the FAQ (Base UI accordion). |
 | `landing/reveal.tsx` | The one restrained entrance — the hero product composition — via `motion`, disabled under reduced motion. |
 
-Everything else, including the sticky header, is a Server Component. Values
+Everything else, including the sticky header and its animated wordmark
+(`landing/site-logo.tsx`, a plain `<video>` blended onto the header), is a
+Server Component. Values
 crossing from a Server Component to a Client Component are serializable plain
 data; Server Actions are the supported function exception.
 
@@ -87,10 +90,11 @@ copy.
 ### Application deliveries
 
 `src/config/projects.ts` lists each delivery with its lifecycle status and the
-two or three screens shown in its story; `heroComposition` names the two
-screens in the hero. Every story is visible without a carousel. The credit
-line and status labels are shared catalog strings, so adding a project is a
-config entry plus copy — see [Localization](localization.md).
+screens shown in its story carousel, readable states first; `heroComposition`
+names the two screens in the hero. Every story is visible on the page; only
+the screens inside a story scroll. The credit line and status labels are
+shared catalog strings, so adding a project is a config entry plus copy — see
+[Localization](localization.md).
 
 ### Contact form
 
@@ -109,6 +113,12 @@ semantic utilities (`bg-card`, `text-muted-foreground`, `bg-primary`) — never
 raw colours — and the real application screens supply most of the colour.
 Primary controls are 48 px tall and form text is 16 px; the generated
 primitives are not edited for this, the landing wrappers add the sizes.
+
+Every section (`landing/section.tsx`) is at least one viewport tall minus the
+sticky header and centres its content; longer sections simply grow. The
+header is solid, not translucent: the wordmark video (white logo on black) is
+inverted and multiplied onto it, and only an opaque surface lets the black
+frame disappear without a visible rectangle.
 
 ## Sources of truth
 
