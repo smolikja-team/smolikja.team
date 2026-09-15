@@ -9,12 +9,19 @@ API. The browser never calls Resend and never sees the API key.
 
 1. `contact-form.tsx` (client) submits `name`, `email`, `message`, a hidden
    `locale` and the honeypot field `website` through `useActionState`.
-2. The action returns a discriminated state — `idle`, `success`, `invalid` or
-   `error` — and never throws to the client. The form maps `invalid` to a
-   "check your input" message, `error` to a generic retry message with the
-   direct e-mail as the fallback channel.
+2. The action returns a discriminated state — `idle`, `success`, `invalid`
+   (with the invalid field names) or `error` — and never throws to the client.
+   Both failure states carry the entered values back, because React resets an
+   uncontrolled form after its action runs; the form keys its fields on the
+   `attempt` counter so they remount with the restored text. `invalid`
+   highlights the fields and shows per-field messages, `error` shows a retry
+   message with the direct e-mail as the fallback channel. Success confirms
+   the enquiry and the promised reply — not an appointment.
 3. `src/lib/contact-mail.ts` POSTs to `https://api.resend.com/emails` with a
    five-second timeout. Any `2xx` is success.
+
+The privacy page (`/{locale}/privacy`) linked from the form describes exactly
+this processing; keep the two in sync when the flow changes.
 
 ## Delivery contract
 

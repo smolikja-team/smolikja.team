@@ -38,13 +38,19 @@ components.
 
 1. Add the project id and its screenshot ids to `ProjectId` / `ProjectImageId`
    in `src/i18n/dictionary.ts`.
-2. Put the PNGs under `public/assets/projects/<id>/` and register them with
-   their intrinsic pixel size in `src/config/projects.ts`.
-3. Add `projects.items.<id>` (title, summary, details, optional `linkLabel`,
-   one `images` entry per screenshot) to every catalog.
+2. Put the PNGs under `public/assets/projects/<id>/` and register the two or
+   three screens the story shows, with their intrinsic pixel size and the
+   project's lifecycle `status`, in `src/config/projects.ts`.
+3. Add `projects.items.<id>` to every catalog: `title`, `tagline`, then the
+   story in four paragraphs — `problem` (situation and users), `delivered`
+   (what the team was responsible for), `decision` (one meaningful product
+   decision) and `result` (verifiable outcome or accurate stage) — plus one
+   `images` entry per screenshot.
 
-The type system rejects a catalog that names unknown ids; the loader rejects a
-configured project or screenshot without copy.
+Write every story with smolikja as the delivering team; the shared
+`projects.credit` line is added automatically and `projects.status` supplies
+the stage label. The type system rejects a catalog that names unknown ids; the
+loader rejects a configured project or screenshot without copy.
 
 ## Add a locale
 
@@ -59,6 +65,15 @@ configured project or screenshot without copy.
 Static params, canonical and alternate metadata, the sitemap, the language
 switcher and proxy matching derive from the locale configuration. They should
 not maintain separate locale lists.
+
+## Voice
+
+Customer-facing copy speaks as the team — first-person plural ("navrhujeme",
+"vyvíjíme", "postaráme se") with consistent formal address in Czech. Czech is
+the editorial source of truth; English carries the same intent. Keep promises
+to what the team actually does: no invented headcount, response deadlines,
+prices or guarantees. The one primary action is `nav.cta` and reads the same
+wherever it appears.
 
 ## Routing and language negotiation
 

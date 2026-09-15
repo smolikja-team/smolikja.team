@@ -1,8 +1,9 @@
 # smolikja.team
 
-Portfolio website of smolikja team — mobile app development. A single
-localized landing page (`/cs`, `/en`) with the logo loop, project showcase,
-community invite and a contact form.
+Website of smolikja team — a small mobile product studio in Prague. A single
+localized landing page (`/cs`, `/en`) that presents the offer, three delivered
+applications, the working process, FAQ and an enquiry form, plus a privacy
+page.
 
 The application uses the Next.js App Router, React, TypeScript, Tailwind CSS
 and pnpm. `package.json` is the source of truth for framework and dependency
@@ -24,6 +25,9 @@ intent behind them.
   this project follows.
 - [Stack migration](docs/stack-migration.md) — what changed in the 2026-09
   migration and why.
+- [Landing page redesign plan](docs/landing-page-redesign-plan.md) and
+  [pricing research](docs/landing-page-pricing-research.md) — the positioning,
+  content and commercial reasoning behind the current page.
 
 Keep durable contracts, operational procedures and non-obvious architectural
 decisions in these documents. Active work belongs in the issue tracker, and
@@ -81,13 +85,14 @@ The deployed standalone server uses a different start command; see
 - `src/app/` owns routes, layouts, metadata files and the contact Server
   Action.
 - Server Components are the default. Small Client Component islands own the
-  hero video, gallery edge state, header visibility and the contact form.
+  mobile menu, the FAQ accordion, the contact form and the hero entrance.
 - `src/components/` is organized by subsystem (`landing`, `layout`, `icons`,
   `ui`), not by route file.
 - `src/config/`, `src/i18n/` and `src/lib/` hold structural configuration,
   localization and shared server/domain logic respectively.
 - `messages/` contains one typed JSON catalog per supported locale.
-- `public/` contains the videos, screenshots, logo and generated icons.
+- `public/` contains the screenshots, logo, generated icons and the legacy
+  logo videos (public URLs kept stable).
 
 See [Architecture](docs/architecture.md) for the route map, dependency
 boundaries and documentation rules.
