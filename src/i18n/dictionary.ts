@@ -84,8 +84,10 @@ export type Dictionary = {
     secondary: string;
     reassurance: string;
     freeConsultation: string;
-    /** Small factual caption under the product composition. */
+    /** Small factual caption under the product composition (both screens). */
     caption: string;
+    /** Caption for small screens, where only the large screen is shown. */
+    captionSmall: string;
     compositionAria: string;
   };
   projects: {

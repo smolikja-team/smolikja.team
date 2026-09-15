@@ -72,7 +72,10 @@ export function Hero({
             />
           </div>
         </div>
-        <p className="mt-6 text-sm text-muted-foreground">{copy.caption}</p>
+        <p className="mt-6 text-sm text-muted-foreground">
+          <span className="sm:hidden">{copy.captionSmall}</span>
+          <span className="hidden sm:inline">{copy.caption}</span>
+        </p>
       </Reveal>
     </section>
   );
