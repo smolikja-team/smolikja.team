@@ -1,22 +1,23 @@
 {
   "meta": {
-    "title": "Jakub Smolík – digitální produkty a mobilní aplikace pro firmy",
-    "description": "Pomáhám firmám zjistit, co má smysl postavit – a pak to navrhnu, postavím a dlouhodobě rozvíjím. Mobilní aplikace a digitální produkty. Úvodní konzultace zdarma."
+    "title": "Jakub Smolík – vývoj a zabezpečení mobilních aplikací",
+    "description": "Pomůžu vám vymyslet, postavit a zabezpečit mobilní aplikaci nebo web. Vývoj na míru, MVP i kontrola bezpečnosti – také u aplikací postavených s AI. Konzultace zdarma."
   },
   "og": {
-    "subtitle": "Návrh a vývoj digitálních produktů · Úvodní konzultace zdarma",
-    "alt": "Jakub Smolík – pomůžu vám zjistit, co má smysl postavit. A pak to postavím."
+    "subtitle": "Návrh, vývoj a zabezpečení aplikací · Úvodní konzultace zdarma",
+    "alt": "Jakub Smolík – pomůžu vám vymyslet, postavit a zabezpečit vaši aplikaci."
   },
   "manifest": {
-    "description": "Jakub Smolík – návrh, vývoj a dlouhodobý rozvoj digitálních produktů a mobilních aplikací pro firmy."
+    "description": "Jakub Smolík – návrh, vývoj a zabezpečení mobilních aplikací a digitálních produktů pro firmy."
   },
   "nav": {
     "aria": "Hlavní navigace",
     "home": "smolikja team – na úvod",
-    "projects": "Projekty",
-    "process": "Spolupráce",
+    "services": "Služby",
+    "work": "Zkušenosti",
+    "security": "Bezpečnost",
     "about": "O mně",
-    "cta": "Probrat nápad",
+    "cta": "Konzultace zdarma",
     "menuOpen": "Otevřít menu",
     "menuClose": "Zavřít menu",
     "menuTitle": "Menu"
@@ -27,161 +28,190 @@
     "en": "English"
   },
   "hero": {
-    "role": "Návrh a vývoj digitálních produktů",
-    "title": "Pomůžu vám zjistit, co má smysl postavit. A pak to postavím.",
-    "text": "Pomáhám firmám ujasnit, jestli a jaký digitální produkt jim dává smysl – nejčastěji mobilní aplikaci. Když ano, provedu ho návrhem, vývojem i dalším rozvojem. Pracuju s týmem AI agentů; rozhodnutí a odpovědnost zůstávají u mě.",
-    "secondary": "Prohlédnout projekty",
-    "reassurance": "Nemusíte mít zadání. Stačí popsat, kam míříte.",
-    "freeConsultation": "Úvodní konzultace zdarma.",
-    "caption": "Domov pod palcem a Studánky – vývoj aplikací: Jakub Smolík",
-    "captionSmall": "Domov pod palcem – vývoj aplikace: Jakub Smolík",
-    "compositionAria": "Ukázky aplikací Domov pod palcem a Studánky"
+    "role": "Vývoj a bezpečnost aplikací",
+    "title": "Pomůžu vám vymyslet, postavit a zabezpečit aplikaci.",
+    "text": "Mobilní aplikace a weby pro firmy a startupy – od nápadu po bezpečný provoz.",
+    "secondary": "Na čem jsem pracoval",
+    "reassurance": "60–90 minut, bez závazků",
+    "freeConsultation": "Úvodní konzultace zdarma",
+    "compositionAria": "Ukázky mobilních aplikací"
   },
-  "availability": {
-    "open": "Mám prostor na nové projekty. Rozsah a termíny domluvíme individuálně.",
-    "busy": "Teď mám hodně práce, ale napište – domluvíme termín."
-  },
-  "projects": {
-    "title": "Vybrané projekty",
-    "fit": "Máte službu, kterou chcete dostat do mobilu? Produkt, ke kterému chybí aplikace? Nebo nápad, u kterého potřebujete najít správný první krok? Takhle vypadají zadání, která jsem řešil.",
-    "credit": "Vývoj aplikace: Jakub Smolík",
-    "slideLabel": "Snímek {index} z {count}",
-    "galleryLabel": "Snímky obrazovky – {title}",
-    "previous": "Předchozí snímek",
-    "next": "Další snímek",
-    "status": {
-      "delivered": "Dodáno",
-      "in-development": "Ve vývoji"
-    },
+  "services": {
+    "title": "S čím vám pomůžu",
+    "intro": "Začít můžete kdekoli – od první úvahy po kontrolu hotové aplikace. Bezpečnost přitom neřeším až na konci, ale od prvního návrhu.",
     "items": {
-      "domov": {
-        "title": "Domov pod palcem",
-        "tagline": "Ovládání chytré domácnosti pro iOS a Android",
-        "problem": "Majitel chytré domácnosti chtěl ovládat osvětlení, žaluzie, vstupní brány, vytápění, rekuperaci i klimatizaci z jednoho místa – bez přebíhání mezi aplikacemi jednotlivých výrobců.",
-        "delivered": "Dodal jsem mobilní aplikaci, která se po přihlášení sama nastaví podle konfigurace domácnosti a komunikuje s ní zabezpečeným spojením. Součástí jsou časové plány pro vytápění a další zařízení.",
-        "decision": "Všechny ovládací prvky jsou v dosahu palce ruky, která drží telefon. Domácnost tak jde pohodlně ovládat jednou rukou – třeba s nákupem v té druhé.",
-        "result": "Dodaná aplikace pokrývá kompletní ovládání domácnosti včetně plánování režimů.",
-        "images": {
-          "heating": "Domov pod palcem – nastavení teploty topení v obýváku s volbou režimu",
-          "blinder": "Domov pod palcem – ovládání žaluzie posuvníkem v dosahu palce",
-          "time-regime": "Domov pod palcem – týdenní časový plán vytápění s teplotami po hodinách",
-          "dashboard": "Domov pod palcem – přehled místností s rychlými ovládacími dlaždicemi"
-        }
+      "plan": {
+        "title": "Vymyslet",
+        "text": "Pomůžu vám ujasnit, jestli a jaký digitální produkt dává smysl a co od něj chcete.",
+        "points": [
+          "Posouzení nápadu a cílů",
+          "Rešerše trhu a konkurence",
+          "Rozsah první verze (MVP)"
+        ]
       },
-      "stable": {
-        "title": "Inteligentní stáj",
-        "tagline": "Provozní aplikace pro správce stáje",
-        "problem": "Správce stáje pro chov skotu potřeboval mít přehled o prostředí ve stáji a ovládat její vybavení, i když zrovna není na místě.",
-        "delivered": "Dodal jsem mobilní aplikaci pro iOS a Android, ve které správce ovládá ventilátory, boční plachty a osvětlení, sleduje aktuální hodnoty z čidel – teplotu, vlhkost a CO₂ – a jejich vývoj za posledních 24 hodin v grafech.",
-        "decision": "Aplikace sama hlídá nežádoucí stavy. Když hodnoty vybočí nebo zařízení hlásí problém, správce dostane push notifikaci a nemusí obrazovku sledovat.",
-        "result": "Aplikace podporuje více stájí jednoho provozovatele a přizpůsobuje se oprávněním přihlášeného uživatele.",
-        "images": {
-          "sensors": "Inteligentní stáj – hodnoty teploty, vlhkosti a CO₂ po částech stáje s upozorněním na překročení",
-          "ventilators": "Inteligentní stáj – ovládání ventilátorů s ručním a automatickým režimem",
-          "sail-control": "Inteligentní stáj – nastavení otevření boční plachty",
-          "light-control": "Inteligentní stáj – ovládání osvětlení s ručním a automatickým režimem",
-          "stable-picker": "Inteligentní stáj – výběr stáje jednoho provozovatele"
-        }
+      "build": {
+        "title": "Postavit",
+        "text": "Navrhnu a vyvinu mobilní aplikaci, web nebo celý systém – jako první verzi, nebo rovnou hotový produkt.",
+        "points": [
+          "Návrh obrazovek a UX",
+          "iOS a Android ve Flutteru i nativně",
+          "Backend, administrace a napojení na vaše systémy"
+        ]
       },
-      "studanky": {
-        "title": "Studánky",
-        "tagline": "Aplikace pro sledování přírodních pramenů",
-        "problem": "Turisté a místní nemají spolehlivý přehled o tom, které přírodní studánky právě tečou a jestli je voda v pořádku.",
-        "delivered": "Pro projekt Studánky vyvíjím mobilní aplikaci pro sledování stavu přírodních pramenů a plánování výletů. Uživatelé najdou studánky na mapě, u pramene naskenují QR kód a krátkým dotazníkem doplní aktuální stav.",
-        "decision": "Sběr dat stojí na lidech u pramene: hlášení je na pár klepnutí a poškození studánky jde nahlásit přímo jejímu správci.",
-        "result": "Aplikace je ve vývoji. Průběžně ji rozšiřuji o další prameny a funkce.",
-        "images": {
-          "map": "Studánky – mapa s vyznačenými prameny a jejich stavem",
-          "spring": "Studánky – mapa s otevřeným detailem pramene Pod špičákem",
-          "detail": "Studánky – detail pramene s historií hlášení",
-          "report": "Studánky – dotazník pro hlášení stavu pramene",
-          "scanner": "Studánky – skenování QR kódu u pramene"
-        }
+      "secure": {
+        "title": "Zabezpečit",
+        "text": "Zkontroluji bezpečnost vaší aplikace – i když ji postavil někdo jiný nebo AI – a nalezené problémy opravím.",
+        "points": [
+          "Kontrola kódu, serveru a konfigurace",
+          "Aplikace postavené s pomocí AI",
+          "Bezpečné AI funkce a agenti"
+        ]
+      },
+      "grow": {
+        "title": "Rozvíjet",
+        "text": "Po spuštění se o produkt starám a rozvíjím ho podle toho, jak ho lidé skutečně používají.",
+        "points": [
+          "Provoz, aktualizace a opravy",
+          "Další verze podle dat a zpětné vazby",
+          "Z MVP plnohodnotný produkt"
+        ]
+      }
+    },
+    "securityLink": "Více o bezpečnosti aplikací"
+  },
+  "work": {
+    "title": "Na čem jsem pracoval",
+    "intro": "Aplikace pro chytré budovy, zemědělství, startupy i veřejnost – pokaždé jiné zadání, jiní uživatelé a jiné výzvy. Konkrétní klienty nejmenuji, víc vám rád řeknu na konzultaci.",
+    "galleryLabel": "Ukázky aplikací",
+    "slideLabel": "Ukázka {index} z {count}",
+    "previous": "Předchozí ukázka",
+    "next": "Další ukázka",
+    "images": {
+      "smart-building-dashboard": {
+        "alt": "Aplikace pro chytrou domácnost – přehled místností s ovládáním světel, rekuperace a topení",
+        "caption": "Chytrá domácnost: celý obsah vždy v dosahu palce"
+      },
+      "smart-building-schedule": {
+        "alt": "Aplikace pro chytrou domácnost – týdenní plán vytápění s teplotami po hodinách",
+        "caption": "Chytrá domácnost: týdenní plán vytápění"
+      },
+      "agri-ventilation": {
+        "alt": "Provozní aplikace pro stáje – ovládání ventilátorů v ručním a automatickém režimu",
+        "caption": "Chytrá stáj: ovládání ventilace"
+      },
+      "agri-sensors": {
+        "alt": "Provozní aplikace pro stáje – teplota, vlhkost a CO₂ po částech stáje s upozorněním na překročení",
+        "caption": "Chytrá stáj: čidla a upozornění"
+      },
+      "habit-coach-today": {
+        "alt": "Aplikace pro startup – denní úkoly s ukazatelem plnění",
+        "caption": "MVP pro startup: denní úkoly a pokrok"
+      },
+      "habit-coach-goals": {
+        "alt": "Aplikace pro startup – dlouhodobé cíle a graf denního plnění",
+        "caption": "MVP pro startup: cíle a statistiky"
+      },
+      "outdoor-map-detail": {
+        "alt": "Mapová aplikace – detail místa s aktuálním stavem a historií hlášení",
+        "caption": "Aplikace pro veřejnost: mapa s hlášeními"
+      },
+      "outdoor-map-saved": {
+        "alt": "Mapová aplikace – uložená místa s jejich aktuálním stavem",
+        "caption": "Aplikace pro veřejnost: uložená místa"
+      }
+    },
+    "experiences": {
+      "smart-buildings": {
+        "sector": "Chytré budovy · IoT",
+        "title": "Ovládání domů a budov",
+        "text": "Aplikaci pro iOS a Android dává dodavatel chytrých technologií do rukou majitelům domů i správcům kanceláří a budov. Zařízení ovládá v reálném čase přes řídicí systémy budov. Dlouhodobě ji rozvíjím – od nápadu a UX přes vývoj a backend až po zabezpečení komunikace."
+      },
+      "agriculture": {
+        "sector": "Zemědělství · B2B",
+        "title": "Provozní aplikace pro chytré stáje",
+        "text": "Aplikace pro správce stájí, kterou výrobce technologií dodává svým zákazníkům: čidla, ventilace, osvětlení a upozornění na problémy. Rozhraní šité na míru lidem, kteří s ním každý den pracují v provozu."
+      },
+      "startup": {
+        "sector": "Startup",
+        "title": "MVP v App Store za dva týdny",
+        "text": "Aplikace, se kterou si startup ověřoval nový produkt: uživatelé s koučem plní denní úkoly a sledují svůj pokrok. Data od prvních uživatelů pak posloužila k discovery a business analýze, podle kterých jsme určili další směr produktu."
+      },
+      "public-app": {
+        "sector": "Aplikace pro veřejnost",
+        "title": "Mapa s hlášeními od lidí",
+        "text": "Mapová aplikace, ve které lidé přímo v terénu hlásí aktuální stav míst a podle toho plánují výlety. Organizace spravují svá místa v administraci a backend sám hlídá zastaralá data."
+      },
+      "regulated": {
+        "sector": "Banky · veřejná správa",
+        "title": "Aplikace v regulovaném prostředí",
+        "text": "Přes pět let jsem vyvíjel nativní iOS aplikace pro banky a veřejnou správu – včetně biometrického podepisování a bezpečné práce s dokumenty. Podílel jsem se i na architektuře aplikací pro desítky tisíc uživatelů."
+      },
+      "web-ai": {
+        "sector": "Weby · AI",
+        "title": "Weby a nástroje s umělou inteligencí",
+        "text": "Firemní weby, landing pages a backendy v Pythonu napojené na jazykové modely – třeba nástroj, který shrnuje celé playlisty z YouTube."
       }
     }
   },
-  "process": {
-    "title": "Začneme vaším cílem, ne aplikací.",
-    "intro": "Nejdřív potřebuju pochopit, co děláte, kam míříte a co vám dnes chybí. Každý další krok si předem domluvíme – co v něm udělám, co z něj dostanete a kolik bude stát.",
+  "security": {
+    "title": "Bezpečnost od prvního řádku",
+    "text": "Aplikace dnes vznikají rychleji než kdy dřív, často s pomocí AI. S rychlostí ale přicházejí i díry: otevřená data, uniklé klíče nebo AI funkce, které jde zneužít. Zkontroluji vaši aplikaci a nalezené problémy rovnou opravím.",
+    "checks": [
+      {
+        "title": "Přístup k datům",
+        "text": "Vidí každý uživatel jen to, co má? Ověřím oprávnění v aplikaci, API i databázi."
+      },
+      {
+        "title": "Klíče a hesla",
+        "text": "Najdu přístupové klíče a hesla, které unikly do aplikace, kódu nebo repozitáře."
+      },
+      {
+        "title": "Server a komunikace",
+        "text": "Zkontroluji nastavení serveru a zabezpečení komunikace aplikace s backendem i se zařízeními."
+      },
+      {
+        "title": "AI funkce a agenti",
+        "text": "Prověřím, jestli AI ve vaší aplikaci nejde zneužít a nemá větší oprávnění, než potřebuje."
+      }
+    ],
+    "note": "Jde o praktickou kontrolu s opravami, ne o certifikovaný penetrační test.",
+    "link": "Jak kontrola probíhá"
+  },
+  "approach": {
+    "title": "Jak spolupracuji",
+    "intro": "Pevný postup nemám – každá firma i každý projekt je jiný. Nejdřív vás vyslechnu: co děláte, co potřebujete a co už máte za sebou. Pak vám řeknu svůj názor a navrhnu, jak dál.",
     "free": {
       "title": "Úvodní konzultace zdarma",
-      "text": "Obvykle 60–90 minut, osobně nebo online. Probereme vaše podnikání, cíle a hlavní nejasnosti. Odnesete si shrnutí a návrh dalšího kroku."
+      "text": "60–90 minut, osobně nebo online, k vývoji i k bezpečnosti. Probereme vaši situaci a odnesete si shrnutí a návrh dalšího kroku – bez závazků."
     },
-    "entriesTitle": "Kde začneme",
-    "entries": [
+    "principles": [
       {
-        "situation": "Nevíte, jestli a co stavět",
-        "start": "Začneme fází 1: rozhodnutím."
+        "title": "Nejdřív pochopit, pak stavět",
+        "text": "Ptám se na cíl, ne jen na funkce. Někdy je nejlepší rada zatím nestavět."
       },
       {
-        "situation": "Víte přesně, co chcete",
-        "start": "Začneme fází 2: návrhem plné verze."
+        "title": "Bezpečnost od začátku",
+        "text": "Zabezpečení řeším od prvního návrhu, ne až po spuštění, kdy je každá oprava dražší."
       },
       {
-        "situation": "Chcete nápad nejdřív ověřit",
-        "start": "Začneme fází 2: návrhem první verze."
-      },
-      {
-        "situation": "Už máte aplikaci",
-        "start": "Posoudím ji a navážeme fází 4."
+        "title": "Jasné dohody",
+        "text": "Rozsah, cenu i další krok domlouváme předem. Po každé části se můžete rozhodnout znovu."
       }
-    ],
-    "outputsLabel": "Co si odnesete",
-    "stages": [
-      {
-        "title": "Rozhodnutí: dává digitální produkt smysl?",
-        "text": "Zmapuji vaše cíle, uživatele a trh, projdu konkurenci a existující řešení a připravím varianty – od hotového nástroje po vlastní produkt. Doporučím, co dává smysl, i když to bude „zatím nestavět“.",
-        "outputs": [
-          "Shrnutí cílů a potřeb",
-          "Rešerše trhu a konkurence",
-          "Varianty s doporučením a hrubým odhadem"
-        ]
-      },
-      {
-        "title": "Návrh: co přesně postavit",
-        "text": "Ujasníme rozsah – plnou verzi, nebo nejdřív první verzi s tím nejdůležitějším (MVP). Navrhnu klíčové obrazovky a průchody a ladíme je podle vaší zpětné vazby, dřív než začnu programovat.",
-        "outputs": [
-          "Rozsah a priority",
-          "Návrh nebo klikací prototyp",
-          "Cena a harmonogram"
-        ]
-      },
-      {
-        "title": "Vývoj a spuštění",
-        "text": "Stavím po částech a průběžně vám ukazuji hotovou práci, abyste mohli reagovat. Produkt otestuji a vydám do App Store a Google Play, případně na web. První verze ověří konkrétní případ použití – nezaručuje poptávku ani tržby.",
-        "outputs": [
-          "Funkční produkt pro iOS a Android, případně web",
-          "Administrace a napojení na vaše systémy podle potřeby",
-          "Vydání a předání přístupů"
-        ]
-      },
-      {
-        "title": "Provoz a rozvoj",
-        "text": "Po spuštění se starám o provoz, aktualizace a opravy. Další verze plánujeme podle skutečného používání – z první verze postupně vznikne plnohodnotný produkt, který roste s vaším podnikáním.",
-        "outputs": [
-          "Domluvená údržba a dohled",
-          "Další verze podle priorit",
-          "Rozvoj a škálování"
-        ]
-      }
-    ],
-    "scope": "Nejčastěji stavím mobilní aplikace pro iOS a Android. Podle potřeby k nim připravím webovou administraci, server a napojení na vaše systémy – nebo webovou aplikaci, pokud dává větší smysl.",
-    "handover": "Po každé fázi se rozhodnete, jestli pokračovat. Nemusíte se hned zavazovat k celé cestě."
+    ]
   },
   "about": {
     "title": "Jeden člověk. Tým AI agentů.",
     "portraitAlt": "Jakub Smolík",
     "bio": [
-      "Jsem Jakub Smolík. Přes šest let navrhuji a vyvíjím mobilní aplikace – pro banky, veřejnou správu i velké firmy, kde rozhoduje bezpečnost a spolehlivost. Pro zakladatele a firmy stavím jejich vlastní produkty, třeba v zemědělství nebo chytré domácnosti. Technologie je pro mě nástroj, ne cíl: zajímá mě, co vám produkt přinese.",
-      "Nepřidávám se do cizích týmů jako další vývojář na hodiny. Beru produkty, za které můžu odpovídat celé – od prvního nápadu po další verze. Působím v Praze a na schůzku rád přijedu."
+      "Jsem Jakub Smolík. Přes šest let navrhuji a vyvíjím aplikace – pro banky, veřejnou správu, velké firmy i startupy. U projektů, které vedu, odpovídám jako technický lídr za celé řešení: od návrhu přes vývoj aplikace a backendu až po zabezpečení serverů a komunikace se zařízeními.",
+      "Technologie je pro mě nástroj, ne cíl: zajímá mě, co vám produkt přinese. Nepřidávám se do cizích týmů jako další vývojář na hodiny – beru produkty, za které můžu odpovídat celé. Působím v Praze a na schůzku rád přijedu."
     ],
     "ai": {
       "title": "Jak pracuju s AI agenty",
       "workspaceAlt": "Jakub Smolík při práci u stolu s monitorem a notebookem",
       "paragraphs": [
-        "Časově náročnou práci – rešerše, návrhy, prototypy, programování, testy a dokumentaci – se mnou dělá tým AI agentů. Díky tomu zvládnu rozsah, na který by jinak byl potřeba malý tým, rychleji a bez režie agentury. Rozhodnutí, kontrola a odpovědnost za výsledek zůstávají u mě.",
-        "Vaše data chráním. Obecnou práci dělám s velkými AI modely v cloudu; vše, co obsahuje vaše citlivá data nebo know-how, zpracovávám lokálními modely na vlastním počítači, takže ho tyto informace neopustí. Co je citlivé, si domluvíme na začátku spolupráce.",
-        "Proto smolikja team: já a můj tým AI agentů."
+        "Rešerše, návrhy, programování, testy i dokumentaci se mnou dělá tým AI agentů. Zvládnu tak rozsah, na který by jinak byl potřeba malý tým – rychleji a bez režie agentury. Rozhodnutí, kontrola a odpovědnost za výsledek zůstávají u mě.",
+        "Vaše data chráním: citlivá data a know-how zpracovávám jen lokálními modely na vlastním počítači, do cloudových AI nástrojů je neposílám. Proto smolikja team – já a můj tým AI agentů."
       ]
     },
     "assurances": {
@@ -207,20 +237,24 @@
     "title": "Na co se ptáte nejčastěji",
     "items": [
       {
+        "question": "Kolik stojí vývoj aplikace?",
+        "answer": "Záleží na tom, co má aplikace umět a na jaké systémy se napojí – jednoduchá první verze stojí řádově jinak než rozsáhlý systém. Po úvodní konzultaci navrhnu postup i cenu. Pro jasně vymezené zadání nabídnu pevnou cenu, u postupného vývoje se domluvíme na rozpočtu a prioritách."
+      },
+      {
         "question": "Potřebuji mít hotové zadání?",
-        "answer": "Ne. Úvodní konzultace je zdarma a slouží k tomu, abych pochopil vaši situaci a cíle. Podrobnější rešerši, analýzu a návrh řešení nacením podle dohodnutého rozsahu. S placenou prací začnu až po vašem odsouhlasení."
-      },
-      {
-        "question": "Proč jeden člověk, a ne agentura?",
-        "answer": "Mluvíte přímo s tím, kdo produkt navrhuje i programuje – nic se neztratí při předávání mezi lidmi a za výsledek odpovídá jeden člověk. Kapacitu malého týmu mi dávají AI agenti, takže zvládnu víc za kratší dobu a bez režie agentury. Kdyby váš produkt od začátku potřeboval mnoho lidí pracujících souběžně, řeknu vám to."
-      },
-      {
-        "question": "Kolik to stojí?",
-        "answer": "Cena záleží na tom, co má produkt umět a na jaké systémy se napojí. Po úvodní konzultaci navrhnu další postup. Pro jasně vymezené zadání nabídnu pevnou cenu; u postupného vývoje si domluvíme rozpočet a priority."
+        "answer": "Ne. Úvodní konzultace je zdarma a slouží k tomu, abych pochopil vaši situaci a cíle. Podrobnější rešerši, analýzu nebo návrh nacením podle dohodnutého rozsahu a začnu až po vašem souhlasu."
       },
       {
         "question": "Jak dlouho trvá první verze?",
-        "answer": "Záleží na jejím rozsahu a na tom, na jaké systémy se napojí. Odhad termínu dávám ve chvíli, kdy je jasné, co má první verze umět – obvykle po úvodní konzultaci nebo po ujasnění zadání."
+        "answer": "Záleží na rozsahu. Jednoduchá první verze může být v App Store za pár týdnů, větší produkt za několik měsíců. Odhad dám, jakmile je jasné, co má první verze umět."
+      },
+      {
+        "question": "Zkontrolujete i aplikaci, kterou jste nestavěl?",
+        "answer": "Ano. Prověřím aplikace i weby od jiného dodavatele, z vlastního týmu i ty postavené s pomocí AI nástrojů a nalezené problémy pomůžu opravit. Rozsah kontroly domluvíme předem."
+      },
+      {
+        "question": "Proč jeden člověk, a ne agentura?",
+        "answer": "Mluvíte přímo s tím, kdo produkt navrhuje, programuje i zabezpečuje – nic se neztratí při předávání mezi lidmi a za výsledek odpovídá jeden člověk. Kapacitu malého týmu mi dávají AI agenti. Kdyby váš projekt od začátku potřeboval mnoho lidí pracujících souběžně, řeknu vám to."
       },
       {
         "question": "Co když nebudete k dispozici?",
@@ -231,25 +265,22 @@
         "answer": "AI agenti mi pomáhají s rešeršemi, návrhy, kódem, testy a dokumentací; rozhoduji a kontroluji já. Citlivá data a know-how zpracovávám jen lokálními modely na vlastním počítači – do cloudových AI nástrojů je neposílám. Co považujete za citlivé, si domluvíme na začátku, a pokud chcete, podepíšeme dohodu o mlčenlivosti."
       },
       {
-        "question": "Co se děje po spuštění?",
-        "answer": "Domluvíme si údržbu a další rozvoj podle toho, co ukáže skutečné používání. Úpravy plánuji podle priorit a domluveného rozpočtu – jde o jasnou dohodu, ne o neomezenou podporu."
-      },
-      {
         "question": "Můžete navázat na existující aplikaci?",
-        "answer": "Ano. Nejdřív stávající aplikaci posoudím a navrhnu nejlepší další krok. Přepsání od nuly není výchozí doporučení."
+        "answer": "Ano. Nejdřív stávající aplikaci posoudím – včetně bezpečnosti – a navrhnu nejlepší další krok. Přepsání od nuly není výchozí doporučení."
       }
     ]
   },
   "contact": {
-    "title": "Co by měl váš produkt změnit?",
-    "text": "Napište mi pár vět o tom, co děláte a kam míříte – nebo co dnes nefunguje. Ozvu se a domluvíme si úvodní konzultaci zdarma.",
-    "freeConsultation": "Úvodní konzultace zdarma. Nemusíte mít hotové zadání.",
+    "title": "Co řešíte? Napište mi.",
+    "text": "Pár vět stačí – nápad, aplikace, kterou chcete zkontrolovat, nebo problém, který vás trápí. Ozvu se a domluvíme si úvodní konzultaci zdarma.",
+    "freeConsultation": "Úvodní konzultace zdarma",
+    "freeConsultationDetail": "60–90 minut, nemusíte mít hotové zadání",
     "personal": "Odpovídám osobně.",
     "form": {
       "name": "Jméno",
       "email": "E-mail",
       "message": "Zpráva",
-      "messageHint": "Čím se zabýváte a co by se mělo zlepšit? Pokud máte představu o termínu nebo rozpočtu, připište ji.",
+      "messageHint": "Co děláte a s čím potřebujete pomoct? Pokud máte představu o termínu nebo rozpočtu, připište ji.",
       "submit": "Odeslat zprávu",
       "submitting": "Odesílám",
       "successTitle": "Zpráva dorazila.",
@@ -266,6 +297,134 @@
     },
     "direct": {
       "label": "Nebo mi napište přímo na"
+    }
+  },
+  "securityPage": {
+    "metaTitle": "Kontrola bezpečnosti aplikací a webů",
+    "metaDescription": "Zkontroluji bezpečnost vaší mobilní aplikace, webu nebo backendu – i když vznikly s pomocí AI – a nalezené problémy opravím. Úvodní konzultace zdarma.",
+    "eyebrow": "Bezpečnost aplikací",
+    "title": "Kontrola a zabezpečení aplikací",
+    "intro": "Aplikace dnes vznikají rychleji než kdy dřív – ve vlastní režii, u různých dodavatelů nebo s pomocí AI. Zkontroluji, jestli je ta vaše bezpečná, srozumitelně vysvětlím, co jsem našel, a problémy rovnou opravím.",
+    "evidence": {
+      "text": "Podle výzkumu Veracode z roku 2026 prošlo bezpečnostním testem v průměru jen 56 % kódu, který napsala AI.",
+      "linkLabel": "Zdroj: SD Times o reportu Veracode"
+    },
+    "audience": {
+      "title": "Komu pomůžu",
+      "items": [
+        "Firmám a startupům před spuštěním aplikace nebo webu",
+        "Těm, kdo si aplikaci postavili sami nebo s pomocí AI nástrojů",
+        "Firmám, které do svých produktů přidávají AI funkce a agenty",
+        "Dodavatelům, po kterých zákazníci chtějí doložit bezpečnost – třeba kvůli NIS2 nebo CRA"
+      ]
+    },
+    "services": {
+      "title": "Co nabízím",
+      "items": [
+        {
+          "title": "Kontrola aplikace a backendu",
+          "text": "Projdu kód mobilní aplikace, webu i serveru a jejich nastavení: přihlašování a ukládání údajů, oprávnění, API, logy, databáze a cloudové služby. Výstupem je srozumitelná zpráva a opravy v kódu."
+        },
+        {
+          "title": "Aplikace postavené s AI",
+          "text": "Prověřím aplikace z nástrojů jako Lovable, Bolt nebo Cursor: přístupová pravidla k datům, odhalené klíče a nechráněná API – nejčastější slabiny rychle postavených aplikací."
+        },
+        {
+          "title": "Bezpečné AI funkce a agenti",
+          "text": "Navrhnu nebo zkontroluji AI funkce ve vaší aplikaci: klíče k modelům na serveru, limity nákladů, oprávnění agentů a odolnost proti zneužití přes prompt injection."
+        },
+        {
+          "title": "Bezpečný vývoj a vydávání",
+          "text": "Nastavím automatické kontroly, které při každé změně hlídají uniklé klíče a zranitelné knihovny, a připravím přehled použitých komponent (SBOM)."
+        },
+        {
+          "title": "Komunikace se servery a zařízeními",
+          "text": "Zabezpečím spojení mezi aplikací, serverem a zařízeními – včetně chytrých budov a jejich řídicích systémů."
+        },
+        {
+          "title": "Podklady pro zákazníky a regulace",
+          "text": "Připravím technickou část podkladů pro bezpečnostní dotazníky dodavatelů a pro přípravu na NIS2 nebo CRA. Právní výklad nechávám právníkům."
+        }
+      ]
+    },
+    "process": {
+      "title": "Jak kontrola probíhá",
+      "steps": [
+        {
+          "title": "Domluvíme rozsah",
+          "text": "Na úvodní konzultaci zdarma probereme, co a jak zkontrolovat. Rozsah a souhlas s testováním potvrdíme písemně."
+        },
+        {
+          "title": "Analýza",
+          "text": "Kód a nastavení projdu specializovanými nástroji a s pomocí AI – s vaším souhlasem, citlivé části jen lokálně na vlastním počítači."
+        },
+        {
+          "title": "Ruční ověření",
+          "text": "Každý nález sám ověřím a doložím. Do zprávy se nedostane nic, co jsem nepotvrdil."
+        },
+        {
+          "title": "Srozumitelná zpráva",
+          "text": "Dostanete přehled nálezů seřazený podle závažnosti, vysvětlený bez zbytečného žargonu."
+        },
+        {
+          "title": "Opravy",
+          "text": "Pokud chcete, problémy rovnou opravím – hotové změny v kódu, ne jen seznam chyb."
+        }
+      ]
+    },
+    "why": {
+      "title": "Proč já",
+      "items": [
+        {
+          "title": "Aplikace sám stavím",
+          "text": "Vím, kde v nich bývají slabá místa, a umím je rovnou opravit."
+        },
+        {
+          "title": "Zkušenost z regulovaného prostředí",
+          "text": "Přes pět let jsem vyvíjel aplikace pro banky a veřejnou správu – včetně biometrického podepisování a bezpečné práce s dokumenty."
+        },
+        {
+          "title": "Zabezpečení v praxi",
+          "text": "U projektů, které vedu, zabezpečuji servery i komunikaci aplikací s backendem a se zařízeními v chytrých budovách."
+        },
+        {
+          "title": "Vaše data zůstávají u mě",
+          "text": "Citlivý kód a data zpracovávám jen lokálními modely, do cloudových AI nástrojů je neposílám."
+        }
+      ]
+    },
+    "limits": {
+      "title": "Co nedělám",
+      "text": "Nejde o certifikovaný penetrační test ani o formální audit podle zákona o kybernetické bezpečnosti nebo ISO. Pokud něco takového potřebujete, řeknu vám to rovnou a poradím, jak postupovat."
+    },
+    "faq": {
+      "title": "Časté dotazy k bezpečnosti",
+      "items": [
+        {
+          "question": "Je to penetrační test?",
+          "answer": "Ne v certifikovaném smyslu. Jde o praktickou kontrolu kódu, nastavení a chování aplikace s ověřenými nálezy a opravami. Pokud potřebujete certifikovaný penetrační test, například kvůli výběrovému řízení, řeknu vám to rovnou."
+        },
+        {
+          "question": "Potřebujete přístup ke zdrojovému kódu?",
+          "answer": "Ideálně ano – kontrola kódu odhalí nejvíc. Část kontrol jde udělat i bez něj. Rozsah přístupu i to, co smím testovat, si domluvíme předem a potvrdíme písemně."
+        },
+        {
+          "question": "Pošlete můj kód do AI?",
+          "answer": "Jen s vaším souhlasem. Citlivé části zpracovávám lokálními modely na vlastním počítači, takže ho neopustí."
+        },
+        {
+          "question": "Kolik kontrola stojí?",
+          "answer": "Záleží na velikosti aplikace a rozsahu kontroly. Po úvodní konzultaci zdarma vám dám pevnou cenu."
+        },
+        {
+          "question": "Co když najdete vážný problém?",
+          "answer": "Dám vám vědět hned, ne až v závěrečné zprávě, a navrhnu nejrychlejší bezpečnou opravu."
+        }
+      ]
+    },
+    "contact": {
+      "title": "Jak je na tom vaše aplikace?",
+      "text": "Napište mi pár vět o své aplikaci nebo webu. Ozvu se a domluvíme si úvodní konzultaci zdarma."
     }
   },
   "footer": {

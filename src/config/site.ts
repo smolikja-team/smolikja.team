@@ -16,11 +16,6 @@ export const siteConfig = {
     github: "https://github.com/smolikja-team/",
     linkedin: "https://www.linkedin.com/in/smolikja",
   },
-  /**
-   * Switches the availability line in the hero and contact section between
-   * `availability.open` and `availability.busy`. Keep it truthful.
-   */
-  availableForNewProjects: true,
   /** Matches `--background`; browser chrome blends with the page. */
   themeColor: "#F7F9FC",
   /** Anchor every primary action leads to — an enquiry, not a booking. */
@@ -28,13 +23,15 @@ export const siteConfig = {
 } as const;
 
 /**
- * Primary navigation. `id` keys into `dict.nav[id]` for the label; `href` is a
- * same-page anchor and identical across locales.
+ * Primary navigation. `id` keys into `dict.nav[id]` for the label. Most items
+ * are same-page anchors on the landing page; `security` is its own page.
+ * Resolve hrefs with `navLinks()` from `@/lib/navigation`.
  */
 export const mainNav = [
-  { id: "projects", href: "#projects" },
-  { id: "process", href: "#process" },
-  { id: "about", href: "#about" },
+  { id: "services", anchor: "#services" },
+  { id: "work", anchor: "#work" },
+  { id: "security", page: "security" },
+  { id: "about", anchor: "#about" },
 ] as const;
 
 export type NavItemId = (typeof mainNav)[number]["id"];

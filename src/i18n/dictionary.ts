@@ -1,44 +1,30 @@
-export type ProjectId = "domov" | "stable" | "studanky";
+import type { ExperienceId, WorkImageId } from "@/config/work";
 
-/** Screenshot ids per project — keys of the `alt` text map in the catalogs. */
-export type ProjectImageId = {
-  domov: "heating" | "blinder" | "time-regime" | "dashboard";
-  stable: "sensors" | "ventilators" | "sail-control" | "light-control" | "stable-picker";
-  studanky: "map" | "spring" | "detail" | "report" | "scanner";
-};
+export type { ExperienceId, WorkImageId };
 
-export type ProjectStatus = "delivered" | "in-development";
+/** The four verbs the offer is built on, in display order (see `serviceOrder`). */
+export type ServiceId = "plan" | "build" | "secure" | "grow";
 
-/**
- * One application delivery, told from the customer's side: the situation,
- * what was delivered, one meaningful product decision and the current,
- * verifiable outcome. The credit line and status label are shared strings.
- */
-export type ProjectCopy<P extends ProjectId = ProjectId> = {
-  title: string;
-  /** One line under the title: who the app is for. */
-  tagline: string;
-  problem: string;
-  delivered: string;
-  decision: string;
-  result: string;
-  images: Record<ProjectImageId[P], string>;
-};
-
-export type ProcessStage = {
+/** A short heading with one or two sentences under it. */
+export type TitledText = {
   title: string;
   text: string;
-  outputs: string[];
 };
 
-/** Where a visitor's situation joins the delivery lifecycle. */
-export type ProcessEntry = {
-  situation: string;
-  start: string;
+export type ServiceCopy = TitledText & {
+  points: string[];
 };
 
-/** One concrete practice that answers "what if I depend on one person?". */
-export type Assurance = {
+/** Alt text and the short visible caption of one gallery screen. */
+export type WorkImageCopy = {
+  alt: string;
+  caption: string;
+};
+
+/** One kind of project, told without naming the client or the product. */
+export type ExperienceCopy = {
+  /** Small label above the title: industry or kind of client. */
+  sector: string;
   title: string;
   text: string;
 };
@@ -76,8 +62,9 @@ export type Dictionary = {
   nav: {
     aria: string;
     home: string;
-    projects: string;
-    process: string;
+    services: string;
+    work: string;
+    security: string;
     about: string;
     /** The one primary action, identical everywhere it appears. */
     cta: string;
@@ -97,45 +84,41 @@ export type Dictionary = {
     text: string;
     secondary: string;
     reassurance: string;
+    /** Highlighted callout next to the primary action; `reassurance` is its detail. */
     freeConsultation: string;
-    /** Small factual caption under the product composition (both screens). */
-    caption: string;
-    /** Caption for small screens, where only the large screen is shown. */
-    captionSmall: string;
     compositionAria: string;
   };
-  /** Availability line; which one shows is `siteConfig.availableForNewProjects`. */
-  availability: {
-    open: string;
-    busy: string;
-  };
-  projects: {
-    title: string;
-    /** Short passage identifying the customer's situation, above the stories. */
-    fit: string;
-    credit: string;
-    /** Accessible name of one carousel slide; `{index}` and `{count}` templates. */
-    slideLabel: string;
-    galleryLabel: string;
-    previous: string;
-    next: string;
-    status: Record<ProjectStatus, string>;
-    items: { [P in ProjectId]: ProjectCopy<P> };
-  };
-  process: {
+  services: {
     title: string;
     intro: string;
-    free: {
-      title: string;
-      text: string;
-    };
-    entriesTitle: string;
-    entries: ProcessEntry[];
-    outputsLabel: string;
-    stages: ProcessStage[];
-    /** One line on what a delivery usually includes besides the app. */
-    scope: string;
-    handover: string;
+    items: Record<ServiceId, ServiceCopy>;
+    /** Link from the "secure" card to the app-security page. */
+    securityLink: string;
+  };
+  work: {
+    title: string;
+    intro: string;
+    galleryLabel: string;
+    /** Accessible name of one carousel slide; `{index}` and `{count}` templates. */
+    slideLabel: string;
+    previous: string;
+    next: string;
+    images: Record<WorkImageId, WorkImageCopy>;
+    experiences: Record<ExperienceId, ExperienceCopy>;
+  };
+  /** The security teaser on the landing page; the full offer is `securityPage`. */
+  security: {
+    title: string;
+    text: string;
+    checks: TitledText[];
+    note: string;
+    link: string;
+  };
+  approach: {
+    title: string;
+    intro: string;
+    free: TitledText;
+    principles: TitledText[];
   };
   about: {
     title: string;
@@ -148,7 +131,7 @@ export type Dictionary = {
     };
     assurances: {
       title: string;
-      items: Assurance[];
+      items: TitledText[];
       note: string;
     };
   };
@@ -160,6 +143,7 @@ export type Dictionary = {
     title: string;
     text: string;
     freeConsultation: string;
+    freeConsultationDetail: string;
     /** Next to the owner's avatar: who answers the enquiry. */
     personal: string;
     form: {
@@ -183,6 +167,46 @@ export type Dictionary = {
     };
     direct: {
       label: string;
+    };
+  };
+  /** The app-security page (`securityPath` in `src/config/pages.ts`). */
+  securityPage: {
+    metaTitle: string;
+    metaDescription: string;
+    /** Small label above the page heading. */
+    eyebrow: string;
+    title: string;
+    intro: string;
+    /** One sourced fact; the source URL lives in `src/config/pages.ts`. */
+    evidence: {
+      text: string;
+      linkLabel: string;
+    };
+    audience: {
+      title: string;
+      items: string[];
+    };
+    services: {
+      title: string;
+      items: TitledText[];
+    };
+    process: {
+      title: string;
+      steps: TitledText[];
+    };
+    why: {
+      title: string;
+      items: TitledText[];
+    };
+    limits: TitledText;
+    faq: {
+      title: string;
+      items: FaqItem[];
+    };
+    /** Heading and lead of the enquiry form on this page. */
+    contact: {
+      title: string;
+      text: string;
     };
   };
   footer: {
@@ -218,8 +242,5 @@ export type Dictionary = {
     backHome: string;
   };
 };
-
-/** `ProjectCopy` for a project whose id is only known as the `ProjectId` union. */
-export type AnyProjectCopy = Omit<ProjectCopy, "images"> & { images: Record<string, string> };
 
 export type DictionaryCatalog = Dictionary;

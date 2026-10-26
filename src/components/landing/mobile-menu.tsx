@@ -13,8 +13,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { mainNav, siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
 import type { Dictionary } from "@/i18n/dictionary";
+import type { NavLink } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
@@ -25,9 +26,11 @@ import { buttonVariants } from "@/components/ui/button";
  */
 export function MobileMenu({
   copy,
+  links,
   children,
 }: {
   copy: Dictionary["nav"];
+  links: NavLink[];
   /** Server-rendered language switcher. */
   children: ReactNode;
 }) {
@@ -54,7 +57,7 @@ export function MobileMenu({
         </SheetHeader>
         <nav aria-label={copy.aria} className="mt-6">
           <ul className="flex flex-col">
-            {mainNav.map((item) => (
+            {links.map((item) => (
               <li key={item.id}>
                 <a
                   href={item.href}

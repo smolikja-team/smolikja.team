@@ -1,92 +1,94 @@
 import { ArrowRightIcon } from "lucide-react";
 
-import { heroComposition } from "@/config/projects";
 import { siteConfig } from "@/config/site";
+import { heroComposition } from "@/config/work";
 import type { Dictionary } from "@/i18n/dictionary";
-import { AvailabilityNote } from "./availability-note";
+import { cn } from "@/lib/utils";
 import { CtaLink } from "./cta-link";
+import { FreeConsultationNote } from "./free-consultation-note";
 import { OwnerBadge } from "./owner-badge";
-import { PhoneFrame } from "./phone-frame";
 import { Reveal } from "./reveal";
+import { ScreenCard } from "./screen-card";
+
+/** Shared motion of the stacked cards: rise and settle, unless motion is reduced. */
+const cardMotion =
+  "transition-[translate,scale] duration-300 ease-out hover:-translate-y-3 motion-reduce:transition-none";
 
 /**
- * Asymmetric opening: who is speaking, the offer, the action and its terms on
- * the left; one large real screen with a smaller supporting screen on the
- * right. On small screens the offer and action come first and only the large
- * screen follows.
+ * Asymmetric opening: who is speaking, a short offer, the action and the free
+ * consultation on the left; two real screens stacked like cards in a wallet on
+ * the right. Hovering the back card brings it in front of the other. On small
+ * screens the offer and action come first and the stack follows.
  */
 export function Hero({
   copy,
   cta,
-  availability,
-  projectCopy,
+  screens,
 }: {
   copy: Dictionary["hero"];
   /** The primary action label — shared with the header so it reads the same everywhere. */
   cta: string;
-  availability: Dictionary["availability"];
-  projectCopy: Dictionary["projects"]["items"];
+  /** Alt text of the work screens shown in the stack. */
+  screens: Dictionary["work"]["images"];
 }) {
   const { primary, secondary } = heroComposition;
 
   return (
     <section className="flex min-h-[calc(100dvh-4rem)] flex-col justify-center">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-12 px-5 pt-12 pb-16 sm:px-6 sm:pt-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-16 lg:py-20">
-      <div className="flex max-w-2xl flex-col gap-6">
-        <OwnerBadge detail={copy.role} eager />
-        <h1 className="text-[2.375rem] leading-[1.05] font-semibold tracking-tight text-balance sm:text-6xl lg:text-[4rem]">
-          {copy.title}
-        </h1>
-        <p className="max-w-prose text-lg leading-relaxed text-pretty text-muted-foreground sm:text-xl">
-          {copy.text}
-        </p>
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-          <CtaLink href={siteConfig.ctaHref}>{cta}</CtaLink>
-          <a
-            href="#projects"
-            className="inline-flex min-h-12 items-center gap-1.5 rounded-md font-medium text-primary underline-offset-4 outline-none hover:underline focus-visible:ring-3 focus-visible:ring-ring/50"
-          >
-            {copy.secondary}
-            <ArrowRightIcon aria-hidden="true" className="size-4" />
-          </a>
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-14 px-5 pt-12 pb-16 sm:px-6 sm:pt-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-16 lg:py-20">
+        <div className="flex max-w-2xl flex-col gap-7">
+          <OwnerBadge detail={copy.role} eager />
+          <h1 className="text-[2.375rem] leading-[1.05] font-semibold tracking-tight text-balance sm:text-6xl lg:text-[4rem]">
+            {copy.title}
+          </h1>
+          <p className="max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground sm:text-xl">
+            {copy.text}
+          </p>
+          <div className="flex flex-col items-start gap-4">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <CtaLink href={siteConfig.ctaHref}>{cta}</CtaLink>
+              <a
+                href="#work"
+                className="inline-flex min-h-12 items-center gap-1.5 rounded-md font-medium text-primary underline-offset-4 outline-none hover:underline focus-visible:ring-3 focus-visible:ring-ring/50"
+              >
+                {copy.secondary}
+                <ArrowRightIcon aria-hidden="true" className="size-4" />
+              </a>
+            </div>
+            <FreeConsultationNote lead={copy.freeConsultation} detail={copy.reassurance} />
+          </div>
         </div>
-        <p className="text-pretty text-muted-foreground">
-          <span className="font-medium text-foreground">{copy.freeConsultation}</span>{" "}
-          {copy.reassurance}
-        </p>
-        <AvailabilityNote copy={availability} className="text-sm text-muted-foreground" />
-      </div>
 
-      <Reveal className="flex flex-col gap-3">
-        <div role="group" aria-label={copy.compositionAria} className="relative">
-          {/* The large screen rises out of the composition's bottom edge. */}
-          <div className="h-[26rem] overflow-hidden rounded-3xl bg-secondary px-8 pt-8 sm:h-[30rem] sm:px-12 sm:pt-10">
-            <div className="mr-2 ml-auto max-w-[15rem] sm:mr-6 sm:max-w-[16.5rem] lg:mr-4">
-              <PhoneFrame
-                image={primary.image}
-                alt={projectCopy[primary.project].images[primary.image.id]}
-                sizes="(min-width: 640px) 264px, 240px"
+        <Reveal>
+          {/* Wallet-style stack: the back card peeks out top-left and comes
+              to the front on hover; the front card sits bottom-right. */}
+          <div
+            role="group"
+            aria-label={copy.compositionAria}
+            className="relative mx-auto aspect-[100/158] w-full max-w-[17rem] sm:max-w-[21rem] lg:max-w-[24rem]"
+          >
+            <div
+              className={cn(
+                "absolute top-0 left-0 z-10 w-[64%] origin-top-left scale-95 hover:z-30 hover:scale-100",
+                cardMotion,
+              )}
+            >
+              <ScreenCard
+                image={secondary}
+                alt={screens[secondary.id].alt}
+                sizes="(min-width: 1024px) 246px, (min-width: 640px) 216px, 175px"
+              />
+            </div>
+            <div className={cn("absolute right-0 bottom-0 z-20 w-[64%]", cardMotion)}>
+              <ScreenCard
+                image={primary}
+                alt={screens[primary.id].alt}
+                sizes="(min-width: 1024px) 246px, (min-width: 640px) 216px, 175px"
                 preload
-                className="rounded-b-none pb-0"
-                screenClassName="rounded-b-none"
               />
             </div>
           </div>
-          <div className="absolute -bottom-6 left-8 hidden w-[8.5rem] sm:block lg:-left-8">
-            <PhoneFrame
-              image={secondary.image}
-              alt={projectCopy[secondary.project].images[secondary.image.id]}
-              sizes="136px"
-              className="rounded-[1.75rem] p-1"
-              screenClassName="rounded-[1.5rem]"
-            />
-          </div>
-        </div>
-        <p className="mt-6 text-sm text-muted-foreground">
-          <span className="sm:hidden">{copy.captionSmall}</span>
-          <span className="hidden sm:inline">{copy.caption}</span>
-        </p>
-      </Reveal>
+        </Reveal>
       </div>
     </section>
   );

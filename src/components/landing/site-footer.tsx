@@ -1,8 +1,9 @@
 import { operator } from "@/config/legal";
-import { mainNav, siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionary";
 import { format } from "@/i18n/format";
+import type { NavLink } from "@/lib/navigation";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { BrandLogo } from "@/components/icons/brand-logo";
 
@@ -11,17 +12,22 @@ const linkClassName =
 
 export function SiteFooter({
   locale,
+  links,
   copy,
   operatorCopy,
   navCopy,
   languageCopy,
+  languagePaths,
   privacyHref,
 }: {
   locale: Locale;
+  links: NavLink[];
   copy: Dictionary["footer"];
   operatorCopy: Dictionary["operator"];
   navCopy: Dictionary["nav"];
   languageCopy: Dictionary["languageSwitcher"];
+  /** The current page in each locale, for pages with localized slugs. */
+  languagePaths?: Record<Locale, string>;
   privacyHref: string;
 }) {
   return (
@@ -31,7 +37,7 @@ export function SiteFooter({
           <BrandLogo className="h-5 w-auto" />
           <nav aria-label={copy.navAria}>
             <ul className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
-              {mainNav.map((item) => (
+              {links.map((item) => (
                 <li key={item.id}>
                   <a href={item.href} className={linkClassName}>
                     {navCopy[item.id]}
@@ -68,7 +74,12 @@ export function SiteFooter({
               {siteConfig.email}
             </a>
           </p>
-          <LanguageSwitcher locale={locale} copy={languageCopy} label={copy.languageAria} />
+          <LanguageSwitcher
+            locale={locale}
+            copy={languageCopy}
+            label={copy.languageAria}
+            paths={languagePaths}
+          />
         </div>
         {/* Legal identity required on an entrepreneur's website (§ 435 Civil Code). */}
         <p className="text-xs leading-relaxed text-pretty text-muted-foreground">

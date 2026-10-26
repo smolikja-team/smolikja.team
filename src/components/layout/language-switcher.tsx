@@ -13,12 +13,15 @@ export function LanguageSwitcher({
   locale,
   copy,
   label = copy.label,
+  paths,
   className,
 }: {
   locale: Locale;
   copy: Dictionary["languageSwitcher"];
   /** Landmark name; override when a second switcher is on the page. */
   label?: string;
+  /** The current page in each locale, for pages with localized slugs. Defaults to home. */
+  paths?: Record<Locale, string>;
   className?: string;
 }) {
   return (
@@ -29,7 +32,7 @@ export function LanguageSwitcher({
           return (
             <li key={candidate}>
               <Link
-                href={localizedPathname(candidate)}
+                href={localizedPathname(candidate, paths?.[candidate])}
                 hrefLang={localeMeta[candidate].htmlLang}
                 lang={localeMeta[candidate].htmlLang}
                 aria-label={copy[candidate]}

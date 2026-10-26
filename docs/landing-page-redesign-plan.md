@@ -116,7 +116,7 @@ rejected binding port 3100; no claims here depend on a local runtime test.
 Relevant implementation references:
 [page composition](../src/components/landing/landing-page.tsx),
 [current copy](../messages/cs.json),
-[project assets and dimensions](../src/config/projects.ts),
+project assets and dimensions (`src/config/projects.ts`, removed in October 2026),
 [contact contract](contact-form.md),
 [stack conventions](stack-blueprint.md), and
 [localisation conventions](localization.md).

@@ -1,22 +1,27 @@
-import { mainNav, siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
 import type { Dictionary } from "@/i18n/dictionary";
+import type { NavLink } from "@/lib/navigation";
 import { SiteLogo } from "./site-logo";
 import { CtaLink } from "./cta-link";
 import { MobileMenu } from "./mobile-menu";
 
 /**
- * Always-visible sticky header: the animated wordmark, three destinations,
- * the primary action and the language switch. Solid, not translucent: the
- * wordmark video is blended onto the header surface, and only an opaque
- * surface lets its black frame disappear completely.
+ * Always-visible sticky header: the animated wordmark, the primary
+ * destinations, the primary action and the language switch. Solid, not
+ * translucent: the wordmark video is blended onto the header surface, and only
+ * an opaque surface lets its black frame disappear completely. On phones the
+ * action moves into the menu (the hero and contact section repeat it) so the
+ * header never overflows narrow screens.
  */
 export function SiteHeader({
   homeHref,
+  links,
   copy,
   languageSwitcher,
   mobileLanguageSwitcher,
 }: {
   homeHref: string;
+  links: NavLink[];
   copy: Dictionary["nav"];
   languageSwitcher: React.ReactNode;
   mobileLanguageSwitcher: React.ReactNode;
@@ -33,7 +38,7 @@ export function SiteHeader({
         </a>
         <nav aria-label={copy.aria} className="ml-auto hidden lg:block">
           <ul className="flex items-center gap-1">
-            {mainNav.map((item) => (
+            {links.map((item) => (
               <li key={item.id}>
                 <a
                   href={item.href}
@@ -46,12 +51,14 @@ export function SiteHeader({
           </ul>
         </nav>
         <div className="ml-auto flex items-center gap-2 lg:ml-0 lg:gap-3">
-          <CtaLink href={siteConfig.ctaHref} className="h-11 px-4 text-[0.9375rem]">
+          <CtaLink href={siteConfig.ctaHref} className="hidden h-11 px-4 text-[0.9375rem] sm:inline-flex">
             {copy.cta}
           </CtaLink>
           <div className="hidden lg:block">{languageSwitcher}</div>
           <div className="lg:hidden">
-            <MobileMenu copy={copy}>{mobileLanguageSwitcher}</MobileMenu>
+            <MobileMenu copy={copy} links={links}>
+              {mobileLanguageSwitcher}
+            </MobileMenu>
           </div>
         </div>
       </div>

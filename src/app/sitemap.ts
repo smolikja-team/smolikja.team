@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { privacyPath } from "@/config/legal";
+import { securityPath } from "@/config/pages";
 import { siteConfig } from "@/config/site";
 import {
   defaultLocale,
@@ -11,7 +12,7 @@ import {
 } from "@/i18n/config";
 
 // Bump when page content changes meaningfully.
-const lastModified = new Date("2026-09-15T00:00:00.000Z");
+const lastModified = new Date("2026-10-26T00:00:00.000Z");
 
 function absoluteUrl(locale: Locale, pathname = "/"): string {
   return `${siteConfig.url}${localizedPathname(locale, pathname)}`;
@@ -45,5 +46,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: { languages: alternates(privacyPath) },
   }));
 
-  return [...home, ...privacy];
+  // The security page has a different slug per locale, so its hreflang map is
+  // built from `securityPath`; `x-default` points at the default locale's page.
+  const securityLanguages: Record<string, string> = {};
+  for (const locale of locales) {
+    securityLanguages[localeMeta[locale].hrefLang] = absoluteUrl(locale, securityPath[locale]);
+  }
+  securityLanguages["x-default"] = absoluteUrl(defaultLocale, securityPath[defaultLocale]);
+
+  const security: MetadataRoute.Sitemap = locales.map((locale) => ({
+    url: absoluteUrl(locale, securityPath[locale]),
+    lastModified,
+    changeFrequency: "monthly",
+    priority: locale === defaultLocale ? 0.9 : 0.8,
+    alternates: { languages: securityLanguages },
+  }));
+
+  return [...home, ...security, ...privacy];
 }

@@ -1,22 +1,23 @@
 {
   "meta": {
-    "title": "Jakub Smolík – digital products and mobile apps for businesses",
-    "description": "I help businesses work out what's worth building – then I design, build and keep developing it. Mobile apps and digital products. Free introductory consultation."
+    "title": "Jakub Smolík – mobile app development and security",
+    "description": "I help you work out, build and secure a mobile app or website. Custom development, MVPs and security reviews – including apps built with AI. Free consultation."
   },
   "og": {
-    "subtitle": "Design and development of digital products · Free introductory consultation",
-    "alt": "Jakub Smolík – I help you work out what's worth building. Then I build it."
+    "subtitle": "App design, development and security · Free introductory consultation",
+    "alt": "Jakub Smolík – I help you work out, build and secure your app."
   },
   "manifest": {
-    "description": "Jakub Smolík – design, development and long-term care of digital products and mobile apps for businesses."
+    "description": "Jakub Smolík – design, development and security of mobile apps and digital products for businesses."
   },
   "nav": {
     "aria": "Main navigation",
     "home": "smolikja team – back to top",
-    "projects": "Projects",
-    "process": "Working together",
+    "services": "Services",
+    "work": "Experience",
+    "security": "Security",
     "about": "About me",
-    "cta": "Discuss your idea",
+    "cta": "Free consultation",
     "menuOpen": "Open menu",
     "menuClose": "Close menu",
     "menuTitle": "Menu"
@@ -27,161 +28,190 @@
     "en": "English"
   },
   "hero": {
-    "role": "Design and development of digital products",
-    "title": "I help you work out what's worth building. Then I build it.",
-    "text": "I help businesses figure out whether a digital product makes sense for them, and which one – most often a mobile app. If it does, I take it through design, development and further growth. I work with a team of AI agents; decisions and responsibility stay with me.",
-    "secondary": "See projects",
-    "reassurance": "You don't need a brief. Just describe where you're heading.",
-    "freeConsultation": "Free introductory consultation.",
-    "caption": "Domov pod palcem and Studánky – development by Jakub Smolík",
-    "captionSmall": "Domov pod palcem – development by Jakub Smolík",
-    "compositionAria": "Screens from the Domov pod palcem and Studánky apps"
+    "role": "App development and security",
+    "title": "I help you work out, build and secure your app.",
+    "text": "Mobile apps and websites for businesses and startups – from the first idea to secure operation.",
+    "secondary": "What I have worked on",
+    "reassurance": "60–90 minutes, no obligation",
+    "freeConsultation": "Free introductory consultation",
+    "compositionAria": "Mobile app screens"
   },
-  "availability": {
-    "open": "I have room for new projects. We'll agree scope and timing individually.",
-    "busy": "I'm busy right now, but do write – we'll find a time."
+  "services": {
+    "title": "How I can help",
+    "intro": "You can start anywhere – from a first idea to a review of a finished app. I don't leave security until the end; it is part of the work from the first design.",
+    "items": {
+      "plan": {
+        "title": "Work it out",
+        "text": "I help you clarify whether a digital product makes sense, which one, and what you want from it.",
+        "points": [
+          "Assessing the idea and goals",
+          "Market and competitor research",
+          "Scope of the first version (MVP)"
+        ]
+      },
+      "build": {
+        "title": "Build",
+        "text": "I design and develop a mobile app, website or whole system – as a first version or straight away as a finished product.",
+        "points": [
+          "Screen design and UX",
+          "iOS and Android in Flutter or native",
+          "Backend, administration and integrations with your systems"
+        ]
+      },
+      "secure": {
+        "title": "Secure",
+        "text": "I review the security of your app – even if someone else or an AI built it – and fix what I find.",
+        "points": [
+          "Code, server and configuration review",
+          "Apps built with AI",
+          "Secure AI features and agents"
+        ]
+      },
+      "grow": {
+        "title": "Grow",
+        "text": "After launch I look after the product and develop it based on how people actually use it.",
+        "points": [
+          "Operation, updates and fixes",
+          "Further versions driven by data and feedback",
+          "From MVP to a complete product"
+        ]
+      }
+    },
+    "securityLink": "More about app security"
   },
-  "projects": {
-    "title": "Selected projects",
-    "fit": "Have a service you want to bring to mobile? A product that is missing an app? Or an idea where you need to find the right first step? These are the kinds of briefs I have worked on.",
-    "credit": "Development by Jakub Smolík",
+  "work": {
+    "title": "What I have worked on",
+    "intro": "Apps for smart buildings, agriculture, startups and the public – each with a different brief, different users and different challenges. I don't name clients, but I'm happy to tell you more in a consultation.",
+    "galleryLabel": "App screens",
     "slideLabel": "Screen {index} of {count}",
-    "galleryLabel": "Screenshots – {title}",
     "previous": "Previous screen",
     "next": "Next screen",
-    "status": {
-      "delivered": "Delivered",
-      "in-development": "In development"
+    "images": {
+      "smart-building-dashboard": {
+        "alt": "Smart-home app – room overview with lighting, ventilation and heating controls",
+        "caption": "Smart home: everything within thumb's reach"
+      },
+      "smart-building-schedule": {
+        "alt": "Smart-home app – weekly heating schedule with hourly temperatures",
+        "caption": "Smart home: weekly heating schedule"
+      },
+      "agri-ventilation": {
+        "alt": "Stable operations app – fan control in manual and automatic mode",
+        "caption": "Smart stable: ventilation control"
+      },
+      "agri-sensors": {
+        "alt": "Stable operations app – temperature, humidity and CO₂ by area with threshold alerts",
+        "caption": "Smart stable: sensors and alerts"
+      },
+      "habit-coach-today": {
+        "alt": "Startup app – daily tasks with a completion indicator",
+        "caption": "Startup MVP: daily tasks and progress"
+      },
+      "habit-coach-goals": {
+        "alt": "Startup app – long-term goals and a daily completion chart",
+        "caption": "Startup MVP: goals and statistics"
+      },
+      "outdoor-map-detail": {
+        "alt": "Map app – place detail with its current state and report history",
+        "caption": "Public app: map with live reports"
+      },
+      "outdoor-map-saved": {
+        "alt": "Map app – saved places with their current state",
+        "caption": "Public app: saved places"
+      }
     },
-    "items": {
-      "domov": {
-        "title": "Domov pod palcem",
-        "tagline": "Smart-home control for iOS and Android",
-        "problem": "The owner of a smart home wanted to control lighting, blinds, gates, heating, heat recovery and air conditioning from one place – without switching between each manufacturer's app.",
-        "delivered": "I delivered a mobile app that configures itself for the household after sign-in and talks to it over a secured connection. Schedules for heating and other devices are included.",
-        "decision": "Every control sits within reach of the thumb of the hand holding the phone, so the home can be operated comfortably one-handed – with the shopping in the other.",
-        "result": "The delivered app covers complete control of the home, including scheduled modes.",
-        "images": {
-          "heating": "Domov pod palcem – living-room heating temperature with mode selection",
-          "blinder": "Domov pod palcem – blind control with a slider within thumb reach",
-          "time-regime": "Domov pod palcem – weekly heating schedule with hourly temperatures",
-          "dashboard": "Domov pod palcem – room overview with quick control tiles"
-        }
+    "experiences": {
+      "smart-buildings": {
+        "sector": "Smart buildings · IoT",
+        "title": "Controlling homes and buildings",
+        "text": "A smart-technology supplier puts this iOS and Android app in the hands of homeowners and the managers of offices and buildings. It controls devices in real time through the buildings' control systems. I keep developing it – from the idea and UX through development and the backend to securing the communication."
       },
-      "stable": {
-        "title": "Smart Stable",
-        "tagline": "Operations app for a stable manager",
-        "problem": "The manager of a cattle stable needed an overview of the conditions inside and a way to control the equipment even when not on site.",
-        "delivered": "I delivered an iOS and Android app in which the manager controls fans, side tarpaulins and lighting, watches live sensor readings – temperature, humidity and CO₂ – and their last 24 hours in charts.",
-        "decision": "The app watches for undesirable conditions on its own. When readings drift or a device reports a fault, the manager gets a push notification instead of having to watch the screen.",
-        "result": "The app supports several stables of one operator and adapts to the signed-in user's permissions.",
-        "images": {
-          "sensors": "Smart Stable – temperature, humidity and CO₂ readings per stable section with an alert on exceeded values",
-          "ventilators": "Smart Stable – fan controls with manual and automatic modes",
-          "sail-control": "Smart Stable – side tarpaulin opening control",
-          "light-control": "Smart Stable – lighting controls with manual and automatic modes",
-          "stable-picker": "Smart Stable – choosing one of the operator's stables"
-        }
+      "agriculture": {
+        "sector": "Agriculture · B2B",
+        "title": "An operations app for smart stables",
+        "text": "An app for stable managers that a technology manufacturer supplies to its customers: sensors, ventilation, lighting and alerts. The interface is tailored to the people who work with it every day."
       },
-      "studanky": {
-        "title": "Studánky",
-        "tagline": "An app for monitoring natural springs",
-        "problem": "Hikers and locals have no reliable way to know which natural springs are flowing right now and whether the water is fine.",
-        "delivered": "For the Studánky project I am developing a mobile app for monitoring the state of natural springs and planning trips. Users find springs on a map, scan a QR code at the spring and add the current state through a short questionnaire.",
-        "decision": "Data collection relies on the people at the spring: a report takes a few taps, and damage can be reported directly to the spring's caretaker.",
-        "result": "The app is in development. I keep adding springs and features.",
-        "images": {
-          "map": "Studánky – map with marked springs and their state",
-          "spring": "Studánky – map with the open detail of the Pod špičákem spring",
-          "detail": "Studánky – spring detail with report history",
-          "report": "Studánky – questionnaire for reporting a spring's state",
-          "scanner": "Studánky – scanning the QR code at the spring"
-        }
+      "startup": {
+        "sector": "Startup",
+        "title": "An MVP in the App Store in two weeks",
+        "text": "An app a startup used to test a new product: users complete daily tasks with a coach and follow their progress. Data from the first users then fed discovery and business analysis, which set the product's next direction."
+      },
+      "public-app": {
+        "sector": "Public app",
+        "title": "A map with reports from people",
+        "text": "A map app in which people report the current state of places in the field and plan trips accordingly. Organisations manage their places in an admin, and the backend watches for outdated data on its own."
+      },
+      "regulated": {
+        "sector": "Banking · public sector",
+        "title": "Apps in a regulated environment",
+        "text": "For more than five years I developed native iOS apps for banks and the public sector – including biometric signing and secure document handling. I also contributed to the architecture of apps used by tens of thousands of people."
+      },
+      "web-ai": {
+        "sector": "Web · AI",
+        "title": "Websites and AI-powered tools",
+        "text": "Company websites, landing pages and Python backends connected to language models – for example a tool that summarises entire YouTube playlists."
       }
     }
   },
-  "process": {
-    "title": "We start with your goal, not with an app.",
-    "intro": "First I need to understand what you do, where you're heading and what's missing today. We agree every next step in advance – what I'll do, what you'll get and what it will cost.",
+  "security": {
+    "title": "Security from the first line",
+    "text": "Apps are built faster than ever, often with AI. Speed brings holes too: exposed data, leaked keys or AI features that can be abused. I review your app and fix what I find.",
+    "checks": [
+      {
+        "title": "Access to data",
+        "text": "Does every user see only what they should? I check permissions in the app, the API and the database."
+      },
+      {
+        "title": "Keys and passwords",
+        "text": "I find access keys and passwords that leaked into the app, the code or the repository."
+      },
+      {
+        "title": "Server and communication",
+        "text": "I review the server setup and how securely the app talks to the backend and to devices."
+      },
+      {
+        "title": "AI features and agents",
+        "text": "I check that the AI in your app can't be abused and has no more permissions than it needs."
+      }
+    ],
+    "note": "This is a practical review with fixes, not a certified penetration test.",
+    "link": "How a review works"
+  },
+  "approach": {
+    "title": "How I work",
+    "intro": "I don't have a fixed process – every business and every project is different. First I listen: what you do, what you need and what you have already tried. Then I tell you what I think and suggest the next step.",
     "free": {
       "title": "Free introductory consultation",
-      "text": "Usually 60–90 minutes, in person or online. We go through your business, goals and the main open questions. You leave with a summary and a proposed next step."
+      "text": "60–90 minutes, in person or online, about development or security. We go through your situation and you leave with a summary and a proposed next step – no obligation."
     },
-    "entriesTitle": "Where we start",
-    "entries": [
+    "principles": [
       {
-        "situation": "You don't know whether to build, or what",
-        "start": "We start with stage 1: the decision."
+        "title": "Understand first, then build",
+        "text": "I ask about the goal, not just features. Sometimes the best advice is not to build yet."
       },
       {
-        "situation": "You know exactly what you want",
-        "start": "We start with stage 2: designing the full version."
+        "title": "Security from the start",
+        "text": "I deal with security from the first design, not after launch, when every fix costs more."
       },
       {
-        "situation": "You want to test the idea first",
-        "start": "We start with stage 2: designing a first version."
-      },
-      {
-        "situation": "You already have an app",
-        "start": "I assess it and we continue with stage 4."
+        "title": "Clear agreements",
+        "text": "We agree scope, price and the next step in advance. After each part you can decide again."
       }
-    ],
-    "outputsLabel": "What you get",
-    "stages": [
-      {
-        "title": "Decision: does a digital product make sense?",
-        "text": "I map your goals, users and market, review competitors and existing solutions, and prepare options – from an off-the-shelf tool to a product of your own. I'll recommend what makes sense, even if that's “don't build yet”.",
-        "outputs": [
-          "A summary of goals and needs",
-          "Market and competitor research",
-          "Options with a recommendation and a rough estimate"
-        ]
-      },
-      {
-        "title": "Design: what exactly to build",
-        "text": "We settle the scope – the full version, or first a version with just the essentials (an MVP). I design the key screens and flows and refine them with your feedback before I start coding.",
-        "outputs": [
-          "Scope and priorities",
-          "Design or clickable prototype",
-          "Price and schedule"
-        ]
-      },
-      {
-        "title": "Development and launch",
-        "text": "I build in increments and show you finished work along the way so you can react. I test the product and release it to the App Store and Google Play, or to the web. A first version tests a specific use case – it does not guarantee demand or revenue.",
-        "outputs": [
-          "A working product for iOS and Android, or the web",
-          "Administration and integrations with your systems as needed",
-          "Release and handover of access"
-        ]
-      },
-      {
-        "title": "Operation and growth",
-        "text": "After launch I take care of operation, updates and fixes. We plan further versions from real usage – step by step, the first version becomes a complete product that grows with your business.",
-        "outputs": [
-          "Agreed maintenance and monitoring",
-          "Further versions by priority",
-          "Growth and scaling"
-        ]
-      }
-    ],
-    "scope": "Most often I build mobile apps for iOS and Android. As needed, I add a web administration, a server and integrations with your systems – or a web app, if that makes more sense.",
-    "handover": "After each stage you decide whether to continue. You don't have to commit to the whole journey up front."
+    ]
   },
   "about": {
     "title": "One person. A team of AI agents.",
     "portraitAlt": "Jakub Smolík",
     "bio": [
-      "I'm Jakub Smolík. For more than six years I have been designing and developing mobile apps – for banks, the public sector and large companies, where security and reliability matter. For founders and businesses I build products of their own, for example in agriculture or smart homes. Technology is a tool for me, not the goal: what interests me is what the product will bring you.",
-      "I don't join other companies' teams as one more developer by the hour. I take on products I can be responsible for as a whole – from the first idea to the next versions. I'm based in Prague and happy to come to a meeting."
+      "I'm Jakub Smolík. For more than six years I have been designing and developing apps – for banks, the public sector, large companies and startups. On the projects I lead, I am responsible as the technical lead for the whole solution: from design through the app and backend to securing servers and the communication with devices.",
+      "Technology is a tool for me, not the goal: what interests me is what the product will bring you. I don't join other companies' teams as one more developer by the hour – I take on products I can be responsible for as a whole. I'm based in Prague and happy to come to a meeting."
     ],
     "ai": {
       "title": "How I work with AI agents",
       "workspaceAlt": "Jakub Smolík at work at a desk with a monitor and a laptop",
       "paragraphs": [
-        "Time-consuming work – research, drafts, prototypes, coding, tests and documentation – I do together with a team of AI agents. That lets me handle a scope that would otherwise need a small team, faster and without agency overhead. Decisions, review and responsibility for the result stay with me.",
-        "Your data stays protected. I do general work with large cloud AI models; anything that contains your sensitive data or know-how I process with local models on my own computer, so that information never leaves it. We agree at the start what counts as sensitive.",
-        "Hence the name smolikja team: me and my team of AI agents."
+        "Research, drafts, coding, tests and documentation I do together with a team of AI agents. That lets me handle a scope that would otherwise need a small team – faster and without agency overhead. Decisions, review and responsibility for the result stay with me.",
+        "Your data stays protected: sensitive data and know-how I process only with local models on my own computer and never send to cloud AI tools. Hence smolikja team – me and my team of AI agents."
       ]
     },
     "assurances": {
@@ -207,20 +237,24 @@
     "title": "Frequently asked questions",
     "items": [
       {
+        "question": "How much does app development cost?",
+        "answer": "It depends on what the app should do and which systems it connects to – a simple first version costs an order of magnitude less than a large system. After the introductory consultation I propose the approach and the price. For a clearly defined brief I offer a fixed price; for incremental development we agree a budget and priorities."
+      },
+      {
         "question": "Do I need a finished brief?",
-        "answer": "No. The introductory consultation is free and is there for me to understand your situation and goals. More detailed research, analysis and solution design I price according to the agreed scope. I start paid work only once you approve it."
-      },
-      {
-        "question": "Why one person and not an agency?",
-        "answer": "You talk directly to the person who designs and builds the product – nothing gets lost in handoffs, and one person is accountable for the result. AI agents give me the capacity of a small team, so I can do more in less time and without agency overhead. If your product needed many people working in parallel from day one, I'll tell you."
-      },
-      {
-        "question": "How much does it cost?",
-        "answer": "The price depends on what the product should do and which systems it connects to. After the introductory consultation I propose the next steps. For a clearly defined brief I offer a fixed price; for incremental development we agree a budget and priorities."
+        "answer": "No. The introductory consultation is free and is there for me to understand your situation and goals. More detailed research, analysis or design I price according to the agreed scope, and I start only once you approve it."
       },
       {
         "question": "How long does a first version take?",
-        "answer": "It depends on its scope and the systems it connects to. I give a timeline estimate once it's clear what the first version should do – usually after the introductory consultation or after clarifying the brief."
+        "answer": "It depends on the scope. A simple first version can be in the App Store within a few weeks, a larger product within a few months. I give an estimate once it's clear what the first version should do."
+      },
+      {
+        "question": "Can you review an app you didn't build?",
+        "answer": "Yes. I review apps and websites from other suppliers, from in-house teams and those built with AI tools, and help fix what I find. We agree the scope of the review in advance."
+      },
+      {
+        "question": "Why one person and not an agency?",
+        "answer": "You talk directly to the person who designs, builds and secures the product – nothing gets lost in handoffs, and one person is accountable for the result. AI agents give me the capacity of a small team. If your project needed many people working in parallel from day one, I'll tell you."
       },
       {
         "question": "What if you're not available?",
@@ -231,25 +265,22 @@
         "answer": "AI agents help me with research, drafts, code, tests and documentation; I make the decisions and review the work. Sensitive data and know-how I process only with local models on my own computer – I don't send them to cloud AI tools. We agree at the start what you consider sensitive, and if you like, we sign a non-disclosure agreement."
       },
       {
-        "question": "What happens after launch?",
-        "answer": "We agree maintenance and further development based on what real usage shows. I plan changes by priority and the agreed budget – it's a clear agreement, not unlimited support."
-      },
-      {
         "question": "Can you take over an existing app?",
-        "answer": "Yes. First I assess the existing app and propose the best next step. A rewrite from scratch is not the default recommendation."
+        "answer": "Yes. First I assess the existing app – including its security – and propose the best next step. A rewrite from scratch is not the default recommendation."
       }
     ]
   },
   "contact": {
-    "title": "What should your product change?",
-    "text": "Write me a few sentences about what you do and where you're heading – or what isn't working today. I'll get back to you and we'll arrange a free introductory consultation.",
-    "freeConsultation": "Free introductory consultation. You don't need a finished brief.",
+    "title": "What are you working on? Write to me.",
+    "text": "A few sentences are enough – an idea, an app you want reviewed or a problem that bothers you. I'll get back to you and we'll arrange a free introductory consultation.",
+    "freeConsultation": "Free introductory consultation",
+    "freeConsultationDetail": "60–90 minutes, no finished brief needed",
     "personal": "I reply personally.",
     "form": {
       "name": "Name",
       "email": "E-mail",
       "message": "Message",
-      "messageHint": "What does your business do and what should improve? If you have a timeline or budget in mind, add it.",
+      "messageHint": "What does your business do and what do you need help with? If you have a timeline or budget in mind, add it.",
       "submit": "Send message",
       "submitting": "Sending",
       "successTitle": "Your message arrived.",
@@ -266,6 +297,134 @@
     },
     "direct": {
       "label": "Or write directly to"
+    }
+  },
+  "securityPage": {
+    "metaTitle": "App and website security reviews",
+    "metaDescription": "I review the security of your mobile app, website or backend – including ones built with AI – and fix what I find. Free introductory consultation.",
+    "eyebrow": "App security",
+    "title": "Reviewing and securing apps",
+    "intro": "Apps are built faster than ever – in-house, by different suppliers or with AI. I check whether yours is secure, explain clearly what I found and fix the problems.",
+    "evidence": {
+      "text": "According to Veracode's 2026 research, on average only 56% of AI-written code passed a security test.",
+      "linkLabel": "Source: SD Times on the Veracode report"
+    },
+    "audience": {
+      "title": "Who I help",
+      "items": [
+        "Businesses and startups before launching an app or website",
+        "People who built their app themselves or with AI tools",
+        "Companies adding AI features and agents to their products",
+        "Suppliers whose customers ask them to demonstrate security – for example because of NIS2 or the CRA"
+      ]
+    },
+    "services": {
+      "title": "What I offer",
+      "items": [
+        {
+          "title": "App and backend review",
+          "text": "I go through the code of your mobile app, website and server and their setup: sign-in and credential storage, permissions, APIs, logs, databases and cloud services. You get a clear report and fixes in the code."
+        },
+        {
+          "title": "Apps built with AI",
+          "text": "I review apps from tools such as Lovable, Bolt or Cursor: data access rules, exposed keys and unprotected APIs – the most common weaknesses of quickly built apps."
+        },
+        {
+          "title": "Secure AI features and agents",
+          "text": "I design or review the AI features in your app: model keys on the server, cost limits, agent permissions and resistance to abuse through prompt injection."
+        },
+        {
+          "title": "Secure development and release",
+          "text": "I set up automatic checks that watch every change for leaked keys and vulnerable libraries, and prepare a list of the components you use (SBOM)."
+        },
+        {
+          "title": "Communication with servers and devices",
+          "text": "I secure the connection between the app, the server and devices – including smart buildings and their control systems."
+        },
+        {
+          "title": "Material for customers and regulation",
+          "text": "I prepare the technical part of supplier security questionnaires and of preparing for NIS2 or the CRA. Legal interpretation I leave to lawyers."
+        }
+      ]
+    },
+    "process": {
+      "title": "How a review works",
+      "steps": [
+        {
+          "title": "We agree the scope",
+          "text": "In the free introductory consultation we discuss what to review and how. We confirm the scope and permission to test in writing."
+        },
+        {
+          "title": "Analysis",
+          "text": "I go through the code and setup with specialised tools and with AI – with your consent, and sensitive parts only locally on my own computer."
+        },
+        {
+          "title": "Manual verification",
+          "text": "I verify and document every finding myself. Nothing goes into the report that I haven't confirmed."
+        },
+        {
+          "title": "A clear report",
+          "text": "You get the findings ordered by severity, explained without unnecessary jargon."
+        },
+        {
+          "title": "Fixes",
+          "text": "If you like, I fix the problems straight away – finished code changes, not just a list of issues."
+        }
+      ]
+    },
+    "why": {
+      "title": "Why me",
+      "items": [
+        {
+          "title": "I build apps myself",
+          "text": "I know where their weak spots tend to be and can fix them directly."
+        },
+        {
+          "title": "Experience in a regulated environment",
+          "text": "For more than five years I developed apps for banks and the public sector – including biometric signing and secure document handling."
+        },
+        {
+          "title": "Security in practice",
+          "text": "On the projects I lead, I secure servers and the communication of apps with the backend and with devices in smart buildings."
+        },
+        {
+          "title": "Your data stays with me",
+          "text": "I process sensitive code and data only with local models and never send them to cloud AI tools."
+        }
+      ]
+    },
+    "limits": {
+      "title": "What I don't do",
+      "text": "This is not a certified penetration test, nor a formal audit under cybersecurity law or ISO. If you need one, I'll tell you straight away and advise you how to proceed."
+    },
+    "faq": {
+      "title": "Security FAQ",
+      "items": [
+        {
+          "question": "Is this a penetration test?",
+          "answer": "Not in the certified sense. It is a practical review of the code, setup and behaviour of the app with verified findings and fixes. If you need a certified penetration test, for example for a tender, I'll tell you straight away."
+        },
+        {
+          "question": "Do you need access to the source code?",
+          "answer": "Ideally yes – reviewing the code reveals the most. Some checks are possible without it. We agree the access and what I may test in advance and confirm it in writing."
+        },
+        {
+          "question": "Will you send my code to an AI?",
+          "answer": "Only with your consent. Sensitive parts I process with local models on my own computer, so they never leave it."
+        },
+        {
+          "question": "How much does a review cost?",
+          "answer": "It depends on the size of the app and the scope of the review. After the free introductory consultation I give you a fixed price."
+        },
+        {
+          "question": "What if you find a serious problem?",
+          "answer": "I let you know immediately, not in the final report, and propose the quickest safe fix."
+        }
+      ]
+    },
+    "contact": {
+      "title": "How secure is your app?",
+      "text": "Write me a few sentences about your app or website. I'll get back to you and we'll arrange a free introductory consultation."
     }
   },
   "footer": {

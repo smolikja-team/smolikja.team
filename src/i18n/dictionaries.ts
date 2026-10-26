@@ -1,22 +1,23 @@
-import { projects } from "@/config/projects";
+import { experiences, workGallery } from "@/config/work";
 
 import type { Locale } from "./config";
 import type { Dictionary, DictionaryCatalog } from "./dictionary";
 
 /**
- * Runtime cross-check between structural data and copy: every project and
- * every screenshot declared in `src/config/projects.ts` must have its copy in
- * the catalog. The type system guarantees the reverse direction (the catalog
- * cannot name a project or image the type does not know).
+ * Runtime cross-check between structural data and copy: every screen and
+ * every kind of project declared in `src/config/work.ts` must have its copy
+ * in the catalog. The type system guarantees the reverse direction (the
+ * catalog cannot name a screen or experience the type does not know).
  */
 function normalizeDictionary(catalog: DictionaryCatalog): Dictionary {
-  for (const project of projects) {
-    const copy = catalog.projects.items[project.id];
-    if (!copy) throw new Error(`Missing copy for project "${project.id}".`);
-    for (const image of project.images) {
-      if (!(image.id in copy.images)) {
-        throw new Error(`Missing alt text for "${project.id}/${image.id}".`);
-      }
+  for (const image of workGallery) {
+    if (!catalog.work.images[image.id]?.alt) {
+      throw new Error(`Missing alt text for work screen "${image.id}".`);
+    }
+  }
+  for (const experience of experiences) {
+    if (!catalog.work.experiences[experience.id]) {
+      throw new Error(`Missing copy for experience "${experience.id}".`);
     }
   }
 

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { LandingPage } from "@/components/landing/landing-page";
 import { ownerPhotos } from "@/config/assets";
+import { securityPath } from "@/config/pages";
 import { siteConfig } from "@/config/site";
 import { isLocale, localeMeta, locales, localizedPathname } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -77,16 +78,39 @@ export default async function Home({
     email: siteConfig.email,
     sameAs: [siteConfig.links.linkedin, siteConfig.links.github],
     address: { "@type": "PostalAddress", addressLocality: "Praha", addressCountry: "CZ" },
-    knowsAbout: ["iOS", "Android", "Flutter", "Swift", "Kotlin", "Dart", "Product discovery"],
-    makesOffer: {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: dict.og.subtitle,
-        serviceType: "Digital product and mobile app development",
-        areaServed: ["CZ", "SK"],
+    knowsAbout: [
+      "iOS",
+      "Android",
+      "Flutter",
+      "Swift",
+      "Dart",
+      "Product discovery",
+      "Application security",
+      "AI application security",
+    ],
+    makesOffer: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: dict.services.items.build.title,
+          description: dict.services.items.build.text,
+          serviceType: "Mobile app and digital product development",
+          areaServed: ["CZ", "SK"],
+        },
       },
-    },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: dict.services.items.secure.title,
+          description: dict.services.items.secure.text,
+          serviceType: "Application security review",
+          url: `${siteConfig.url}${localizedPathname(locale, securityPath[locale])}`,
+          areaServed: ["CZ", "SK"],
+        },
+      },
+    ],
   };
 
   const faqJsonLd = {
