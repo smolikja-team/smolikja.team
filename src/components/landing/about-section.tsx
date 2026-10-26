@@ -20,14 +20,14 @@ export function AboutSection({ copy }: { copy: Dictionary["about"] }) {
   return (
     <Section id="about">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-5 py-16 sm:px-6 sm:py-20">
-        <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-16">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-16">
           <Image
             src={portrait.src}
             alt={copy.portraitAlt}
             width={portrait.width}
             height={portrait.height}
             sizes="(min-width: 640px) 384px, calc(100vw - 2.5rem)"
-            className="aspect-square w-full max-w-sm rounded-3xl object-cover"
+            className="aspect-square w-full max-w-sm rounded-3xl object-cover lg:order-last lg:justify-self-end"
           />
           <div className="flex flex-col gap-6">
             <SectionHeading title={copy.title} />

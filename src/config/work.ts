@@ -84,8 +84,10 @@ export const experiences: readonly { id: ExperienceId; tags: readonly string[] }
 /**
  * Hero stack: a colourful light screen in front and a dark screen from a
  * different kind of app behind it, so the opening shows range at a glance.
+ * The ventilation screen is a 1× export, so it stays the smaller back device
+ * by default.
  */
 export const heroComposition = {
   primary: screens["outdoor-map-detail"],
-  secondary: screens["habit-coach-today"],
+  secondary: screens["agri-ventilation"],
 } as const;

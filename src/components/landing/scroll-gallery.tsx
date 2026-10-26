@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type CSSProperties } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { motion, useMotionValue, useScroll, useTransform } from "motion/react";
 
 import type { WorkImage } from "@/config/work";
@@ -9,11 +9,12 @@ import { cn } from "@/lib/utils";
 import { DeviceFrame } from "./device-frame";
 
 /**
- * Screens in iPhone mockups on a horizontal strip driven by the page's own
- * vertical scroll. When the strip reaches the middle of the screen it pins
- * (a sticky stage below the header) and further scrolling moves it sideways;
- * once its last device lines up with the right content edge, the page
- * scrolls on. A progress bar spanning the content width fills as it moves.
+ * The section heading and screens in iPhone mockups on a horizontal strip
+ * driven by the page's own vertical scroll. Heading and strip pin together
+ * (a sticky stage below the header, so the strip never reads as a separate
+ * section) and further scrolling moves the strip sideways; once its last
+ * device lines up with the right content edge, the page scrolls on. A
+ * progress bar spanning the content width fills as it moves.
  *
  * Nothing intercepts wheel or touch events — the scroll distance is simply
  * added to the page as height — so keyboard, wheel, trackpad and touch all
@@ -23,14 +24,19 @@ import { DeviceFrame } from "./device-frame";
  *
  * CSS variables: `--page-inset` mirrors the page container (`max-w-6xl` with
  * `px-5`/`px-6`) so the first and last device align with the content edges;
- * `--scroll-distance` starts as a CSS estimate (no layout shift before
- * hydration) and is replaced by the measured value.
+ * `--slide-w` shrinks with the window height so heading, devices, captions
+ * and progress bar fit the pinned stage (`--chrome` is the room they need
+ * besides the devices); `--scroll-distance` starts as a CSS estimate (no
+ * layout shift before hydration) and is replaced by the measured value.
  */
 export function ScrollGallery({
+  heading,
   images,
   copy,
   label,
 }: {
+  /** Section heading, pinned with the strip and aligned with the content. */
+  heading: ReactNode;
   images: readonly WorkImage[];
   copy: Record<WorkImageId, WorkImageCopy>;
   label: string;
@@ -77,12 +83,15 @@ export function ScrollGallery({
       ref={stageRef}
       style={{ "--slides": images.length } as CSSProperties}
       className={cn(
-        "relative mx-[calc(50%-50vw)] [--gap:1rem] [--page-inset:1.25rem] [--slide-w:11.5rem] sm:[--gap:1.5rem] sm:[--page-inset:max(1.5rem,calc((100vw_-_72rem)/2_+_1.5rem))] sm:[--slide-w:14rem] lg:[--slide-w:15rem]",
+        "relative mx-[calc(50%-50vw)] [--gap:1rem] [--page-inset:1.25rem] sm:[--gap:1.5rem] sm:[--page-inset:max(1.5rem,calc((100vw_-_72rem)/2_+_1.5rem))]",
+        "[--chrome:26rem] [--slide-max:11.5rem] sm:[--chrome:22rem] sm:[--slide-max:14rem] lg:[--slide-max:15rem]",
+        "[--slide-w:clamp(7rem,calc((100svh_-_4rem_-_var(--chrome))_/_2.15),var(--slide-max))]",
         "[--scroll-distance:max(0px,calc(var(--slides)_*_var(--slide-w)_+_(var(--slides)_-_1)_*_var(--gap)_+_2_*_var(--page-inset)_-_100vw))]",
         "motion-safe:h-[calc(100svh_-_4rem_+_var(--scroll-distance))]",
       )}
     >
       <div className="flex flex-col justify-center gap-8 motion-safe:sticky motion-safe:top-16 motion-safe:h-[calc(100svh_-_4rem)] motion-safe:overflow-hidden">
+        <div className="px-(--page-inset)">{heading}</div>
         <div
           ref={viewportRef}
           className="motion-safe:overflow-hidden motion-reduce:snap-x motion-reduce:snap-mandatory motion-reduce:overflow-x-auto"
