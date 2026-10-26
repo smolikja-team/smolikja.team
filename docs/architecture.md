@@ -32,10 +32,11 @@ event handling. Current client islands:
 | Island | Why it is client-side |
 | --- | --- |
 | `landing/mobile-menu.tsx` | Open/close state of the small-screen menu (shadcn `Sheet` on Base UI). |
-| `landing/screen-carousel.tsx` → `ui/carousel.tsx` | Full-bleed Embla carousel of the work screens (drag, trackpad wheel, arrow keys, buttons, a scroll-progress line). |
+| `landing/scroll-gallery.tsx` | Work screens on a strip driven by the page's vertical scroll (`motion` `useScroll`): the stage pins below the header and its added height becomes horizontal travel, with a progress bar. No wheel or touch events are intercepted; with reduced motion it is a plain horizontally scrollable strip (CSS-only switch, so server and client markup match). |
+| `landing/hero-device-stack.tsx` | The two hero devices; pointing at (or tapping) the back one shuffles it to the front with a `motion` keyframe animation. |
 | `landing/contact-form.tsx` | `useActionState` around the contact Server Action; remounts fields with restored values after a failed attempt. |
 | `landing/faq-section.tsx` → `ui/accordion.tsx` | Expand/collapse of the FAQ (Base UI accordion). |
-| `landing/reveal.tsx` | The one restrained entrance — the hero product composition — via `motion`, disabled under reduced motion. |
+| `landing/reveal.tsx` | The one restrained entrance — the hero devices — via `motion`; with reduced motion only the fade remains. |
 
 Everything else, including the sticky header and its animated wordmark
 (`landing/site-logo.tsx`, a plain `<video>` blended onto the header), is a

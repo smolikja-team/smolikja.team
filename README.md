@@ -89,8 +89,8 @@ The deployed standalone server uses a different start command; see
 - `src/app/` owns routes, layouts, metadata files and the contact Server
   Action.
 - Server Components are the default. Small Client Component islands own the
-  mobile menu, the FAQ accordion, the screen carousels, the contact form and
-  the hero entrance.
+  mobile menu, the FAQ accordion, the scroll-driven screen gallery, the hero
+  devices and their entrance, and the contact form.
 - `src/components/` is organized by subsystem (`landing`, `layout`, `icons`,
   `ui`), not by route file.
 - `src/config/`, `src/i18n/` and `src/lib/` hold structural configuration,

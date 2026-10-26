@@ -34,11 +34,13 @@ owner's request, so those URLs no longer resolve. The smart-home dashboard's
 empty upper half is intentional: content starts in the lower half so the app
 can be operated one-handed, which its caption explains.
 
-Screens are shown as rounded cards without a drawn bezel
-(`landing/screen-card.tsx`); the screenshots carry their own status bars and
-cutouts. In the hero two cards are stacked like cards in a wallet and the back
-one comes to the front on hover. Changing a screen's content means a new file name: optimised
-images are cached by URL and cannot be invalidated.
+Screens are shown inside a front-view mockup of a current iPhone Pro
+(`landing/device-frame.tsx`, iPhone 17 Pro proportions): CSS only, coloured
+by the `--device-*` tokens in `globals.css`, with the screenshot cropped to
+the device's screen (`object-cover`, top-aligned) and a drawn Dynamic Island
+that covers any island a capture tool already painted. Changing a screen's
+content means a new file name: optimised images are cached by URL and cannot
+be invalidated.
 
 ## Header wordmark video
 
