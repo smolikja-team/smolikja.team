@@ -24,10 +24,13 @@ All user-facing copy lives in `messages/<locale>.json`, typed by `Dictionary`
 `alt` — in components; add a key and pass it in via props. Structural data
 (URLs, ids, asset paths, sizes) lives in `src/config/*`. See `docs/localization.md`.
 
-Copy speaks as the team ("we"), Czech is the source of truth, and the page
-makes no claims the owner has not confirmed (no prices, response times,
-headcount, client quotes). Positioning and section order come from
-`docs/landing-page-redesign-plan.md`.
+Copy speaks as Jakub Smolík in the first person singular — one named person
+working with a team of AI agents, never an agency "we" or a team headcount.
+Czech is the source of truth, and the page makes no claims the owner has not
+confirmed (no prices, response times, capacity numbers, client quotes).
+Positioning, voice and section order come from `docs/solo-positioning-plan.md`;
+`docs/landing-page-redesign-plan.md` still governs visual direction,
+accessibility, performance and measurement.
 
 Routing is always-prefixed (`/cs`, `/en`); `src/proxy.ts` (must stay in `src/`)
 redirects the bare `/`. Metadata routes (`robots.ts`, `sitemap.ts`,
@@ -35,7 +38,8 @@ redirects the bare `/`. Metadata routes (`robots.ts`, `sitemap.ts`,
 
 ## Assets
 
-The logo, project screenshots and the logo videos are served from
-`public/assets/**` under their historical `/assets/*` paths — keep those paths
-stable. Screenshot ids, pixel sizes and project status are declared in
-`src/config/projects.ts`; the header wordmark video in `src/config/video.ts`.
+The logo, project screenshots, the owner's photos and the logo videos are
+served from `public/assets/**` under their historical `/assets/*` paths — keep
+those paths stable. Screenshot ids, pixel sizes and project status are declared
+in `src/config/projects.ts`; the owner's photos in `src/config/assets.ts`; the
+header wordmark video in `src/config/video.ts`.

@@ -80,8 +80,11 @@ feature has a distinct responsibility and more than one collaborating module.
 
 The locale segment is validated against `src/i18n/config.ts`. The page loads
 the matching typed catalog, and `landing-page.tsx` passes only the dictionary
-subtree each section renders, in reading order: offer (hero) → application
-deliveries → process → complete product → team → FAQ → enquiry. Structural
+subtree each section renders, in reading order: offer (hero, with the owner's
+name and photo) → application deliveries → collaboration lifecycle → about
+(portrait, way of working with AI agents, assurances) → FAQ → enquiry. The
+availability line in the hero and contact section follows
+`siteConfig.availableForNewProjects`. Structural
 values (project ids, status, screenshot paths, anchors) come from
 `src/config/`, never from translation files; `src/i18n/dictionaries.ts`
 cross-checks at load time that every configured project and screenshot has
@@ -124,9 +127,12 @@ frame disappear without a visible rectangle.
 
 - User-facing copy: `messages/<locale>.json`, typed by `src/i18n/dictionary.ts`.
 - Supported locales and URL behaviour: `src/i18n/config.ts` and `src/proxy.ts`.
-- Site URL, e-mail, external links, navigation: `src/config/site.ts`.
+- Site URL, owner name, e-mail, external links, availability, navigation: `src/config/site.ts`.
+- Owner photos and brand assets: `src/config/assets.ts`.
 - Projects, their status, screenshots and the hero composition: `src/config/projects.ts`.
-- Privacy page path, effective date and authority link: `src/config/legal.ts`.
+- Operator identity (name, IČO, registered address), privacy page path,
+  effective date and authority link: `src/config/legal.ts`. The footer and the
+  privacy page render the identity through the `operator` catalog templates.
 - Dependency versions and commands: `package.json`.
 - Deployment commands: `nixpacks.toml` and `next.config.ts`.
 

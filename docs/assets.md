@@ -9,6 +9,7 @@ All binary assets are committed under `public/` and served from the site root.
 | `public/assets/logo-white.svg` | Wordmark (596×133), white on transparent. Also inlined as `src/components/icons/brand-logo.tsx` so it inherits `currentColor`. | `src/config/assets.ts` |
 | `public/assets/loop2x/team-logo-{480p,720p,1080p,2160p}.{webm,mp4}` | The 16 s, 16:9 rotating-logo loop in four encodes (≈2–19 MB each). The 480p encode is the header's animated wordmark; the larger ones are kept because the URLs are public. | `src/config/video.ts` |
 | `public/assets/projects/<id>/<screenshot>.png` | Portrait phone screenshots per project. | `src/config/projects.ts` |
+| `public/assets/about/portrait.jpg`, `workspace.jpg` | The owner's portrait (1254×1254) and workspace photo (1447×1087), supplied by the owner without generator metadata. The workspace photo is AI-enhanced from a real photo of the actual workspace (owner's decision, 2026-10-08). | `src/config/assets.ts` |
 | `public/brand/icon-192.png`, `icon-512.png`, `icon-512-maskable.png` | PWA icons for the manifest. | `src/config/assets.ts` |
 | `src/app/icon.png`, `apple-icon.png`, `favicon.ico` | Favicons via Next.js file conventions. | — |
 | `src/lib/og/instrument-sans-600.ttf` | Display font bundled for `next/og` (Satori's built-in font has no Czech glyphs). | `src/lib/og/og-image.tsx` |

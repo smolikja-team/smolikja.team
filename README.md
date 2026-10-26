@@ -1,9 +1,10 @@
 # smolikja.team
 
-Website of smolikja team — a small mobile product studio in Prague. A single
-localized landing page (`/cs`, `/en`) that presents the offer, three delivered
-applications, the working process, FAQ and an enquiry form, plus a privacy
-page.
+Website of smolikja team — Jakub Smolík, one person working with a team of AI
+agents, who helps businesses decide what digital product to build and then
+designs, builds and develops it. A single localized landing page (`/cs`,
+`/en`) that presents the offer, delivered applications, the collaboration
+lifecycle, the person behind it, FAQ and an enquiry form, plus a privacy page.
 
 The application uses the Next.js App Router, React, TypeScript, Tailwind CSS
 and pnpm. `package.json` is the source of truth for framework and dependency
@@ -25,9 +26,11 @@ intent behind them.
   this project follows.
 - [Stack migration](docs/stack-migration.md) — what changed in the 2026-09
   migration and why.
+- [Solo positioning plan](docs/solo-positioning-plan.md) — the current
+  positioning, voice, page structure and copy direction.
 - [Landing page redesign plan](docs/landing-page-redesign-plan.md) and
-  [pricing research](docs/landing-page-pricing-research.md) — the positioning,
-  content and commercial reasoning behind the current page.
+  [pricing research](docs/landing-page-pricing-research.md) — the visual,
+  accessibility and commercial reasoning the page still follows.
 
 Keep durable contracts, operational procedures and non-obvious architectural
 decisions in these documents. Active work belongs in the issue tracker, and

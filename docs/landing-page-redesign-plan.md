@@ -1,5 +1,12 @@
 # Landing page redesign plan
 
+> **Superseded in part (2026-10-08).** The owner now presents himself as one
+> named person working with a team of AI agents. Positioning, voice,
+> information architecture and copy (§1 brand decisions, §5, §6, the voice
+> criteria in §10 and §11) are replaced by the
+> [solo positioning plan](solo-positioning-plan.md). The remaining sections
+> still apply.
+
 Date: 2026-09-15. Updated with the owner's team, portfolio and commercial
 direction. Status: implemented in the landing page on 2026-09-15 (see the
 [architecture](architecture.md) and [remaining inputs](#11-remaining-implementation-inputs));
