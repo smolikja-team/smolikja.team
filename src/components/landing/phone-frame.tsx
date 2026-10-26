@@ -12,14 +12,15 @@ export function PhoneFrame({
   image,
   alt,
   sizes,
-  priority = false,
+  preload = false,
   className,
   screenClassName,
 }: {
   image: ProjectImage;
   alt: string;
   sizes: string;
-  priority?: boolean;
+  /** Preload as the likely LCP element (the hero screen). */
+  preload?: boolean;
   className?: string;
   screenClassName?: string;
 }) {
@@ -36,7 +37,7 @@ export function PhoneFrame({
         width={image.width}
         height={image.height}
         sizes={sizes}
-        priority={priority}
+        preload={preload}
         className={cn("block h-auto w-full rounded-[2.1rem] bg-card", screenClassName)}
       />
     </div>

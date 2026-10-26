@@ -1,3 +1,12 @@
+/**
+ * Photos of the owner, served from `public/assets/about`. Sizes are the
+ * intrinsic pixel sizes of the JPEGs.
+ */
+export const ownerPhotos = {
+  portrait: { src: "/assets/about/portrait.jpg", width: 1254, height: 1254 },
+  workspace: { src: "/assets/about/workspace.jpg", width: 1447, height: 1087 },
+} as const;
+
 /** Locale-independent brand assets served from `public/`. */
 export const brandAssets = {
   wordmark: {

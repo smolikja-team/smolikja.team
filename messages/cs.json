@@ -1,21 +1,21 @@
 {
   "meta": {
-    "title": "smolikja team – vývoj mobilních aplikací pro firmy",
-    "description": "Pomáháme firmám proměnit nápad v mobilní aplikaci. Od ujasnění zadání přes první verzi pro iOS a Android až po další rozvoj. Úvodní konzultace zdarma."
+    "title": "Jakub Smolík – digitální produkty a mobilní aplikace pro firmy",
+    "description": "Pomáhám firmám zjistit, co má smysl postavit – a pak to navrhnu, postavím a dlouhodobě rozvíjím. Mobilní aplikace a digitální produkty. Úvodní konzultace zdarma."
   },
   "og": {
-    "subtitle": "Vývoj mobilních aplikací pro firmy · Úvodní konzultace zdarma",
-    "alt": "smolikja team – proměníme váš nápad v mobilní aplikaci"
+    "subtitle": "Návrh a vývoj digitálních produktů · Úvodní konzultace zdarma",
+    "alt": "Jakub Smolík – pomůžu vám zjistit, co má smysl postavit. A pak to postavím."
   },
   "manifest": {
-    "description": "smolikja team – vývoj mobilních aplikací pro firmy. Od ujasnění zadání přes první verzi až po další rozvoj."
+    "description": "Jakub Smolík – návrh, vývoj a dlouhodobý rozvoj digitálních produktů a mobilních aplikací pro firmy."
   },
   "nav": {
     "aria": "Hlavní navigace",
     "home": "smolikja team – na úvod",
     "projects": "Projekty",
-    "process": "Jak spolupracujeme",
-    "about": "O nás",
+    "process": "Spolupráce",
+    "about": "O mně",
     "cta": "Probrat nápad",
     "menuOpen": "Otevřít menu",
     "menuClose": "Zavřít menu",
@@ -27,19 +27,24 @@
     "en": "English"
   },
   "hero": {
-    "title": "Proměníme váš nápad v mobilní aplikaci.",
-    "text": "Pomůžeme vám ujasnit, co má aplikace řešit, navrhneme první verzi pro iOS a Android a postaráme se o její další rozvoj.",
+    "role": "Návrh a vývoj digitálních produktů",
+    "title": "Pomůžu vám zjistit, co má smysl postavit. A pak to postavím.",
+    "text": "Pomáhám firmám ujasnit, jestli a jaký digitální produkt jim dává smysl – nejčastěji mobilní aplikaci. Když ano, provedu ho návrhem, vývojem i dalším rozvojem. Pracuju s týmem AI agentů; rozhodnutí a odpovědnost zůstávají u mě.",
     "secondary": "Prohlédnout projekty",
-    "reassurance": "Nemusíte mít hotové zadání. Stačí popsat, co chcete zlepšit.",
+    "reassurance": "Nemusíte mít zadání. Stačí popsat, kam míříte.",
     "freeConsultation": "Úvodní konzultace zdarma.",
-    "caption": "Domov pod palcem a Studánky – vývoj aplikací: smolikja team",
-    "captionSmall": "Domov pod palcem – vývoj aplikace: smolikja team",
+    "caption": "Domov pod palcem a Studánky – vývoj aplikací: Jakub Smolík",
+    "captionSmall": "Domov pod palcem – vývoj aplikace: Jakub Smolík",
     "compositionAria": "Ukázky aplikací Domov pod palcem a Studánky"
   },
+  "availability": {
+    "open": "Mám prostor na nové projekty. Rozsah a termíny domluvíme individuálně.",
+    "busy": "Teď mám hodně práce, ale napište – domluvíme termín."
+  },
   "projects": {
-    "title": "Aplikace, které jsme dodali",
-    "fit": "Máte službu, kterou chcete dostat do mobilu? Produkt, ke kterému chybí aplikace? Nebo nápad, u kterého potřebujete najít správný první krok? Takhle vypadají zadání, která jsme řešili.",
-    "credit": "Vývoj aplikace: smolikja team",
+    "title": "Vybrané projekty",
+    "fit": "Máte službu, kterou chcete dostat do mobilu? Produkt, ke kterému chybí aplikace? Nebo nápad, u kterého potřebujete najít správný první krok? Takhle vypadají zadání, která jsem řešil.",
+    "credit": "Vývoj aplikace: Jakub Smolík",
     "slideLabel": "Snímek {index} z {count}",
     "galleryLabel": "Snímky obrazovky – {title}",
     "previous": "Předchozí snímek",
@@ -53,7 +58,7 @@
         "title": "Domov pod palcem",
         "tagline": "Ovládání chytré domácnosti pro iOS a Android",
         "problem": "Majitel chytré domácnosti chtěl ovládat osvětlení, žaluzie, vstupní brány, vytápění, rekuperaci i klimatizaci z jednoho místa – bez přebíhání mezi aplikacemi jednotlivých výrobců.",
-        "delivered": "Dodali jsme mobilní aplikaci, která se po přihlášení sama nastaví podle konfigurace domácnosti a komunikuje s ní zabezpečeným spojením. Součástí jsou časové plány pro vytápění a další zařízení.",
+        "delivered": "Dodal jsem mobilní aplikaci, která se po přihlášení sama nastaví podle konfigurace domácnosti a komunikuje s ní zabezpečeným spojením. Součástí jsou časové plány pro vytápění a další zařízení.",
         "decision": "Všechny ovládací prvky jsou v dosahu palce ruky, která drží telefon. Domácnost tak jde pohodlně ovládat jednou rukou – třeba s nákupem v té druhé.",
         "result": "Dodaná aplikace pokrývá kompletní ovládání domácnosti včetně plánování režimů.",
         "images": {
@@ -67,7 +72,7 @@
         "title": "Inteligentní stáj",
         "tagline": "Provozní aplikace pro správce stáje",
         "problem": "Správce stáje pro chov skotu potřeboval mít přehled o prostředí ve stáji a ovládat její vybavení, i když zrovna není na místě.",
-        "delivered": "Dodali jsme mobilní aplikaci pro iOS a Android, ve které správce ovládá ventilátory, boční plachty a osvětlení, sleduje aktuální hodnoty z čidel – teplotu, vlhkost a CO₂ – a jejich vývoj za posledních 24 hodin v grafech.",
+        "delivered": "Dodal jsem mobilní aplikaci pro iOS a Android, ve které správce ovládá ventilátory, boční plachty a osvětlení, sleduje aktuální hodnoty z čidel – teplotu, vlhkost a CO₂ – a jejich vývoj za posledních 24 hodin v grafech.",
         "decision": "Aplikace sama hlídá nežádoucí stavy. Když hodnoty vybočí nebo zařízení hlásí problém, správce dostane push notifikaci a nemusí obrazovku sledovat.",
         "result": "Aplikace podporuje více stájí jednoho provozovatele a přizpůsobuje se oprávněním přihlášeného uživatele.",
         "images": {
@@ -82,9 +87,9 @@
         "title": "Studánky",
         "tagline": "Aplikace pro sledování přírodních pramenů",
         "problem": "Turisté a místní nemají spolehlivý přehled o tom, které přírodní studánky právě tečou a jestli je voda v pořádku.",
-        "delivered": "Pro projekt Studánky vyvíjíme mobilní aplikaci pro sledování stavu přírodních pramenů a plánování výletů. Uživatelé najdou studánky na mapě, u pramene naskenují QR kód a krátkým dotazníkem doplní aktuální stav.",
+        "delivered": "Pro projekt Studánky vyvíjím mobilní aplikaci pro sledování stavu přírodních pramenů a plánování výletů. Uživatelé najdou studánky na mapě, u pramene naskenují QR kód a krátkým dotazníkem doplní aktuální stav.",
         "decision": "Sběr dat stojí na lidech u pramene: hlášení je na pár klepnutí a poškození studánky jde nahlásit přímo jejímu správci.",
-        "result": "Aplikace je ve vývoji. Průběžně ji rozšiřujeme o další prameny a funkce.",
+        "result": "Aplikace je ve vývoji. Průběžně ji rozšiřuji o další prameny a funkce.",
         "images": {
           "map": "Studánky – mapa s vyznačenými prameny a jejich stavem",
           "spring": "Studánky – mapa s otevřeným detailem pramene Pod špičákem",
@@ -96,164 +101,217 @@
     }
   },
   "process": {
-    "title": "Začneme tím, co má smysl ověřit.",
-    "intro": "Nejdřív se seznámíme s vaším nápadem a situací. Úvodní konzultace je zdarma. Pokud bude potřeba podrobnější analýza nebo návrh, předem domluvíme jejich rozsah a cenu.",
-    "handover": "Po každé fázi se domluvíme, jak dál. Nemusíte se hned zavázat k celé spolupráci – někdy je správným krokem menší experiment, webové řešení, nebo zatím nestavět vůbec.",
+    "title": "Začneme vaším cílem, ne aplikací.",
+    "intro": "Nejdřív potřebuju pochopit, co děláte, kam míříte a co vám dnes chybí. Každý další krok si předem domluvíme – co v něm udělám, co z něj dostanete a kolik bude stát.",
     "free": {
       "title": "Úvodní konzultace zdarma",
-      "text": "Obvykle 60–90 minut. Probereme vaše podnikání, zamýšlené uživatele, stávající systémy a hlavní nejasnosti. Odnesete si krátké shrnutí a návrh dalšího kroku."
+      "text": "Obvykle 60–90 minut, osobně nebo online. Probereme vaše podnikání, cíle a hlavní nejasnosti. Odnesete si shrnutí a návrh dalšího kroku."
     },
+    "entriesTitle": "Kde začneme",
+    "entries": [
+      {
+        "situation": "Nevíte, jestli a co stavět",
+        "start": "Začneme fází 1: rozhodnutím."
+      },
+      {
+        "situation": "Víte přesně, co chcete",
+        "start": "Začneme fází 2: návrhem plné verze."
+      },
+      {
+        "situation": "Chcete nápad nejdřív ověřit",
+        "start": "Začneme fází 2: návrhem první verze."
+      },
+      {
+        "situation": "Už máte aplikaci",
+        "start": "Posoudím ji a navážeme fází 4."
+      }
+    ],
     "outputsLabel": "Co si odnesete",
     "stages": [
       {
-        "title": "Ujasníme zadání a navrhneme řešení",
-        "text": "Podle domluveného rozsahu prověříme potřeby uživatelů, konkurenci a navrhneme, co má první verze umět. Jednoduché a jasné zadání může jít rovnou k nabídce vývoje.",
+        "title": "Rozhodnutí: dává digitální produkt smysl?",
+        "text": "Zmapuji vaše cíle, uživatele a trh, projdu konkurenci a existující řešení a připravím varianty – od hotového nástroje po vlastní produkt. Doporučím, co dává smysl, i když to bude „zatím nestavět“.",
         "outputs": [
-          "Zadání první verze a prioritizovaný rozsah",
-          "Klíčový tok aplikace nebo prototyp podle dohody",
-          "Odhad ceny a doporučení dalšího kroku"
+          "Shrnutí cílů a potřeb",
+          "Rešerše trhu a konkurence",
+          "Varianty s doporučením a hrubým odhadem"
         ]
       },
       {
-        "title": "Postavíme první použitelnou verzi",
-        "text": "Soustředíme se na hlavní potřebu uživatelů. Aplikaci průběžně ukazujeme a připravíme ji k uvedení. První verze ověří konkrétní případ použití – nezaručuje poptávku ani tržby.",
+        "title": "Návrh: co přesně postavit",
+        "text": "Ujasníme rozsah – plnou verzi, nebo nejdřív první verzi s tím nejdůležitějším (MVP). Navrhnu klíčové obrazovky a průchody a ladíme je podle vaší zpětné vazby, dřív než začnu programovat.",
         "outputs": [
-          "Funkční aplikace pro iOS a Android",
-          "Potřebné zázemí a otestování",
-          "Domluvené uvedení do App Store a Google Play"
+          "Rozsah a priority",
+          "Návrh nebo klikací prototyp",
+          "Cena a harmonogram"
         ]
       },
       {
-        "title": "Rozvíjíme podle skutečného používání",
-        "text": "Po spuštění řešíme provoz a další úpravy plánujeme podle zpětné vazby a potřeb vašeho podnikání. Údržbu i rozvoj si domluvíme jako samostatné služby.",
+        "title": "Vývoj a spuštění",
+        "text": "Stavím po částech a průběžně vám ukazuji hotovou práci, abyste mohli reagovat. Produkt otestuji a vydám do App Store a Google Play, případně na web. První verze ověří konkrétní případ použití – nezaručuje poptávku ani tržby.",
         "outputs": [
-          "Domluvená údržba a provoz",
-          "Priority podle zpětné vazby uživatelů",
-          "Další verze aplikace"
+          "Funkční produkt pro iOS a Android, případně web",
+          "Administrace a napojení na vaše systémy podle potřeby",
+          "Vydání a předání přístupů"
+        ]
+      },
+      {
+        "title": "Provoz a rozvoj",
+        "text": "Po spuštění se starám o provoz, aktualizace a opravy. Další verze plánujeme podle skutečného používání – z první verze postupně vznikne plnohodnotný produkt, který roste s vaším podnikáním.",
+        "outputs": [
+          "Domluvená údržba a dohled",
+          "Další verze podle priorit",
+          "Rozvoj a škálování"
         ]
       }
-    ]
+    ],
+    "scope": "Nejčastěji stavím mobilní aplikace pro iOS a Android. Podle potřeby k nim připravím webovou administraci, server a napojení na vaše systémy – nebo webovou aplikaci, pokud dává větší smysl.",
+    "handover": "Po každé fázi se rozhodnete, jestli pokračovat. Nemusíte se hned zavazovat k celé cestě."
   },
-  "scope": {
-    "title": "Aplikace i zázemí, které potřebuje.",
-    "text": "Podle potřeby připravíme také webovou administraci, propojení s vašimi systémy a provoz aplikace. Jednotlivé části navrhneme tak, aby spolu fungovaly.",
-    "items": {
-      "app": {
-        "title": "Mobilní aplikace",
-        "text": "Pro iOS a Android – nativně, nebo ve Flutteru, podle toho, co dává pro váš projekt smysl."
-      },
-      "admin": {
-        "title": "Webová administrace",
-        "text": "Správa obsahu, uživatelů a nastavení bez zásahu vývojářů."
-      },
-      "backend": {
-        "title": "Technické zázemí",
-        "text": "Server, propojení s vašimi systémy a provoz aplikace po spuštění."
-      }
+  "about": {
+    "title": "Jeden člověk. Tým AI agentů.",
+    "portraitAlt": "Jakub Smolík",
+    "bio": [
+      "Jsem Jakub Smolík. Přes šest let navrhuji a vyvíjím mobilní aplikace – pro banky, veřejnou správu i velké firmy, kde rozhoduje bezpečnost a spolehlivost. Pro zakladatele a firmy stavím jejich vlastní produkty, třeba v zemědělství nebo chytré domácnosti. Technologie je pro mě nástroj, ne cíl: zajímá mě, co vám produkt přinese.",
+      "Nepřidávám se do cizích týmů jako další vývojář na hodiny. Beru produkty, za které můžu odpovídat celé – od prvního nápadu po další verze. Působím v Praze a na schůzku rád přijedu."
+    ],
+    "ai": {
+      "title": "Jak pracuju s AI agenty",
+      "workspaceAlt": "Jakub Smolík při práci u stolu s monitorem a notebookem",
+      "paragraphs": [
+        "Časově náročnou práci – rešerše, návrhy, prototypy, programování, testy a dokumentaci – se mnou dělá tým AI agentů. Díky tomu zvládnu rozsah, na který by jinak byl potřeba malý tým, rychleji a bez režie agentury. Rozhodnutí, kontrola a odpovědnost za výsledek zůstávají u mě.",
+        "Vaše data chráním. Obecnou práci dělám s velkými AI modely v cloudu; vše, co obsahuje vaše citlivá data nebo know-how, zpracovávám lokálními modely na vlastním počítači, takže ho tyto informace neopustí. Co je citlivé, si domluvíme na začátku spolupráce.",
+        "Proto smolikja team: já a můj tým AI agentů."
+      ]
+    },
+    "assurances": {
+      "title": "Co máte jisté",
+      "items": [
+        {
+          "title": "Produkt je váš",
+          "text": "Kód vám předávám v domluvených milnících, případně je rovnou ve vašem repozitáři. Účty v App Store a Google Play i produkční servery vlastníte vy – s nastavením rád pomůžu."
+        },
+        {
+          "title": "Navázat může i někdo jiný",
+          "text": "Používám běžné technologie a každý projekt má podrobnou dokumentaci. Když spolupráce skončí, projekt vám řádně předám."
+        },
+        {
+          "title": "Termíny s rezervou",
+          "text": "Plánuju s rezervou na nečekané situace. Dovolenou hlásím dopředu a plán podle ní upravíme, takže vždycky víte, jak na tom jsme."
+        }
+      ],
+      "note": "Podrobnosti upravíme ve smlouvě podle vašeho projektu."
     }
-  },
-  "team": {
-    "title": "Tým pro váš produkt.",
-    "paragraphs": [
-      "Propojíme návrh, vývoj a provoz do jedné spolupráce. Průběžně s vámi řešíme priority, ukazujeme hotovou práci a domlouváme další kroky.",
-      "Jsme malý tým z Prahy. Mluvíte přímo s lidmi, kteří aplikaci navrhují a programují – zadání, rozhodnutí i kód zůstávají u projektu, ne v hlavě jednoho dodavatele."
-    ]
   },
   "faq": {
     "title": "Na co se ptáte nejčastěji",
     "items": [
       {
         "question": "Potřebuji mít hotové zadání?",
-        "answer": "Ne. Úvodní konzultace je zdarma a slouží k tomu, abychom se seznámili s vaší situací a nápadem. Podrobnější průzkum, analýzu a návrh řešení naceníme podle dohodnutého rozsahu. S placenou prací začneme až po vašem odsouhlasení."
+        "answer": "Ne. Úvodní konzultace je zdarma a slouží k tomu, abych pochopil vaši situaci a cíle. Podrobnější rešerši, analýzu a návrh řešení nacením podle dohodnutého rozsahu. S placenou prací začnu až po vašem odsouhlasení."
       },
       {
-        "question": "Kolik vývoj stojí?",
-        "answer": "Cena záleží na tom, co má první verze umět a na jaké systémy se napojí. Po úvodní konzultaci navrhneme další postup. Pro jasně vymezené zadání nabídneme pevnou cenu; u postupného vývoje si domluvíme rozpočet a priority."
+        "question": "Proč jeden člověk, a ne agentura?",
+        "answer": "Mluvíte přímo s tím, kdo produkt navrhuje i programuje – nic se neztratí při předávání mezi lidmi a za výsledek odpovídá jeden člověk. Kapacitu malého týmu mi dávají AI agenti, takže zvládnu víc za kratší dobu a bez režie agentury. Kdyby váš produkt od začátku potřeboval mnoho lidí pracujících souběžně, řeknu vám to."
+      },
+      {
+        "question": "Kolik to stojí?",
+        "answer": "Cena záleží na tom, co má produkt umět a na jaké systémy se napojí. Po úvodní konzultaci navrhnu další postup. Pro jasně vymezené zadání nabídnu pevnou cenu; u postupného vývoje si domluvíme rozpočet a priority."
       },
       {
         "question": "Jak dlouho trvá první verze?",
-        "answer": "Záleží na rozsahu první verze a na tom, na jaké systémy se napojí. Odhad termínu dáváme ve chvíli, kdy je jasné, co má první verze umět – obvykle po úvodní konzultaci nebo po ujasnění zadání."
+        "answer": "Záleží na jejím rozsahu a na tom, na jaké systémy se napojí. Odhad termínu dávám ve chvíli, kdy je jasné, co má první verze umět – obvykle po úvodní konzultaci nebo po ujasnění zadání."
       },
       {
-        "question": "Postaráte se i o administraci a provoz?",
-        "answer": "Ano, pokud jsou součástí domluvené dodávky. Webová administrace vám umožní spravovat obsah a uživatele bez zásahu vývojářů. Provoz zahrnuje server, aktualizace a dohled nad tím, že aplikace běží."
+        "question": "Co když nebudete k dispozici?",
+        "answer": "Termíny plánuju s rezervou, aby bylo místo i na nečekané situace, a vždycky dám vědět, jak na tom jsme. Dovolenou hlásím dopředu. Kód, dokumentaci i účty máte vy, takže na projekt může kdykoli navázat i jiný vývojář. Konkrétní pravidla si zapíšeme do smlouvy."
+      },
+      {
+        "question": "Jak používáte AI a co je s mými daty?",
+        "answer": "AI agenti mi pomáhají s rešeršemi, návrhy, kódem, testy a dokumentací; rozhoduji a kontroluji já. Citlivá data a know-how zpracovávám jen lokálními modely na vlastním počítači – do cloudových AI nástrojů je neposílám. Co považujete za citlivé, si domluvíme na začátku, a pokud chcete, podepíšeme dohodu o mlčenlivosti."
       },
       {
         "question": "Co se děje po spuštění?",
-        "answer": "Domluvíme si údržbu a další rozvoj podle toho, co ukáže skutečné používání. Úpravy plánujeme podle priorit a domluveného rozpočtu – jde o jasnou dohodu, ne o neomezenou podporu."
+        "answer": "Domluvíme si údržbu a další rozvoj podle toho, co ukáže skutečné používání. Úpravy plánuji podle priorit a domluveného rozpočtu – jde o jasnou dohodu, ne o neomezenou podporu."
       },
       {
-        "question": "Můžeme navázat na existující aplikaci?",
-        "answer": "Ano. Nejdřív stávající aplikaci posoudíme a domluvíme se na nejlepším dalším kroku. Přepsání od nuly není výchozí doporučení."
+        "question": "Můžete navázat na existující aplikaci?",
+        "answer": "Ano. Nejdřív stávající aplikaci posoudím a navrhnu nejlepší další krok. Přepsání od nuly není výchozí doporučení."
       }
     ]
   },
   "contact": {
-    "title": "Co by měla vaše aplikace změnit?",
-    "text": "Napište pár vět o svém nápadu nebo o tom, co dnes nefunguje. Ozveme se a domluvíme si úvodní konzultaci zdarma.",
+    "title": "Co by měl váš produkt změnit?",
+    "text": "Napište mi pár vět o tom, co děláte a kam míříte – nebo co dnes nefunguje. Ozvu se a domluvíme si úvodní konzultaci zdarma.",
     "freeConsultation": "Úvodní konzultace zdarma. Nemusíte mít hotové zadání.",
+    "personal": "Odpovídám osobně.",
     "form": {
       "name": "Jméno",
       "email": "E-mail",
       "message": "Zpráva",
-      "messageHint": "Pro koho je aplikace a co má usnadnit? Pokud už máte představu o termínu nebo rozpočtu, můžete ji připsat.",
+      "messageHint": "Čím se zabýváte a co by se mělo zlepšit? Pokud máte představu o termínu nebo rozpočtu, připište ji.",
       "submit": "Odeslat zprávu",
       "submitting": "Odesílám",
       "successTitle": "Zpráva dorazila.",
-      "success": "Ozveme se vám na uvedený e-mail a domluvíme úvodní konzultaci.",
+      "success": "Ozvu se vám na uvedený e-mail a domluvíme úvodní konzultaci.",
       "errorSummary": "Zprávu se nepodařilo odeslat. Zkontrolujte prosím označená pole.",
       "errors": {
         "name": "Doplňte prosím jméno (alespoň 2 znaky).",
         "email": "Zadejte prosím platnou e-mailovou adresu.",
         "message": "Napište prosím alespoň pár vět (nejméně 10 znaků).",
-        "server": "Zprávu se teď nepodařilo odeslat. Text zůstal vyplněný – zkuste to prosím znovu, nebo nám napište přímo e-mailem."
+        "server": "Zprávu se teď nepodařilo odeslat. Text zůstal vyplněný – zkuste to prosím znovu, nebo mi napište přímo e-mailem."
       },
-      "privacyNote": "Údaje použijeme jen k odpovědi na vaši zprávu.",
-      "privacyLink": "Jak nakládáme s osobními údaji"
+      "privacyNote": "Údaje použiji jen k odpovědi na vaši zprávu.",
+      "privacyLink": "Jak nakládám s osobními údaji"
     },
     "direct": {
-      "label": "Nebo napište přímo na"
+      "label": "Nebo mi napište přímo na"
     }
   },
   "footer": {
     "aria": "Patička",
     "navAria": "Navigace v patičce",
     "languageAria": "Jazyk (patička)",
-    "copyright": "© {year} smolikja team",
-    "location": "Praha, Česká republika",
-    "privacy": "Ochrana osobních údajů"
+    "copyright": "© {year} Jakub Smolík",
+    "location": "Působím v Praze",
+    "privacy": "Ochrana osobních údajů",
+    "linkedin": "LinkedIn"
+  },
+  "operator": {
+    "identity": "{name}, IČO {ico}, se sídlem {address}",
+    "register": "Fyzická osoba zapsaná v živnostenském rejstříku."
   },
   "privacy": {
     "metaTitle": "Ochrana osobních údajů",
     "metaDescription": "Jaké údaje web smolikja.team zpracovává, proč a jak dlouho.",
     "title": "Ochrana osobních údajů",
-    "intro": "Tato stránka popisuje, jaké osobní údaje zpracováváme na webu smolikja.team, za jakým účelem a jaká máte práva.",
+    "intro": "Tato stránka popisuje, jaké osobní údaje zpracovávám na webu smolikja.team, za jakým účelem a jaká máte práva.",
     "effectiveFrom": "Platí od {date}.",
     "sections": [
       {
         "title": "Kdo údaje zpracovává",
         "paragraphs": [
-          "Správcem osobních údajů je smolikja team, Praha. Ve věcech ochrany osobních údajů nás kontaktujte na e-mailu {email}."
+          "Správcem osobních údajů je {operator}. Ve věcech ochrany osobních údajů mě kontaktujte na e-mailu {email}."
         ]
       },
       {
         "title": "Kontaktní formulář",
         "paragraphs": [
-          "Když nám napíšete přes formulář, zpracováváme vaše jméno, e-mailovou adresu a text zprávy. Účelem je odpovědět na vaši poptávku a domluvit případnou spolupráci; právním základem je jednání o smlouvě a náš oprávněný zájem na vyřízení poptávky.",
-          "Zprávu doručuje do naší e-mailové schránky služba Resend (Resend, Inc., USA) jako zpracovatel. Údaje uchováváme po dobu nezbytnou k vyřízení poptávky a případné spolupráce, poté je smažeme.",
-          "K ochraně formuláře před zneužitím krátkodobě evidujeme otisk (hash) IP adresy odesílatele; po nejdéle 24 hodinách zaniká."
+          "Když mi napíšete přes formulář, zpracovávám vaše jméno, e-mailovou adresu a text zprávy. Účelem je odpovědět na vaši poptávku a domluvit případnou spolupráci; právním základem je jednání o smlouvě a můj oprávněný zájem na vyřízení poptávky.",
+          "Zprávu doručuje do mé e-mailové schránky služba Resend (Resend, Inc., USA) jako zpracovatel. Údaje uchovávám po dobu nezbytnou k vyřízení poptávky a případné spolupráce, poté je smažu.",
+          "K ochraně formuláře před zneužitím krátkodobě eviduji otisk (hash) IP adresy odesílatele; po nejdéle 24 hodinách zaniká."
         ]
       },
       {
         "title": "Cookies a měření návštěvnosti",
         "paragraphs": [
-          "Web nepoužívá analytické ani marketingové cookies a nesleduje vaše chování. Ukládáme jedinou technickou cookie NEXT_LOCALE s vámi zvoleným jazykem, s platností jeden rok."
+          "Web nepoužívá analytické ani marketingové cookies a nesleduje vaše chování. Ukládá jedinou technickou cookie NEXT_LOCALE s vámi zvoleným jazykem, s platností jeden rok."
         ]
       },
       {
         "title": "Vaše práva",
         "paragraphs": [
-          "Máte právo na přístup ke svým údajům, jejich opravu nebo výmaz, omezení zpracování a právo vznést námitku. Stačí nám napsat na uvedený e-mail. Se stížností se můžete obrátit na Úřad pro ochranu osobních údajů."
+          "Máte právo na přístup ke svým údajům, jejich opravu nebo výmaz, omezení zpracování a právo vznést námitku. Stačí mi napsat na uvedený e-mail. Se stížností se můžete obrátit na Úřad pro ochranu osobních údajů."
         ]
       }
     ],

@@ -1,3 +1,4 @@
+import { operator } from "@/config/legal";
 import { mainNav, siteConfig } from "@/config/site";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionary";
@@ -11,12 +12,14 @@ const linkClassName =
 export function SiteFooter({
   locale,
   copy,
+  operatorCopy,
   navCopy,
   languageCopy,
   privacyHref,
 }: {
   locale: Locale;
   copy: Dictionary["footer"];
+  operatorCopy: Dictionary["operator"];
   navCopy: Dictionary["nav"];
   languageCopy: Dictionary["languageSwitcher"];
   privacyHref: string;
@@ -45,6 +48,16 @@ export function SiteFooter({
                   {copy.privacy}
                 </a>
               </li>
+              <li>
+                <a
+                  href={siteConfig.links.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClassName}
+                >
+                  {copy.linkedin}
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -57,6 +70,10 @@ export function SiteFooter({
           </p>
           <LanguageSwitcher locale={locale} copy={languageCopy} label={copy.languageAria} />
         </div>
+        {/* Legal identity required on an entrepreneur's website (§ 435 Civil Code). */}
+        <p className="text-xs leading-relaxed text-pretty text-muted-foreground">
+          {format(operatorCopy.identity, operator)}. {operatorCopy.register}
+        </p>
       </div>
     </footer>
   );

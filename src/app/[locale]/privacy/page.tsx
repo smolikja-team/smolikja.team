@@ -5,7 +5,12 @@ import { notFound } from "next/navigation";
 import { SiteLogo } from "@/components/landing/site-logo";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { buttonVariants } from "@/components/ui/button";
-import { dataProtectionAuthorityUrl, privacyEffectiveDate, privacyPath } from "@/config/legal";
+import {
+  dataProtectionAuthorityUrl,
+  operator,
+  privacyEffectiveDate,
+  privacyPath,
+} from "@/config/legal";
 import { siteConfig } from "@/config/site";
 import { isLocale, localeMeta, localizedPathname } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -36,8 +41,8 @@ export async function generateMetadata({
 
 /**
  * What the site collects and why. Content lives in the catalogs; the operator
- * e-mail, effective date and authority link come from configuration so the
- * text never drifts from the values actually in use.
+ * identity and e-mail, effective date and authority link come from
+ * configuration so the text never drifts from the values actually in use.
  */
 export default async function PrivacyPage({
   params,
@@ -49,6 +54,7 @@ export default async function PrivacyPage({
 
   const dict = await getDictionary(locale);
   const copy = dict.privacy;
+  const operatorIdentity = format(dict.operator.identity, operator);
   const effectiveDate = new Intl.DateTimeFormat(localeMeta[locale].htmlLang, {
     dateStyle: "long",
   }).format(new Date(privacyEffectiveDate));
@@ -80,24 +86,26 @@ export default async function PrivacyPage({
         {copy.sections.map((section) => (
           <section key={section.title} className="flex flex-col gap-3">
             <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">{section.title}</h2>
-            {section.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="leading-relaxed text-pretty">
-                {paragraph.includes("{email}") ? (
-                  <>
-                    {paragraph.split("{email}")[0]}
-                    <a
-                      href={`mailto:${siteConfig.email}`}
-                      className="rounded-sm underline underline-offset-4 outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-                    >
-                      {siteConfig.email}
-                    </a>
-                    {paragraph.split("{email}")[1]}
-                  </>
-                ) : (
-                  paragraph
-                )}
-              </p>
-            ))}
+            {section.paragraphs
+              .map((template) => format(template, { operator: operatorIdentity }))
+              .map((paragraph) => (
+                <p key={paragraph} className="leading-relaxed text-pretty">
+                  {paragraph.includes("{email}") ? (
+                    <>
+                      {paragraph.split("{email}")[0]}
+                      <a
+                        href={`mailto:${siteConfig.email}`}
+                        className="rounded-sm underline underline-offset-4 outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                      >
+                        {siteConfig.email}
+                      </a>
+                      {paragraph.split("{email}")[1]}
+                    </>
+                  ) : (
+                    paragraph
+                  )}
+                </p>
+              ))}
           </section>
         ))}
         <p className="text-sm text-muted-foreground">

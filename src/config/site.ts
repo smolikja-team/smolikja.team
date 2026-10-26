@@ -6,11 +6,21 @@
 export const siteConfig = {
   name: "smolikja team",
   url: "https://smolikja.team",
-  /** Team contact address — shown on the page and used as the enquiry inbox. */
+  /** The person behind the brand, as named on the page and in metadata. */
+  owner: {
+    name: "Jakub Smolík",
+  },
+  /** Contact address — shown on the page and used as the enquiry inbox. */
   email: "smolikja@protonmail.com",
   links: {
     github: "https://github.com/smolikja-team/",
+    linkedin: "https://www.linkedin.com/in/smolikja",
   },
+  /**
+   * Switches the availability line in the hero and contact section between
+   * `availability.open` and `availability.busy`. Keep it truthful.
+   */
+  availableForNewProjects: true,
   /** Matches `--background`; browser chrome blends with the page. */
   themeColor: "#F7F9FC",
   /** Anchor every primary action leads to — an enquiry, not a booking. */

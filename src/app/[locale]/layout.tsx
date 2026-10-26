@@ -36,9 +36,9 @@ export async function generateMetadata({
     },
     description: dict.meta.description,
     applicationName: siteConfig.name,
-    authors: [{ name: siteConfig.name, url: siteConfig.url }],
-    creator: siteConfig.name,
-    publisher: siteConfig.name,
+    authors: [{ name: siteConfig.owner.name, url: siteConfig.url }],
+    creator: siteConfig.owner.name,
+    publisher: siteConfig.owner.name,
     manifest: "/manifest.webmanifest",
     appleWebApp: {
       capable: true,

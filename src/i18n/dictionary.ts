@@ -11,7 +11,7 @@ export type ProjectStatus = "delivered" | "in-development";
 
 /**
  * One application delivery, told from the customer's side: the situation,
- * what the team delivered, one meaningful product decision and the current,
+ * what was delivered, one meaningful product decision and the current,
  * verifiable outcome. The credit line and status label are shared strings.
  */
 export type ProjectCopy<P extends ProjectId = ProjectId> = {
@@ -29,6 +29,18 @@ export type ProcessStage = {
   title: string;
   text: string;
   outputs: string[];
+};
+
+/** Where a visitor's situation joins the delivery lifecycle. */
+export type ProcessEntry = {
+  situation: string;
+  start: string;
+};
+
+/** One concrete practice that answers "what if I depend on one person?". */
+export type Assurance = {
+  title: string;
+  text: string;
 };
 
 export type FaqItem = {
@@ -79,6 +91,8 @@ export type Dictionary = {
     en: string;
   };
   hero: {
+    /** Shown under the owner's name above the headline. */
+    role: string;
     title: string;
     text: string;
     secondary: string;
@@ -89,6 +103,11 @@ export type Dictionary = {
     /** Caption for small screens, where only the large screen is shown. */
     captionSmall: string;
     compositionAria: string;
+  };
+  /** Availability line; which one shows is `siteConfig.availableForNewProjects`. */
+  availability: {
+    open: string;
+    busy: string;
   };
   projects: {
     title: string;
@@ -106,26 +125,32 @@ export type Dictionary = {
   process: {
     title: string;
     intro: string;
-    handover: string;
     free: {
       title: string;
       text: string;
     };
+    entriesTitle: string;
+    entries: ProcessEntry[];
     outputsLabel: string;
     stages: ProcessStage[];
+    /** One line on what a delivery usually includes besides the app. */
+    scope: string;
+    handover: string;
   };
-  scope: {
+  about: {
     title: string;
-    text: string;
-    items: {
-      app: { title: string; text: string };
-      admin: { title: string; text: string };
-      backend: { title: string; text: string };
+    portraitAlt: string;
+    bio: string[];
+    ai: {
+      title: string;
+      workspaceAlt: string;
+      paragraphs: string[];
     };
-  };
-  team: {
-    title: string;
-    paragraphs: string[];
+    assurances: {
+      title: string;
+      items: Assurance[];
+      note: string;
+    };
   };
   faq: {
     title: string;
@@ -135,6 +160,8 @@ export type Dictionary = {
     title: string;
     text: string;
     freeConsultation: string;
+    /** Next to the owner's avatar: who answers the enquiry. */
+    personal: string;
     form: {
       name: string;
       email: string;
@@ -164,7 +191,17 @@ export type Dictionary = {
     languageAria: string;
     copyright: string;
     location: string;
+    linkedin: string;
     privacy: string;
+  };
+  /**
+   * Legal identity of the operator. `{name}`, `{ico}` and `{address}` come
+   * from `operator` in `src/config/legal.ts`; the privacy page inserts the
+   * identity where its text says `{operator}`.
+   */
+  operator: {
+    identity: string;
+    register: string;
   };
   privacy: {
     metaTitle: string;

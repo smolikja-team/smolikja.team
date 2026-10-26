@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { LandingPage } from "@/components/landing/landing-page";
+import { ownerPhotos } from "@/config/assets";
 import { siteConfig } from "@/config/site";
 import { isLocale, localeMeta, locales, localizedPathname } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -63,23 +64,28 @@ export default async function Home({
 
   const dict = await getDictionary(locale);
 
-  // Structured data: the studio as an organisation and the FAQ the page shows,
+  // Structured data: the person behind the brand and the FAQ the page shows,
   // both localized like the page itself.
-  const organizationJsonLd = {
+  const personJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.name,
-    alternateName: "smolikja",
+    "@type": "Person",
+    name: siteConfig.owner.name,
+    jobTitle: dict.hero.role,
     description: dict.meta.description,
     url: `${siteConfig.url}${localizedPathname(locale)}`,
+    image: `${siteConfig.url}${ownerPhotos.portrait.src}`,
     email: siteConfig.email,
-    sameAs: [siteConfig.links.github],
+    sameAs: [siteConfig.links.linkedin, siteConfig.links.github],
     address: { "@type": "PostalAddress", addressLocality: "Praha", addressCountry: "CZ" },
-    areaServed: ["CZ", "SK"],
-    knowsAbout: ["iOS", "Android", "Flutter", "Swift", "Kotlin", "Dart"],
+    knowsAbout: ["iOS", "Android", "Flutter", "Swift", "Kotlin", "Dart", "Product discovery"],
     makesOffer: {
       "@type": "Offer",
-      itemOffered: { "@type": "Service", name: dict.og.subtitle, serviceType: "Mobile app development" },
+      itemOffered: {
+        "@type": "Service",
+        name: dict.og.subtitle,
+        serviceType: "Digital product and mobile app development",
+        areaServed: ["CZ", "SK"],
+      },
     },
   };
 
@@ -97,7 +103,7 @@ export default async function Home({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLdScript(organizationJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(personJsonLd) }}
       />
       <script
         type="application/ld+json"

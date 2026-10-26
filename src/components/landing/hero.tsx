@@ -3,23 +3,28 @@ import { ArrowRightIcon } from "lucide-react";
 import { heroComposition } from "@/config/projects";
 import { siteConfig } from "@/config/site";
 import type { Dictionary } from "@/i18n/dictionary";
+import { AvailabilityNote } from "./availability-note";
 import { CtaLink } from "./cta-link";
+import { OwnerBadge } from "./owner-badge";
 import { PhoneFrame } from "./phone-frame";
 import { Reveal } from "./reveal";
 
 /**
- * Asymmetric opening: the offer, the action and its terms on the left; one
- * large real screen with a smaller supporting screen on the right. On small
- * screens the offer and action come first and only the large screen follows.
+ * Asymmetric opening: who is speaking, the offer, the action and its terms on
+ * the left; one large real screen with a smaller supporting screen on the
+ * right. On small screens the offer and action come first and only the large
+ * screen follows.
  */
 export function Hero({
   copy,
   cta,
+  availability,
   projectCopy,
 }: {
   copy: Dictionary["hero"];
   /** The primary action label — shared with the header so it reads the same everywhere. */
   cta: string;
+  availability: Dictionary["availability"];
   projectCopy: Dictionary["projects"]["items"];
 }) {
   const { primary, secondary } = heroComposition;
@@ -28,7 +33,8 @@ export function Hero({
     <section className="flex min-h-[calc(100dvh-4rem)] flex-col justify-center">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-12 px-5 pt-12 pb-16 sm:px-6 sm:pt-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-16 lg:py-20">
       <div className="flex max-w-2xl flex-col gap-6">
-        <h1 className="text-[2.625rem] leading-[1.05] font-semibold tracking-tight text-balance sm:text-6xl lg:text-7xl">
+        <OwnerBadge detail={copy.role} eager />
+        <h1 className="text-[2.375rem] leading-[1.05] font-semibold tracking-tight text-balance sm:text-6xl lg:text-[4rem]">
           {copy.title}
         </h1>
         <p className="max-w-prose text-lg leading-relaxed text-pretty text-muted-foreground sm:text-xl">
@@ -48,6 +54,7 @@ export function Hero({
           <span className="font-medium text-foreground">{copy.freeConsultation}</span>{" "}
           {copy.reassurance}
         </p>
+        <AvailabilityNote copy={availability} className="text-sm text-muted-foreground" />
       </div>
 
       <Reveal className="flex flex-col gap-3">
@@ -59,7 +66,7 @@ export function Hero({
                 image={primary.image}
                 alt={projectCopy[primary.project].images[primary.image.id]}
                 sizes="(min-width: 640px) 264px, 240px"
-                priority
+                preload
                 className="rounded-b-none pb-0"
                 screenClassName="rounded-b-none"
               />

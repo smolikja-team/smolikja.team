@@ -3,16 +3,20 @@ import { MailIcon } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionary";
+import { AvailabilityNote } from "./availability-note";
 import { ContactForm } from "./contact-form";
+import { OwnerBadge } from "./owner-badge";
 import { Section } from "./section";
 import { SectionHeading } from "./section-heading";
 
 export function ContactSection({
   copy,
+  availability,
   locale,
   privacyHref,
 }: {
   copy: Dictionary["contact"];
+  availability: Dictionary["availability"];
   locale: Locale;
   privacyHref: string;
 }) {
@@ -21,7 +25,9 @@ export function ContactSection({
       <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-10 px-5 py-16 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         <div className="flex flex-col gap-6">
           <SectionHeading title={copy.title} text={copy.text} />
+          <OwnerBadge detail={copy.personal} />
           <p className="font-medium">{copy.freeConsultation}</p>
+          <AvailabilityNote copy={availability} className="text-muted-foreground" />
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
             <span>{copy.direct.label}</span>
             <a
