@@ -1,10 +1,11 @@
 # smolikja.team
 
 Website of smolikja team — Jakub Smolík, one person working with a team of AI
-agents, who helps businesses decide what digital product to build and then
-designs, builds and develops it. A single localized landing page (`/cs`,
-`/en`) that presents the offer, delivered applications, the collaboration
-lifecycle, the person behind it, FAQ and an enquiry form, plus a privacy page.
+agents, who helps businesses work out, build, secure and grow apps and digital
+products. A localized landing page (`/cs`, `/en`) with the offer, experience
+by kind of project, security, the person behind it, FAQ and an enquiry form;
+an app-security page (`/cs/bezpecnost-aplikaci`, `/en/app-security`); and a
+privacy page.
 
 The application uses the Next.js App Router, React, TypeScript, Tailwind CSS
 and pnpm. `package.json` is the source of truth for framework and dependency

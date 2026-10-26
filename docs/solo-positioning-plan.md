@@ -1,7 +1,7 @@
-# Solo positioning plan
+# Positioning plan: one person, building and securing apps
 
-Date: 2026-10-08. Status: implemented on 2026-10-08 on `feature/redesign_v2`;
-project case texts are a later phase (§7).
+Date: 2026-10-08, revised 2026-10-26. Status: implemented on
+`feature/redesign_v2`.
 
 This plan supersedes the positioning, voice, information architecture and copy
 parts of the [landing page redesign plan](landing-page-redesign-plan.md):
@@ -16,172 +16,177 @@ records the decisions behind it, not a second copy of the text.
 
 ## 1. Decision
 
-smolikja.team presents **Jakub Smolík, one named person**. The offer is to
-help businesses work out whether a digital product makes sense for them, and
-if it does, to design, build, release, maintain and grow it. The work is done
-with a **team of AI agents**; the "team" in the brand refers to them. Mobile
-applications are the main specialisation within digital products in general
-(mobile and web applications, administration, backends and integrations).
+smolikja.team presents **Jakub Smolík, one named person** working with a
+**team of AI agents** (the "team" in the brand). The offer is one continuous
+story told with four verbs: **work it out, build, secure, grow**. Security is
+not a separate business next to development; it runs through the same work
+and is also a standalone entry point (reviewing apps someone else or an AI
+built). The owner wants security weighted at least as high as development,
+because building apps will commoditise while securing them will not.
 
-The owner's thesis is that businesses will increasingly look for one capable,
-AI-enhanced person rather than an agency. This is a market bet, not measured
-data; validate it in sales conversations. A named, accountable individual is
-also the truthful description of the business.
+The owner is a generalist and flexible: the page invites any relevant enquiry
+rather than narrowing to one specialisation, and the goal of the page is a
+first message. Out of scope, and not to be implied: staff augmentation or
+joining another company's team as an hourly developer.
 
-Out of scope, and not to be implied: staff augmentation, joining another
-company's team as an hourly developer, or isolated tasks on someone else's
-product without product responsibility. Taking over and maintaining an existing
-application is in scope as a product the owner becomes responsible for.
+Differentiators the page demonstrates:
 
-Differentiators the page demonstrates, in this order:
+1. **Advisor first.** Starts from the client's goal; "do not build yet" is a
+   legitimate outcome.
+2. **One accountable person** across ideas, build, security and care.
+3. **Security from the first line**, grounded in real experience (§4).
+4. **Small-studio capacity through AI agents**, with human review and a strict
+   data rule (sensitive data only on local models).
+5. **Long-term care**: first version → full product → growth.
 
-1. **Advisor first.** The work starts from the client's goal, not from an app.
-   Recommendations rest on research and compared options, and "do not build
-   yet" is a legitimate outcome.
-2. **One accountable person for the whole lifecycle.** No handoffs between
-   sales, project management, design and development.
-3. **Small-studio capacity through AI agents**, without agency overhead, with
-   human judgement and review over all of it.
-4. **Experience from demanding environments** such as banking, public sector and
-   enterprise, applied to smaller businesses.
-5. **Long-term care.** After launch the product keeps evolving: first version →
-   full version → further development and scaling.
+## 2. Audience and market
 
-## 2. Audience and entry points
+Primary market: Czech Republic, then Slovakia; English is secondary. Primary
+visitors are business owners, founders and startups with an idea, an app that
+needs building or an app that needs checking. Secondary: companies adding AI
+features, and suppliers asked to demonstrate security by their customers.
 
-Primary: a Czech business owner or founder, often running a traditional offline
-business, with a goal, idea or operational problem who may not know what to
-build or how large a first version should be. Secondary: a client who knows
-exactly what they want, and the owner of an existing app that needs a new
-responsible developer. Slovakia remains a secondary market.
+Market signals behind the security emphasis (checked 2026-10-26):
 
-The four situations ("nevím, jestli a co stavět", "vím přesně, co chci",
-"chci to nejdřív ověřit", "už mám aplikaci") join one four-stage lifecycle at
-different stages; the page shows this as the "Kde začneme" list.
+- Building apps with AI ("vibe coding") is trending in Czech searches too
+  ("vibe coding co to je", "vibe coding kurz").
+- Veracode's 2026 GenAI code security research reports an average security
+  pass rate of only 56% for AI-written code
+  ([SD Times](https://sdtimes.com/agentic-security/veracode-finds-ai-generated-code-security-has-barely-improved-since-last-year/));
+  the security page quotes this with its source.
+- The 2026 OWASP GenAI/LLM Top 10 keeps prompt injection first and moved
+  excessive agency up
+  ([SD Times](https://sdtimes.com/security/prompt-injection-tops-2026-owasp-genai-llm-top-ten-vulnerabilities/)).
+- Czech Act No. 264/2025 Coll. (NIS2) applies from 1 November 2025 and
+  stresses supply-chain security; CRA reporting obligations apply from
+  11 September 2026. Both create demand for suppliers who can document
+  security; the page offers the technical part only, never legal advice.
 
-## 3. Voice and vocabulary
+## 3. Voice
 
-- **First-person singular**, masculine Czech forms, formal "vy" to the reader.
-  Let the verb carry the person; do not open sentences with "Já". English uses
-  plain "I".
-- **No supplier "we"** and no headcount. A joint "we" meaning the client and
-  Jakub together is natural and fine ("domluvíme se", "jak na tom jsme").
-- **AI**: "tým AI agentů" / "AI agenti". AI speeds up the work; Jakub decides,
-  reviews and is accountable. Never "AI vyvine vaši aplikaci", no speed
-  multipliers, no tool names or workflow internals (§6).
-- **Digitální produkt** is the umbrella term, **mobilní aplikace** the most
-  common case. MVP is explained on first use as "první verze s tím
-  nejdůležitějším"; prefer "ujasnění zadání a návrh" to "discovery".
-- **Advisor tone**: calm, honest, evidence-based, openly willing to recommend
-  not building.
-- **No freelancer vocabulary**: "na volné noze", "hodinová sazba", "posílím
-  váš tým".
-- Unchanged: no prices, response times, capacity numbers, client quotes or
-  results the owner has not confirmed.
+Researched against Czech agencies and individuals (§9): Czech sites address
+the reader with *vykání*, use short sentences, explain benefits rather than
+methodology, keep the homepage around 800 words, and use low-pressure calls
+to action ("napište mi", "zdarma · bez závazků", "nemusíte mít zadání").
 
-## 4. Brand and identity
+- **First-person singular**, masculine Czech forms, formal "vy". A joint "we"
+  for the client and Jakub together is fine; a supplier "we" is not.
+- **Primary action:** "Konzultace zdarma" ("Free consultation"), identical
+  everywhere, with a highlighted callout "Úvodní konzultace zdarma · 60–90
+  minut, bez závazků" beside it. The free consultation applies to development
+  and security.
+- **Less is more in the hero**: name badge, headline, one sentence, the action
+  and the callout — nothing else. No availability line (it read as "I have no
+  work") and no caption under the screens.
+- **AI**: "tým AI agentů"; AI speeds up the work, Jakub decides, reviews and is
+  accountable. No tool names or workflow internals.
+- **Security wording**: "kontrola bezpečnosti", "zabezpečení", "bezpečnostní
+  revize" — never "certifikovaný penetrační test" or "audit podle zákona".
+- **Flexibility**: no fixed process on the page; principles instead.
+- Unchanged: no prices, response times, capacity numbers, client quotes,
+  client names or results the owner has not confirmed.
 
-- The brand, domain, wordmark and every historical `/assets/*` path stay. The
-  about section explains the name once: "smolikja team: já a můj tým AI
-  agentů."
-- **Jakub Smolík** is named in the hero badge, about, contact, metadata,
-  structured data (`Person`) and footer.
-- **Photos** (`public/assets/about/`): the portrait appears large in the about
-  section and as a small decorative avatar in the hero and contact badges; the
-  workspace photo illustrates the AI paragraph. The owner supplied both without
-  generator metadata on 2026-10-08. The workspace photo is AI-enhanced from a
-  real photo of the actual workspace; keeping it is the owner's decision.
-- Contact address stays `smolikja@protonmail.com` until a domain address is
-  actually configured. The footer links the owner's LinkedIn; the profile is
-  still oriented towards business roles and should be aligned later.
+## 4. Security positioning and its limits
+
+Real basis the page may state: more than five years of iOS work for banks and
+the public sector (biometric signing, secure document handling); as technical
+lead on his own client projects, securing servers, app–backend communication
+and communication with building control systems; building apps end to end,
+so findings can be fixed directly.
+
+Not claimed: certifications, a track record of security reviews for third
+parties, penetration testing, formal audits or legal interpretation. The page
+says so explicitly ("Co nedělám").
+
+Operating rules the page commits to (and the owner should follow):
+
+1. Scope and permission to test confirmed in writing before any test.
+2. Every finding verified manually and documented; nothing unconfirmed in a
+   report.
+3. Client code goes to cloud AI only with consent; sensitive parts only on
+   local models.
+
+Recommended before the first security engagements (not on the page):
+professional liability insurance and a template for the written
+authorisation; a lawyer to refer NIS2/CRA legal questions to.
 
 ## 5. Page structure
 
-Navigation: **Projekty · Spolupráce · O mně** and the primary CTA **Probrat
-nápad** (`#contact`, an enquiry, not a booking). Anchors: `#projects`,
-`#process`, `#about`, `#contact`.
+**Landing page** (`/cs`, `/en`), about 1,150 visible words (the FAQ answers
+are collapsed), mostly in short cards. Every section, on both pages, is at
+least one viewport tall so each topic has room to breathe:
 
-| # | Section | Visitor's question | What it shows |
-| --- | --- | --- | --- |
-| 1 | Hero | Am I in the right place, and who is this? | Name badge, advisor-first headline ("Pomůžu vám zjistit, co má smysl postavit. A pak to postavím."), AI line, CTA, free introduction, availability, real product screens |
-| 2 | Projekty `#projects` | Has this person built real things? | Existing case stories; text changes deferred (§7) |
-| 3 | Spolupráce `#process` | Where would we start, what comes next? | Free introduction, "Kde začneme" entry list, four stages (Rozhodnutí → Návrh → Vývoj a spuštění → Provoz a rozvoj) with outputs, one scope line, handover note |
-| 4 | O mně `#about` | Who exactly will I work with, and can I rely on them? | Portrait and bio, "Jak pracuju s AI agenty" with the data-handling rule, three assurances |
-| 5 | FAQ | What would stop me writing? | Eight questions, including "Proč jeden člověk, a ne agentura?", "Co když nebudete k dispozici?" and "Jak používáte AI a co je s mými daty?" |
-| 6 | Kontakt `#contact` | What now? | Name badge ("Odpovídám osobně."), free introduction, availability, form, direct e-mail |
-| Footer | Legal and utility | — | Navigation, privacy, LinkedIn, language, operator identity |
-
-The former standalone scope section became the scope line in section 3, and
-"Tým pro váš produkt" became section 4.
-
-Notes on specific decisions:
-
-- **Hero.** The name badge sits above the headline, so the supporting text does
-  not repeat "Jsem Jakub Smolík". The product screens stay the main image:
-  they are the proof that real products ship.
-- **Availability** is one line in the hero and the contact section, switched by
-  `siteConfig.availableForNewProjects` (`availability.open` / `.busy`). No
-  capacity numbers; scope and timing are agreed individually.
-- **Lifecycle.** Stage 1 (decision) is the advisory offer: goals, users,
-  market and competitor research, options from an off-the-shelf tool to a
-  product of the client's own, and a recommendation that may be "don't build
-  yet". The commercial model is unchanged: free introduction, then paid stages
-  with agreed scope; a fixed price for defined scope or a budget ceiling for
-  iterations; maintenance agreed separately.
-- **Bio** uses facts from the owner's LinkedIn export (6+ years, banking,
-  public sector, enterprise, own clients in agriculture and smart homes). It
-  names no employer or employer's clients.
-- **Assurances** state only the practices the owner confirmed on 2026-10-08:
-  code handed over at agreed milestones or kept in the client's repository;
-  store accounts and production servers owned by the client (MVPs and test
-  environments may run on the owner's infrastructure, hence "produkční");
-  mainstream technologies, detailed documentation and a proper handover; plans
-  with a buffer, holidays announced in advance. There is no named substitute
-  developer, so the page does not promise one. Specifics belong in each
-  client's contract, which the page says.
-
-## 6. How much to say about AI
-
-The owner's practice (2026-10-08): general-purpose cloud models for discovery,
-general structures and non-sensitive work; local models on the owner's own
-computer for anything with sensitive data or client know-how, so that
-information never leaves it. Large-model reasoning is applied to abstracted,
-non-sensitive input and the sensitive parts are merged back locally.
-
-Published: that the owner works with AI agents, the generic categories of work, the
-benefit (small-team scope, speed, no agency overhead), who decides and reviews,
-and the data rule above ("citlivá data a know-how zpracovávám jen lokálními
-modely… do cloudových AI nástrojů je neposílám"), plus agreeing at the start
-what counts as sensitive and an optional NDA.
-
-Not published: tool names, prompts, agent setup or workflow specifics. That is
-the owner's competitive know-how, and visitors do not evaluate it anyway.
-
-## 7. Next phase and known gaps
-
-- **Projects content phase.** The owner has more applications than the current
-  three and will supply them with their texts. Until then only the grammatical
-  person of the existing case texts changed. When adding projects, keep two or
-  three full stories and add compact entries for the rest; confirm per case
-  whether the credit is "Návrh a vývoj" or "Vývoj".
-- **Header reflow below 390 px.** The animated wordmark (fixed 9.75 rem) plus
-  the header CTA and menu button overflow every viewport narrower than about
-  380 px (by about 60 px at 320 px, so 360–375 px phones too). This predates
-  this change (it came with the animated wordmark) and needs a fix before
-  release, for example hiding the header CTA below 390 px, since the menu and
-  the hero repeat it, or a narrower wordmark on small screens.
-- **LinkedIn** should be aligned with this positioning before relying on it as
-  proof.
-
-## 8. Competitor references (checked 2026-10-08)
-
-Observations of public pages; their conversion performance is unknown.
-
-| Reference | Observed approach | Lesson |
+| # | Section | Purpose |
 | --- | --- | --- |
-| [Vincent Schmalbach](https://www.vincentschmalbach.com/services/software-development-company/) | "Hire the senior developer directly"; "AI writes a lot of my code. I plan the work, make the technical decisions, and read and test every change"; headshot; client-owned code and accounts; three engagement models | Closest model: named person, AI as leverage with human accountability, explicit continuity answer |
-| [ekky.dev](https://ekky.dev/blog/solo-developer-vs-mvp-agency-260625/) | AI-native solo engineer, headshot, fixed-scope packages; handles the bus factor with client repo from day one, standard patterns, handoff docs | Address the solo risk with concrete practices |
-| [Hanchor](https://www.hanchorllc.com/about/) | Studio name plus "I'm Hunter Hillegas"; "no account layer, no handoff maze, no process theater"; named apps | Brand plus a face; directness as the benefit |
-| [SOLOFOUNDER](https://clutch.co/profile/solofounder) | "One person, responsible from the first sketch to what ships"; product, code and data stay with the client; mixes "I" and "we" | Strong accountability line; mixed voice weakens it |
-| [inprogress.cz](https://inprogress.cz/mvp-vyvoj.html) | Czech solo developer in the first person; MVP in 5–8 weeks from CZK 80,000; no photo or portfolio | Direct local competitor selling MVPs as a commodity; differentiate on advice, real products and long-term care |
-| [Dvojka Studio](https://dvojkastudio.cz/) | Two-person studio using "my", no photos | A faceless small "we" is what the previous page resembled |
+| 1 | Hero | Name badge, "Pomůžu vám vymyslet, postavit a zabezpečit aplikaci.", one sentence, CTA, free-consultation callout, two screens stacked like wallet cards |
+| 2 | Služby `#services` | Four cards: Vymyslet · Postavit · Zabezpečit · Rozvíjet; "Zabezpečit" is filled with the brand colour and has a prominent button to the security page |
+| 3 | Zkušenosti `#work` | Full-bleed screen carousel (modelled on [sklad3d.cz](https://sklad3d.cz/cs#member-oxoo): strip from the content edge to the window edge, progress line, square buttons), screens grouped by app with the most striking first, then six cards by kind of project (§6) |
+| 4 | Bezpečnost `#security` | Why now, four checks, honest note, link to the security page |
+| 5 | Jak spolupracuji `#approach` | No fixed process; free consultation; three principles |
+| 6 | O mně `#about` | Portrait, bio, AI and data rule, three assurances |
+| 7 | FAQ | Eight questions, including price, timing, reviewing others' apps, solo, being unavailable and AI/data |
+| 8 | Kontakt `#contact` | "Co řešíte? Napište mi." and the form |
+
+**Security page** (`/cs/bezpecnost-aplikaci`, `/en/app-security`): its own
+search intent and share image. Intro with the sourced statistic → who it helps
+→ six services → five-step review process → why me and what I don't do →
+security FAQ → contact form.
+
+Navigation: Služby · Zkušenosti · Bezpečnost (the page) · O mně, and the CTA.
+On phones the header shows only the logo and menu; the CTA lives in the menu,
+the hero and the contact section, so nothing overflows at 320 px.
+
+## 6. Work section rules
+
+- Experience is presented by kind of project, never as named cases: no client
+  names, no product names, no confidential details (for the startup MVP the
+  page says it shipped to the App Store in two weeks and that its data fed
+  discovery that set the product's direction — not what that direction was).
+- Screens are supplied anonymised by the owner and stored under neutral file
+  names (`public/assets/work/`). The smart-home dashboard's empty top half is
+  a one-handed-use feature and its caption says so.
+- Kinds of projects: smart buildings and IoT, agriculture (B2B), startup MVP,
+  public map app, banking and public sector (no screens), websites and AI
+  tools (no screens).
+
+## 7. AI communication
+
+Published: that he works with AI agents, the kinds of work they do, the
+benefit, who decides and reviews, and the data rule. Not published: tools,
+prompts, agent setup or workflow specifics (the owner's know-how).
+
+## 8. SEO
+
+Google autocomplete for Czech (2026-10-26) shows how people phrase the need:
+"vývoj aplikace", "vývoj aplikace cena", "vývoj aplikace na míru", "vývoj
+mobilní aplikace (cena)", "mobilní aplikace na míru", "tvorba mobilní
+aplikace", "mvp aplikace / co je mvp aplikace", "flutter vývojář";
+for security "kybernetická bezpečnost pro firmy", "audit kybernetické
+bezpečnosti", "kontrola bezpečnosti webu", "bezpečnost webu", "zabezpečení
+aplikace", "nis2 koho se týká". "Bezpečnost aplikace" alone is dominated by
+consumer questions (WhatsApp, Temu), so the security page targets "kontrola
+bezpečnosti aplikací a webů" and AI-built apps instead.
+
+Mapping: the landing page targets development phrases (title "vývoj a
+zabezpečení mobilních aplikací", FAQ "Kolik stojí vývoj aplikace?"); the
+security page targets review and security phrases. Both have FAQ and
+structured data (`Person` with two offers; `Service` and `FAQPage` on the
+security page), localized hreflang and sitemap entries.
+
+Next steps, outside the code: verify the site in Google Search Console after
+launch and read the real queries; check volumes in Google Keyword Planner or
+Marketing Miner; occasional articles answering specific questions (e.g.
+checking an AI-built app, what the CRA means for app owners); align LinkedIn;
+list on firmy.cz and a Google Business Profile without a public address.
+Organic search is a slow supplementary channel; LinkedIn and referrals come
+first.
+
+## 9. References (checked 2026-10-08 and 2026-10-26)
+
+| Reference | What was taken |
+| --- | --- |
+| [Futured](https://www.futured.app/cs), [Ackee](https://www.ackee.cz/), [Dvojka Studio](https://dvojkastudio.cz/) | Czech agency tone: vykání, short sentences, ~800-word homepages, little or no process on the homepage |
+| [inprogress.cz](https://inprogress.cz/) | Czech individual: first person, "Popište mi…", "zdarma · bez závazků", anonymised clients |
+| [Michal Špaček](https://www.michalspacek.cz/), [Martin Michálek](https://www.vzhurudolu.cz/martin) | Czech individuals in security and consulting: personal, brief, first person |
+| [Vincent Schmalbach](https://www.vincentschmalbach.com/services/software-development-company/), [ekky.dev](https://ekky.dev/blog/solo-developer-vs-mvp-agency-260625/), [Hanchor](https://www.hanchorllc.com/about/) | International solo developers: named person, AI as leverage with human accountability, explicit continuity answers |
+| [The Swarm](https://theswarm.at/supabase-rls-audit/), [Codechoicez](https://codechoicez.com/vibe-coded-app-audit) | Security reviews for AI-built apps: problem first, concrete checks, fixes as the main value, saying what the review is not |

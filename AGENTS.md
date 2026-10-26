@@ -33,13 +33,15 @@ Positioning, voice and section order come from `docs/solo-positioning-plan.md`;
 accessibility, performance and measurement.
 
 Routing is always-prefixed (`/cs`, `/en`); `src/proxy.ts` (must stay in `src/`)
-redirects the bare `/`. Metadata routes (`robots.ts`, `sitemap.ts`,
-`manifest.ts`, `opengraph-image.tsx`) stay where they are.
+redirects the bare `/`. The app-security page has a localized slug per locale
+(`securityPath` in `src/config/pages.ts`), one route folder per locale.
+Metadata routes (`robots.ts`, `sitemap.ts`, `manifest.ts`,
+`opengraph-image.tsx`) stay where they are.
 
 ## Assets
 
-The logo, project screenshots, the owner's photos and the logo videos are
-served from `public/assets/**` under their historical `/assets/*` paths — keep
-those paths stable. Screenshot ids, pixel sizes and project status are declared
-in `src/config/projects.ts`; the owner's photos in `src/config/assets.ts`; the
-header wordmark video in `src/config/video.ts`.
+The logo, app screens, the owner's photos and the logo videos are served from
+`public/assets/**`; keep the historical logo and video paths stable. App
+screens (`public/assets/work/`) never name a client or product; their ids and
+pixel sizes are declared in `src/config/work.ts`, the owner's photos in
+`src/config/assets.ts`, the header wordmark video in `src/config/video.ts`.

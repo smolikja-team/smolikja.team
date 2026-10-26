@@ -8,10 +8,10 @@ lives in `messages/<locale>.json`.
 
 - `src/i18n/config.ts` defines supported locales, locale metadata, the default
   fallback and `Accept-Language` matching.
-- `src/i18n/dictionary.ts` defines the complete `Dictionary` shape, including
-  the project and screenshot ids that catalogs must cover.
+- `src/i18n/dictionary.ts` defines the complete `Dictionary` shape; the work
+  screen and experience ids it requires come from `src/config/work.ts`.
 - `src/i18n/dictionaries.ts` lazily loads catalogs for Server Components and
-  cross-checks them against `src/config/projects.ts`.
+  cross-checks them against `src/config/work.ts`.
 - `messages/validate.ts` makes TypeScript validate every catalog at compile
   time.
 - `src/i18n/format.ts` renders strings containing `{placeholder}` tokens.
@@ -34,23 +34,20 @@ field name are structural data rather than translated copy.
 Do not hardcode visible strings, `aria-label` values or `alt` text in
 components.
 
-## Add a project
+## Add a work screen or kind of project
 
-1. Add the project id and its screenshot ids to `ProjectId` / `ProjectImageId`
-   in `src/i18n/dictionary.ts`.
-2. Put the PNGs under `public/assets/projects/<id>/` and register the two or
-   three screens the story shows, with their intrinsic pixel size and the
-   project's lifecycle `status`, in `src/config/projects.ts`.
-3. Add `projects.items.<id>` to every catalog: `title`, `tagline`, then the
-   story in four paragraphs — `problem` (situation and users), `delivered`
-   (what the team was responsible for), `decision` (one meaningful product
-   decision) and `result` (verifiable outcome or accurate stage) — plus one
-   `images` entry per screenshot.
+1. Put the PNG under `public/assets/work/` with a neutral file name that names
+   the kind of app, never the client or product (the URL is public).
+2. Add its id to `WorkImageId` and register it with its intrinsic pixel size
+   in `workGallery` in `src/config/work.ts`. For a new kind of project, add an
+   `ExperienceId` and an `experiences` entry with its technology tags.
+3. Add `work.images.<id>` (`alt` and a short `caption`) or
+   `work.experiences.<id>` (`sector`, `title`, `text`) to every catalog.
 
-Write every story with smolikja as the delivering team; the shared
-`projects.credit` line is added automatically and `projects.status` supplies
-the stage label. The type system rejects a catalog that names unknown ids; the
-loader rejects a configured project or screenshot without copy.
+Describe the industry and the work, not the client: no client or product
+names, no confidential results. The type system rejects a catalog that names
+unknown ids; the loader rejects a configured screen or experience without
+copy.
 
 ## Add a locale
 
