@@ -120,10 +120,10 @@ least one viewport tall so each topic has room to breathe:
 | --- | --- | --- |
 | 1 | Hero | Name badge, "Pomůžu vám vymyslet, postavit a zabezpečit aplikaci.", one sentence, CTA, free-consultation callout, two screens in iPhone mockups side by side, the back one smaller and shuffled to the front (animated) when pointed at or tapped |
 | 2 | Služby `#services` | Four cards: Vymyslet · Postavit · Zabezpečit · Rozvíjet; "Zabezpečit" is filled with the brand colour and has a prominent button to the security page |
-| 3 | Zkušenosti `#work` | Screens in iPhone mockups on a full-bleed strip driven by page scroll: when it reaches the middle of the screen it pins, scrolling moves it sideways until the last device meets the right content edge, and a progress bar across the content width fills; centred captions; screens grouped by app with the most striking first (layout modelled on [sklad3d.cz](https://sklad3d.cz/cs#member-oxoo)); then six cards by kind of project (§6) |
+| 3 | Moje práce `#work` (nav: Zkušenosti) | The heading and screens in iPhone mockups pinned together on a full-bleed strip driven by page scroll (devices shrink with the window height so everything fits): when it reaches the middle of the screen it pins, scrolling moves it sideways until the last device meets the right content edge, and a progress bar across the content width fills; centred captions; screens grouped by app with the most striking first (layout modelled on [sklad3d.cz](https://sklad3d.cz/cs#member-oxoo)); then six cards by kind of project (§6) |
 | 4 | Bezpečnost `#security` | Why now, four checks, honest note, link to the security page |
 | 5 | Jak spolupracuji `#approach` | No fixed process; free consultation; three principles |
-| 6 | O mně `#about` | Portrait, bio, AI and data rule, three assurances |
+| 6 | O mně `#about` | Bio with the portrait on its right (on phones the portrait comes first), AI and data rule beside the workspace photo, three assurances |
 | 7 | FAQ | Eight questions, including price, timing, reviewing others' apps, solo, being unavailable and AI/data |
 | 8 | Kontakt `#contact` | "Co řešíte? Napište mi." and the form |
 

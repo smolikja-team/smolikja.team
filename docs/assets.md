@@ -22,10 +22,10 @@ referenced from outside the site; keep them stable.
 Register every screen with its intrinsic pixel size; `next/image` uses it for
 the aspect ratio and responsive `srcset`. Current sources are 1320×2868 and
 1284×2778 (3×) and 390×844 (1×, the agriculture screens) — all ≈ 9:19.5. The
-1× sources only appear in the gallery at modest widths (≤ 250 CSS px); the
-hero uses 3× screens. Do not upscale 1× sources. Alt text and captions live in
-the message catalogs under `work.images.<id>`; see
-[Localization](localization.md).
+1× sources are shown at modest widths (≤ 250 CSS px), in the gallery and as the
+hero's back device (the owner's choice for the stable ventilation screen). Do
+not upscale 1× sources. Alt text and captions live in the message catalogs
+under `work.images.<id>`; see [Localization](localization.md).
 
 Screens must not reveal client data: the owner supplies anonymised exports
 (for example without real site or customer names). The project screenshots
