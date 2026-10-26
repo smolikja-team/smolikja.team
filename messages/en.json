@@ -83,9 +83,6 @@
     "title": "What I have worked on",
     "intro": "Apps for smart buildings, agriculture, startups and the public – each with a different brief, different users and different challenges. I don't name clients, but I'm happy to tell you more in a consultation.",
     "galleryLabel": "App screens",
-    "slideLabel": "Screen {index} of {count}",
-    "previous": "Previous screen",
-    "next": "Next screen",
     "images": {
       "smart-building-dashboard": {
         "alt": "Smart-home app – room overview with lighting, ventilation and heating controls",

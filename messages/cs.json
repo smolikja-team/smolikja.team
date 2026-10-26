@@ -83,9 +83,6 @@
     "title": "Na čem jsem pracoval",
     "intro": "Aplikace pro chytré budovy, zemědělství, startupy i veřejnost – pokaždé jiné zadání, jiní uživatelé a jiné výzvy. Konkrétní klienty nejmenuji, víc vám rád řeknu na konzultaci.",
     "galleryLabel": "Ukázky aplikací",
-    "slideLabel": "Ukázka {index} z {count}",
-    "previous": "Předchozí ukázka",
-    "next": "Další ukázka",
     "images": {
       "smart-building-dashboard": {
         "alt": "Aplikace pro chytrou domácnost – přehled místností s ovládáním světel, rekuperace a topení",

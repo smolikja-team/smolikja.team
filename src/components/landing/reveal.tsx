@@ -1,12 +1,13 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { MotionConfig, motion } from "motion/react";
 
 /**
- * Fade-and-rise scroll reveal. Used once — for the statement that follows the
- * hero — so the page has a single orchestrated entrance rather than motion on
- * every section. Renders a plain <div> when the visitor prefers reduced motion.
+ * Fade-and-rise scroll reveal, used once — for the hero devices — so the page
+ * has a single orchestrated entrance rather than motion on every section. The
+ * markup is the same on server and client; with reduced motion, `MotionConfig`
+ * keeps only the fade and drops the movement.
  */
 export function Reveal({
   children,
@@ -17,21 +18,17 @@ export function Reveal({
   delay?: number;
   className?: string;
 }) {
-  const reducedMotion = useReducedMotion();
-
-  if (reducedMotion) {
-    return <div className={className}>{children}</div>;
-  }
-
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.55, delay, ease: "easeOut" }}
-    >
-      {children}
-    </motion.div>
+    <MotionConfig reducedMotion="user">
+      <motion.div
+        className={className}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.55, delay, ease: "easeOut" }}
+      >
+        {children}
+      </motion.div>
+    </MotionConfig>
   );
 }

@@ -25,6 +25,9 @@
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
+  --color-device-edge: var(--device-edge);
+  --color-device-frame: var(--device-frame);
+  --color-device-glass: var(--device-glass);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
@@ -90,6 +93,11 @@
   --sidebar-accent-foreground: oklch(0.226 0.021 264);
   --sidebar-border: oklch(0.9 0.012 258);
   --sidebar-ring: oklch(0.474 0.195 264);
+  /* Device mockup (front view of a current iPhone Pro): the metal band's
+     highlight and body, and the black glass border and Dynamic Island. */
+  --device-edge: oklch(0.6 0.008 260);
+  --device-frame: oklch(0.36 0.01 260);
+  --device-glass: oklch(0.12 0.004 260);
 }
 
 @layer base {

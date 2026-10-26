@@ -1,13 +1,14 @@
 import { experiences, workGallery } from "@/config/work";
 import type { Dictionary } from "@/i18n/dictionary";
-import { ScreenCarousel } from "./screen-carousel";
+import { ScrollGallery } from "./scroll-gallery";
 import { Section } from "./section";
 import { SectionHeading } from "./section-heading";
 
 /**
- * Experience by kind of project rather than a portfolio of named cases: a
- * gallery of real screens, then short cards naming the industry, what was
- * built and the technologies — never the client or the product.
+ * Experience by kind of project rather than a portfolio of named cases: real
+ * screens in iPhone mockups on a scroll-driven strip, then short cards naming
+ * the industry, what was built and the technologies — never the client or
+ * the product.
  */
 export function WorkSection({ copy }: { copy: Dictionary["work"] }) {
   return (
@@ -15,14 +16,7 @@ export function WorkSection({ copy }: { copy: Dictionary["work"] }) {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-16 sm:px-6 sm:py-20">
         <SectionHeading title={copy.title} text={copy.intro} />
 
-        <ScreenCarousel
-          images={workGallery}
-          copy={copy.images}
-          label={copy.galleryLabel}
-          slideLabel={copy.slideLabel}
-          previousLabel={copy.previous}
-          nextLabel={copy.next}
-        />
+        <ScrollGallery images={workGallery} copy={copy.images} label={copy.galleryLabel} />
 
         <ul className="grid grid-cols-[minmax(0,1fr)] gap-4 md:grid-cols-2 lg:grid-cols-3">
           {experiences.map(({ id, tags }) => {

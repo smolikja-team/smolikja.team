@@ -99,10 +99,6 @@ export type Dictionary = {
     title: string;
     intro: string;
     galleryLabel: string;
-    /** Accessible name of one carousel slide; `{index}` and `{count}` templates. */
-    slideLabel: string;
-    previous: string;
-    next: string;
     images: Record<WorkImageId, WorkImageCopy>;
     experiences: Record<ExperienceId, ExperienceCopy>;
   };

@@ -3,22 +3,17 @@ import { ArrowRightIcon } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { heroComposition } from "@/config/work";
 import type { Dictionary } from "@/i18n/dictionary";
-import { cn } from "@/lib/utils";
 import { CtaLink } from "./cta-link";
 import { FreeConsultationNote } from "./free-consultation-note";
+import { HeroDeviceStack } from "./hero-device-stack";
 import { OwnerBadge } from "./owner-badge";
 import { Reveal } from "./reveal";
-import { ScreenCard } from "./screen-card";
-
-/** Shared motion of the stacked cards: rise and settle, unless motion is reduced. */
-const cardMotion =
-  "transition-[translate,scale] duration-300 ease-out hover:-translate-y-3 motion-reduce:transition-none";
 
 /**
  * Asymmetric opening: who is speaking, a short offer, the action and the free
- * consultation on the left; two real screens stacked like cards in a wallet on
- * the right. Hovering the back card brings it in front of the other. On small
- * screens the offer and action come first and the stack follows.
+ * consultation on the left; two real screens in iPhone mockups on the right,
+ * the back one shuffling to the front when pointed at. On small screens the
+ * offer and action come first and the devices follow.
  */
 export function Hero({
   copy,
@@ -60,34 +55,11 @@ export function Hero({
         </div>
 
         <Reveal>
-          {/* Wallet-style stack: the back card peeks out top-left and comes
-              to the front on hover; the front card sits bottom-right. */}
-          <div
-            role="group"
-            aria-label={copy.compositionAria}
-            className="relative mx-auto aspect-[100/158] w-full max-w-[17rem] sm:max-w-[21rem] lg:max-w-[24rem]"
-          >
-            <div
-              className={cn(
-                "absolute top-0 left-0 z-10 w-[64%] origin-top-left scale-95 hover:z-30 hover:scale-100",
-                cardMotion,
-              )}
-            >
-              <ScreenCard
-                image={secondary}
-                alt={screens[secondary.id].alt}
-                sizes="(min-width: 1024px) 246px, (min-width: 640px) 216px, 175px"
-              />
-            </div>
-            <div className={cn("absolute right-0 bottom-0 z-20 w-[64%]", cardMotion)}>
-              <ScreenCard
-                image={primary}
-                alt={screens[primary.id].alt}
-                sizes="(min-width: 1024px) 246px, (min-width: 640px) 216px, 175px"
-                preload
-              />
-            </div>
-          </div>
+          <HeroDeviceStack
+            left={{ image: secondary, alt: screens[secondary.id].alt }}
+            right={{ image: primary, alt: screens[primary.id].alt }}
+            label={copy.compositionAria}
+          />
         </Reveal>
       </div>
     </section>
