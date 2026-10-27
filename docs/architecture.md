@@ -83,10 +83,10 @@ feature has a distinct responsibility and more than one collaborating module.
 The locale segment is validated against `src/i18n/config.ts`. The page loads
 the matching typed catalog, and `landing-page.tsx` passes only the dictionary
 subtree each section renders, in reading order: offer (hero, with the owner's
-name and photo) → four services (work it out, build, secure, grow) → work
-(screen gallery and kinds of projects) → security teaser → how a
-collaboration runs → about (portrait, way of working with AI agents,
-assurances) → FAQ → enquiry. Structural values
+name and photo) → four services (work it out, build, secure, grow) → my work
+(scroll-driven screen gallery) → experience (kinds of projects) → security
+teaser → how a collaboration runs → about (bio and portrait) → working with
+AI agents → assurances → FAQ → enquiry, one topic per screen. Structural values
 (screen ids and sizes, experience ids and technology tags, anchors, page
 paths) come from `src/config/`, never from translation files;
 `src/i18n/dictionaries.ts` cross-checks at load time that every configured
@@ -124,8 +124,12 @@ raw colours — and the real application screens supply most of the colour.
 Primary controls are 48 px tall and form text is 16 px; the generated
 primitives are not edited for this, the landing wrappers add the sizes.
 
-Every section (`landing/section.tsx`) is at least one viewport tall minus the
-sticky header and centres its content; longer sections simply grow. The
+Every section (`landing/section.tsx`) is at least one screen tall minus the
+sticky header (`100lvh`, so it still fills the screen when a mobile browser
+hides its toolbar) and centres its content; longer sections simply grow.
+Sections are told apart by alternating plain and tinted backgrounds, not by
+rules; `FaqSection` and `ContactSection` take a `tone` because their place in
+the alternation differs between the landing and security pages. The
 header is solid, not translucent: the wordmark video (white logo on black) is
 inverted and multiplied onto it, and only an opaque surface lets the black
 frame disappear without a visible rectangle.

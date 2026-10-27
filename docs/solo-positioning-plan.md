@@ -113,19 +113,24 @@ authorisation; a lawyer to refer NIS2/CRA legal questions to.
 ## 5. Page structure
 
 **Landing page** (`/cs`, `/en`), about 1,150 visible words (the FAQ answers
-are collapsed), mostly in short cards. Every section, on both pages, is at
-least one viewport tall so each topic has room to breathe:
+are collapsed), mostly in short cards. As on
+[studankyapp.cz](https://studankyapp.cz/cs), every section on both pages is at
+least one screen tall and holds one topic, and sections alternate plain and
+tinted backgrounds instead of dividing rules:
 
 | # | Section | Purpose |
 | --- | --- | --- |
 | 1 | Hero | Name badge, "Pomůžu vám vymyslet, postavit a zabezpečit aplikaci.", one sentence, CTA, free-consultation callout, two screens in iPhone mockups side by side, the back one smaller and shuffled to the front (animated) when pointed at or tapped |
 | 2 | Služby `#services` | Four cards: Vymyslet · Postavit · Zabezpečit · Rozvíjet; "Zabezpečit" is filled with the brand colour and has a prominent button to the security page |
-| 3 | Moje práce `#work` (nav: Zkušenosti) | The heading and screens in iPhone mockups pinned together on a full-bleed strip driven by page scroll (devices shrink with the window height so everything fits): when it reaches the middle of the screen it pins, scrolling moves it sideways until the last device meets the right content edge, and a progress bar across the content width fills; centred captions; screens grouped by app with the most striking first (layout modelled on [sklad3d.cz](https://sklad3d.cz/cs#member-oxoo)); then six cards by kind of project (§6) |
-| 4 | Bezpečnost `#security` | Why now, four checks, honest note, link to the security page |
-| 5 | Jak spolupracuji `#approach` | No fixed process; free consultation; three principles |
-| 6 | O mně `#about` | Bio with the portrait on its right (on phones the portrait comes first), AI and data rule beside the workspace photo, three assurances |
-| 7 | FAQ | Eight questions, including price, timing, reviewing others' apps, solo, being unavailable and AI/data |
-| 8 | Kontakt `#contact` | "Co řešíte? Napište mi." and the form |
+| 3 | Moje práce `#work` | The heading and screens in iPhone mockups pinned together on a full-bleed strip driven by page scroll (devices shrink with the window height so everything fits): when it reaches the middle of the screen it pins, scrolling moves it sideways until the last device meets the right content edge, and a progress bar across the content width fills; centred captions; screens grouped by app with the most striking first (layout modelled on [sklad3d.cz](https://sklad3d.cz/cs#member-oxoo)) |
+| 4 | Zkušenosti `#experience` (nav target) | Six cards by kind of project (§6) |
+| 5 | Bezpečnost `#security` | Why now, four checks, honest note, link to the security page |
+| 6 | Jak spolupracuji `#approach` | No fixed process; free consultation; three principles |
+| 7 | O mně `#about` | Bio with the portrait on its right (on phones the portrait comes first) |
+| 8 | Jak pracuju s AI agenty `#ai-agents` | The AI and data rule beside the workspace photo |
+| 9 | Co máte jisté `#assurances` | Three assurances |
+| 10 | FAQ | Eight questions, including price, timing, reviewing others' apps, solo, being unavailable and AI/data |
+| 11 | Kontakt `#contact` | "Co řešíte? Napište mi." and the form |
 
 **Security page** (`/cs/bezpecnost-aplikaci`, `/en/app-security`): its own
 search intent and share image. Intro with the sourced statistic → who it helps
