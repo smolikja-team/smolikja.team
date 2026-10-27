@@ -63,7 +63,7 @@ export type Dictionary = {
     aria: string;
     home: string;
     services: string;
-    work: string;
+    experience: string;
     security: string;
     about: string;
     /** The one primary action, identical everywhere it appears. */
@@ -100,6 +100,9 @@ export type Dictionary = {
     intro: string;
     galleryLabel: string;
     images: Record<WorkImageId, WorkImageCopy>;
+    /** Heading and lead of the experience section (the cards below the gallery). */
+    experiencesTitle: string;
+    experiencesText: string;
     experiences: Record<ExperienceId, ExperienceCopy>;
   };
   /** The security teaser on the landing page; the full offer is `securityPage`. */

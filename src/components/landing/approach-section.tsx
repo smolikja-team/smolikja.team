@@ -9,7 +9,7 @@ import { SectionHeading } from "./section-heading";
 export function ApproachSection({ copy }: { copy: Dictionary["approach"] }) {
   return (
     <Section id="approach" tone="tinted">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-16 sm:px-6 sm:py-20">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-20 sm:px-6 sm:py-24">
         <SectionHeading title={copy.title} text={copy.intro} />
 
         <div className="grid grid-cols-[minmax(0,1fr)] gap-6 rounded-3xl bg-card p-6 ring-1 ring-foreground/10 sm:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-12">

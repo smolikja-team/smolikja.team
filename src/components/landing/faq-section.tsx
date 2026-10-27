@@ -9,10 +9,17 @@ import { Section } from "./section";
 import { SectionHeading } from "./section-heading";
 
 /** The questions that would otherwise stop a visitor from getting in touch. */
-export function FaqSection({ copy }: { copy: Dictionary["faq"] }) {
+export function FaqSection({
+  copy,
+  tone = "default",
+}: {
+  copy: Dictionary["faq"];
+  /** Background in the page's alternation of section tones. */
+  tone?: "default" | "tinted";
+}) {
   return (
-    <Section>
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-8 px-5 py-16 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+    <Section tone={tone}>
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-8 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         <SectionHeading title={copy.title} />
         <Accordion>
           {copy.items.map((item) => (

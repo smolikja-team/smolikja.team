@@ -14,7 +14,7 @@
     "aria": "Main navigation",
     "home": "smolikja team – back to top",
     "services": "Services",
-    "work": "Experience",
+    "experience": "Experience",
     "security": "Security",
     "about": "About me",
     "cta": "Free consultation",
@@ -117,6 +117,8 @@
         "caption": "Public app: saved places"
       }
     },
+    "experiencesTitle": "Experience",
+    "experiencesText": "The projects my experience comes from – from smart buildings, agriculture and startups to banking and the public sector.",
     "experiences": {
       "smart-buildings": {
         "sector": "Smart buildings · IoT",

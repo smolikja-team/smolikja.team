@@ -20,8 +20,8 @@ export function ServicesSection({
   securityHref: string;
 }) {
   return (
-    <Section id="services">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-16 sm:px-6 sm:py-20">
+    <Section id="services" tone="tinted">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-20 sm:px-6 sm:py-24">
         <SectionHeading title={copy.title} text={copy.intro} />
         <ul className="grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {serviceOrder.map((id) => {

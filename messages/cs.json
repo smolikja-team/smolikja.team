@@ -14,7 +14,7 @@
     "aria": "Hlavní navigace",
     "home": "smolikja team – na úvod",
     "services": "Služby",
-    "work": "Zkušenosti",
+    "experience": "Zkušenosti",
     "security": "Bezpečnost",
     "about": "O mně",
     "cta": "Konzultace zdarma",
@@ -117,6 +117,8 @@
         "caption": "Aplikace pro veřejnost: uložená místa"
       }
     },
+    "experiencesTitle": "Zkušenosti",
+    "experiencesText": "Z jakých projektů čerpám – od chytrých budov přes zemědělství a startupy až po banky a veřejnou správu.",
     "experiences": {
       "smart-buildings": {
         "sector": "Chytré budovy · IoT",

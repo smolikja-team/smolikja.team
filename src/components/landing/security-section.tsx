@@ -22,7 +22,7 @@ export function SecuritySection({
 }) {
   return (
     <Section id="security">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-10 px-5 py-16 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start lg:gap-16">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-10 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start lg:gap-16">
         <div className="flex flex-col gap-6">
           <SectionHeading title={copy.title} text={copy.text} />
           <p className="text-sm text-muted-foreground">{copy.note}</p>

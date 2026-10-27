@@ -60,7 +60,7 @@ export function SecurityPage({ dict, locale }: { dict: Dictionary; locale: Local
         }
       />
       <main className="flex flex-1 flex-col">
-        <section className="flex min-h-[calc(100dvh-4rem)] flex-col justify-center">
+        <section className="flex min-h-[calc(100lvh-4rem)] flex-col justify-center">
           <div className="mx-auto flex w-full max-w-6xl flex-col px-5 pt-12 pb-16 sm:px-6 sm:pt-16 sm:pb-20">
             <div className="flex max-w-3xl flex-col gap-6">
               <OwnerBadge detail={dict.hero.role} eager />
@@ -93,7 +93,7 @@ export function SecurityPage({ dict, locale }: { dict: Dictionary; locale: Local
         </section>
 
         <Section tone="tinted">
-          <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-16 sm:px-6 sm:py-20">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-20 sm:px-6 sm:py-24">
             <div className="grid grid-cols-[minmax(0,1fr)] gap-6 rounded-3xl bg-card p-6 ring-1 ring-foreground/10 sm:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-12">
               <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">{copy.audience.title}</h2>
               <ul className="flex flex-col gap-3">
@@ -128,7 +128,7 @@ export function SecurityPage({ dict, locale }: { dict: Dictionary; locale: Local
         </Section>
 
         <Section>
-          <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-16 sm:px-6 sm:py-20">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-20 sm:px-6 sm:py-24">
             <SectionHeading title={copy.process.title} />
             <ol className="grid grid-cols-[minmax(0,1fr)] gap-8 md:grid-cols-2 lg:grid-cols-5 lg:gap-6">
               {copy.process.steps.map((step, index) => (
@@ -143,7 +143,7 @@ export function SecurityPage({ dict, locale }: { dict: Dictionary; locale: Local
         </Section>
 
         <Section tone="tinted">
-          <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-16 sm:px-6 sm:py-20">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-20 sm:px-6 sm:py-24">
             <SectionHeading title={copy.why.title} />
             <ul className="grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {copy.why.items.map((item) => (

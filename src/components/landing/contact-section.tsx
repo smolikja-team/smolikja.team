@@ -13,14 +13,17 @@ export function ContactSection({
   copy,
   locale,
   privacyHref,
+  tone = "tinted",
 }: {
   copy: Dictionary["contact"];
   locale: Locale;
   privacyHref: string;
+  /** Background in the page's alternation of section tones. */
+  tone?: "default" | "tinted";
 }) {
   return (
-    <Section id="contact" tone="tinted">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-10 px-5 py-16 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+    <Section id="contact" tone={tone}>
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-10 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         <div className="flex flex-col gap-6">
           <SectionHeading title={copy.title} text={copy.text} />
           <OwnerBadge detail={copy.personal} />

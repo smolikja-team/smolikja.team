@@ -29,7 +29,7 @@ export const siteConfig = {
  */
 export const mainNav = [
   { id: "services", anchor: "#services" },
-  { id: "work", anchor: "#work" },
+  { id: "experience", anchor: "#experience" },
   { id: "security", page: "security" },
   { id: "about", anchor: "#about" },
 ] as const;
