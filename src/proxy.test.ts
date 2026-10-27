@@ -20,7 +20,7 @@ describe("proxy matcher", () => {
     "/manifest.webmanifest",
     "/icon.png",
     "/assets/logo-white.svg",
-    "/assets/loop2x/team-logo-1080p.webm",
+    "/assets/logo-3d/team-logo.glb",
     "/cs/opengraph-image/og",
     "/_next/static/chunk.js",
     "/api/anything",
