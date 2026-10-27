@@ -3,7 +3,7 @@
  * intrinsic pixel sizes of the JPEGs.
  */
 export const ownerPhotos = {
-  portrait: { src: "/assets/about/portrait.jpg", width: 1254, height: 1254 },
+  portrait: { src: "/assets/about/portrait-2026-10.jpg", width: 1118, height: 1118 },
   workspace: { src: "/assets/about/workspace.jpg", width: 1447, height: 1087 },
 } as const;
 
