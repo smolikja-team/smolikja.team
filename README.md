@@ -22,7 +22,7 @@ intent behind them.
   the Resend delivery contract.
 - [Deployment](docs/deployment.md) — standalone build, Coolify/Nixpacks
   configuration and release checks.
-- [Web assets](docs/assets.md) — videos, screenshots, logo and generated icons.
+- [Web assets](docs/assets.md) — the 3D logo model, screenshots, logo, photos and generated icons.
 - [Stack blueprint](docs/stack-blueprint.md) — the toolchain and conventions
   this project follows.
 - [Stack migration](docs/stack-migration.md) — what changed in the 2026-09
@@ -96,8 +96,8 @@ The deployed standalone server uses a different start command; see
 - `src/config/`, `src/i18n/` and `src/lib/` hold structural configuration,
   localization and shared server/domain logic respectively.
 - `messages/` contains one typed JSON catalog per supported locale.
-- `public/` contains the screenshots, logo, generated icons and the logo
-  videos (the header wordmark; public URLs kept stable).
+- `public/` contains the screenshots, logo, the header's 3D logo model,
+  the owner's photos and generated icons.
 
 See [Architecture](docs/architecture.md) for the route map, dependency
 boundaries and documentation rules.

@@ -44,8 +44,8 @@ Metadata routes (`robots.ts`, `sitemap.ts`, `manifest.ts`,
 
 ## Assets
 
-The logo, app screens, the owner's photos and the logo videos are served from
-`public/assets/**`; keep the historical logo and video paths stable. App
-screens (`public/assets/work/`) never name a client or product; their ids and
-pixel sizes are declared in `src/config/work.ts`, the owner's photos in
-`src/config/assets.ts`, the header wordmark video in `src/config/video.ts`.
+The logo, the 3D logo model, app screens and the owner's photos are served
+from `public/assets/**`; keep the historical logo path stable. App screens
+(`public/assets/work/`) never name a client or product; their ids and pixel
+sizes are declared in `src/config/work.ts`, the owner's photos in
+`src/config/assets.ts`, the header's 3D wordmark model in `src/config/logo.ts`.

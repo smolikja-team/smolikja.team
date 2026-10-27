@@ -69,7 +69,7 @@ modes. Local development copies `.env.example` to the git-ignored
   `404`.
 - `/robots.txt`, `/sitemap.xml`, `/manifest.webmanifest`, `/icon.png` and
   `/cs/opengraph-image/og` respond with `200`.
-- `/assets/loop2x/team-logo-1080p.webm` and a project screenshot are served
+- `/assets/logo-3d/team-logo.glb` and a project screenshot are served
   directly (no redirect).
 - Submit a contact message and confirm it arrives with the visitor's address
   as `Reply-To`.
