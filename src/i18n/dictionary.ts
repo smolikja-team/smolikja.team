@@ -84,7 +84,7 @@ export type Dictionary = {
     text: string;
     secondary: string;
     reassurance: string;
-    /** Highlighted callout next to the primary action; `reassurance` is its detail. */
+    /** The free-consultation statement next to the primary action; `reassurance` is its detail. */
     freeConsultation: string;
     compositionAria: string;
   };
@@ -110,7 +110,6 @@ export type Dictionary = {
     title: string;
     text: string;
     checks: TitledText[];
-    note: string;
     link: string;
   };
   approach: {
@@ -131,7 +130,6 @@ export type Dictionary = {
     assurances: {
       title: string;
       items: TitledText[];
-      note: string;
     };
   };
   faq: {

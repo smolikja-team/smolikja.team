@@ -44,7 +44,7 @@ const variants: Variants = {
   }),
 };
 
-const SIZES = "(min-width: 1024px) 250px, (min-width: 640px) 215px, 170px";
+const SIZES = "(min-width: 1024px) 300px, (min-width: 640px) 260px, 220px";
 
 /**
  * Two real screens in iPhone mockups, side by side on one line: the front one
@@ -75,7 +75,7 @@ export function HeroDeviceStack({
         aria-label={label}
         // The container is exactly one full-size device tall: each device is
         // 62% of the width and 1500/719 as tall as it is wide.
-        className="relative mx-auto aspect-[100/129.35] w-full max-w-[18rem] sm:max-w-[22rem] lg:max-w-[25rem]"
+        className="relative mx-auto aspect-[100/129.35] w-full max-w-[22rem] sm:max-w-[26rem] lg:max-w-[30rem]"
       >
         {devices.map((device) => (
           <motion.div

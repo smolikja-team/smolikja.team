@@ -86,7 +86,6 @@ export function AssurancesSection({ copy }: { copy: Dictionary["about"]["assuran
             );
           })}
         </ul>
-        <p className="text-sm text-muted-foreground">{copy.note}</p>
       </div>
     </Section>
   );

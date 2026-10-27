@@ -10,8 +10,8 @@ const checkIcons = [DatabaseIcon, KeyRoundIcon, ServerIcon, BotIcon] as const;
 
 /**
  * The security teaser on the landing page: why it matters now, the four
- * things a review looks at, an honest note on what it is not, and the way to
- * the full app-security page.
+ * questions a review answers, and the way to the full app-security page
+ * (which also states what the review is not).
  */
 export function SecuritySection({
   copy,
@@ -25,7 +25,6 @@ export function SecuritySection({
       <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-10 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start lg:gap-16">
         <div className="flex flex-col gap-6">
           <SectionHeading title={copy.title} text={copy.text} />
-          <p className="text-sm text-muted-foreground">{copy.note}</p>
           <CtaLink href={securityHref} variant="outline" className="w-fit">
             {copy.link}
           </CtaLink>
