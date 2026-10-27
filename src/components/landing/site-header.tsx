@@ -8,8 +8,7 @@ import { MobileMenu } from "./mobile-menu";
 /**
  * Always-visible sticky header: the animated wordmark, the primary
  * destinations, the primary action and the language switch. Solid, not
- * translucent: the wordmark video is blended onto the header surface, and only
- * an opaque surface lets its black frame disappear completely. On phones the
+ * translucent, so the page never shows through behind the links. On phones the
  * action moves into the menu (the hero and contact section repeat it) so the
  * header never overflows narrow screens.
  */
