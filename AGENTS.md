@@ -28,6 +28,10 @@ Copy speaks as Jakub Smolík in the first person singular — one named person
 working with a team of AI agents, never an agency "we" or a team headcount.
 Czech is the source of truth, and the page makes no claims the owner has not
 confirmed (no prices, response times, capacity numbers, client quotes).
+Czech copy is standard Czech ("pomohu", not "pomůžu") in a friendly, open
+tone, uses the terms Czech practitioners use rather than translations, and
+stays short: the page is a hook for getting in touch, details belong to the
+conversation.
 Positioning, voice and section order come from `docs/solo-positioning-plan.md`;
 `docs/landing-page-redesign-plan.md` still governs visual direction,
 accessibility, performance and measurement.

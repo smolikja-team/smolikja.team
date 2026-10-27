@@ -66,7 +66,7 @@ not maintain separate locale lists.
 ## Voice
 
 Customer-facing copy speaks as Jakub Smolík — first-person singular, masculine
-forms ("pomůžu", "postavil jsem", "starám se") with consistent formal address
+forms ("pomohu", "postavil jsem", "starám se") with consistent formal address
 in Czech; English uses "I". There is no supplier "we"; a joint "we" for the
 client and Jakub together ("domluvíme se") is fine. Czech is the editorial
 source of truth; English carries the same intent. Keep promises to what he
@@ -74,6 +74,13 @@ actually does: no headcount, capacity numbers, response deadlines, prices or
 guarantees. See the [solo positioning plan](solo-positioning-plan.md) for
 vocabulary, including how AI agents are described. The one primary action is
 `nav.cta` and reads the same wherever it appears.
+
+Czech copy is standard Czech in its neutral forms — "pomohu", "mohu",
+"plánuji", "vždy", "pomoci", not the spoken "pomůžu", "můžu", "plánuju",
+"vždycky", "pomoct" — in a friendly, open tone without contract-style
+add-ons. Use the terms Czech practitioners use rather than translating the
+English ones ("bezpečnost aplikací", "zranitelnosti", "UX a UI design",
+"průzkum trhu").
 
 ## Routing and language negotiation
 

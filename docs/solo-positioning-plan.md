@@ -71,12 +71,27 @@ to action ("napište mi", "zdarma · bez závazků", "nemusíte mít zadání").
 
 - **First-person singular**, masculine Czech forms, formal "vy". A joint "we"
   for the client and Jakub together is fine; a supplier "we" is not.
+- **Standard Czech, light tone**: neutral standard forms ("pomohu", "mohu",
+  "plánuji"), never the spoken ones ("pomůžu", "můžu", "plánuju"), in a
+  friendly, open voice — not corporate. No contract-style add-ons such as
+  "Podrobnosti upravíme ve smlouvě".
+- **The page is a hook**: it introduces Jakub, signals expertise and openness
+  to any kind of project, and stops there. Texts stay short (one or two
+  sentences per card or answer) and deliberately leave out detail that would
+  let a visitor form a complete — and possibly wrong — picture; the rest is
+  for the conversation ("Víc vám rád ukážu osobně").
+- **Professional terms, not translations**: use what Czech practitioners say —
+  "bezpečnost aplikací" (as in Czech theses and courses on mobile and web app
+  security; "kybernetická bezpečnost" is the wider field of infrastructure,
+  organisation and law, so it is not used for this offer), "zranitelnosti",
+  "UX a UI design", "průzkum trhu", "údržba", "nasazování".
 - **Primary action:** "Konzultace zdarma" ("Free consultation"), identical
-  everywhere, with a highlighted callout "Úvodní konzultace zdarma · 60–90
-  minut, bez závazků" beside it. The free consultation applies to development
-  and security.
+  everywhere, with the statement "Úvodní konzultace zdarma · 60–90 minut, bez
+  závazků" beside it — set in the brand colour with the lead in semibold, with
+  no box or icon (it is a statement, not a gift, and must not look like a
+  button). The free consultation applies to development and security.
 - **Less is more in the hero**: name badge, headline, one sentence, the action
-  and the callout — nothing else. No availability line (it read as "I have no
+  and the statement — nothing else. No availability line (it read as "I have no
   work") and no caption under the screens.
 - **AI**: "tým AI agentů"; AI speeds up the work, Jakub decides, reviews and is
   accountable. No tool names or workflow internals.
@@ -112,7 +127,7 @@ authorisation; a lawyer to refer NIS2/CRA legal questions to.
 
 ## 5. Page structure
 
-**Landing page** (`/cs`, `/en`), about 1,150 visible words (the FAQ answers
+**Landing page** (`/cs`, `/en`), about 850 visible words (the FAQ answers
 are collapsed), mostly in short cards. As on
 [studankyapp.cz](https://studankyapp.cz/cs), every section on both pages is at
 least one screen tall and holds one topic, and sections alternate plain and
@@ -120,16 +135,16 @@ tinted backgrounds instead of dividing rules:
 
 | # | Section | Purpose |
 | --- | --- | --- |
-| 1 | Hero | Name badge, "Pomůžu vám vymyslet, postavit a zabezpečit aplikaci.", one sentence, CTA, free-consultation callout, two screens in iPhone mockups side by side, the back one smaller and shuffled to the front (animated) when pointed at or tapped |
+| 1 | Hero | Name badge, "Pomohu vám vymyslet, postavit a zabezpečit aplikaci.", one sentence, CTA, free-consultation statement, two screens in iPhone mockups side by side, the back one smaller and shuffled to the front (animated) when pointed at or tapped |
 | 2 | Služby `#services` | Four cards: Vymyslet · Postavit · Zabezpečit · Rozvíjet; "Zabezpečit" is filled with the brand colour and has a prominent button to the security page |
 | 3 | Moje práce `#work` | The heading and screens in iPhone mockups pinned together on a full-bleed strip driven by page scroll (devices shrink with the window height so everything fits): when it reaches the middle of the screen it pins, scrolling moves it sideways until the last device meets the right content edge, and a progress bar across the content width fills; centred captions; screens grouped by app with the most striking first (layout modelled on [sklad3d.cz](https://sklad3d.cz/cs#member-oxoo)) |
 | 4 | Zkušenosti `#experience` (nav target) | Six cards by kind of project (§6) |
-| 5 | Bezpečnost `#security` | Why now, four checks, honest note, link to the security page |
+| 5 | Bezpečnost `#security` | Why now, the four questions a review answers, link to the security page (which states the limits) |
 | 6 | Jak spolupracuji `#approach` | No fixed process; free consultation; three principles |
 | 7 | O mně `#about` | Bio with the portrait on its right (on phones the portrait comes first) |
-| 8 | Jak pracuju s AI agenty `#ai-agents` | The AI and data rule beside the workspace photo |
-| 9 | Co máte jisté `#assurances` | Three assurances |
-| 10 | FAQ | Eight questions, including price, timing, reviewing others' apps, solo, being unavailable and AI/data |
+| 8 | Jak pracuji s AI agenty `#ai-agents` | The AI and data rule beside the workspace photo |
+| 9 | Co máte jisté `#assurances` | Three one-sentence assurances |
+| 10 | FAQ | Six short questions: price, brief, timing, reviewing others' apps, why one person, taking over an existing app |
 | 11 | Kontakt `#contact` | "Co řešíte? Napište mi." and the form |
 
 **Security page** (`/cs/bezpecnost-aplikaci`, `/en/app-security`): its own
@@ -143,7 +158,8 @@ as scroll-linked motion, not hijacking: the page keeps native scrolling and
 keyboard behaviour, and visitors who prefer reduced motion get a plain
 horizontally scrollable strip.
 
-Navigation: Služby · Zkušenosti · Bezpečnost (the page) · O mně, and the CTA.
+Navigation: Služby · Zkušenosti · Bezpečnost aplikací (the page) · O mně, and
+the CTA.
 On phones the header shows only the logo and menu; the CTA lives in the menu,
 the hero and the contact section, so nothing overflows at 320 px.
 
