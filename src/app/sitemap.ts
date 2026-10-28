@@ -12,7 +12,7 @@ import {
 } from "@/i18n/config";
 
 // Bump when page content changes meaningfully.
-const lastModified = new Date("2026-10-26T00:00:00.000Z");
+const lastModified = new Date("2026-10-28T00:00:00.000Z");
 
 function absoluteUrl(locale: Locale, pathname = "/"): string {
   return `${siteConfig.url}${localizedPathname(locale, pathname)}`;
