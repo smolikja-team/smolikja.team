@@ -10,7 +10,8 @@ release.
 `next.config.ts` enables `output: "standalone"`. `nixpacks.toml`:
 
 1. installs Node.js 24;
-2. activates the pnpm version pinned in `package.json` through Corepack;
+2. upgrades Corepack and activates the pnpm version pinned in
+   `package.json` through it;
 3. installs dependencies with the frozen lockfile;
 4. runs `pnpm build`;
 5. copies `public/` and `.next/static/` into the standalone output; and
@@ -24,6 +25,12 @@ command.
 The pnpm version in `nixpacks.toml` (`corepack prepare pnpm@…`) must equal the
 `packageManager` field in `package.json`; otherwise Corepack aborts the build.
 Bump both together.
+
+The Node.js 24 that Nixpacks installs from its pinned nixpkgs (24.10.0) bundles
+Corepack 0.34.0, which still looks for pnpm's pre-11 entry point
+(`bin/pnpm.cjs`) and fails with `Cannot find module …/pnpm.cjs`. The install
+phase therefore installs a newer Corepack (`npm install -g corepack@…`) before
+enabling it; Corepack 0.34.7 or later is needed for pnpm 11+.
 
 Coolify settings:
 
