@@ -11,7 +11,7 @@ export const siteConfig = {
     name: "Jakub Smolík",
   },
   /** Contact address — shown on the page and used as the enquiry inbox. */
-  email: "smolikja@protonmail.com",
+  email: "hey@smolikja.team",
   links: {
     github: "https://github.com/smolikja-team/",
     linkedin: "https://www.linkedin.com/in/smolikja",

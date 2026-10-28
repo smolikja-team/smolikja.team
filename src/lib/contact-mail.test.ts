@@ -18,7 +18,7 @@ describe("contactMailConfigFromEnv", () => {
     expect(contactMailConfigFromEnv({ RESEND_API_KEY: "k" })).toBeNull();
     expect(
       contactMailConfigFromEnv({ RESEND_API_KEY: "k", CONTACT_FROM_EMAIL: "web@smolikja.team" }),
-    ).toEqual({ apiKey: "k", from: "web@smolikja.team", to: "smolikja@protonmail.com" });
+    ).toEqual({ apiKey: "k", from: "web@smolikja.team", to: "hey@smolikja.team" });
     expect(
       contactMailConfigFromEnv({
         RESEND_API_KEY: "k",
