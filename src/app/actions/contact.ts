@@ -5,7 +5,9 @@ import "server-only";
 import { headers } from "next/headers";
 import { z } from "zod";
 
+import { isContactSource } from "@/config/contact";
 import { isLocale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { contactMailConfigFromEnv, sendContactMail } from "@/lib/contact-mail";
 import { clientIpFromHeaders, isRateLimited, type RateLimitWindow } from "@/lib/rate-limit";
 
@@ -64,13 +66,9 @@ export async function sendContactMessage(
     message: getString(formData, "message"),
   };
 
-  const requestHeaders = await headers();
-  if (isRateLimited("contact-ip", clientIpFromHeaders(requestHeaders), IP_RATE_LIMITS)) {
-    return { status: "error", attempt, values };
-  }
-
   const locale = getString(formData, "locale");
-  if (!isLocale(locale)) return { status: "error", attempt, values };
+  const source = getString(formData, "source");
+  if (!isLocale(locale) || !isContactSource(source)) return { status: "error", attempt, values };
 
   const parsed = contactSchema.safeParse(values);
   if (!parsed.success) {
@@ -85,12 +83,20 @@ export async function sendContactMessage(
     };
   }
 
-  const config = contactMailConfigFromEnv();
-  if (!config) {
-    console.error("RESEND_API_KEY / CONTACT_FROM_EMAIL are not set — cannot send contact mail.");
+  // Only messages that would be sent count against the limit, so a visitor
+  // correcting a typo never runs into it.
+  const requestHeaders = await headers();
+  if (isRateLimited("contact-ip", clientIpFromHeaders(requestHeaders), IP_RATE_LIMITS)) {
     return { status: "error", attempt, values };
   }
 
-  const delivered = await sendContactMail(config, { ...parsed.data, locale });
+  const config = contactMailConfigFromEnv();
+  if (!config) {
+    console.error("SMTP_USER / SMTP_PASSWORD are not set — cannot send contact mail.");
+    return { status: "error", attempt, values };
+  }
+
+  const { contact } = await getDictionary(locale);
+  const delivered = await sendContactMail(config, { ...parsed.data, source }, contact.mail);
   return delivered ? { status: "success" } : { status: "error", attempt, values };
 }

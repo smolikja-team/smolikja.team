@@ -1,5 +1,6 @@
 import { MailIcon } from "lucide-react";
 
+import type { ContactSource } from "@/config/contact";
 import { siteConfig } from "@/config/site";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionary";
@@ -12,11 +13,14 @@ import { SectionHeading } from "./section-heading";
 export function ContactSection({
   copy,
   locale,
+  source,
   privacyHref,
   tone = "tinted",
 }: {
   copy: Dictionary["contact"];
   locale: Locale;
+  /** The page the section sits on; it picks the enquiry's subject. */
+  source: ContactSource;
   privacyHref: string;
   /** Background in the page's alternation of section tones. */
   tone?: "default" | "tinted";
@@ -40,7 +44,7 @@ export function ContactSection({
           </p>
         </div>
         <div className="rounded-3xl bg-card p-6 ring-1 ring-foreground/10 sm:p-8">
-          <ContactForm copy={copy.form} locale={locale} privacyHref={privacyHref} />
+          <ContactForm copy={copy.form} locale={locale} source={source} privacyHref={privacyHref} />
         </div>
       </div>
     </Section>

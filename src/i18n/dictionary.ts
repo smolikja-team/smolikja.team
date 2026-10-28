@@ -1,3 +1,4 @@
+import type { ContactSource } from "@/config/contact";
 import type { ExperienceId, WorkImageId } from "@/config/work";
 
 export type { ExperienceId, WorkImageId };
@@ -173,6 +174,21 @@ export type Dictionary = {
     };
     direct: {
       label: string;
+    };
+    /**
+     * The e-mail an enquiry arrives as. It is in the visitor's language
+     * because they see it again, quoted under the owner's reply.
+     */
+    mail: {
+      /**
+       * By the page the form was sent from; `{name}` is the visitor's name.
+       * The shared start lets one inbox filter catch every enquiry, and the
+       * name keeps mail apps from threading different enquiries together.
+       */
+      subjects: Record<ContactSource, string>;
+      /** Labels of the lines above the message. */
+      name: string;
+      email: string;
     };
   };
   /** The app-security page (`securityPath` in `src/config/pages.ts`). */

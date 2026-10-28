@@ -19,7 +19,7 @@ intent behind them.
 - [Localization](docs/localization.md) — typed dictionaries, adding copy or a
   locale, and locale-aware routing.
 - [Contact form](docs/contact-form.md) — Server Action, abuse protection and
-  the Resend delivery contract.
+  the SMTP delivery and the mail it sends.
 - [Deployment](docs/deployment.md) — standalone build, Coolify/Nixpacks
   configuration and release checks.
 - [Web assets](docs/assets.md) — the 3D logo model, screenshots, logo, photos and generated icons.
@@ -62,9 +62,10 @@ are configured in Coolify.
 
 | Variable | Production requirement | Purpose |
 | --- | --- | --- |
-| `RESEND_API_KEY` | Required for the contact form | Resend API key used server-side to deliver messages. |
-| `CONTACT_FROM_EMAIL` | Required for the contact form | Sender address on a domain verified in Resend. |
-| `CONTACT_TO_EMAIL` | Optional | Recipient; defaults to `siteConfig.email`. |
+| `SMTP_USER` | Required for the contact form | Login of the sending mailbox (`hey@smolikja.team`); also the `From` address. |
+| `SMTP_PASSWORD` | Required for the contact form | Password or app password of that mailbox, used server-side only. |
+| `CONTACT_TO_EMAIL` | Recommended | Recipient (`jakub@smolikja.team`); defaults to `siteConfig.email`. |
+| `SMTP_HOST`, `SMTP_PORT` | Optional | Mail server; default to `smtp.purelymail.com` and `465`. |
 
 See [`.env.example`](.env.example) and [Contact form](docs/contact-form.md).
 

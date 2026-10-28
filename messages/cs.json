@@ -290,6 +290,14 @@
     },
     "direct": {
       "label": "Nebo mi napište přímo na"
+    },
+    "mail": {
+      "subjects": {
+        "landing": "Poptávka z webu – {name}",
+        "security": "Poptávka z webu: bezpečnost aplikací – {name}"
+      },
+      "name": "Jméno",
+      "email": "E-mail"
     }
   },
   "securityPage": {
@@ -450,7 +458,7 @@
         "title": "Kontaktní formulář",
         "paragraphs": [
           "Když mi napíšete přes formulář, zpracovávám vaše jméno, e-mailovou adresu a text zprávy. Účelem je odpovědět na vaši poptávku a domluvit případnou spolupráci; právním základem je jednání o smlouvě a můj oprávněný zájem na vyřízení poptávky.",
-          "Zprávu doručuje do mé e-mailové schránky služba Resend (Resend, Inc., USA) jako zpracovatel. Údaje uchovávám po dobu nezbytnou k vyřízení poptávky a případné spolupráce, poté je smažu.",
+          "Zprávu odesílá a ukládá můj poskytovatel e-mailu Purelymail (Add Rabbit LLC, USA) jako zpracovatel. Údaje uchovávám po dobu nezbytnou k vyřízení poptávky a případné spolupráce, poté je smažu.",
           "K ochraně formuláře před zneužitím krátkodobě eviduji otisk (hash) IP adresy odesílatele; po nejdéle 24 hodinách zaniká."
         ]
       },

@@ -167,6 +167,7 @@ export function SecurityPage({ dict, locale }: { dict: Dictionary; locale: Local
         <ContactSection
           copy={{ ...dict.contact, title: copy.contact.title, text: copy.contact.text }}
           locale={locale}
+          source="security"
           privacyHref={privacyHref}
         />
       </main>

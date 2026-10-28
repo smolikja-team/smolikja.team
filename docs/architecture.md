@@ -51,7 +51,7 @@ works without JavaScript.
 Server-only integration code is marked explicitly:
 
 - `src/app/actions/contact.ts` owns the contact mutation.
-- `src/lib/contact-mail.ts` owns delivery through Resend.
+- `src/lib/contact-mail.ts` owns delivery over SMTP (`nodemailer`).
 
 Do not add an internal Route Handler merely to call it from a Server
 Component. Read data directly in the Server Component layer and use Server
@@ -66,7 +66,7 @@ Actions for mutations initiated by this UI.
 | `src/components/layout/` | Shared layout helpers (language switcher). |
 | `src/components/icons/` | Inline brand and third-party marks. |
 | `src/components/ui/` | Generated shadcn primitives (Base UI + `cva`). Regenerate with the CLI; do not hand-edit their API. |
-| `src/config/` | Locale-independent structural data: site URLs and links, navigation and the primary action target, work screens and kinds of projects, page paths, legal identity, paths and dates, brand assets. |
+| `src/config/` | Locale-independent structural data: site URLs and links, navigation and the primary action target, work screens and kinds of projects, page paths, contact-form sources, legal identity, paths and dates, brand assets. |
 | `src/i18n/` | Locale types, language negotiation, dictionary loading, typesetting and template formatting. |
 | `src/lib/` | Shared server/domain utilities: fonts, `cn()`, metadata helpers, rate limiting, mail delivery, OG rendering. |
 | `messages/` | Localized user-facing copy. |
@@ -116,9 +116,9 @@ of project is a config entry plus copy — see [Localization](localization.md).
 ### Contact form
 
 The client form invokes a Server Action. The action applies the honeypot,
-process-local IP rate limiting and Zod validation, then hands the message to
-the Resend delivery module. Failed submissions return the entered values and
-the invalid fields; the browser never sees the API key. Details and
+Zod validation and process-local IP rate limiting, then hands the message to
+the SMTP delivery module. Failed submissions return the entered values and
+the invalid fields; the browser never sees the mail credentials. Details and
 limitations in [Contact form](contact-form.md).
 
 ## Styling
@@ -159,6 +159,7 @@ it needs no blending.
 - Owner photos and brand assets: `src/config/assets.ts`.
 - Work screens, kinds of projects and the hero composition: `src/config/work.ts`.
 - Security page paths, the quoted statistic's source and the service order: `src/config/pages.ts`.
+- The pages a contact form can be sent from, which pick the enquiry's subject: `src/config/contact.ts`.
 - Operator identity (name, IČO, registered address), privacy page path,
   effective date and authority link: `src/config/legal.ts`. The footer and the
   privacy page render the identity through the `operator` catalog templates.

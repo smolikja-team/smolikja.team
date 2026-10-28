@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { contactSources } from "@/config/contact";
 import { operator } from "@/config/legal";
 import { serviceOrder } from "@/config/pages";
 import { experiences, heroComposition, workGallery } from "@/config/work";
@@ -27,6 +28,13 @@ describe("getDictionary", () => {
       expect(text.match(/\*\*[^*]+\*\*/g), id).toHaveLength(1);
       expect(text.split("**"), id).toHaveLength(3);
     }
+  });
+
+  it.each(locales)("gives every contact source its own subject with the visitor's name in %s", async (locale) => {
+    const { subjects } = (await getDictionary(locale)).contact.mail;
+
+    for (const source of contactSources) expect(subjects[source], source).toContain("{name}");
+    expect(new Set(contactSources.map((source) => subjects[source])).size).toBe(contactSources.length);
   });
 
   it.each(locales)("fills every placeholder of the operator identity in %s", async (locale) => {

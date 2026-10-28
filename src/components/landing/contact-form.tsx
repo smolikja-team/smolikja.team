@@ -13,6 +13,7 @@ import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/c
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
+import type { ContactSource } from "@/config/contact";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionary";
 
@@ -21,10 +22,13 @@ const initialState: ContactState = { status: "idle" };
 export function ContactForm({
   copy,
   locale,
+  source,
   privacyHref,
 }: {
   copy: Dictionary["contact"]["form"];
   locale: Locale;
+  /** The page the form sits on; it picks the enquiry's subject. */
+  source: ContactSource;
   privacyHref: string;
 }) {
   const [state, formAction, pending] = useActionState(sendContactMessage, initialState);
@@ -58,6 +62,7 @@ export function ContactForm({
   return (
     <form action={formAction} noValidate className="flex flex-col gap-6">
       <input type="hidden" name="locale" value={locale} />
+      <input type="hidden" name="source" value={source} />
       {/* Honeypot — off-screen for humans, irresistible to bots. */}
       <div aria-hidden="true" className="absolute -left-[9999px]">
         <label>

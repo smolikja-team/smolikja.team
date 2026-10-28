@@ -46,7 +46,10 @@ code.
   `Reveal` is used once (the statement) rather than on every section.
 - **Contact delivery through Resend** (plain `fetch`, no SDK) because the
   site has no backend of its own; the transport is isolated in
-  `src/lib/contact-mail.ts` so it can be swapped.
+  `src/lib/contact-mail.ts` so it can be swapped. *Swapped on 2026-10-28:* the
+  form now sends over SMTP through the owner's own mailbox, which keeps the
+  enquiries with one provider and needs no extra account or DNS records
+  ([Contact form](contact-form.md)).
 - **Dropped without replacement:** the unused `NEXT_PUBLIC_GA_ID`, the
   placeholder Google/Bing verification codes, the ~60-entry `keywords` list,
   the `ai:*` / `schema:*` / `contact:*` meta tags (no consumer reads them; the

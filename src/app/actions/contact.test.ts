@@ -22,6 +22,7 @@ function formData(fields: Record<string, string>): FormData {
 
 const valid = {
   locale: "cs",
+  source: "landing",
   name: "Jana Nováková",
   email: "Jana@Example.com",
   message: "Chci aplikaci pro svou kavárnu, aby si lidé mohli objednat dopředu.",
@@ -30,7 +31,13 @@ const valid = {
 describe("sendContactMessage", () => {
   beforeEach(() => {
     resetRateLimits();
-    contactMailConfigFromEnv.mockReturnValue({ apiKey: "k", from: "web@smolikja.team", to: "t@x.y" });
+    contactMailConfigFromEnv.mockReturnValue({
+      host: "smtp.example.com",
+      port: 465,
+      user: "hey@smolikja.team",
+      password: "p",
+      to: "jakub@smolikja.team",
+    });
     sendContactMail.mockResolvedValue(true);
   });
 
@@ -38,8 +45,28 @@ describe("sendContactMessage", () => {
     await expect(sendContactMessage(idle, formData(valid))).resolves.toEqual({ status: "success" });
     expect(sendContactMail).toHaveBeenCalledWith(
       expect.anything(),
-      expect.objectContaining({ email: "jana@example.com", locale: "cs" }),
+      expect.objectContaining({ email: "jana@example.com", source: "landing" }),
+      expect.objectContaining({ name: "Jméno" }),
     );
+  });
+
+  it("writes the mail in the language of the page it was sent from", async () => {
+    await sendContactMessage(idle, formData({ ...valid, locale: "en", source: "security" }));
+    expect(sendContactMail).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ source: "security" }),
+      expect.objectContaining({ name: "Name" }),
+    );
+  });
+
+  it("refuses a form without a known locale or source", async () => {
+    await expect(sendContactMessage(idle, formData({ ...valid, source: "other" }))).resolves.toMatchObject({
+      status: "error",
+    });
+    await expect(sendContactMessage(idle, formData({ ...valid, locale: "de" }))).resolves.toMatchObject({
+      status: "error",
+    });
+    expect(sendContactMail).not.toHaveBeenCalled();
   });
 
   it("reports the invalid fields and hands the entered values back", async () => {
@@ -75,7 +102,7 @@ describe("sendContactMessage", () => {
       values: { name: valid.name },
     });
 
-    contactMailConfigFromEnv.mockReturnValue({ apiKey: "k", from: "f", to: "t" });
+    contactMailConfigFromEnv.mockReturnValue({ host: "h", port: 465, user: "u", password: "p", to: "t" });
     sendContactMail.mockResolvedValue(false);
     await expect(sendContactMessage(idle, formData(valid))).resolves.toMatchObject({ status: "error" });
     consoleError.mockRestore();
@@ -84,5 +111,10 @@ describe("sendContactMessage", () => {
   it("rate-limits repeated submissions from one address", async () => {
     for (let i = 0; i < 3; i++) await sendContactMessage(idle, formData(valid));
     await expect(sendContactMessage(idle, formData(valid))).resolves.toMatchObject({ status: "error" });
+  });
+
+  it("does not count invalid submissions against the limit", async () => {
+    for (let i = 0; i < 5; i++) await sendContactMessage(idle, formData({ ...valid, email: "nope" }));
+    await expect(sendContactMessage(idle, formData(valid))).resolves.toEqual({ status: "success" });
   });
 });

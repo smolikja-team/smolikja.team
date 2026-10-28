@@ -54,6 +54,7 @@ export function LandingPage({ dict, locale }: { dict: Dictionary; locale: Locale
         <ContactSection
           copy={dict.contact}
           locale={locale}
+          source="landing"
           privacyHref={privacyHref}
           tone="default"
         />

@@ -34,7 +34,7 @@ Coolify settings:
 | Exposed port | `3000` |
 | Static site | Disabled |
 | Health check | Coolify default container check (there is no `/health` route) |
-| Runtime environment | `RESEND_API_KEY`, `CONTACT_FROM_EMAIL` (and optionally `CONTACT_TO_EMAIL`) |
+| Runtime environment | `SMTP_USER`, `SMTP_PASSWORD`, `CONTACT_TO_EMAIL` (and optionally `SMTP_HOST`, `SMTP_PORT`) |
 
 The deployment relies on process-local contact-form rate limiting. Before
 running multiple web replicas, add shared rate limiting so behaviour does not
@@ -55,8 +55,9 @@ modes. Local development copies `.env.example` to the git-ignored
    pnpm build
    ```
 
-2. Confirm the contact-form variables are present in the target environment
-   and the sender domain is verified in Resend.
+2. Confirm the contact-form variables are present in the target environment;
+   after a change, send a test message and check that **Reply** addresses the
+   sender (see [Contact form](contact-form.md#checking-delivery)).
 3. Review `src/config/site.ts` for the canonical site URL, e-mail and external
    links.
 4. If page content changed meaningfully, bump `lastModified` in

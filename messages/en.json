@@ -290,6 +290,14 @@
     },
     "direct": {
       "label": "Or write directly to"
+    },
+    "mail": {
+      "subjects": {
+        "landing": "Website enquiry – {name}",
+        "security": "Website enquiry: app security – {name}"
+      },
+      "name": "Name",
+      "email": "E-mail"
     }
   },
   "securityPage": {
@@ -450,7 +458,7 @@
         "title": "Contact form",
         "paragraphs": [
           "When you write to me through the form, I process your name, e-mail address and the text of your message. The purpose is to answer your enquiry and arrange a possible collaboration; the legal basis is pre-contractual negotiation and my legitimate interest in handling the enquiry.",
-          "The message is delivered to my mailbox by Resend (Resend, Inc., USA) acting as a processor. I keep the data for as long as needed to handle the enquiry and any resulting collaboration, then delete it.",
+          "The message is sent and stored by my e-mail provider, Purelymail (Add Rabbit LLC, USA), acting as a processor. I keep the data for as long as needed to handle the enquiry and any resulting collaboration, then delete it.",
           "To protect the form from abuse I briefly keep a hash of the sender's IP address; it expires after 24 hours at most."
         ]
       },
