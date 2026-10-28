@@ -264,7 +264,7 @@
     ]
   },
   "contact": {
-    "title": "What are you working on? Write to me.",
+    "title": "How can I help? Write to me.",
     "text": "A few sentences are enough – an idea, a finished app or a problem that bothers you. I'll get back to you and we'll arrange a consultation.",
     "freeConsultation": "Free introductory consultation",
     "freeConsultationDetail": "60–90 minutes, no finished brief needed",
@@ -324,27 +324,27 @@
       "items": [
         {
           "title": "App and backend review",
-          "text": "I go through the code of your mobile app, website and server and their setup: sign-in and credential storage, permissions, APIs, logs, databases and cloud services. You get a clear report and fixes in the code."
+          "text": "I go through the code of your mobile app, website and server and their setup: sign-in and credential storage, permissions, APIs, logs, databases and cloud services. You get **a clear report and fixes in the code**."
         },
         {
           "title": "Apps built with AI",
-          "text": "I review apps from tools such as Lovable, Bolt or Cursor: data access rules, exposed keys and unprotected APIs – the most common weaknesses of quickly built apps."
+          "text": "I review apps from tools such as **Lovable, Bolt or Cursor**: data access rules, exposed keys and unprotected APIs – the most common weaknesses of quickly built apps."
         },
         {
           "title": "Secure AI features and agents",
-          "text": "I design or review the AI features in your app: model keys on the server, cost limits, agent permissions and resistance to abuse through prompt injection."
+          "text": "I design or review the AI features in your app: model keys on the server, cost limits, agent permissions and **resistance to abuse through prompt injection**."
         },
         {
           "title": "Secure development and deployment",
-          "text": "I set up automated checks that watch every change for leaked keys and vulnerable libraries, and prepare a list of the components you use (SBOM)."
+          "text": "I set up **automated checks** that watch every change for leaked keys and vulnerable libraries, and prepare a list of the components you use (SBOM)."
         },
         {
           "title": "Communication with servers and devices",
-          "text": "I secure the connection between the app, the server and devices – including smart buildings and their control systems."
+          "text": "I secure the connection between the app, the server and devices – including **smart buildings and their control systems**."
         },
         {
           "title": "Material for customers and regulation",
-          "text": "I prepare the technical part of supplier security questionnaires and of preparing for NIS2 or the CRA."
+          "text": "I prepare the technical part of **supplier security questionnaires** and of preparing for NIS2 or the CRA."
         }
       ]
     },

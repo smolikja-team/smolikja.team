@@ -20,13 +20,16 @@ describe("getDictionary", () => {
     for (const id of serviceOrder) expect(dict.services.items[id].points.length).toBeGreaterThan(0);
   });
 
-  it.each(locales)("marks exactly one key phrase in every experience text in %s", async (locale) => {
+  it.each(locales)("marks exactly one key phrase in every experience and security offer text in %s", async (locale) => {
     const dict = await getDictionary(locale);
+    const texts = [
+      ...experiences.map(({ id }) => [id, dict.work.experiences[id].text]),
+      ...dict.securityPage.services.items.map(({ title, text }) => [title, text]),
+    ];
 
-    for (const { id } of experiences) {
-      const { text } = dict.work.experiences[id];
-      expect(text.match(/\*\*[^*]+\*\*/g), id).toHaveLength(1);
-      expect(text.split("**"), id).toHaveLength(3);
+    for (const [label, text] of texts) {
+      expect(text.match(/\*\*[^*]+\*\*/g), label).toHaveLength(1);
+      expect(text.split("**"), label).toHaveLength(3);
     }
   });
 

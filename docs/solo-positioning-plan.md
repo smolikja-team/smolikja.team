@@ -138,14 +138,14 @@ tinted backgrounds instead of dividing rules:
 | 1 | Hero | Name badge, "Pomohu vám vymyslet, postavit a zabezpečit aplikaci.", one sentence, CTA, free-consultation statement, two screens in iPhone mockups side by side, the back one smaller and shuffled to the front (animated) when pointed at or tapped |
 | 2 | Služby `#services` | Four cards: Vymyslet · Postavit · Zabezpečit · Rozvíjet; "Zabezpečit" is filled with the brand colour and has a prominent button to the security page |
 | 3 | Moje práce `#work` | The heading and screens in iPhone mockups pinned together on a full-bleed strip driven by page scroll (devices shrink with the window height so everything fits): when it reaches the middle of the screen it pins, scrolling moves it sideways until the last device meets the right content edge, and a progress bar across the content width fills; centred captions; screens grouped by app with the most striking first (layout modelled on [sklad3d.cz](https://sklad3d.cz/cs#member-oxoo)); the last device is a redacted screen stamped "NDA" that stands for the projects the page cannot show |
-| 4 | Zkušenosti `#experience` (nav target) | Six cards by kind of project (§6): a sector label with an icon, and the key phrase of each text set heavier and underlined with a teal stroke below the text that draws in with the scroll position (modelled on the names on [kyslikovavyhoda.cz](https://kyslikovavyhoda.cz/)) |
+| 4 | Zkušenosti `#experience` (nav target) | Six cards by kind of project (§6): a sector label with an icon, and the key phrase of each text set in the foreground colour (not bold) and underlined with a teal stroke below the text that draws in with the scroll position (modelled on the names on [kyslikovavyhoda.cz](https://kyslikovavyhoda.cz/)) |
 | 5 | Bezpečnost `#security` | Why now, the four questions a review answers, link to the security page (which states the limits) |
 | 6 | Jak spolupracuji `#approach` | No fixed process; free consultation; three principles |
 | 7 | O mně `#about` | Bio with the portrait on its right (on phones the portrait comes first) |
 | 8 | Jak pracuji s AI agenty `#ai-agents` | The AI and data rule beside the workspace photo |
 | 9 | Co máte jisté `#assurances` | Three one-sentence assurances |
 | 10 | FAQ | Six short questions: price, brief, timing, reviewing others' apps, why one person, taking over an existing app |
-| 11 | Kontakt `#contact` | "Co řešíte? Napište mi." and the form |
+| 11 | Kontakt `#contact` | "Jak pomohu? Napište mi." and the form |
 
 **Security page** (`/cs/bezpecnost-aplikaci`, `/en/app-security`): its own
 search intent and share image. Intro with the sourced statistic → who it helps

@@ -27,7 +27,7 @@ const experienceIcons: Record<ExperienceId, LucideIcon> = {
 /**
  * Experience by kind of project rather than a portfolio of named cases —
  * never the client or the product. Short cards; the key phrase of each text
- * is set heavier and underlined as the reader scrolls, so the eye has
+ * is set in the foreground colour and underlined as the reader scrolls, so the eye has
  * something to land on in every card.
  */
 export function ExperienceSection({ copy }: { copy: Dictionary["work"] }) {

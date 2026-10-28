@@ -264,7 +264,7 @@
     ]
   },
   "contact": {
-    "title": "Co řešíte? Napište mi.",
+    "title": "Jak pomohu? Napište mi.",
     "text": "Stačí pár vět – nápad, hotová aplikace nebo problém, který vás trápí. Ozvu se vám a domluvíme si konzultaci.",
     "freeConsultation": "Úvodní konzultace zdarma",
     "freeConsultationDetail": "60–90 minut, nemusíte mít hotové zadání",
@@ -324,27 +324,27 @@
       "items": [
         {
           "title": "Kontrola aplikace a backendu",
-          "text": "Projdu kód mobilní aplikace, webu i serveru a jejich nastavení: přihlašování a ukládání údajů, oprávnění, API, logy, databáze a cloudové služby. Dostanete srozumitelnou zprávu a opravy v kódu."
+          "text": "Projdu kód mobilní aplikace, webu i serveru a jejich nastavení: přihlašování a ukládání údajů, oprávnění, API, logy, databáze a cloudové služby. Dostanete **srozumitelnou zprávu a opravy v kódu**."
         },
         {
           "title": "Aplikace postavené s AI",
-          "text": "Prověřím aplikace z nástrojů jako Lovable, Bolt nebo Cursor: přístupová pravidla k datům, odhalené klíče a nechráněná API – nejčastější slabiny rychle postavených aplikací."
+          "text": "Prověřím aplikace z nástrojů jako **Lovable, Bolt nebo Cursor**: přístupová pravidla k datům, odhalené klíče a nechráněná API – nejčastější slabiny rychle postavených aplikací."
         },
         {
           "title": "Bezpečné AI funkce a agenti",
-          "text": "Navrhnu nebo zkontroluji AI funkce ve vaší aplikaci: klíče k modelům na serveru, limity nákladů, oprávnění agentů a odolnost proti zneužití přes prompt injection."
+          "text": "Navrhnu nebo zkontroluji AI funkce ve vaší aplikaci: klíče k modelům na serveru, limity nákladů, oprávnění agentů a **odolnost proti zneužití přes prompt injection**."
         },
         {
           "title": "Bezpečný vývoj a nasazování",
-          "text": "Nastavím automatické kontroly, které při každé změně hlídají uniklé klíče a zranitelné knihovny, a připravím soupis použitých komponent (SBOM)."
+          "text": "Nastavím **automatické kontroly**, které při každé změně hlídají uniklé klíče a zranitelné knihovny, a připravím soupis použitých komponent (SBOM)."
         },
         {
           "title": "Komunikace se servery a zařízeními",
-          "text": "Zabezpečím spojení mezi aplikací, serverem a zařízeními – včetně chytrých budov a jejich řídicích systémů."
+          "text": "Zabezpečím spojení mezi aplikací, serverem a zařízeními – včetně **chytrých budov a jejich řídicích systémů**."
         },
         {
           "title": "Podklady pro zákazníky a regulace",
-          "text": "Připravím technickou část podkladů pro bezpečnostní dotazníky dodavatelů a pro přípravu na NIS2 nebo CRA."
+          "text": "Připravím technickou část podkladů pro **bezpečnostní dotazníky dodavatelů** a pro přípravu na NIS2 nebo CRA."
         }
       ]
     },

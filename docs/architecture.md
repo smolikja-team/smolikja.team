@@ -37,7 +37,7 @@ event handling. Current client islands:
 | `landing/contact-form.tsx` | `useActionState` around the contact Server Action; remounts fields with restored values after a failed attempt. |
 | `landing/faq-section.tsx` → `ui/accordion.tsx` | Expand/collapse of the FAQ (Base UI accordion). |
 | `landing/reveal.tsx` | The one restrained entrance — the hero devices — via `motion`; with reduced motion only the fade remains. |
-| `landing/scroll-marker.tsx` | The highlighter stroke under the key phrase of each experience card, its width tied to the phrase's position in the window (`motion` `useScroll`) so it draws in while scrolling and erases when scrolling back; with reduced motion it is shown in full. |
+| `landing/scroll-marker.tsx` | The highlighter stroke under the key phrase of each experience card and each app-security offer card, its width tied to the phrase's position in the window (`motion` `useScroll`) so it draws in while scrolling and erases when scrolling back; with reduced motion it is shown in full. |
 | `landing/site-logo.tsx` | The header wordmark: the static SVG, replaced once the browser is idle by the spinning 3D model. three.js lives in `landing/site-logo-scene.ts`, imported on demand, so it never delays the page; skipped with reduced motion or without WebGL. |
 
 Everything else, including the sticky header, is a Server Component. Values
@@ -107,11 +107,13 @@ describe the industry and the work. The strip ends with a drawn device
 (`landing/confidential-screen.tsx`): an app whose text is blacked out under an
 "NDA" stamp, standing for the projects under non-disclosure agreements.
 
-In each experience card the key phrase of the text — marked `**…**` in the
-catalog and rendered by `landing/marked-text.tsx` — is set heavier and gets a
-teal stroke (`--highlight`) below the text that draws from left to right
-with the scroll position (`landing/scroll-marker.tsx`). Adding a screen or a kind
-of project is a config entry plus copy — see [Localization](localization.md).
+In each experience card — and each offer card on the app-security page — the
+key phrase of the text, marked `**…**` in the catalog and rendered by
+`landing/marked-text.tsx`, is set in the foreground colour (heavier only in
+the offer cards, whose longer text needs it) and gets a teal stroke
+(`--highlight`) below the text that draws from left to right with the scroll
+position (`landing/scroll-marker.tsx`). Adding a screen or a kind of project
+is a config entry plus copy — see [Localization](localization.md).
 
 ### Contact form
 

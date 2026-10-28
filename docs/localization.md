@@ -48,7 +48,9 @@ components.
 3. Add `work.images.<id>` (`alt` and a short `caption`) or
    `work.experiences.<id>` (`sector`, `title`, `text`) to every catalog.
    Mark exactly one key phrase of the experience `text` as `**…**`; it is
-   underlined as the reader scrolls (a test checks every locale).
+   underlined as the reader scrolls (a test checks every locale). The offer
+   cards of the app-security page (`securityPage.services.items`) follow the
+   same rule.
 
 Describe the industry and the work, not the client: no client or product
 names, no confidential results. The type system rejects a catalog that names

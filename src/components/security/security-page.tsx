@@ -12,6 +12,7 @@ import { ContactSection } from "@/components/landing/contact-section";
 import { CtaLink } from "@/components/landing/cta-link";
 import { FaqSection } from "@/components/landing/faq-section";
 import { FreeConsultationNote } from "@/components/landing/free-consultation-note";
+import { MarkedText } from "@/components/landing/marked-text";
 import { OwnerBadge } from "@/components/landing/owner-badge";
 import { Section } from "@/components/landing/section";
 import { SectionHeading } from "@/components/landing/section-heading";
@@ -118,7 +119,9 @@ export function SecurityPage({ dict, locale }: { dict: Dictionary; locale: Local
                     >
                       <Icon aria-hidden="true" className="size-6 text-primary" />
                       <h3 className="text-lg font-semibold">{item.title}</h3>
-                      <p className="leading-relaxed text-pretty text-muted-foreground">{item.text}</p>
+                      <p className="leading-relaxed text-pretty text-muted-foreground">
+                        <MarkedText text={item.text} bold />
+                      </p>
                     </li>
                   );
                 })}
