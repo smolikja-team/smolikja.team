@@ -21,6 +21,7 @@ describe("proxy matcher", () => {
     "/icon.png",
     "/assets/logo-white.svg",
     "/assets/logo-3d/team-logo.glb",
+    "/seznam-wmt-UNQu4s4Wr0zYE384gcPVrSVBhDRYG8ov.txt",
     "/cs/opengraph-image/og",
     "/_next/static/chunk.js",
     "/api/anything",

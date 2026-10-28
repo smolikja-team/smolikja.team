@@ -70,6 +70,13 @@ modes. Local development copies `.env.example` to the git-ignored
 4. If page content changed meaningfully, bump `lastModified` in
    `src/app/sitemap.ts`.
 
+## Search-engine verification
+
+`public/seznam-wmt-….txt` proves ownership of the site to Seznam Webmaster and
+must stay served at the site root; deleting or renaming it drops the
+verification. Google Search Console and Bing Webmaster Tools are verified
+outside the repository (a DNS TXT record; Bing imports from Search Console).
+
 ## Post-deploy checks
 
 - `/` redirects to a supported locale; `/cs` and `/en` render.
