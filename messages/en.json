@@ -238,16 +238,16 @@
     "title": "Frequently asked questions",
     "items": [
       {
-        "question": "How much does app development cost?",
-        "answer": "Mostly it depends on what the app should do. After the introductory consultation I'll propose the approach and the price."
-      },
-      {
         "question": "Do I need a finished brief?",
         "answer": "No. An idea or a problem you want to solve is enough. We'll work out the rest together."
       },
       {
-        "question": "How long does a first version take?",
-        "answer": "A simple first version can be in the App Store within a few weeks, a larger product within a few months."
+        "question": "How do we get started?",
+        "answer": "You write me a few sentences and we arrange a free introductory consultation. In 60–90 minutes we go through your idea or app together and I suggest how to proceed. It doesn't commit you to anything."
+      },
+      {
+        "question": "Can you take over an existing app?",
+        "answer": "Yes. First I assess it, including its security, and propose the best next step."
       },
       {
         "question": "Can you review an app you didn't build?",
@@ -258,8 +258,8 @@
         "answer": "You talk directly to the person who designs, builds and secures the product, so nothing gets lost along the way. AI agents give me the capacity of a small team."
       },
       {
-        "question": "Can you take over an existing app?",
-        "answer": "Yes. First I assess it, including its security, and propose the best next step."
+        "question": "Is my idea safe with you?",
+        "answer": "Yes. I process sensitive data and know-how only with local models on my own secured computer and never send them to cloud AI tools."
       }
     ]
   },
@@ -402,8 +402,12 @@
       "title": "Security FAQ",
       "items": [
         {
-          "question": "Is this a penetration test?",
-          "answer": "Not in the certified sense. It is a practical review of the code, setup and behaviour of the app with verified findings and fixes."
+          "question": "I'm not a developer. Can you still help?",
+          "answer": "Yes. I explain the findings without jargon and fix the problems straight away – in apps built with AI, too."
+        },
+        {
+          "question": "When is the right time for a review?",
+          "answer": "Any time. Ideally before launch or a bigger change, but a review makes sense for an app that is already live, too."
         },
         {
           "question": "Do you need access to the source code?",
@@ -412,10 +416,6 @@
         {
           "question": "Will you send my code to an AI?",
           "answer": "Only with your consent. Sensitive parts I process with local models on my own secured computer, so they never leave it."
-        },
-        {
-          "question": "How much does a review cost?",
-          "answer": "It depends on the size of the app and the scope of the review. After the free introductory consultation I give you a fixed price."
         },
         {
           "question": "What if you find a serious problem?",

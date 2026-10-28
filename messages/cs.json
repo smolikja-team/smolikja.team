@@ -238,16 +238,16 @@
     "title": "Na co se ptáte nejčastěji",
     "items": [
       {
-        "question": "Kolik stojí vývoj aplikace?",
-        "answer": "Záleží hlavně na tom, co má aplikace umět. Po úvodní konzultaci vám navrhnu postup i cenu."
-      },
-      {
         "question": "Potřebuji mít hotové zadání?",
         "answer": "Ne. Stačí nápad nebo problém, který chcete vyřešit. Zbytek si ujasníme společně."
       },
       {
-        "question": "Jak dlouho trvá první verze?",
-        "answer": "Jednoduchá první verze může být v App Store za pár týdnů, větší produkt za několik měsíců."
+        "question": "Jak začneme?",
+        "answer": "Napíšete mi pár vět a domluvíme si úvodní konzultaci zdarma. Během 60–90 minut spolu projdeme váš nápad nebo aplikaci a navrhnu, jak postupovat. Nic vás to nezavazuje."
+      },
+      {
+        "question": "Můžete navázat na existující aplikaci?",
+        "answer": "Ano. Nejdřív ji posoudím, včetně bezpečnosti, a navrhnu nejlepší další krok."
       },
       {
         "question": "Zkontrolujete i aplikaci, kterou jste nestavěl?",
@@ -258,8 +258,8 @@
         "answer": "Mluvíte přímo s tím, kdo produkt navrhuje, programuje i zabezpečuje, takže se nic neztratí cestou. Kapacitu malého týmu mi dávají AI agenti."
       },
       {
-        "question": "Můžete navázat na existující aplikaci?",
-        "answer": "Ano. Nejdřív ji posoudím, včetně bezpečnosti, a navrhnu nejlepší další krok."
+        "question": "Je můj nápad u vás v bezpečí?",
+        "answer": "Ano. Citlivá data a know-how zpracovávám jen lokálními modely na vlastním zabezpečeném počítači a do cloudových AI nástrojů je neposílám."
       }
     ]
   },
@@ -402,8 +402,12 @@
       "title": "Časté dotazy k bezpečnosti",
       "items": [
         {
-          "question": "Je to penetrační test?",
-          "answer": "Ne v certifikovaném smyslu. Jde o praktickou kontrolu kódu, nastavení a chování aplikace s ověřenými nálezy a opravami."
+          "question": "Nejsem programátor. Pomůžete mi i tak?",
+          "answer": "Ano. Nálezy vám vysvětlím bez odborného žargonu a chyby rovnou opravím – i v aplikacích postavených s pomocí AI."
+        },
+        {
+          "question": "Kdy je správná chvíle na kontrolu?",
+          "answer": "Kdykoli. Ideálně před spuštěním nebo větší změnou, ale smysl má i u aplikace, která už běží."
         },
         {
           "question": "Potřebujete přístup ke zdrojovému kódu?",
@@ -412,10 +416,6 @@
         {
           "question": "Pošlete můj kód do AI?",
           "answer": "Jen s vaším souhlasem. Citlivé části zpracovávám lokálními modely na vlastním zabezpečeném počítači, takže ho neopustí."
-        },
-        {
-          "question": "Kolik kontrola stojí?",
-          "answer": "Záleží na velikosti aplikace a rozsahu kontroly. Po úvodní konzultaci zdarma vám dám pevnou cenu."
         },
         {
           "question": "Co když najdete vážný problém?",

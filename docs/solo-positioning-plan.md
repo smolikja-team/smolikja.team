@@ -144,7 +144,7 @@ tinted backgrounds instead of dividing rules:
 | 7 | O mně `#about` | Bio with the portrait on its right (on phones the portrait comes first) |
 | 8 | Jak pracuji s AI agenty `#ai-agents` | The AI and data rule beside the workspace photo |
 | 9 | Co máte jisté `#assurances` | Three one-sentence assurances |
-| 10 | FAQ | Six short questions: price, brief, timing, reviewing others' apps, why one person, taking over an existing app |
+| 10 | FAQ | Six short questions that remove reasons not to write: brief, how we get started, taking over an existing app, reviewing others' apps, why one person, confidentiality. No price or timing — every client asks, a generic answer only puts people off, and both belong to the conversation (owner, 2026-10-28); the security FAQ follows the same rule |
 | 11 | Kontakt `#contact` | "Jak pomohu? Napište mi." and the form |
 
 **Security page** (`/cs/bezpecnost-aplikaci`, `/en/app-security`): its own
@@ -195,7 +195,7 @@ consumer questions (WhatsApp, Temu), so the security page targets "kontrola
 bezpečnosti aplikací a webů" and AI-built apps instead.
 
 Mapping: the landing page targets development phrases (title "vývoj a
-zabezpečení mobilních aplikací", FAQ "Kolik stojí vývoj aplikace?"); the
+zabezpečení mobilních aplikací"); the
 security page targets review and security phrases. Both have FAQ and
 structured data (`Person` with two offers; `Service` and `FAQPage` on the
 security page), localized hreflang and sitemap entries.
