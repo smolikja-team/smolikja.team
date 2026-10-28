@@ -75,7 +75,7 @@ export default async function PrivacyPage({
       </header>
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-10 px-5 py-14 sm:px-6 sm:py-20">
         <div className="flex flex-col gap-4">
-          <h1 className="text-[2rem] leading-[1.1] font-semibold tracking-tight sm:text-4xl">
+          <h1 className="text-[1.75rem] leading-display font-semibold tracking-display sm:text-4xl">
             {copy.title}
           </h1>
           <p className="text-lg leading-relaxed text-pretty text-muted-foreground">{copy.intro}</p>

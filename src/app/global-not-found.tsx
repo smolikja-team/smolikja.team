@@ -53,7 +53,7 @@ export default async function GlobalNotFound() {
             <BrandLogo className="h-6 w-auto" />
             <div className="flex flex-col gap-3">
               <p className="text-sm text-muted-foreground">404</p>
-              <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              <h1 className="text-3xl leading-display font-semibold tracking-display text-balance sm:text-4xl">
                 {copy.title}
               </h1>
               <p className="leading-relaxed text-pretty text-muted-foreground">

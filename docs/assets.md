@@ -26,7 +26,11 @@ the aspect ratio and responsive `srcset`. Current sources are 1320×2868 and
 1284×2778 (3×) and 390×844 (1×, the agriculture screens) — all ≈ 9:19.5. The
 1× sources are shown at modest widths (≤ 250 CSS px), in the gallery and as the
 hero's back device (the owner's choice for the stable ventilation screen). Do
-not upscale 1× sources. Alt text and captions live in the message catalogs
+not upscale 1× sources. The gallery requests its screens at optimizer quality
+70 (`GALLERY_QUALITY` in `landing/scroll-gallery.tsx`, allowed by
+`images.qualities` in `next.config.ts`), the hero at the default 75; the
+two hero screens repeat in the gallery, and the different URLs keep Next.js
+from mistaking the lazy gallery copy for the eager hero image. Alt text and captions live in the message catalogs
 under `work.images.<id>`; see [Localization](localization.md).
 
 Screens must not reveal client data: the owner supplies anonymised exports

@@ -66,7 +66,7 @@ export function SecurityPage({ dict, locale }: { dict: Dictionary; locale: Local
               <OwnerBadge detail={dict.hero.role} eager />
               <div className="flex flex-col gap-3">
                 <p className="text-sm font-medium text-primary">{copy.eyebrow}</p>
-                <h1 className="text-[2.375rem] leading-[1.05] font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                <h1 className="text-[2.125rem] leading-display font-semibold tracking-display text-balance sm:text-5xl lg:text-[3.25rem]">
                   {copy.title}
                 </h1>
               </div>

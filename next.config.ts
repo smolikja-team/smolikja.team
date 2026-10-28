@@ -3,6 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
+  images: {
+    // 75 is the default; 70 is used by the smaller screens of the work
+    // gallery (`GALLERY_QUALITY` in landing/scroll-gallery.tsx).
+    qualities: [70, 75],
+  },
   experimental: {
     // Enables `app/global-not-found.tsx` — the documented way to render a
     // consistent 404 when the root layout lives under a dynamic segment

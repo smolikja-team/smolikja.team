@@ -19,6 +19,16 @@ describe("getDictionary", () => {
     for (const id of serviceOrder) expect(dict.services.items[id].points.length).toBeGreaterThan(0);
   });
 
+  it.each(locales)("marks exactly one key phrase in every experience text in %s", async (locale) => {
+    const dict = await getDictionary(locale);
+
+    for (const { id } of experiences) {
+      const { text } = dict.work.experiences[id];
+      expect(text.match(/\*\*[^*]+\*\*/g), id).toHaveLength(1);
+      expect(text.split("**"), id).toHaveLength(3);
+    }
+  });
+
   it.each(locales)("fills every placeholder of the operator identity in %s", async (locale) => {
     const dict = await getDictionary(locale);
     const identity = format(dict.operator.identity, operator);

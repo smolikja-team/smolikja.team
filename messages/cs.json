@@ -83,6 +83,10 @@
     "title": "Moje práce",
     "intro": "Ukázky z aplikací pro chytré budovy, zemědělství, startupy i veřejnost. Víc vám rád ukážu osobně.",
     "galleryLabel": "Ukázky aplikací",
+    "confidential": {
+      "stamp": "NDA",
+      "caption": "Pod NDA: další projekty, o kterých mluvit nemohu"
+    },
     "images": {
       "smart-building-dashboard": {
         "alt": "Aplikace pro chytrou domácnost – přehled místností s ovládáním světel, rekuperace a topení",
@@ -123,32 +127,32 @@
       "smart-buildings": {
         "sector": "Chytré budovy · IoT",
         "title": "Ovládání domů a budov",
-        "text": "Aplikace pro ovládání chytrých domů a kanceláří v reálném čase. Rozvíjím ji od návrhu až po zabezpečení komunikace."
+        "text": "Aplikace pro ovládání chytrých domů a kanceláří v reálném čase. Rozvíjím ji **od návrhu až po zabezpečení komunikace**."
       },
       "agriculture": {
         "sector": "Zemědělství · B2B",
         "title": "Provozní aplikace pro chytré stáje",
-        "text": "Čidla, ventilace a upozornění v jedné aplikaci pro lidi, kteří s ní denně pracují v provozu."
+        "text": "Čidla, ventilace a upozornění v jedné aplikaci pro lidi, kteří s ní **denně pracují v provozu**."
       },
       "startup": {
         "sector": "Startup",
         "title": "MVP v App Store za dva týdny",
-        "text": "Rychlé ověření nového produktu a další směr podle dat od prvních uživatelů."
+        "text": "Rychlé ověření nového produktu a další směr **podle dat od prvních uživatelů**."
       },
       "public-app": {
         "sector": "Aplikace pro veřejnost",
         "title": "Mapa s hlášeními od lidí",
-        "text": "Lidé v terénu hlásí aktuální stav míst a organizace je spravují v administraci."
+        "text": "Lidé v terénu **hlásí aktuální stav míst** a organizace je spravují v administraci."
       },
       "regulated": {
         "sector": "Banky · veřejná správa",
         "title": "Aplikace v regulovaném prostředí",
-        "text": "Přes pět let jsem vyvíjel nativní iOS aplikace pro banky a veřejnou správu – včetně biometrického podepisování."
+        "text": "**Přes pět let** jsem vyvíjel nativní iOS aplikace pro banky a veřejnou správu – včetně biometrického podepisování."
       },
       "web-ai": {
         "sector": "Weby · AI",
         "title": "Weby a nástroje s umělou inteligencí",
-        "text": "Firemní weby, landing page a nástroje postavené na velkých jazykových modelech."
+        "text": "Firemní weby, landing page a nástroje postavené **na velkých jazykových modelech**."
       }
     }
   },
@@ -201,7 +205,7 @@
     "title": "Jeden člověk. Tým AI agentů.",
     "portraitAlt": "Jakub Smolík",
     "bio": [
-      "Jsem Jakub Smolík a přes šest let navrhuji a vyvíjím aplikace – pro banky, veřejnou správu, velké firmy i startupy. U projektů, které vedu, odpovídám za celé řešení, od návrhu přes vývoj až po zabezpečení.",
+      "Jmenuji se Jakub Smolík a přes šest let navrhuji a vyvíjím aplikace – pro banky, veřejnou správu, velké firmy i startupy. U projektů, které vedu, zodpovídám za celé řešení, od návrhu přes vývoj až po zabezpečení.",
       "Technologie je pro mě nástroj, ne cíl – zajímá mě, co vám produkt přinese. Nejraději se starám o celý produkt, od nápadu až po provoz. Působím v Praze a na schůzku rád přijedu."
     ],
     "ai": {
@@ -209,7 +213,7 @@
       "workspaceAlt": "Jakub Smolík při práci u stolu s monitorem a notebookem",
       "paragraphs": [
         "S rešeršemi, návrhy, programováním i testy mi pomáhá tým AI agentů. Zvládnu tak práci malého týmu – rychleji a bez režie agentury. Rozhodnutí i odpovědnost za výsledek ale zůstávají u mě.",
-        "Citlivá data a know-how zpracovávám jen lokálními modely na vlastním počítači. Odtud i název smolikja team – já a můj tým AI agentů."
+        "Citlivá data a know-how zpracovávám jen lokálními modely na vlastním zabezpečeném počítači. Odtud i název smolikja team – já a můj tým AI agentů."
       ]
     },
     "assurances": {
@@ -345,7 +349,7 @@
         },
         {
           "title": "Analýza",
-          "text": "Kód a nastavení projdu specializovanými nástroji a s pomocí AI – s vaším souhlasem, citlivé části jen lokálně na vlastním počítači."
+          "text": "Kód a nastavení projdu specializovanými nástroji a s pomocí AI – s vaším souhlasem, citlivé části jen lokálně na vlastním zabezpečeném počítači."
         },
         {
           "title": "Ruční ověření",
@@ -399,7 +403,7 @@
         },
         {
           "question": "Pošlete můj kód do AI?",
-          "answer": "Jen s vaším souhlasem. Citlivé části zpracovávám lokálními modely na vlastním počítači, takže ho neopustí."
+          "answer": "Jen s vaším souhlasem. Citlivé části zpracovávám lokálními modely na vlastním zabezpečeném počítači, takže ho neopustí."
         },
         {
           "question": "Kolik kontrola stojí?",

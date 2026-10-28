@@ -31,12 +31,14 @@ export function Hero({
   return (
     <section className="flex min-h-[calc(100lvh-4rem)] flex-col justify-center">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-14 px-5 pt-12 pb-16 sm:px-6 sm:pt-16 lg:grid-cols-[minmax(0,13fr)_minmax(0,11fr)] lg:items-center lg:gap-16 lg:py-20">
-        <div className="flex max-w-2xl flex-col gap-7">
+        <div className="@container flex max-w-2xl flex-col gap-7">
           <OwnerBadge detail={copy.role} eager />
-          <h1 className="text-[2.375rem] leading-[1.05] font-semibold tracking-tight text-balance sm:text-6xl lg:text-[4rem]">
+          {/* Sized to the column, not the window: the wide display face keeps
+              the title to three lines at every width (about 50 px at most). */}
+          <h1 className="text-[7.4cqw] leading-display font-semibold tracking-display text-balance">
             {copy.title}
           </h1>
-          <p className="max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground sm:text-xl">
+          <p className="max-w-xl text-lg leading-relaxed text-balance text-muted-foreground sm:text-xl">
             {copy.text}
           </p>
           <div className="flex flex-col items-start gap-4">

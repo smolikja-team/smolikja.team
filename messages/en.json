@@ -83,6 +83,10 @@
     "title": "My work",
     "intro": "Screens from apps for smart buildings, agriculture, startups and the public. I'm happy to show you more in person.",
     "galleryLabel": "App screens",
+    "confidential": {
+      "stamp": "NDA",
+      "caption": "Under NDA: more projects I can't talk about"
+    },
     "images": {
       "smart-building-dashboard": {
         "alt": "Smart-home app – room overview with lighting, ventilation and heating controls",
@@ -123,32 +127,32 @@
       "smart-buildings": {
         "sector": "Smart buildings · IoT",
         "title": "Controlling homes and buildings",
-        "text": "An app for controlling smart homes and offices in real time. I develop it from design to securing the communication."
+        "text": "An app for controlling smart homes and offices in real time. I develop it **from design to securing the communication**."
       },
       "agriculture": {
         "sector": "Agriculture · B2B",
         "title": "An operations app for smart stables",
-        "text": "Sensors, ventilation and alerts in one app for the people who work with it every day."
+        "text": "Sensors, ventilation and alerts in one app for the people who **work with it every day**."
       },
       "startup": {
         "sector": "Startup",
         "title": "An MVP in the App Store in two weeks",
-        "text": "Testing a new product fast, then setting its direction from the first users' data."
+        "text": "Testing a new product fast, then setting its direction **from the first users' data**."
       },
       "public-app": {
         "sector": "Public app",
         "title": "A map with reports from people",
-        "text": "People in the field report the current state of places; organisations manage them in an admin."
+        "text": "People in the field **report the current state of places**; organisations manage them in an admin."
       },
       "regulated": {
         "sector": "Banking · public sector",
         "title": "Apps in a regulated environment",
-        "text": "For more than five years I developed native iOS apps for banks and the public sector – including biometric signing."
+        "text": "**For more than five years** I developed native iOS apps for banks and the public sector – including biometric signing."
       },
       "web-ai": {
         "sector": "Web · AI",
         "title": "Websites and AI-powered tools",
-        "text": "Company websites, landing pages and tools built on large language models."
+        "text": "Company websites, landing pages and tools built **on large language models**."
       }
     }
   },
@@ -201,7 +205,7 @@
     "title": "One person. A team of AI agents.",
     "portraitAlt": "Jakub Smolík",
     "bio": [
-      "I'm Jakub Smolík, and for more than six years I have been designing and developing apps – for banks, the public sector, large companies and startups. On the projects I lead, I'm responsible for the whole solution, from design and development to security.",
+      "My name is Jakub Smolík, and for more than six years I have been designing and developing apps – for banks, the public sector, large companies and startups. On the projects I lead, I'm responsible for the whole solution, from design and development to security.",
       "Technology is a tool for me, not the goal – what interests me is what the product will bring you. I like looking after a whole product best, from the idea to running it. I'm based in Prague and happy to come to a meeting."
     ],
     "ai": {
@@ -209,7 +213,7 @@
       "workspaceAlt": "Jakub Smolík at work at a desk with a monitor and a laptop",
       "paragraphs": [
         "A team of AI agents helps me with research, drafts, coding and testing. That lets me do the work of a small team – faster and without agency overhead. Decisions and responsibility for the result stay with me.",
-        "Sensitive data and know-how I process only with local models on my own computer. Hence the name smolikja team – me and my team of AI agents."
+        "Sensitive data and know-how I process only with local models on my own secured computer. Hence the name smolikja team – me and my team of AI agents."
       ]
     },
     "assurances": {
@@ -345,7 +349,7 @@
         },
         {
           "title": "Analysis",
-          "text": "I go through the code and setup with specialised tools and with AI – with your consent, and sensitive parts only locally on my own computer."
+          "text": "I go through the code and setup with specialised tools and with AI – with your consent, and sensitive parts only locally on my own secured computer."
         },
         {
           "title": "Manual verification",
@@ -399,7 +403,7 @@
         },
         {
           "question": "Will you send my code to an AI?",
-          "answer": "Only with your consent. Sensitive parts I process with local models on my own computer, so they never leave it."
+          "answer": "Only with your consent. Sensitive parts I process with local models on my own secured computer, so they never leave it."
         },
         {
           "question": "How much does a review cost?",

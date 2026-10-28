@@ -496,6 +496,11 @@ contrast audit.
 
 - **Typeface:** retain Instrument Sans with Czech character coverage. Use
   weight and scale rather than extra font families to establish hierarchy.
+  *Superseded on 2026-10-27 at the owner's request for a younger, more modern
+  and technical look:* headings are set in Unbounded, reading text stays in
+  Instrument Sans and technology names use Geist Mono (`src/lib/fonts.ts`).
+  The wide face keeps the hero title to three lines only at about 24–50 px,
+  so the hero no longer follows the starting scale below.
 - **Starting type scale:** hero 64–80px desktop / 38–46px mobile; section
   headings 32–44px / 28–34px; body 18px; form text at least 16px. Tune around
   real Czech line breaks and enlarged text.

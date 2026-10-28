@@ -37,6 +37,7 @@ event handling. Current client islands:
 | `landing/contact-form.tsx` | `useActionState` around the contact Server Action; remounts fields with restored values after a failed attempt. |
 | `landing/faq-section.tsx` → `ui/accordion.tsx` | Expand/collapse of the FAQ (Base UI accordion). |
 | `landing/reveal.tsx` | The one restrained entrance — the hero devices — via `motion`; with reduced motion only the fade remains. |
+| `landing/scroll-marker.tsx` | The highlighter stroke under the key phrase of each experience card, its width tied to the phrase's position in the window (`motion` `useScroll`) so it draws in while scrolling and erases when scrolling back; with reduced motion it is shown in full. |
 | `landing/site-logo.tsx` | The header wordmark: the static SVG, replaced once the browser is idle by the spinning 3D model. three.js lives in `landing/site-logo-scene.ts`, imported on demand, so it never delays the page; skipped with reduced motion or without WebGL. |
 
 Everything else, including the sticky header, is a Server Component. Values
@@ -66,7 +67,7 @@ Actions for mutations initiated by this UI.
 | `src/components/icons/` | Inline brand and third-party marks. |
 | `src/components/ui/` | Generated shadcn primitives (Base UI + `cva`). Regenerate with the CLI; do not hand-edit their API. |
 | `src/config/` | Locale-independent structural data: site URLs and links, navigation and the primary action target, work screens and kinds of projects, page paths, legal identity, paths and dates, brand assets. |
-| `src/i18n/` | Locale types, language negotiation, dictionary loading and template formatting. |
+| `src/i18n/` | Locale types, language negotiation, dictionary loading, typesetting and template formatting. |
 | `src/lib/` | Shared server/domain utilities: fonts, `cn()`, metadata helpers, rate limiting, mail delivery, OG rendering. |
 | `messages/` | Localized user-facing copy. |
 | `public/` | Static assets served from the site root. |
@@ -102,8 +103,15 @@ section repeat it) so it never overflows a 320 px screen.
 `src/config/work.ts` lists the gallery screens (neutral ids, intrinsic sizes),
 the kinds of projects with their technology tags, and the two hero screens.
 The section deliberately names no client and no product: captions and cards
-describe the industry and the work. Adding a screen or a kind of project is a
-config entry plus copy — see [Localization](localization.md).
+describe the industry and the work. The strip ends with a drawn device
+(`landing/confidential-screen.tsx`): an app whose text is blacked out under an
+"NDA" stamp, standing for the projects under non-disclosure agreements.
+
+In each experience card the key phrase of the text — marked `**…**` in the
+catalog and rendered by `landing/marked-text.tsx` — is set heavier and gets a
+teal stroke (`--highlight`) below the text that draws from left to right
+with the scroll position (`landing/scroll-marker.tsx`). Adding a screen or a kind
+of project is a config entry plus copy — see [Localization](localization.md).
 
 ### Contact form
 
@@ -122,6 +130,17 @@ semantic utilities (`bg-card`, `text-muted-foreground`, `bg-primary`) — never
 raw colours — and the real application screens supply most of the colour.
 Primary controls are 48 px tall and form text is 16 px; the generated
 primitives are not edited for this, the landing wrappers add the sizes.
+
+Typography uses three faces, each with one job (`src/lib/fonts.ts`):
+Unbounded, a wide, rounded modern technical face, for every heading (a base
+style on `h1`–`h3`), Instrument Sans for reading text and controls, and
+Geist Mono only for technology names. Large headings use the
+`leading-display` and `tracking-display` tokens, whose line height leaves
+room for Czech diacritics. Because the face is wide, the hero title is sized
+to its column (`7.4cqw`, about 50 px at most) rather than to the window, so
+it stays on three lines at every width. Section lead paragraphs wrap sentence by sentence
+(`landing/section-heading.tsx`), and the Czech catalog is typeset on load so
+one-letter prepositions never end a line (see [Localization](localization.md)).
 
 Every section (`landing/section.tsx`) is at least one screen tall minus the
 sticky header (`100lvh`, so it still fills the screen when a mobile browser

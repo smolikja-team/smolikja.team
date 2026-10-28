@@ -26,6 +26,7 @@ export type ExperienceCopy = {
   /** Small label above the title: industry or kind of client. */
   sector: string;
   title: string;
+  /** One or two sentences with exactly one key phrase marked `**…**`. */
   text: string;
 };
 
@@ -99,6 +100,14 @@ export type Dictionary = {
     title: string;
     intro: string;
     galleryLabel: string;
+    /**
+     * The last device of the gallery: a redacted screen with a stamp, for the
+     * projects under NDA that the page cannot show.
+     */
+    confidential: {
+      stamp: string;
+      caption: string;
+    };
     images: Record<WorkImageId, WorkImageCopy>;
     /** Heading and lead of the experience section (the cards below the gallery). */
     experiencesTitle: string;

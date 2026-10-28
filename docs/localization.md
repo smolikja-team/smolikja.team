@@ -15,6 +15,10 @@ lives in `messages/<locale>.json`.
 - `messages/validate.ts` makes TypeScript validate every catalog at compile
   time.
 - `src/i18n/format.ts` renders strings containing `{placeholder}` tokens.
+- `src/i18n/typography.ts` typesets every catalog string on load: a spaced
+  dash never starts a line, and in Czech a one-letter preposition or
+  conjunction (k, s, v, z, o, u, a, i) never ends one. Write plain spaces in
+  the catalogs; do not insert non-breaking spaces by hand.
 
 Only localized prose belongs in catalogs. URLs, ids, image paths and other
 locale-independent structure belong in `src/config/` or the component that
@@ -43,6 +47,8 @@ components.
    `ExperienceId` and an `experiences` entry with its technology tags.
 3. Add `work.images.<id>` (`alt` and a short `caption`) or
    `work.experiences.<id>` (`sector`, `title`, `text`) to every catalog.
+   Mark exactly one key phrase of the experience `text` as `**…**`; it is
+   underlined as the reader scrolls (a test checks every locale).
 
 Describe the industry and the work, not the client: no client or product
 names, no confidential results. The type system rejects a catalog that names

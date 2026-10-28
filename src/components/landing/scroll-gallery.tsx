@@ -9,6 +9,30 @@ import { cn } from "@/lib/utils";
 import { DeviceFrame } from "./device-frame";
 
 /**
+ * The strip's screens are small (at most 240 CSS px wide), so they are
+ * optimised at a lower quality than the default 75 used by the hero. It also
+ * gives the two hero screens, which appear here again, a URL of their own:
+ * Next.js tracks images by URL in development, and the lazy copy here would
+ * otherwise overwrite the eager hero one and trigger a false "LCP image
+ * should be eager" warning. Listed in `images.qualities` (next.config.ts).
+ */
+const GALLERY_QUALITY = 70;
+
+/** One device on the strip with its caption centred below. */
+function Slide({ caption, children }: { caption: string; children: ReactNode }) {
+  return (
+    <li className="w-(--slide-w) snap-start scroll-ms-(--page-inset)">
+      <figure className="flex flex-col gap-4">
+        {children}
+        <figcaption className="text-center text-sm text-balance text-muted-foreground">
+          {caption}
+        </figcaption>
+      </figure>
+    </li>
+  );
+}
+
+/**
  * The section heading and screens in iPhone mockups on a horizontal strip
  * driven by the page's own vertical scroll. Heading and strip pin together
  * (a sticky stage below the header, so the strip never reads as a separate
@@ -34,13 +58,17 @@ export function ScrollGallery({
   images,
   copy,
   label,
+  closing,
 }: {
   /** Section heading, pinned with the strip and aligned with the content. */
   heading: ReactNode;
   images: readonly WorkImage[];
   copy: Record<WorkImageId, WorkImageCopy>;
   label: string;
+  /** A last device with drawn screen content instead of a screenshot. */
+  closing?: { screen: ReactNode; caption: string };
 }) {
+  const slides = images.length + (closing ? 1 : 0);
   const stageRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
@@ -81,7 +109,7 @@ export function ScrollGallery({
   return (
     <div
       ref={stageRef}
-      style={{ "--slides": images.length } as CSSProperties}
+      style={{ "--slides": slides } as CSSProperties}
       className={cn(
         "relative mx-[calc(50%-50vw)] [--gap:1rem] [--page-inset:1.25rem] sm:[--gap:1.5rem] sm:[--page-inset:max(1.5rem,calc((100vw_-_72rem)/2_+_1.5rem))]",
         "[--chrome:26rem] [--slide-max:11.5rem] sm:[--chrome:22rem] sm:[--slide-max:14rem] lg:[--slide-max:15rem]",
@@ -103,19 +131,20 @@ export function ScrollGallery({
             className="flex w-max gap-(--gap) px-(--page-inset) py-4"
           >
             {images.map((image) => (
-              <li key={image.id} className="w-(--slide-w) snap-start scroll-ms-(--page-inset)">
-                <figure className="flex flex-col gap-4">
-                  <DeviceFrame
-                    image={image}
-                    alt={copy[image.id].alt}
-                    sizes="(min-width: 1024px) 240px, (min-width: 640px) 224px, 184px"
-                  />
-                  <figcaption className="text-center text-sm text-balance text-muted-foreground">
-                    {copy[image.id].caption}
-                  </figcaption>
-                </figure>
-              </li>
+              <Slide key={image.id} caption={copy[image.id].caption}>
+                <DeviceFrame
+                  image={image}
+                  alt={copy[image.id].alt}
+                  sizes="(min-width: 1024px) 240px, (min-width: 640px) 224px, 184px"
+                  quality={GALLERY_QUALITY}
+                />
+              </Slide>
             ))}
+            {closing ? (
+              <Slide caption={closing.caption}>
+                <DeviceFrame>{closing.screen}</DeviceFrame>
+              </Slide>
+            ) : null}
           </motion.ul>
         </div>
 
