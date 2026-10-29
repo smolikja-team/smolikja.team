@@ -52,7 +52,17 @@ export function DeviceFrame(
       <span aria-hidden="true" className="absolute top-[56%] -right-[0.8%] h-[6%] w-[1.1%] rounded-r-full bg-device-frame" />
 
       <div className="relative h-full w-full rounded-[15%/7.2%] bg-device-glass p-[3.2%]">
-        <div className="relative h-full w-full overflow-hidden rounded-[12%/5.5%] bg-card">
+        {/* Under a screenshot the screen is glass-coloured: the clipped,
+            anti-aliased edge lets a sliver of this background through, and
+            while the device moves by fractions of a pixel a light one would
+            flicker as a bright outline around dark screens. Drawn content
+            keeps the light screen it is designed on. */}
+        <div
+          className={cn(
+            "relative h-full w-full overflow-hidden rounded-[12%/5.5%]",
+            props.image ? "bg-device-glass" : "bg-card",
+          )}
+        >
           {props.image ? (
             <Image
               src={props.image.src}

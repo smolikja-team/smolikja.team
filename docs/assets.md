@@ -46,7 +46,10 @@ Screens are shown inside a front-view mockup of a current iPhone Pro
 (`landing/device-frame.tsx`, iPhone 17 Pro proportions): CSS only, coloured
 by the `--device-*` tokens in `globals.css`, with the screenshot cropped to
 the device's screen (`object-cover`, top-aligned) and a drawn Dynamic Island
-that covers any island a capture tool already painted. Changing a screen's
+that covers any island a capture tool already painted. Behind a screenshot
+the screen is glass-coloured, not light: the anti-aliased clip edge shows a
+sliver of it, which flickered as a bright outline around dark screens while
+the hero devices animated. Changing a screen's
 content means a new file name: optimised images are cached by URL and cannot
 be invalidated.
 
