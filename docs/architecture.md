@@ -32,7 +32,7 @@ event handling. Current client islands:
 | Island | Why it is client-side |
 | --- | --- |
 | `landing/mobile-menu.tsx` | Open/close state of the small-screen menu (shadcn `Sheet` on Base UI). |
-| `landing/scroll-gallery.tsx` | Work screens on a strip driven by the page's vertical scroll (`motion` `useScroll`): the stage pins below the header and its added height becomes horizontal travel, with a progress bar. No wheel or touch events are intercepted; with reduced motion it is a plain horizontally scrollable strip (CSS-only switch, so server and client markup match). |
+| `landing/scroll-gallery.tsx` | Work screens on a strip driven by the page's vertical scroll (`motion` `useScroll`): the stage pins below the header and its added height becomes horizontal travel, with a progress bar. No wheel or touch events are intercepted; on touch screens (`pointer: coarse`) and with reduced motion it is a plain horizontally swipeable strip with larger devices (CSS-only switch through the `pinned:` / `unpinned:` variants in `globals.css`, so server and client markup match). |
 | `landing/hero-device-stack.tsx` | The two hero devices; pointing at (or tapping) the back one shuffles it to the front with a `motion` keyframe animation. |
 | `landing/contact-form.tsx` | `useActionState` around the contact Server Action; remounts fields with restored values after a failed attempt. |
 | `landing/faq-section.tsx` → `ui/accordion.tsx` | Expand/collapse of the FAQ (Base UI accordion). |

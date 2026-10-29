@@ -27,25 +27,28 @@ export function ContactSection({
 }) {
   return (
     <Section id="contact" tone={tone}>
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-10 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+      {/* The form comes first and the direct address after it, as the
+          alternative: on one column it sits below the form, on two it stays
+          under the introduction while the form spans both rows. */}
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] gap-10 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-6">
         <div className="flex flex-col gap-6">
           <SectionHeading title={copy.title} text={copy.text} />
           <OwnerBadge detail={copy.personal} />
           <FreeConsultationNote lead={copy.freeConsultation} detail={copy.freeConsultationDetail} />
-          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
-            <span>{copy.direct.label}</span>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="inline-flex min-h-11 items-center gap-2 rounded-md font-medium text-foreground underline decoration-foreground/30 underline-offset-4 outline-none hover:decoration-foreground focus-visible:ring-3 focus-visible:ring-ring/50"
-            >
-              <MailIcon aria-hidden="true" className="size-4" />
-              {siteConfig.email}
-            </a>
-          </p>
         </div>
-        <div className="rounded-3xl bg-card p-6 ring-1 ring-foreground/10 sm:p-8">
+        <div className="rounded-3xl bg-card p-6 ring-1 ring-foreground/10 sm:p-8 lg:col-start-2 lg:row-span-2 lg:row-start-1">
           <ContactForm copy={copy.form} locale={locale} source={source} privacyHref={privacyHref} />
         </div>
+        <p className="-mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 self-start text-muted-foreground lg:col-start-1 lg:row-start-2 lg:mt-0">
+          <span>{copy.direct.label}</span>
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="inline-flex min-h-11 items-center gap-2 rounded-md font-medium text-foreground underline decoration-foreground/30 underline-offset-4 outline-none hover:decoration-foreground focus-visible:ring-3 focus-visible:ring-ring/50"
+          >
+            <MailIcon aria-hidden="true" className="size-4" />
+            {siteConfig.email}
+          </a>
+        </p>
       </div>
     </Section>
   );

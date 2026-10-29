@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { DeviceFrame } from "./device-frame";
 
 /**
- * The strip's screens are small (at most 240 CSS px wide), so they are
+ * The strip's screens are small (at most 272 CSS px wide), so they are
  * optimised at a lower quality than the default 75 used by the hero. It also
  * gives the two hero screens, which appear here again, a URL of their own:
  * Next.js tracks images by URL in development, and the lazy copy here would
@@ -17,6 +17,9 @@ import { DeviceFrame } from "./device-frame";
  * should be eager" warning. Listed in `images.qualities` (next.config.ts).
  */
 const GALLERY_QUALITY = 70;
+
+/** When the strip is not pinned; the same query as the `unpinned` variant (globals.css). */
+const UNPINNED_QUERY = "(prefers-reduced-motion: reduce) or (pointer: coarse)";
 
 /** One device on the strip with its caption centred below. */
 function Slide({ caption, children }: { caption: string; children: ReactNode }) {
@@ -41,17 +44,21 @@ function Slide({ caption, children }: { caption: string; children: ReactNode }) 
  * progress bar spanning the content width fills as it moves.
  *
  * Nothing intercepts wheel or touch events — the scroll distance is simply
- * added to the page as height — so keyboard, wheel, trackpad and touch all
- * behave as normal page scrolling. Visitors who prefer reduced motion get a
- * plain horizontally scrollable strip instead; that switch is pure CSS
- * (`motion-safe:` / `motion-reduce:`), so server and client markup match.
+ * added to the page as height — so keyboard, wheel and trackpad all behave
+ * as normal page scrolling. On touch screens, where a vertical swipe moving
+ * the strip sideways feels unnatural, and for visitors who prefer reduced
+ * motion, it is instead a plain strip swiped sideways while vertical swipes
+ * scroll the page. That switch is pure CSS (the `pinned:` / `unpinned:`
+ * variants in globals.css), so server and client markup match.
  *
  * CSS variables: `--page-inset` mirrors the page container (`max-w-6xl` with
  * `px-5`/`px-6`) so the first and last device align with the content edges;
- * `--slide-w` shrinks with the window height so heading, devices, captions
- * and progress bar fit the pinned stage (`--chrome` is the room they need
- * besides the devices); `--scroll-distance` starts as a CSS estimate (no
- * layout shift before hydration) and is replaced by the measured value.
+ * when pinned, `--slide-w` shrinks with the window height so heading,
+ * devices, captions and progress bar fit the stage (`--chrome` is the room
+ * they need besides the devices); unpinned, nothing has to fit one screen, so
+ * a device takes most of a phone's width and the next one peeks in;
+ * `--scroll-distance` starts as a CSS estimate (no layout shift before
+ * hydration) and is replaced by the measured value.
  */
 export function ScrollGallery({
   heading,
@@ -80,13 +87,11 @@ export function ScrollGallery({
     const track = trackRef.current;
     if (!stage || !viewport || !track) return;
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const unpinned = window.matchMedia(UNPINNED_QUERY);
     const measure = () => {
-      // With reduced motion the strip scrolls natively, so nothing is pinned
-      // and the track never moves with the page.
-      const value = reducedMotion.matches
-        ? 0
-        : Math.max(0, track.offsetWidth - viewport.clientWidth);
+      // Unpinned, the strip scrolls natively and the track never moves with
+      // the page.
+      const value = unpinned.matches ? 0 : Math.max(0, track.offsetWidth - viewport.clientWidth);
       distance.set(value);
       stage.style.setProperty("--scroll-distance", `${value}px`);
     };
@@ -94,10 +99,10 @@ export function ScrollGallery({
     const observer = new ResizeObserver(measure);
     observer.observe(viewport);
     observer.observe(track);
-    reducedMotion.addEventListener("change", measure);
+    unpinned.addEventListener("change", measure);
     return () => {
       observer.disconnect();
-      reducedMotion.removeEventListener("change", measure);
+      unpinned.removeEventListener("change", measure);
     };
   }, [distance]);
 
@@ -112,17 +117,18 @@ export function ScrollGallery({
       style={{ "--slides": slides } as CSSProperties}
       className={cn(
         "relative mx-[calc(50%-50vw)] [--gap:1rem] [--page-inset:1.25rem] sm:[--gap:1.5rem] sm:[--page-inset:max(1.5rem,calc((100vw_-_72rem)/2_+_1.5rem))]",
-        "[--chrome:26rem] [--slide-max:11.5rem] sm:[--chrome:22rem] sm:[--slide-max:14rem] lg:[--slide-max:15rem]",
+        "[--chrome:26rem] [--slide-max:11.5rem] sm:[--chrome:22rem] sm:[--slide-max:15rem] lg:[--chrome:18.5rem] lg:[--slide-max:16.5rem]",
         "[--slide-w:clamp(7rem,calc((100svh_-_4rem_-_var(--chrome))_/_2.15),var(--slide-max))]",
+        "unpinned:[--slide-w:clamp(9rem,min(68vw,calc((100svh_-_8rem)_/_2.15)),17rem)]",
         "[--scroll-distance:max(0px,calc(var(--slides)_*_var(--slide-w)_+_(var(--slides)_-_1)_*_var(--gap)_+_2_*_var(--page-inset)_-_100vw))]",
-        "motion-safe:h-[calc(100svh_-_4rem_+_var(--scroll-distance))]",
+        "pinned:h-[calc(100svh_-_4rem_+_var(--scroll-distance))]",
       )}
     >
-      <div className="flex flex-col justify-center gap-8 motion-safe:sticky motion-safe:top-16 motion-safe:h-[calc(100svh_-_4rem)] motion-safe:overflow-hidden">
+      <div className="flex flex-col justify-center gap-8 pinned:sticky pinned:top-16 pinned:h-[calc(100svh_-_4rem)] pinned:overflow-hidden">
         <div className="px-(--page-inset)">{heading}</div>
         <div
           ref={viewportRef}
-          className="motion-safe:overflow-hidden motion-reduce:snap-x motion-reduce:snap-mandatory motion-reduce:overflow-x-auto"
+          className="pinned:overflow-hidden unpinned:snap-x unpinned:snap-mandatory unpinned:overflow-x-auto"
         >
           <motion.ul
             ref={trackRef}
@@ -135,7 +141,7 @@ export function ScrollGallery({
                 <DeviceFrame
                   image={image}
                   alt={copy[image.id].alt}
-                  sizes="(min-width: 1024px) 240px, (min-width: 640px) 224px, 184px"
+                  sizes="(min-width: 640px) 272px, 68vw"
                   quality={GALLERY_QUALITY}
                 />
               </Slide>
@@ -148,7 +154,7 @@ export function ScrollGallery({
           </motion.ul>
         </div>
 
-        <div aria-hidden="true" className="px-(--page-inset) motion-reduce:hidden">
+        <div aria-hidden="true" className="px-(--page-inset) unpinned:hidden">
           <div className="h-0.5 overflow-hidden rounded-full bg-border">
             <motion.div
               className="h-full origin-left rounded-full bg-foreground"

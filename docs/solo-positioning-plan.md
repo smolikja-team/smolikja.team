@@ -145,7 +145,7 @@ tinted backgrounds instead of dividing rules:
 | 8 | Jak pracuji s AI agenty `#ai-agents` | The AI and data rule beside the workspace photo |
 | 9 | Co máte jisté `#assurances` | Three one-sentence assurances |
 | 10 | FAQ | Six short questions that remove reasons not to write: brief, how we get started, taking over an existing app, reviewing others' apps, why one person, confidentiality. No price or timing — every client asks, a generic answer only puts people off, and both belong to the conversation (owner, 2026-10-28); the security FAQ follows the same rule |
-| 11 | Kontakt `#contact` | "Jak pomohu? Napište mi." and the form |
+| 11 | Kontakt `#contact` | "Jak pomohu? Napište mi." and the form; the direct e-mail address is the secondary option, below the form on phones |
 
 **Security page** (`/cs/bezpecnost-aplikaci`, `/en/app-security`): its own
 search intent and share image. Intro with the sourced statistic → who it helps
@@ -156,7 +156,10 @@ The scroll-driven strip is the owner's explicit choice and replaces the
 redesign plan's "no scroll hijacking" rule for this one element. It is built
 as scroll-linked motion, not hijacking: the page keeps native scrolling and
 keyboard behaviour, and visitors who prefer reduced motion get a plain
-horizontally scrollable strip.
+horizontally scrollable strip. On touch screens the strip is not pinned
+either: a vertical swipe moving it sideways felt unnatural, so it is swiped
+sideways while vertical swipes scroll the page, and a device takes most of
+the phone's width (owner, 2026-10-29).
 
 Navigation: Služby · Zkušenosti · Bezpečnost aplikací (the page) · O mně, and
 the CTA.

@@ -5,6 +5,16 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
+ * The work gallery's two modes (`landing/scroll-gallery.tsx`, which repeats
+ * the `unpinned` query for its measurement): with a mouse or trackpad the
+ * strip pins and follows the page's vertical scroll (`pinned:`); with touch,
+ * or for visitors who prefer reduced motion, it is a plain horizontally
+ * swipeable strip (`unpinned:`). The queries are exact complements.
+ */
+@custom-variant pinned (@media (prefers-reduced-motion: no-preference) and (not (pointer: coarse)));
+@custom-variant unpinned (@media (prefers-reduced-motion: reduce) or (pointer: coarse));
+
+/*
  * Display headings (`leading-display`, `tracking-display`): the line height
  * leaves room for Czech diacritics above capitals and ascenders (č, ř, Š, Ž)
  * without the lines drifting apart; large sizes take slightly tighter
